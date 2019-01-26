@@ -1,0 +1,28 @@
+$resource-block-variables: (
+);
+
+.wp-block-quizess-cpt-author-image-block {
+  @extend %block-element-default;
+  @extend %block-element-flex;
+  padding: 10px;
+  justify-content: space-between;
+
+  .authors-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &--title {
+      font-weight: bold;
+    }
+    &--description {
+      font-style: italic;
+      font-size: 14px;
+    }
+  }
+
+  .authors-image-element {
+    margin: 0;
+    max-width: 150px;
+  }
+
+}

@@ -1,0 +1,16 @@
+$image-text-block-variables: (
+
+);
+
+.wp-block-quizess-image-block {
+  @extend %block-element-default;
+
+  .media-image-parent-class {
+    margin: 0;
+
+    .media-image-class {
+      width: 100%;
+      display: block;
+    }
+  }
+}

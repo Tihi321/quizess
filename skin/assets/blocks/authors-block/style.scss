@@ -1,0 +1,53 @@
+$authors-block-variables: (
+  link-color: $base-black-color,
+  link-color-hover: $base-red-color,
+  title-color: $base-yellow-color,
+  profile-size: 56px,
+  body-padding: 50px 100px,
+  body-padding-mobile: 50px,
+);
+
+.wp-block-quizess-authors-block {
+  @extend %block-element-default;
+  @extend %block-element-flex;
+  align-items: center;
+
+  @include text-size(small);
+
+  padding: map-get($authors-block-variables, 'body-padding-mobile');
+
+  @include media(tablet up) {
+    padding: map-get($authors-block-variables, 'body-padding');
+  }
+
+  .profile-image {
+    width: map-get($authors-block-variables, 'profile-size');
+    height: map-get($authors-block-variables, 'profile-size');
+  }
+
+  .authors-image {
+    display: block;
+  }
+
+  .profile-title {
+    text-transform: uppercase;
+    font-weight: bold;
+    line-height: 1.71;
+    letter-spacing: 1px;
+    color: map-get($authors-block-variables, 'title-color');
+    margin: 0 10px;
+  }
+
+  .authors-name {
+    display: inline-block;
+    margin: 0 5px;
+    text-transform: uppercase;
+  }
+  .author-link {
+    text-decoration: none;
+    color: map-get($authors-block-variables, 'link-color');
+    &:hover {
+      color: map-get($authors-block-variables, 'link-color-hover');
+    }
+  }
+}

@@ -1,0 +1,57 @@
+%item-smaller {
+  width: 100%;
+
+  @include media(tablet up) {
+    width: 40%;
+  }
+}
+
+%item-bigger {
+  width: 100%;
+
+  @include media(tablet up) {
+    width: 60%;
+  }
+}
+
+%block-element-default {
+  font-family: $base-font-family;
+  transition: box-shadow 0.3s ease;
+  &:hover {
+    box-shadow: $block-box-shadow-hover;
+  }
+}
+%block-element-flex {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+
+  @include media(tablet up) {
+    flex-direction: row;
+  }
+}
+
+%input-element-style {
+  margin: $input-element-margin;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: normal;
+}
+
+%input-body-hover {
+  .mce-content-body {
+    border: 1px solid $base-light-grey-color;
+    transition: box-shadow 0.3s ease;
+  }
+  &.active .mce-content-body {
+    box-shadow: $input-box-shadow;
+  }
+  &.inactive .mce-content-body {
+    box-shadow: $input-box-shadow-hover;
+  }
+}
+%input-body-default {
+  .mce-content-body {
+    padding: $input-base-padding;
+  }
+}

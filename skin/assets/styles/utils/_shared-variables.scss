@@ -1,0 +1,28 @@
+//Base
+$base-font-family: 'Graphik', Arial, sans-serif;
+$input-element-margin: 0;
+$input-base-padding: 8px;
+
+$block-box-shadow-hover: inset 0 0 10px -5px $base-black-color;
+$input-box-shadow: 0 6px 9px -8px $base-black-color;
+$input-box-shadow-hover: 0 4px 8px -8px $base-black-color;
+
+//Typography
+$typography-map: (
+  mobile: (
+    big:            32px,
+    large:          24px,
+    default:        16px,
+    medium:         14px,
+    small:          14px,
+    tiny:           11px
+  ),
+  tablet: (
+    big:            48px,
+    large:          26px,
+    default:        22px,
+    medium:         16px,
+    small:          14px,
+    tiny:           11px
+  )
+);

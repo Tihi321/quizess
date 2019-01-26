@@ -1,0 +1,19 @@
+@import './question-block/style.scss';
+@import './questions-category-block/style.scss';
+
+// Old blocks
+@import './simple-text-block/style.scss';
+@import './image-text-block/style.scss';
+@import './image-block/style.scss';
+@import './authors-block/style.scss';
+@import './resource-block/style.scss';
+@import './description-resource-block/style.scss';
+@import './video-text-block/style.scss';
+@import './row-block/style.scss';
+
+// Template blocks
+@import './template-blocks/cpt-author-image-block/style.scss';
+@import './template-blocks/cpt-quizess-background-options-block/style.scss';
+@import './template-blocks/cpt-quizess-options-block/style.scss';
+@import './template-blocks/cpt-author-portfolio-block/style.scss';
+@import './template-blocks/cpt-author-social-block/style.scss';

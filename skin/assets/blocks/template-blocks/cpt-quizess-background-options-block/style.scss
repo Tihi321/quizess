@@ -1,0 +1,33 @@
+.wp-block-quizess-cpt-quizess-background-options-block {
+  @extend %block-element-default;
+
+  .background-options {
+    @extend %block-element-flex;
+    padding: 10px;
+    justify-content: space-between;
+  }
+
+  .background-option {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .background-color-element,
+  .background-image-element {
+    border: 1px dashed;
+    width: 200px;
+    height: 200px;
+  }
+
+  .media-image-class {
+    width: 100%;
+  }
+
+  .bg-label {
+    font-weight: bold;
+    text-align: center;
+  }
+
+}

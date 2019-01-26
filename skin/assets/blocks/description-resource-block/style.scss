@@ -1,0 +1,78 @@
+$resource-block-variables: (
+  color: $base-yellow-color,
+  border-color: $base-white-color,
+  color-hover: $base-black-color,
+  body-padding: 50px 100px,
+  body-padding-mobile: 50px,
+  input-text-padding: 100px,
+  input-text-mobile-padding: 50px,
+);
+
+.wp-block-quizess-description-resource-block {
+  @extend %block-element-default;
+  @extend %block-element-flex;
+  font-size: 22px;
+  line-height: 1.5;
+
+  padding: map-get($resource-block-variables, 'body-padding-mobile');
+
+  @include media(tablet up) {
+    padding: map-get($resource-block-variables, 'body-padding');
+  }
+
+  .description-component {
+    @extend %item-bigger;
+    padding: map-get($simple-text-block-variables, 'input-text-mobile-padding');
+    display: flex;
+
+    @include media(tablet up) {
+      padding: map-get($simple-text-block-variables, 'input-text-padding');
+    }
+  }
+
+  .resource-component {
+    @extend %item-smaller;
+    padding: map-get($simple-text-block-variables, 'input-text-mobile-padding');
+
+    @include media(tablet up) {
+      padding: map-get($simple-text-block-variables, 'input-text-padding');
+    }
+  }
+
+  .resource-element {
+    display: inline-flex;
+
+    .icon {
+      display: flex;
+      align-items: center;
+      margin-right: 20px;
+    }
+
+    .icon-link-path,
+    .icon-file-path {
+      fill: map-get($resource-block-variables, 'color');
+    }
+
+    .resource-type,
+    .resource {
+      color: map-get($resource-block-variables, 'color');
+    }
+
+    .resource {
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    &:hover {
+      .icon-link-path,
+      .icon-file-path {
+        fill: map-get($resource-block-variables, 'color-hover');
+      }
+      .resource,
+      .resource-type {
+        color: map-get($resource-block-variables, 'color-hover');
+      }
+    }
+  }
+
+}

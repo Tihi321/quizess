@@ -1,0 +1,31 @@
+{
+  "require-dev": {
+    "dealerdirect/phpcodesniffer-composer-installer": "*",
+    "infinum/coding-standards-wp": "*"
+  },
+  "autoload": {
+    "classmap": [
+      "admin",
+      "helpers",
+      "includes",
+      "languages",
+      "rest"
+    ]
+  },
+  "scripts": {
+		"post-install-cmd": [
+			"\"vendor/bin/phpcs\" --config-set installed_paths vendor/infinum/coding-standards-wp"
+		],
+		"post-update-cmd": [
+			"\"vendor/bin/phpcs\" --config-set installed_paths vendor/infinum/coding-standards-wp"
+		],
+    "phpcs": "@php ./vendor/bin/phpcs ./",
+    "phpcbf": "@php ./vendor/bin/phpcbf ./"
+	},
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "sort-packages": true,
+    "optimize-autoloader": true
+  }
+}
