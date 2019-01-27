@@ -23,8 +23,30 @@ class Blocks extends Config {
    * @param object $post accepts post object.
    * @return array
    */
-  public function Quizess_allowed_block_types( $allowed_block_types, $post ) {
-    return $allowed_block_types;
+  public function quizess_allowed_block_types( $allowed_block_types, $post ) {
+    $quiz_allowed_blocks     = [
+        'quizess/question-block',
+        'quizess/questions-category-block',
+        'quizess/row-block',
+        'quizess/cpt-quizess-background-options-block',
+        'quizess/cpt-quizess-options-block',
+    ];
+    $question_allowed_blocks = [
+        'quizess/question-block',
+    ];
+
+    $type = get_post_type( $post );
+
+    switch ( $type ) {
+      case 'quiz':
+            return $quiz_allowed_blocks;
+      case 'question':
+            return $question_allowed_blocks;
+      case 'story':
+            return $allowed_block_types;
+      default:
+            return $allowed_block_types;
+    }
   }
 
   /**

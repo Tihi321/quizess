@@ -8,19 +8,40 @@ const edit = (props) => {
     className,
     categories,
     allPosts,
+    setAttributes,
   } = props;
 
   const dispatchAtributes = ({action, payload}) => {
     switch (action) {
       case 'category':
-        props.setAttributes({
+        setAttributes({
           posts: '',
           category: payload,
         });
         break;
       case 'posts':
-        props.setAttributes({
+        setAttributes({
           posts: payload,
+        });
+        break;
+      case 'backgroundColor':
+        setAttributes({
+          backgroundColor: payload,
+        });
+        break;
+      case 'fontColor':
+        setAttributes({
+          fontColor: payload,
+        });
+        break;
+      case 'rows':
+        setAttributes({
+          rows: payload,
+        });
+        break;
+      case 'theme':
+        setAttributes({
+          theme: payload,
         });
         break;
       default:

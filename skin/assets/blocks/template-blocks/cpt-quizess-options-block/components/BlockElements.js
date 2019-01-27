@@ -26,13 +26,13 @@ function BlockElements(props) {
   /* eslint-disable */
     const successMessageElement = (
       <Fragment>
-        <div className="di-label-mce-class">
+        <div className="qz-label-mce-class">
           {__('Success message', 'quizess')}
         </div>
         <TextElement
             styleReset={true}
             outputType='text'
-            className="di-input-mce-class"
+            className="qz-input-mce-class"
             value={successMessage}
             onChange={(message) => handleSuccessMessageChange(message)}
             maxChars={100}
@@ -44,20 +44,20 @@ function BlockElements(props) {
               insert_toolbar: false,
             }}
           />
-        <div className="di-help-mce-class">
+        <div className="qz-help-mce-class">
           {__('Choose success message for question', 'quizess')}
         </div>
       </Fragment>
     );
     const failureMessageElement = (
       <Fragment>
-        <div className="di-label-mce-class">
+        <div className="qz-label-mce-class">
           {__('Failure message', 'quizess')}
         </div>
         <TextElement
             styleReset={true}
             outputType='text'
-            className="di-input-mce-class"
+            className="qz-input-mce-class"
             value={failureMessage}
             onChange={(message) => handleFailureMessageChange(message)}
             maxChars={100}
@@ -69,7 +69,7 @@ function BlockElements(props) {
               insert_toolbar: false,
             }}
           />
-        <div className="di-help-mce-class">
+        <div className="qz-help-mce-class">
           {__('Choose failure message for question', 'quizess')}
         </div>
       </Fragment>
@@ -86,7 +86,7 @@ function BlockElements(props) {
         />
       </PanelRow>
       {(useTimer) && <RangeControl
-        className="di-full-width"
+        className="qz-full-width"
         value={timer}
         onChange={(value) => handleTimerChange(value)}
         min={1}
@@ -101,10 +101,10 @@ function BlockElements(props) {
         {__('Options', 'quizess')}
       </div>
       <div className="block-options">
-        <div className="di-panel-group">
+        <div className="qz-panel-group">
           {timerElement}
         </div>
-        <div className="di-panel-group">
+        <div className="qz-panel-group">
           {successMessageElement}
           {failureMessageElement}
         </div>

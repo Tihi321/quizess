@@ -35,12 +35,15 @@ export default registerBlockType(
       html: false,
     },
     attributes: {
+      templateBlock: {
+        type: 'boolean',
+        default: false,
+      },
       rows: {
         type: 'string',
       },
-      dontUseTitle: {
-        type: 'boolean',
-        default: false,
+      theme: {
+        type: 'string',
       },
       title: {
         type: 'string',

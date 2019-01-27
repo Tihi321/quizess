@@ -35,12 +35,24 @@ export default registerBlockType(
       html: false,
     },
     attributes: {
+      rows: {
+        type: 'string',
+      },
+      theme: {
+        type: 'string',
+      },
       category: {
         type: 'string',
       },
       posts: {
         type: 'string',
         default: '[]',
+      },
+      fontColor: {
+        type: 'string',
+      },
+      backgroundColor: {
+        type: 'string',
       },
     },
     edit: BlockEdit,

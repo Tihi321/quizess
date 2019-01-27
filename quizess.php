@@ -31,7 +31,7 @@ if ( ! defined( 'WPINC' ) ) {
  *
  * @since 1.0.0
  */
-define( 'QI_ASSETS_PUBLIC_PATH', __DIR__ . '/skin/public/' );
+define( 'QZ_ASSETS_PUBLIC_PATH', __DIR__ . '/skin/public/' );
 
 /**
  * Include the autoloader so we can dynamically include the rest of the classes.

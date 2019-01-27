@@ -1,3 +1,13 @@
+
+/* remove default wordpress block margin styles in editor */
+
+/* stylelint-disable */
+.editor-block-list__layout .editor-block-list__block[data-align=full] {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+  /* stylelint-enable */
+
 .text-component-element {
   @extend %input-body-hover;
   @extend %input-body-default;
@@ -27,11 +37,11 @@
   }
 }
 
-.di-full-width {
+.qz-full-width {
   width: 100%;
 }
 
-.di-input-mce-class {
+.qz-input-mce-class {
   padding: 6px 8px;
   transition: 'border-color' 0.3s linear;
   border-radius: 4px;
@@ -45,27 +55,61 @@
   }
 }
 
-.di-help-mce-class {
+.qz-help-mce-class {
   font-style: italic;
   margin: 10px 0;
   font-size: 12px;
   line-height: 1.2;
 }
 
-.di-label-mce-class {
+.qz-label-mce-class {
   margin-bottom: 10px;
+  font-weight: bold;
   cursor: default;
 }
 
-.di-panel-group {
+.qz-option-title-class {
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.qz-panel-group {
   margin: 10px 0;
-  border-bottom: 1px dashed $base-grey-color;
-  padding: 10px 0;
+
+  &--big {
+    border-bottom: 1px dashed $base-grey-color;
+    padding: 10px 0;
+  }
 
   .components-panel__row {
     margin: 15px 0;
   }
 
+  .qz-panel-row {
+    width: 100%;
+    margin: 15px 0;
+
+    &--reverse-flex {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+}
+
+.qz-element {
+  &--reset {
+    margin: 0;
+    padding: 0;
+  }
+  &--icon {
+    max-width: 50px;
+    max-height: 50px;
+  }
 }
 
 .media-image-class {
@@ -100,3 +144,13 @@
     background-color: $base-red-color;
   }
 }
+
+.featured-title {
+  text-transform: uppercase;
+  font-weight: bold;
+  line-height: 1.71;
+  letter-spacing: 1px;
+  color: $base-yellow-color;
+  margin: 10px 0;
+}
+

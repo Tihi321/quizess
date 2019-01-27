@@ -45,6 +45,8 @@
       "@wordpress/blockSerializationDefaultParser",
       "@wordpress/apiFetch",
       "@wordpress/notices",
+      "@wordpress/domReady",
+      "@wordpress/url",
       "react",
       "react-dom",
       "tinyMCE",

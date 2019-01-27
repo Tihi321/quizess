@@ -17,8 +17,8 @@ function BlockElementsConsumer(props) {
       explanation,
       explanationMedia,
       explanationType,
+      templateBlock,
       embed,
-      dontUseTitle,
       title,
       handleQuestionChange,
       handleExplanationChange,
@@ -127,7 +127,7 @@ function BlockElementsConsumer(props) {
 
   return (
     <Fragment>
-      {(!dontUseTitle && title) && titleElement}
+      {(!templateBlock && title) && titleElement}
       {questionElement}
       <AnswersElement />
       {(showExplanation) && explanationElement}
@@ -152,7 +152,7 @@ const BlockElements = () => (
             explanationMedia,
             explanationType,
             embed,
-            dontUseTitle,
+            templateBlock,
             title,
           },
         },
@@ -175,7 +175,7 @@ const BlockElements = () => (
             explanationMedia,
             explanationType,
             embed,
-            dontUseTitle,
+            templateBlock,
             title,
             handleQuestionChange,
             handleExplanationChange,

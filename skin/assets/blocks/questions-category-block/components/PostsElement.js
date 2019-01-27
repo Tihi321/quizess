@@ -1,12 +1,16 @@
 import {parse} from '@wordpress/blockSerializationDefaultParser';
-import {Fragment} from '@wordpress/element';
 import helpers from './../../elements/Helper/Helper';
-import AnswersElement from './AnswersElement';
+import QuizElement from './QuizElement';
+import {BlockConsumer} from '../containers/BlockContext';
 
-function PostsElement(props) {
+function PostsElementConsumer(props) {
   const {
-    postsArray,
-    allPosts,
+    values: {
+      postsArray,
+      allPosts,
+      fontColor,
+      backgroundColor,
+    },
   } = props;
 
   let parsedBlocks;
@@ -23,7 +27,7 @@ function PostsElement(props) {
     });
   }
 
-  const answerElements = parsedBlocks.map((post, index) => {
+  const quizElements = parsedBlocks.map((post, index) => {
 
     const attr = post[0].attrs;
     const question = (attr.question) ? helpers.setContent(attr.question) : false;
@@ -34,7 +38,7 @@ function PostsElement(props) {
     const explanationMedia = (attr.explanationMedia) ? JSON.parse(attr.explanationMedia) : false;
 
     return (
-      <AnswersElement
+      <QuizElement
         key={index}
         question={question}
         answers={answers}
@@ -48,11 +52,45 @@ function PostsElement(props) {
 
 
   return (
-    <Fragment>
-      {answerElements}
-    </Fragment>
+    <div
+      className="quiz-elements-wrap"
+      style={{
+        backgroundColor: backgroundColor || false,
+        color: fontColor || false,
+      }}
+    >
+      {quizElements}
+    </div>
   );
 }
+
+const PostsElement = ({
+  postsArray,
+  allPosts,
+}) => (
+  <BlockConsumer>
+    {(value) => {
+      const {
+        values: {
+          attributes: {
+            fontColor,
+            backgroundColor,
+          },
+        },
+      } = value;
+      return (
+        <PostsElementConsumer
+          values={{
+            postsArray,
+            allPosts,
+            fontColor,
+            backgroundColor,
+          }}
+        />
+      );
+    }}
+  </BlockConsumer>
+);
 
 export default PostsElement;
 
