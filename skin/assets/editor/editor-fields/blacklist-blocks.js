@@ -1,5 +1,5 @@
 import {unregisterBlockType} from '@wordpress/blocks';
-import {getQueryArg} from '@wordpress/url';
+import {select, subscribe} from '@wordpress/data';
 import pluginConfig from '../../config';
 
 export default class BlackListBlocks {
@@ -7,18 +7,26 @@ export default class BlackListBlocks {
   init() {
 
     /**
-     * Script is loaded inside of gutenberg editor, so we are checking url
-     * so we can filter editors accorgin to post type.
-     * There is function of wordpress to check editor post type,
-     * but when function is called for the first time it is undefined even
-     * if it is called under domReady gutenberg function.
+     * Function subscribes to the store for continuous check of post type
+     * When post type is defined eg. not undefined it checks name
+     * and then unregister or ignores blocks.
      */
 
-    const postType = getQueryArg(window.location.href, 'post_type');
+    let registeredBlocks = true;
+    subscribe(() => {
+      if (registeredBlocks) {
+        const postType = select('core/editor').getCurrentPostType();
+        if (postType) {
+          if (postType !== 'quiz' && postType !== 'question') {
+            this.unregisterAllBlocks();
+          }
+          registeredBlocks = false;
+        }
+      }
+    });
+  }
 
-    if (postType === 'quiz' || postType === 'question') {
-      return;
-    }
+  unregisterAllBlocks() {
     unregisterBlockType(`${pluginConfig.pluginName}/question-block`);
     unregisterBlockType(`${pluginConfig.pluginName}/questions-category-block`);
     unregisterBlockType(`${pluginConfig.pluginName}/row-block`);
