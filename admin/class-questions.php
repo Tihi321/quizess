@@ -35,7 +35,7 @@ class Questions {
             array(
                 'quizess/question-block',
                 array(
-                    'dontUseTitle' => true,
+                    'templateBlock' => true,
                 ),
             ),
         ),

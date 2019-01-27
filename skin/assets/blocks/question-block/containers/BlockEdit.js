@@ -41,6 +41,11 @@ const BlockEdit = (props) => {
           rows: payload,
         });
         break;
+      case 'theme':
+        setAttributes({
+          theme: payload,
+        });
+        break;
       case 'explanationType':
         setAttributes({
           explanationType: payload,
@@ -55,6 +60,13 @@ const BlockEdit = (props) => {
       case 'showExplanation':
         setAttributes({
           showExplanation: payload,
+          explanationType: '',
+          embed: false,
+          explanationMedia: JSON.stringify({
+            url: '',
+            id: '',
+            alt: '',
+          }),
         });
         break;
       case 'explanation':

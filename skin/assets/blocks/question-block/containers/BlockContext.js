@@ -13,7 +13,7 @@ class BlockProvider extends PureComponent {
     this.answersArr = [];
   }
 
-  dispatchAttributesStore = {
+  attributesStore = {
     handleCorrectAnswer: (e) => {
       const pid = e.currentTarget.value;
       const newAnswer = this.answersArr.map((value, id) => {
@@ -75,6 +75,12 @@ class BlockProvider extends PureComponent {
       this.props.dispatchAtributes({
         action: 'rows',
         payload: JSON.stringify(rows),
+      });
+    },
+    handleThemeChange: (theme) => {
+      this.props.dispatchAtributes({
+        action: 'theme',
+        payload: JSON.stringify(theme),
       });
     },
     handleExplanationTypeChange: (explanationType) => {
@@ -175,7 +181,7 @@ class BlockProvider extends PureComponent {
             className,
             answers: this.answersArr,
           },
-          attributesStore: this.dispatchAttributesStore,
+          attributesStore: this.attributesStore,
         }}>
         {this.props.children}
       </BlockContext.Provider>

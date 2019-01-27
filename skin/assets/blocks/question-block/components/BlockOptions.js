@@ -19,45 +19,44 @@ function BlockOptionsConsumer(props) {
       backgroundColor,
       fontColor,
       rows,
+      theme,
       explanationType,
       showExplanation,
       title,
-      dontUseTitle,
+      templateBlock,
       handleOnBackgroundChange,
       handleOnFontColorChange,
       handleRowsChange,
       handleExplanationChecked,
       handleExplanationTypeChange,
       handleTitleChange,
+      handleThemeChange,
     },
   } = props;
 
-  const fontColorSettings = [
-    {
-      value: fontColor,
-      onChange: handleOnFontColorChange,
-      label: __('Font Color', 'quizess'),
-    },
-  ];
-
-  const backgroundColorSettings = [
-    {
-      value: backgroundColor,
-      onChange: handleOnBackgroundChange,
-      label: __('Background Color', 'quizess'),
-    },
-  ];
-
-
   const columnsSelectElement = (
     <Select
-      className="collumns-select"
+      className="columns-select"
       closeMenuOnSelect={true}
       value={(rows) ? JSON.parse(rows) : {value: 'row', label: 'Row'}}
       onChange={handleRowsChange}
       options={[
         {value: 'row', label: 'Row'},
         {value: 'columns', label: 'Columns'},
+      ]}
+      placeholder={__('Select', 'quizess')}
+    />
+  );
+
+  const themeSelectElement = (
+    <Select
+      className="columns-select"
+      closeMenuOnSelect={true}
+      value={(theme) ? JSON.parse(theme) : {value: 'light', label: 'Light'}}
+      onChange={handleThemeChange}
+      options={[
+        {value: 'light', label: 'Light'},
+        {value: 'dark', label: 'Dark'},
       ]}
       placeholder={__('Select', 'quizess')}
     />
@@ -77,7 +76,7 @@ function BlockOptionsConsumer(props) {
 
   const explanationTypeSelect = (
     <Select
-      className="collumns-select"
+      className="columns-select"
       closeMenuOnSelect={true}
       value={(explanationType) ? JSON.parse(explanationType) : {value: 'none', label: 'None'}}
       onChange={handleExplanationTypeChange}
@@ -92,33 +91,64 @@ function BlockOptionsConsumer(props) {
     />
   );
 
-  /* eslint-disable */
-    const titleElement = (
-      <Fragment>
-        <div className="di-label-mce-class">
-          {__('Title', 'quizess')}
+/* eslint-disable */
+  const titleElement = (
+    <TextElement
+        styleReset={true}
+        outputType='text'
+        className="qz-input-mce-class"
+        value={title}
+        onChange={(title) => handleTitleChange(title)}
+        maxChars={100}
+        maxRows={1}
+        warning={false}
+        single={true}
+        init={{
+          selection_toolbar:false,
+          insert_toolbar: false,
+        }}
+      />
+  );
+  /* eslint-enable */
+
+  const customQuestionElements = (
+    <Fragment>
+      <div className="qz-panel-group qz-panel-group--big">
+        <div className="qz-panel-group">
+          <div className="qz-label-mce-class">
+            {__('Title', 'quizess')}
+          </div>
+          {titleElement}
+          <div className="qz-help-mce-class">
+            {__('Enter optional question title.', 'quizess')}
+          </div>
         </div>
-        <TextElement
-            styleReset={true}
-            outputType='text'
-            className="di-input-mce-class"
-            value={title}
-            onChange={(title) => handleTitleChange(title)}
-            maxChars={100}
-            maxRows={1}
-            warning={false}
-            single={true}
-            init={{
-              selection_toolbar:false,
-              insert_toolbar: false,
-            }}
-          />
-        <div className="di-help-mce-class">
-          {__('Enter optional question title.', 'quizess')}
+      </div>
+      <div className="qz-panel-group qz-panel-group--big">
+        <div className="qz-option-title-class">
+          {__('Style Options', 'design-islands')}
         </div>
-      </Fragment>
-    );
-    /* eslint-disable */
+        <div className="qz-panel-group">
+          <div className="qz-label-mce-class">
+            {__('Type', 'quizess')}
+          </div>
+          {columnsSelectElement}
+          <div className="qz-help-mce-class">
+            {__('Choose weather place answers in row or 2 columns.', 'quizess')}
+          </div>
+        </div>
+        <div className="qz-panel-group">
+          <div className="qz-label-mce-class">
+            {__('Theme', 'quizess')}
+          </div>
+          {themeSelectElement}
+          <div className="qz-help-mce-class">
+            {__('Theme color for answers', 'quizess')}
+          </div>
+        </div>
+      </div>
+    </Fragment>
+  );
 
   return (
     <Fragment>
@@ -126,30 +156,54 @@ function BlockOptionsConsumer(props) {
         <PanelBody
           title={__('Block options', 'quizess')}
           initialOpen={true}>
-          {(!dontUseTitle) && titleElement}
-          <div className="di-panel-group">
-            <div className="di-label-mce-class">
-              {__('Choose collumns', 'quizess')}
+          {(!templateBlock) && customQuestionElements}
+          <div className="qz-panel-group qz-panel-group--big">
+            <div className="qz-option-title-class">
+              {__('Explanation Options', 'design-islands')}
             </div>
-            {columnsSelectElement}
-          </div>
-          <div className="di-panel-group">
             {explanationCheckElement}
-          </div>
-          <div className="di-panel-group">
-            {explanationTypeSelect}
+            <div className="qz-help-mce-class">
+              {__('Choose weather to show explanation slide after question', 'quizess')}
+            </div>
+            {(showExplanation) &&
+              <Fragment>
+                <div className="qz-label-mce-class">
+                  {__('Type', 'quizess')}
+                </div>
+                {explanationTypeSelect}
+                <div className="qz-help-mce-class">
+                  {__('Choose explanation media type.', 'quizess')}
+                </div>
+              </Fragment>
+            }
           </div>
         </PanelBody>
-        <PanelColorSettings
-          title={__('Font Settings', 'quizess')}
-          initialOpen={false}
-          colorSettings={fontColorSettings}
-        />
-        <PanelColorSettings
-          title={__('Background Settings', 'quizess')}
-          initialOpen={false}
-          colorSettings={backgroundColorSettings}
-        />
+        {(!templateBlock) &&
+          <Fragment>
+            <PanelColorSettings
+              title={__('Font Settings', 'quizess')}
+              initialOpen={false}
+              colorSettings={[
+                {
+                  value: fontColor,
+                  onChange: handleOnFontColorChange,
+                  label: __('Font Color', 'quizess'),
+                },
+              ]}
+            />
+            <PanelColorSettings
+              title={__('Background Settings', 'quizess')}
+              initialOpen={false}
+              colorSettings={[
+                {
+                  value: backgroundColor,
+                  onChange: handleOnBackgroundChange,
+                  label: __('Background Color', 'quizess'),
+                },
+              ]}
+            />
+          </Fragment>
+        }
       </InspectorControls>
     </Fragment>
   );
@@ -167,7 +221,8 @@ const BlockOptions = () => (
             explanationType,
             showExplanation,
             title,
-            dontUseTitle,
+            templateBlock,
+            theme,
           },
         },
         attributesStore: {
@@ -177,6 +232,7 @@ const BlockOptions = () => (
           handleExplanationChecked,
           handleExplanationTypeChange,
           handleTitleChange,
+          handleThemeChange,
         },
       } = value;
       return (
@@ -185,16 +241,18 @@ const BlockOptions = () => (
             backgroundColor,
             fontColor,
             rows,
+            theme,
             explanationType,
             showExplanation,
             title,
-            dontUseTitle,
+            templateBlock,
             handleOnBackgroundChange,
             handleOnFontColorChange,
             handleRowsChange,
             handleExplanationChecked,
             handleExplanationTypeChange,
             handleTitleChange,
+            handleThemeChange,
           }}
         />
       );

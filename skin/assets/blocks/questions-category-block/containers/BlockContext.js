@@ -8,7 +8,7 @@ export const BlockConsumer = BlockContext.Consumer;
 
 class BlockProvider extends PureComponent {
 
-  dispatchAttributesStore = {
+  attributesStore = {
     handleCategoryChange: (category) => {
       this.props.dispatchAtributes({
         action: 'category',
@@ -19,6 +19,30 @@ class BlockProvider extends PureComponent {
       this.props.dispatchAtributes({
         action: 'posts',
         payload: JSON.stringify(posts),
+      });
+    },
+    handleOnBackgroundChange: (color) => {
+      this.props.dispatchAtributes({
+        action: 'backgroundColor',
+        payload: color,
+      });
+    },
+    handleOnFontColorChange: (color) => {
+      this.props.dispatchAtributes({
+        action: 'fontColor',
+        payload: color,
+      });
+    },
+    handleRowsChange: (rows) => {
+      this.props.dispatchAtributes({
+        action: 'rows',
+        payload: JSON.stringify(rows),
+      });
+    },
+    handleThemeChange: (theme) => {
+      this.props.dispatchAtributes({
+        action: 'theme',
+        payload: JSON.stringify(theme),
       });
     },
   };
@@ -41,7 +65,7 @@ class BlockProvider extends PureComponent {
             allPosts,
             categories,
           },
-          attributesStore: this.dispatchAttributesStore,
+          attributesStore: this.attributesStore,
         }}>
         {this.props.children}
       </BlockContext.Provider>

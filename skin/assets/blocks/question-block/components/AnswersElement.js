@@ -1,11 +1,11 @@
 import {Fragment} from '@wordpress/element';
 import {__} from '@wordpress/i18n';
 import {BlockConsumer} from '../containers/BlockContext';
+import AnswersComponents from './AnswersComponents';
 
 function AnswersElementConsumer(props) {
   const {
     values: {
-      rows,
       handleAnswerOnChange,
       handleRemoveAnswer,
       handleAddAnswer,
@@ -15,7 +15,20 @@ function AnswersElementConsumer(props) {
     },
   } = props;
 
-  const rowsValue = (rows) ? JSON.parse(rows).value : 'row';
+  const answerElements = answers.map((answer, id) => {
+    return (
+      <AnswersComponents.AnswerItem
+        key={id}
+        clientId={clientId}
+        id={id}
+        text={answer.text}
+        correct={answer.correct}
+        handleAnswerOnChange={handleAnswerOnChange}
+        handleCorrectAnswer={handleCorrectAnswer}
+        handleRemoveAnswer={handleRemoveAnswer}
+      />
+    );
+  });
 
 
   return (
@@ -25,29 +38,9 @@ function AnswersElementConsumer(props) {
           <h4 className="answers-label--title">{__('Answers', 'quizess')}</h4>
           <p className="answers-label--description">{__('Add a possible answer', 'quizess')}</p>
         </div>
-        <ul className={`answers-items-list ${rowsValue}`}>
-          {answers.map((answer, id) => {
-            return (
-              <li key={id} className="answers-item">
-                <div className="answers-item--wrap">
-                  <div className="answers-item--number">{id + 1}</div>
-                  <input
-                    className="answers-item--text"
-                    type="text"
-                    placeholder={`Answer number #${id + 1}`}
-                    value={answer.text}
-                    onChange={handleAnswerOnChange(id)}
-                  />
-                  <div className="radio-wrap">
-                    <label htmlFor={`radio-${clientId}-${id}`}>{__('Correct', 'quizess')}</label>
-                    <input className="radio-input" onChange={handleCorrectAnswer} type="radio" name="answer" id={`radio-${clientId}-${id}`} value={id} checked={answer.correct}></input>
-                  </div>
-                </div>
-                <button type="button" onClick={handleRemoveAnswer(id)} className="remove-button button button-secondary">-</button>
-              </li>
-            );
-          })}
-        </ul>
+        <AnswersComponents.AnswersParent>
+          {answerElements}
+        </AnswersComponents.AnswersParent>
         <div className="add-buttopn-wrap">
           <button type="button" onClick={handleAddAnswer} className="add-button button button-primary">{__('Add answer', 'quizess')}</button>
         </div>
@@ -61,9 +54,6 @@ const AnswersElement = () => (
     {(value) => {
       const {
         values: {
-          attributes: {
-            rows,
-          },
           clientId,
           answers,
         },
@@ -77,7 +67,6 @@ const AnswersElement = () => (
       return (
         <AnswersElementConsumer
           values={{
-            rows,
             clientId,
             answers,
             handleAnswerOnChange,
