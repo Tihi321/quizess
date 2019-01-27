@@ -11,9 +11,10 @@ const AnswersParentConsumer = (props) => {
   } = props;
 
   const rowsValue = (rows) ? JSON.parse(rows).value : 'row';
+  const themeClass = (theme) ? JSON.parse(theme).value : 'dark';
 
   return (
-    <ul className={classnames(`answers-items-list ${rowsValue}`, (theme) ? `theme-${theme}` : 'theme-light')}>
+    <ul className={classnames(`answers-items-list ${rowsValue}`, `theme-${themeClass}`)}>
       {children}
     </ul>
   );

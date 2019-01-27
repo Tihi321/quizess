@@ -23,13 +23,17 @@ function PostsElementConsumer(props) {
       return postsIds.includes(value.id);
     });
     parsedBlocks = selectedPostsData.map((value) => {
-      return parse(value.content.raw);
+      return {
+        title: value.title.rendered,
+        data: parse(value.content.raw),
+      };
     });
   }
-
+  const numberOfQuestions = parsedBlocks.length;
   const quizElements = parsedBlocks.map((post, index) => {
 
-    const attr = post[0].attrs;
+    const {title} = post;
+    const attr = post.data[0].attrs;
     const question = (attr.question) ? helpers.setContent(attr.question) : false;
     const answers = (attr.answers) ? JSON.parse(attr.answers) : false;
     const showExplanation = attr.showExplanation || false;
@@ -40,6 +44,9 @@ function PostsElementConsumer(props) {
     return (
       <QuizElement
         key={index}
+        numberOfQuestions={numberOfQuestions}
+        questionNumber={index}
+        title={title}
         question={question}
         answers={answers}
         showExplanation={showExplanation}

@@ -52,7 +52,7 @@ function BlockOptionsConsumer(props) {
     <Select
       className="columns-select"
       closeMenuOnSelect={true}
-      value={(theme) ? JSON.parse(theme) : {value: 'light', label: 'Light'}}
+      value={(theme) ? JSON.parse(theme) : {value: 'dark', label: 'Dark'}}
       onChange={handleThemeChange}
       options={[
         {value: 'light', label: 'Light'},
