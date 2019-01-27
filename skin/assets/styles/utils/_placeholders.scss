@@ -16,11 +16,8 @@
 
 %block-element-default {
   font-family: $base-font-family;
-  transition: box-shadow 0.3s ease;
-  &:hover {
-    box-shadow: $block-box-shadow-hover;
-  }
 }
+
 %block-element-flex {
   display: flex;
   width: 100%;

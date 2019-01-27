@@ -40,6 +40,7 @@ msgid "Placeholder text"
 msgstr ""
 
 #: skin/assets/blocks/elements/VideoElement/index.js:45
+#: skin/assets/blocks/questions-category-block/components/quiz-components/ExplanationPreview.js:28
 msgid "Your browser does not support the video tag."
 msgstr ""
 
@@ -69,6 +70,13 @@ msgstr ""
 
 #: skin/assets/blocks/question-block/components/BlockOptions.js:119
 #: skin/assets/blocks/question-block/index.js:29
+#: skin/assets/blocks/questions-category-block/components/quiz-components/QuestionHeader.js:17
+#: skin/assets/blocks/questions-category-block/components/quiz-components/QuestionHeader.js:16
+#: skin/assets/blocks/questions-category-block/components/quiz-components/QuestionHeader.js:18
+#: skin/assets/blocks/questions-category-block/components/quiz-components/QuestionHeader.js:11
+#: skin/assets/blocks/questions-category-block/components/quiz-components/QuestionHeader.js:10
+#: skin/assets/blocks/questions-category-block/components/quiz-components/QuestionHeader.js:7
+#: skin/assets/blocks/questions-category-block/components/quiz-components/QuestionTitle.js:7
 #: skin/assets/blocks/questions-category-block/index.js:29
 #: skin/assets/blocks/row-block/index.js:29
 #: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/index.js:29
@@ -213,6 +221,7 @@ msgid "Loading"
 msgstr ""
 
 #: skin/assets/blocks/questions-category-block/components/BlockOptions.js:124
+#: skin/assets/blocks/questions-category-block/components/quiz-components/QuestionHeader.js:20
 msgid "Category"
 msgstr ""
 
