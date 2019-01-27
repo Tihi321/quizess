@@ -31,12 +31,6 @@ class Story {
         'publicly_queryable'  => true,
         'show_in_rest'        => true,
         'can_export'          => true,
-        'template' => array(
-            array( 'quizess/cpt-author-image-block' ),
-            array( 'quizess/cpt-author-portfolio-block' ),
-            array( 'quizess/cpt-author-social-block' ),
-        ),
-        'template_lock' => 'all',
     );
     register_post_type( Config::STORIES_POST_SLUG, $args );
   }

@@ -11,19 +11,8 @@
 
 import './question-block';
 import './questions-category-block';
-
-import './simple-text-block';
-import './image-text-block';
-import './image-block';
-import './authors-block';
-import './resource-block';
-import './description-resource-block';
-import './video-text-block';
 import './row-block';
 
 // Template blocks
-import './template-blocks/cpt-author-image-block';
 import './template-blocks/cpt-quizess-background-options-block';
 import './template-blocks/cpt-quizess-options-block';
-import './template-blocks/cpt-author-portfolio-block';
-import './template-blocks/cpt-author-social-block';

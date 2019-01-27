@@ -17,6 +17,8 @@ const wplib = [
   'blockSerializationDefaultParser',
   'apiFetch',
   'notices',
+  'domReady',
+  'url',
 ];
 
 const externals = (function() {

@@ -137,7 +137,7 @@ class Main extends Config {
 
     // Blocks.
     // Whitelist blocks.
-    $this->loader->add_action( 'allowed_block_types', $blocks, 'Quizess_allowed_block_types', 10, 2 );
+    $this->loader->add_action( 'allowed_block_types', $blocks, 'quizess_allowed_block_types', 10, 2 );
 
     // Add custom block category.
     $this->loader->add_filter( 'block_categories', $blocks, 'quizess_category', 10, 2 );
