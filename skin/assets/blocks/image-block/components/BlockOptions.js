@@ -32,13 +32,13 @@ function BlockOptions(props) {
   /* eslint-disable */
   const mediaAltElement = (
     <Fragment>
-      <div className="di-label-mce-class">
+      <div className="qz-label-mce-class">
         {__('Alt Text (Alternative Text)', 'quizess')}
       </div>
       <TextElement
         styleReset={true}
         outputType='text'
-        className="di-input-mce-class"
+        className="qz-input-mce-class"
         value={mediaAlt}
         onChange={(mediaAlt) => handleOnMediaAltChange(mediaAlt)}
         maxChars={100}
@@ -50,7 +50,7 @@ function BlockOptions(props) {
           insert_toolbar: false,
         }}
       />
-      <div className="di-help-mce-class">
+      <div className="qz-help-mce-class">
         {__('Alternative text describes your image to people who can’t see it. Add a short description with its key details.', 'quizess')}
       </div>
     </Fragment>
@@ -63,7 +63,7 @@ function BlockOptions(props) {
         <PanelBody
           title={__('Block options', 'quizess')}
           initialOpen={true}>
-          <div className="di-panel-group">
+          <div className="qz-panel-group">
             {mediaAltElement}
           </div>
         </PanelBody>

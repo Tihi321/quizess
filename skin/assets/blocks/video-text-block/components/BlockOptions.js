@@ -75,13 +75,13 @@ function BlockOptions(props) {
         <PanelBody
           title={__('Block options', 'quizess')}
           initialOpen={true}>
-          <div className="di-panel-group">
+          <div className="qz-panel-group">
             {sourceTypeSelectElement}
           </div>
-          <div className="di-panel-group">
+          <div className="qz-panel-group">
             {themeSelectElement}
           </div>
-          <div className="di-panel-group">
+          <div className="qz-panel-group">
             {contentCheckElement}
           </div>
         </PanelBody>

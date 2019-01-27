@@ -69,8 +69,8 @@ function BlockOptions(props) {
         <PanelBody
           title={__('Block options', 'quizess')}
           initialOpen={true}>
-          <div className="di-panel-group">
-            <div className="di-label-mce-class">
+          <div className="qz-panel-group">
+            <div className="qz-label-mce-class">
               {__('Choose authors', 'quizess')}
             </div>
             {themeSelectElement}

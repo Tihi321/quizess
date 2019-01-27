@@ -16,7 +16,7 @@ function BlockElements(props) {
   const linkElement = (
     <TextElement
       styleReset={true}
-      className="di-input-mce-class"
+      className="qz-input-mce-class"
       value={link}
       onChange={(link) => handleLinkOnChange(link)}
       maxChars={30}

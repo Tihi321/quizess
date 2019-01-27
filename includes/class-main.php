@@ -195,7 +195,7 @@ class Main extends Config {
    * @since 1.0.0
    */
   public function set_assets_manifest_data() {
-    $response = file( QI_ASSETS_PUBLIC_PATH . 'manifest.json', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES );
+    $response = file( QZ_ASSETS_PUBLIC_PATH . 'manifest.json', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES );
 
     if ( ! $response ) {
       return;

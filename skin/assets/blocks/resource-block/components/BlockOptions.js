@@ -46,7 +46,7 @@ function BlockOptions(props) {
       <TextElement
         styleReset={true}
         outputType = "text"
-        className="di-input-mce-class"
+        className="qz-input-mce-class"
         value={title}
         onChange={(title) => handleTitleOnChange(title)}
         maxChars={30}
@@ -62,7 +62,7 @@ function BlockOptions(props) {
     const linkElement = (
       <TextElement
         styleReset={true}
-        className="di-input-mce-class"
+        className="qz-input-mce-class"
         value={link}
         onChange={(link) => handleLinkOnChange(link)}
         maxChars={30}
@@ -79,7 +79,7 @@ function BlockOptions(props) {
       <TextElement
         styleReset={true}
         outputType="text"
-        className="di-input-mce-class"
+        className="qz-input-mce-class"
         value={customDomain}
         onChange={(customDomain) => handleCustomDomainOnChange(customDomain)}
         maxChars={30}
@@ -95,7 +95,7 @@ function BlockOptions(props) {
     const linkTextElement = (
       <TextElement
         styleReset={true}
-        className="di-input-mce-class"
+        className="qz-input-mce-class"
         value={linkText}
         onChange={(linkText) => handleLinkTextOnChange(linkText)}
         maxChars={50}
@@ -142,23 +142,23 @@ function BlockOptions(props) {
         <PanelBody
           title={__('Block options', 'quizess')}
           initialOpen={true}>
-          <div className="di-panel-group">
+          <div className="qz-panel-group">
             {showTitleElement}
             {titleElement}
           </div>
-          <div className="di-panel-group">
-            <div className="di-label-mce-class">
+          <div className="qz-panel-group">
+            <div className="qz-label-mce-class">
               {__('Link Text', 'quizess')}
             </div>
             {linkTextElement}
           </div>
-          <div className="di-panel-group">
-            <div className="di-label-mce-class">
+          <div className="qz-panel-group">
+            <div className="qz-label-mce-class">
               {__('Link', 'quizess')}
             </div>
             {linkElement}
           </div>
-          <div className="di-panel-group">
+          <div className="qz-panel-group">
             {useCustomDomainElement}
             {customDomainElement}
           </div>

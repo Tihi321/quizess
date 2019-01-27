@@ -56,8 +56,8 @@ const BlockOptions = (props) => {
         <PanelBody
           title={__('Block options', 'design-islands')}
           initialOpen={true}>
-          <div className="di-panel-group">
-            <div className="di-label-mce-class">
+          <div className="qz-panel-group">
+            <div className="qz-label-mce-class">
               {__('Choose authors', 'design-islands')}
             </div>
             {categorySelectElement}
@@ -66,8 +66,8 @@ const BlockOptions = (props) => {
         <PanelBody
           title={__('Post Details', 'design-islands')}
           initialOpen={true}>
-          {(postTitle !== '') && <div className="di-panel-group">
-            <div className="di-label-mce-class">
+          {(postTitle !== '') && <div className="qz-panel-group">
+            <div className="qz-label-mce-class">
               {__('Post title', 'design-islands')}
             </div>
             <div className="featured-title">
