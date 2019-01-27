@@ -69,7 +69,7 @@ class LottieControl extends Component {
     return (
       <div
         role="presentation"
-        className={this.wrapClass}
+        className={this.className}
       >
         <Lottie
           options={defaultOptions}
