@@ -1,5 +1,6 @@
 import {Fragment} from '@wordpress/element';
 import {__} from '@wordpress/i18n';
+import classnames from 'classnames';
 import {BlockConsumer} from '../containers/BlockContext';
 import AnswersComponents from './AnswersComponents';
 
@@ -12,8 +13,11 @@ function AnswersElementConsumer(props) {
       handleCorrectAnswer,
       clientId,
       answers,
+      theme,
     },
   } = props;
+
+  const themeClass = (theme) ? JSON.parse(theme).value : 'light';
 
   const answerElements = answers.map((answer, id) => {
     return (
@@ -42,7 +46,7 @@ function AnswersElementConsumer(props) {
           {answerElements}
         </AnswersComponents.AnswersParent>
         <div className="add-buttopn-wrap">
-          <button type="button" onClick={handleAddAnswer} className="add-button button button-primary">{__('Add answer', 'quizess')}</button>
+          <button type="button" onClick={handleAddAnswer} className={classnames('add-question-btn', `theme-${themeClass}`)}>{__('Add answer', 'quizess')}</button>
         </div>
       </div>
     </Fragment>
@@ -56,6 +60,9 @@ const AnswersElement = () => (
         values: {
           clientId,
           answers,
+          attributes: {
+            theme,
+          },
         },
         attributesStore: {
           handleAnswerOnChange,
@@ -67,6 +74,7 @@ const AnswersElement = () => (
       return (
         <AnswersElementConsumer
           values={{
+            theme,
             clientId,
             answers,
             handleAnswerOnChange,
