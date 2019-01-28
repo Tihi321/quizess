@@ -133,5 +133,17 @@ $question--category-block: (
     .video-preview {
       margin: 0;
     }
+    .media-video-class {
+      display: block;
+    }
+  }
+
+  .block-placeholder {
+    background-color: map-get($question--category-block, 'primary-bg-color');
+    color: map-get($question--category-block, 'primary-text-color');
+  }
+
+  .placeholder-icon {
+    fill: map-get($question--category-block, 'primary-text-color');
   }
 }
