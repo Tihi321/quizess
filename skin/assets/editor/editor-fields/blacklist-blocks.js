@@ -18,6 +18,7 @@ export default class BlackListBlocks {
         const postType = select('core/editor').getCurrentPostType();
         if (postType) {
           if (postType !== 'quiz' && postType !== 'question') {
+            registeredBlocks = false;
             this.unregisterAllBlocks();
           }
           registeredBlocks = false;
@@ -27,11 +28,17 @@ export default class BlackListBlocks {
   }
 
   unregisterAllBlocks() {
-    unregisterBlockType(`${pluginConfig.pluginName}/question-block`);
-    unregisterBlockType(`${pluginConfig.pluginName}/questions-category-block`);
-    unregisterBlockType(`${pluginConfig.pluginName}/row-block`);
-    unregisterBlockType(`${pluginConfig.pluginName}/cpt-quizess-background-options-block`);
-    unregisterBlockType(`${pluginConfig.pluginName}/cpt-quizess-options-block`);
+    const blockNames = [
+      'question-block',
+      'questions-category-block',
+      'row-block',
+      'cpt-quizess-background-options-block',
+      'cpt-quizess-options-block',
+    ];
+
+    blockNames.forEach((name) => {
+      unregisterBlockType(`${pluginConfig.pluginName}/${name}`);
+    });
   }
 
 }

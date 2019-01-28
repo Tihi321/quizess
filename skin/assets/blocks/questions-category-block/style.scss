@@ -1,9 +1,18 @@
-$question-block-variables: (
-  list-item-color: $base-grey-color,
+$question--category-block: (
+  lite-theme-bg: $base-yellow-color,
+  lite-theme-color: $base-smear-color,
+  dark-theme-bg: $base-blue-color,
+  lite-border-color: $base-light-blue-color,
+  dark-border-color: $base-white-color,
+  item-box-shadow: $base-box-shadow,
+  primary-bg-color: $base-primary-blue,
+  primary-text-color: $base-white-color,
 );
 
 .wp-block-quizess-questions-category-block {
   @extend %block-element-default;
+  background-color: map-get($question--category-block, 'primary-bg-color');
+  color: map-get($question--category-block, 'primary-text-color');
 
   .quiz-elements-wrap {
     padding: 10px;
@@ -16,12 +25,12 @@ $question-block-variables: (
   }
 
   .question-header {
+    @include text-size(small);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 5px;
     position: relative;
-    font-size: 12px;
   }
 
   .question-category {
@@ -34,7 +43,7 @@ $question-block-variables: (
   }
 
   .question-title {
-    font-size: 12px;
+    @include text-size(small);
   }
 
   .main-question {
@@ -54,7 +63,7 @@ $question-block-variables: (
       text-align: center;
       line-height: 1.5;
       padding: 10px;
-      box-shadow: 1px 1px 3px 0 rgba(0,0,0,.5);
+      box-shadow: 1px 1px 3px 0 map-get($question--category-block, 'item-box-shadow');
       margin: 5px 10px;
       opacity: 0.8;
       transition: opacity 0.3s ease;
@@ -65,9 +74,9 @@ $question-block-variables: (
       flex-direction: column;
     }
     .correct-answer::after {
+      @include text-size(tiny);
       content: 'Correct';
       display: inline-block;
-      font-size: 10px;
       text-transform: uppercase;
     }
 
@@ -77,17 +86,17 @@ $question-block-variables: (
 
     &.theme-light {
       .answers-item {
-        background-color: #ffeb3b;
-        border: 1px solid #607D8B;
-        color: #795548;
+        background-color: map-get($question--category-block, 'lite-theme-bg');
+        border: 1px solid map-get($question--category-block, 'lite-border-color');
+        color: map-get($question--category-block, 'lite-theme-color');
       }
     }
 
     &.theme-dark {
       .answers-item {
-        background-color: #2746A1;
-        border: 1px solid #ffffff;
-        color: #ffffff;
+        background-color: map-get($question--category-block, 'dark-theme-bg');
+        border: 1px solid map-get($question--category-block, 'dark-border-color');
+        color: map-get($question--category-block, 'dark-border-color');
       }
     }
     &.columns {
@@ -98,18 +107,31 @@ $question-block-variables: (
     }
   }
 
-  .explanation-text {
+  .explanation-header {
     text-align: center;
     margin: 30px 0 10px;
     overflow: hidden;
     border-top: 1px dashed;
   }
 
-  .lottie-preview {
-    max-width: 600px;
-    margin: 0 auto;
+  .explanation-title {
+    @include text-size(large);
+    padding-top: 20px;
+  }
+
+  .explanation-text p {
+    @include text-size(medium);
   }
 
   .explanation-preview {
+    max-width: 700px;
+    margin: 0 auto;
+    border: 2px solid;
+
+    .lottie-preview,
+    .image-preview,
+    .video-preview {
+      margin: 0;
+    }
   }
 }

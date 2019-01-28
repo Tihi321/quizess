@@ -74,7 +74,7 @@ const BlockOptionsConsumer = (props) => {
     <Select
       className="collumns-select"
       closeMenuOnSelect={true}
-      value={(theme) ? JSON.parse(theme) : {value: 'dark', label: 'Dark'}}
+      value={(theme) ? JSON.parse(theme) : {value: 'light', label: 'Light'}}
       onChange={handleThemeChange}
       options={[
         {value: 'light', label: 'Light'},

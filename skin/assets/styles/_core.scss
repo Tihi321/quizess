@@ -51,7 +51,7 @@
     border-color: $base-dark-grey-color;
   }
   &.active {
-    border-color: $base-red-color;
+    border-color: $base-primary-blue;
   }
 }
 
@@ -140,8 +140,9 @@
   }
 }
 .post-body-insert-wrap {
-  .block-list-appender__toggle {
-    background-color: $base-red-color;
+  .block-list-appender__toggle,
+  .block-list-appender__toggle:focus:enabled {
+    background-color: $base-primary-blue;
   }
 }
 
