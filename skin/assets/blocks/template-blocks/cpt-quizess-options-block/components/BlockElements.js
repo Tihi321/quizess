@@ -100,6 +100,9 @@ function BlockElements(props) {
       <div className="bg-label">
         {__('Options', 'quizess')}
       </div>
+      <div className="qz-help-mce-class is-centered">
+        {__('Some of the global options for this quiz', 'quizess')}
+      </div>
       <div className="block-options">
         <div className="qz-panel-group">
           {timerElement}

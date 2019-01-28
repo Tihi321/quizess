@@ -113,21 +113,20 @@ $question-block-variables: (
     color: map-get($question-block-variables, 'dark-border-color');
   }
 
-  .question-title-block {
+  .question-title-block,
+  .explanation-title {
+    @include text-size(small);
     text-align: center;
     padding: 10px 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1.2px;
   }
 
   .explanation-header {
     margin: 30px 0 10px;
     overflow: hidden;
     border-top: 1px dashed;
-  }
-
-  .explanation-title {
-    @include text-size(large);
-    text-align: center;
-    padding: 20px 0;
   }
 
   .explanation-preview {
