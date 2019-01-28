@@ -1,9 +1,1 @@
-$row-block-variables: (
-  inserter-bg: $base-red-color,
-  color: $base-white-color,
-);
 
-.wp-block-quizess-row-block {
-  @extend %block-element-default;
-
-}

@@ -23,7 +23,7 @@ const BlockElementsConsumer = (props) => {
           (categoryId === 0) ?
             <PlaceholderElement
               spinner={false}
-              title={__('Please select Quiz category', 'quizess')}
+              title={__('Please select category', 'quizess')}
             /> :
             <PlaceholderElement
               spinner={false}

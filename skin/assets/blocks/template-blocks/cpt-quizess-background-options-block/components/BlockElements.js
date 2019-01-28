@@ -31,6 +31,9 @@ function BlockElements(props) {
       <div className="bg-label">
         {__('Background Options', 'quizess')}
       </div>
+      <div className="qz-help-mce-class is-centered">
+        {__('Choose main background color & background image for this quiz', 'quizess')}
+      </div>
       <div className="background-options">
         <div className="background-option background-color">
           <div

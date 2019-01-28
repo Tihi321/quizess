@@ -40,6 +40,7 @@ msgid "Placeholder text"
 msgstr ""
 
 #: skin/assets/blocks/elements/VideoElement/index.js:45
+#: skin/assets/blocks/questions-category-block/components/quiz-components/ExplanationPreview.js:28
 msgid "Your browser does not support the video tag."
 msgstr ""
 
@@ -55,20 +56,26 @@ msgstr ""
 msgid "Sorry, we could not embed that content."
 msgstr ""
 
-#: skin/assets/blocks/question-block/components/AnswersElement.js:38
+#: skin/assets/blocks/question-block/components/AnswersElement.js:42
 msgid "Answers"
 msgstr ""
 
-#: skin/assets/blocks/question-block/components/AnswersElement.js:39
+#: skin/assets/blocks/question-block/components/AnswersElement.js:43
 msgid "Add a possible answer"
 msgstr ""
 
-#: skin/assets/blocks/question-block/components/AnswersElement.js:45
+#: skin/assets/blocks/question-block/components/AnswersElement.js:49
 msgid "Add answer"
+msgstr ""
+
+#: skin/assets/blocks/question-block/components/BlockElements.js:65
+#: skin/assets/blocks/questions-category-block/components/quiz-components/ExplanationText.js:11
+msgid "Explanation"
 msgstr ""
 
 #: skin/assets/blocks/question-block/components/BlockOptions.js:119
 #: skin/assets/blocks/question-block/index.js:29
+#: skin/assets/blocks/questions-category-block/components/quiz-components/QuestionHeader.js:17
 #: skin/assets/blocks/questions-category-block/index.js:29
 #: skin/assets/blocks/row-block/index.js:29
 #: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/index.js:29
@@ -201,7 +208,7 @@ msgid "Quizess"
 msgstr ""
 
 #: skin/assets/blocks/questions-category-block/components/BlockElements.js:26
-msgid "Please select Quiz category"
+msgid "Please select category"
 msgstr ""
 
 #: skin/assets/blocks/questions-category-block/components/BlockElements.js:30
@@ -213,6 +220,7 @@ msgid "Loading"
 msgstr ""
 
 #: skin/assets/blocks/questions-category-block/components/BlockOptions.js:124
+#: skin/assets/blocks/questions-category-block/components/quiz-components/QuestionHeader.js:20
 msgid "Category"
 msgstr ""
 
@@ -245,12 +253,20 @@ msgstr ""
 msgid "Background Options"
 msgstr ""
 
+#: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/components/BlockElements.js:35
+msgid "Choose main background color & background image for this quiz"
+msgstr ""
+
 #: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/index.js:21
 msgid "Choose background image and color"
 msgstr ""
 
 #: skin/assets/blocks/template-blocks/cpt-quizess-options-block/components/BlockElements.js:101
 msgid "Options"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/components/BlockElements.js:104
+msgid "Some of the global options for this quiz"
 msgstr ""
 
 #: skin/assets/blocks/template-blocks/cpt-quizess-options-block/components/BlockElements.js:30

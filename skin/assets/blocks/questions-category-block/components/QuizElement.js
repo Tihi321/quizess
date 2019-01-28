@@ -1,13 +1,17 @@
+import {Fragment} from '@wordpress/element';
 import QuizComponents from './QuizComponents';
 
 const QuizElement = (props) => {
   const {
     question,
     answers,
+    title,
+    questionNumber,
     showExplanation,
     explanation,
     explanationType,
     explanationMedia,
+    numberOfQuestions,
   } = props;
 
   const answersElements = answers.map((answer, index) => {
@@ -21,15 +25,34 @@ const QuizElement = (props) => {
     );
   });
 
+  const explanationElements = (
+    <Fragment>
+      <QuizComponents.ExplanationText>
+        {explanation}
+      </QuizComponents.ExplanationText>
+      <QuizComponents.ExplanationPreview
+        explanationType={explanationType}
+      >
+        {explanationMedia}
+      </QuizComponents.ExplanationPreview>
+    </Fragment>
+  );
+
 
   return (
-    <div>
+    <div className="quiz-element-item">
+      <QuizComponents.QuestionHeader
+        title={title}
+        questionNumber={questionNumber}
+        numberOfQuestions={numberOfQuestions}
+      />
       <QuizComponents.MainQuestion>
         {question}
       </QuizComponents.MainQuestion>
       <QuizComponents.AnswersParent>
         {answersElements}
       </QuizComponents.AnswersParent>
+      {(showExplanation) && explanationElements}
     </div>
   );
 };

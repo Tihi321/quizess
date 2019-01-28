@@ -5,7 +5,6 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f8ebd9',
     padding: '20px',
   },
   backgroundSvg: {

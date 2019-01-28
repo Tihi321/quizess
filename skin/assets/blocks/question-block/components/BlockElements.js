@@ -61,25 +61,28 @@ function BlockElementsConsumer(props) {
     />
   );
   const explanationElement = (
-    <TextElement
-      className="body-bottom-element"
-      value={explanation}
-      onChange={(explanation) => handleExplanationChange(explanation)}
-      maxChars={350}
-      single={false}
-      tagName="p"
-      init={{
-        selection_toolbar:
-          'bold italic underline uppercase | removeformat | forecolor | alignleft aligncenter alignright | link unlink',
-        insert_toolbar: false,
-      }}
-    />
+    <div className="explanation-header">
+      <div className="explanation-title">{__('Explanation', 'quizess')}</div>
+      <TextElement
+        className="body-bottom-element"
+        value={explanation}
+        onChange={(explanation) => handleExplanationChange(explanation)}
+        maxChars={350}
+        single={false}
+        tagName="p"
+        init={{
+          selection_toolbar:
+            'bold italic underline uppercase | removeformat | forecolor | alignleft aligncenter alignright | link unlink',
+          insert_toolbar: false,
+        }}
+      />
+    </div>
   );
   /* eslint-enable */
 
   const imageElement = (
     <MediaElement
-      className="media-image-parent-class"
+      className="image-preview"
       mediaId={explanationMediaJson.id}
       mediaUrl={explanationMediaJson.url}
       mediaAlt={explanationMediaJson.alt}
@@ -99,7 +102,7 @@ function BlockElementsConsumer(props) {
 
   const videoElement = (
     <VideoElement
-      className="media-video-parent-class"
+      className="video-preview"
       mediaId={explanationMediaJson.id}
       mediaUrl={explanationMediaJson.url}
       onSelectMedia={handleOnSelectVideo}
@@ -108,7 +111,7 @@ function BlockElementsConsumer(props) {
 
   const lottieElement = (
     <LottieElement
-      className="authors-lottie-element"
+      className="lottie-preview"
       mediaId={explanationMediaJson.id}
       mediaUrl={explanationMediaJson.url}
       onSelectMedia={handleOnSelectLottie}
@@ -124,6 +127,32 @@ function BlockElementsConsumer(props) {
     </div>
   );
 
+  const getPreviewElement = () => {
+    let output;
+    switch (type) {
+      case 'image':
+        output = imageElement;
+        break;
+      case 'youtube':
+        output = youtubeElement;
+        break;
+      case 'video':
+        output = videoElement;
+        break;
+      case 'lottie':
+        output = lottieElement;
+        break;
+      default:
+        break;
+    }
+
+    return (
+      <div className="explanation-preview">
+        {output}
+      </div>
+    );
+  };
+
 
   return (
     <Fragment>
@@ -131,10 +160,7 @@ function BlockElementsConsumer(props) {
       {questionElement}
       <AnswersElement />
       {(showExplanation) && explanationElement}
-      {(showExplanation && type === 'image') && imageElement}
-      {(showExplanation && type === 'youtube') && youtubeElement}
-      {(showExplanation && type === 'video') && videoElement}
-      {(showExplanation && type === 'lottie') && lottieElement}
+      {(showExplanation) && getPreviewElement()}
     </Fragment>
   );
 }

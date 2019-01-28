@@ -13,7 +13,7 @@ const PlaceholderElement = (props) => {
   const renderPlaceholder = () => {
     return (
       <Fragment>
-        <div style={styles.wrapper}>
+        <div className="block-placeholder" style={styles.wrapper}>
           <div style={styles.backgroundSvg}>
             {icon.default}
           </div>

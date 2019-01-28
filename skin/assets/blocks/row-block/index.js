@@ -21,7 +21,7 @@ export default registerBlockType(
     description: __('This is row block', 'quizess'),
     category: 'quizess-blocks',
     icon: {
-      foreground: '#D8262C',
+      foreground: '#0073A8',
       background: '#FFFFFF',
       src: icons.default,
     },

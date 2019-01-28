@@ -1,5 +1,13 @@
+$quizess-options-block: (
+  primary-bg-color: $base-grey-color,
+  primary-text-color: $base-dark-grey-color,
+);
+
 .wp-block-quizess-cpt-quizess-options-block {
   @extend %block-element-default;
+  background-color: map-get($quizess-options-block, 'primary-bg-color');
+  color: map-get($quizess-options-block, 'primary-text-color');
+  padding: 20px;
 
   .bg-label {
     font-weight: bold;
