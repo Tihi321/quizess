@@ -11,7 +11,7 @@
 
 import './question-block';
 import './questions-category-block';
-import './row-block';
+import './section-block';
 
 // Template blocks
 import './template-blocks/cpt-quizess-background-options-block';

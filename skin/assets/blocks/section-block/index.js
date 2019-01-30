@@ -15,10 +15,10 @@ import pluginConfig from '../../config';
  * Register block
  */
 export default registerBlockType(
-  `${pluginConfig.pluginName}/row-block`,
+  `${pluginConfig.pluginName}/section-block`,
   {
-    title: __('Row Block', 'quizess'),
-    description: __('This is row block', 'quizess'),
+    title: __('Section Block', 'quizess'),
+    description: __('This is section block', 'quizess'),
     category: 'quizess-blocks',
     icon: {
       foreground: '#0073A8',

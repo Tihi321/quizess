@@ -30,7 +30,7 @@ class Quiz {
         array( 'quizess/cpt-quizess-options-block' ),
         array( 'quizess/cpt-quizess-background-options-block' ),
         array(
-            'quizess/row-block',
+            'quizess/section-block',
             array(
                 'classWrap' => 'post-body-insert-wrap',
                 'allowedBlocks' => $allowed_blocks,

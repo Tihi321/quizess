@@ -27,7 +27,7 @@ class Blocks extends Config {
     $quiz_allowed_blocks     = [
         'quizess/question-block',
         'quizess/questions-category-block',
-        'quizess/row-block',
+        'quizess/section-block',
         'quizess/cpt-quizess-background-options-block',
         'quizess/cpt-quizess-options-block',
     ];
