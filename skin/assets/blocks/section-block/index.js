@@ -41,6 +41,9 @@ export default registerBlockType(
       },
       allowedBlocks: {
         type: 'array',
+        items: {
+          type: 'string',
+        },
       },
       template: {
         type: 'string',

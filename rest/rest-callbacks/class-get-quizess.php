@@ -13,6 +13,7 @@ namespace Quizess\Rest\Rest_Callbacks;
 use Quizess\Rest\Rest_Routes;
 use Quizess\Helpers\Custom_Fields_Content;
 use Quizess\Includes\Config;
+use Quizess\Helpers\General_Helper;
 
 /**
  * Class Get_Quizess
@@ -26,6 +27,14 @@ class Get_Quizess extends Rest_Routes implements Rest_Callback {
    * @since 1.0.0
    */
   protected $custom_fields_content;
+  /**
+   * General Helper
+   *
+   * @var object
+   *
+   * @since 1.0.0
+   */
+  protected $general_helper;
 
   /**
    * Initialize the class
@@ -35,6 +44,7 @@ class Get_Quizess extends Rest_Routes implements Rest_Callback {
    */
   public function __construct( Custom_Fields_Content $custom_fields_content ) {
     $this->custom_fields_content = $custom_fields_content;
+    $this->general_helper        = new General_Helper();
 
   }
 
@@ -56,30 +66,65 @@ class Get_Quizess extends Rest_Routes implements Rest_Callback {
    */
   public function rest_callback( \WP_REST_Request $request ) {
 
+    $output = array();
+
     $prefix_name = Config::PLUGIN_NAME;
     $block_names = [
-        'question' => '/question-block',
-        'category' => '/questions-category-block',
+        'options'    => $prefix_name . '/cpt-quizess-options-block',
+        'bg-options' => $prefix_name . '/cpt-quizess-background-options-block',
+        'section'    => $prefix_name . '/section-block',
+        'question'   => $prefix_name . '/question-block',
+        'category'   => $prefix_name . '/questions-category-block',
     ];
 
-    $quiz_id            = $request->get_param( 'id' );
-    $quiz               = get_post( $quiz_id );
-    $parsed_quiz        = $this->custom_fields_content->parse_gutenberg_blocks( $quiz->post_content );
-    $options            = $parsed_quiz[0]['attrs'];
-    $background_options = $parsed_quiz[2]['attrs'];
-    $questions_data     = $parsed_quiz[4]['innerBlocks'];
+    $quiz_id = $request->get_param( 'id' );
+    $quiz    = get_post( $quiz_id );
+
+    if ( empty( $quiz ) ) {
+      return new \WP_Error( 'awesome_no_quiz', 'No quiz found', array( 'status' => 404 ) );
+    }
+
+    $parsed_quiz_array = $this->custom_fields_content->parse_gutenberg_blocks( $quiz->post_content );
+
+    if ( empty( $parsed_quiz_array ) ) {
+      return new \WP_Error( 'awesome_no_blocks', 'No blocks found', array( 'status' => 404 ) );
+    }
+
+    foreach ( $parsed_quiz_array as $index => $quiz_item ) {
+      switch ( $quiz_item['blockName'] ) {
+        case $block_names['options']:
+          $output['options'] = array(
+              'useTimer'       => $this->general_helper->get_array_value( 'useTimer', $quiz_item['attrs'] ),
+              'timer'          => $this->general_helper->get_array_value( 'timer', $quiz_item['attrs'] ),
+              'successMessage' => $this->general_helper->get_array_value( 'successMessage', $quiz_item['attrs'] ),
+              'failureMessage' => $this->general_helper->get_array_value( 'failureMessage', $quiz_item['attrs'] ),
+          );
+              break;
+        case $block_names['bg-options']:
+          $output['bg-options'] = array(
+              'bgColor' => $this->general_helper->get_array_value( 'backgroundColor', $quiz_item['attrs'] ),
+              'bgUrl'   => $this->general_helper->get_array_value( 'url', $quiz_item['attrs'] ),
+              'bgAlt'   => $this->general_helper->get_array_value( 'title', $quiz_item['attrs'] ),
+          );
+              break;
+        case $block_names['section']:
+          $output['questions'] = $this->general_helper->get_array_value( 'innerBlocks', $quiz_item );
+              break;
+        default:
+      }
+    }
 
     $questions = [];
 
-    foreach ( $questions_data as $index => $block ) {
+    foreach ( $output['questions'] as $index => $block ) {
       switch ( $block['blockName'] ) {
-        case Config::PLUGIN_NAME . $block_names['question']:
+        case $block_names['question']:
           $questions[ $index ] = [
               'name' => 'question',
-              'data' => $block['attrs'],
+              'data' => $this->get_question_data( $block['attrs'] ),
           ];
               break;
-        case Config::PLUGIN_NAME . $block_names['category']:
+        case $block_names['category']:
           $category = $this->custom_fields_content->get_decoded_array_value( 'category', $block['attrs'] );
           $selected = $this->custom_fields_content->get_decoded_array_value( 'posts', $block['attrs'] );
 
@@ -88,7 +133,7 @@ class Get_Quizess extends Rest_Routes implements Rest_Callback {
             $questions[ $index ] = [
                 'name' => 'category',
                 'category' => $category_name,
-                'sub_blocks' => $this->get_blocks_data( $selected ),
+                'questions' => $this->get_blocks_data( $selected ),
             ];
           }
               break;
@@ -96,21 +141,17 @@ class Get_Quizess extends Rest_Routes implements Rest_Callback {
       }
     }
 
-    if ( empty( $parsed_quiz ) ) {
-      return new \WP_Error( 'awesome_no_blocks', 'No blocks found', array( 'status' => 404 ) );
-    }
-
     return new \WP_REST_Response(
       array(
-          'options' => $options,
-          'background_options' => $background_options,
+          'options' => $output['options'],
+          'bgOptions' => $output['bg-options'],
           'blocks' => $questions,
       ),
       200
     );
   }
   /**
-   * Initialize the class
+   * Get blocks data
    *
    * @param array $blocks_data Custom_Fields_Content dependency.
    * @since 1.0.0
@@ -137,11 +178,27 @@ class Get_Quizess extends Rest_Routes implements Rest_Callback {
 
       $question_data[ $index ] = [
           'name' => 'question',
-          'data' => $parsed_data[0]['attrs'],
+          'data' => $this->get_question_data( $parsed_data[0]['attrs'] ),
       ];
     }
 
     return array( $question_data );
+  }
+  /**
+   * Get question data
+   *
+   * @param array $block_data Custom_Fields_Content dependency.
+   * @since 1.0.0
+   */
+  private function get_question_data( $block_data ) : array {
+
+    return array(
+        'question'         => $this->general_helper->get_array_value( 'question', $block_data ),
+        'answers'          => $this->custom_fields_content->get_decoded_array_value( 'answers', $block_data ),
+        'showExplanation'  => $this->general_helper->get_array_value( 'showExplanation', $block_data ),
+        'explanationType'  => ( $this->general_helper->get_array_value( 'explanationType', $block_data ) ) ? json_decode( $this->general_helper->get_array_value( 'explanationType', $block_data ) )->value : '',
+        'explanationMedia' => $this->general_helper->get_array_value( 'explanationMedia', $block_data ),
+    );
   }
 
 }
