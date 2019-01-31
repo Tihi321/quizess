@@ -84,4 +84,24 @@ class Quiz {
     register_taxonomy( Config::QUIZESS_CATEGORY_SLUG, Config::QUIZESS_POST_SLUG, $args );
   }
 
+
+  /**
+   * Register custom template for quiz post type
+   *
+   * @since 1.2.0
+   */
+  public function quiz_single_template() {
+    if ( get_post_type() === Config::QUIZESS_POST_SLUG ) {
+      if ( is_single() ) {
+
+        if ( locate_template( array( 'single-quiz.php' ) ) ) {
+              $template_path = locate_template( array( 'single-quiz.php' ) );
+        } else {
+              $template_path = plugin_dir_path( __DIR__ ) . 'templates/single-quiz.php';
+        }
+      }
+    }
+    return $template_path;
+  }
+
 }
