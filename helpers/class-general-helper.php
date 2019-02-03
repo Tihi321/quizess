@@ -100,6 +100,17 @@ class General_Helper extends Config {
   }
 
   /**
+   * Gets this plugin base url.
+   *
+   * @since  1.0.0
+   *
+   * @return string
+   */
+  public static function get_base_url() {
+    return plugin_dir_url( __DIR__ );
+  }
+
+  /**
    * Quizess needs WP 5.0+ or Gutenberg Plugin to work
    */
   public function check_compatibility() {

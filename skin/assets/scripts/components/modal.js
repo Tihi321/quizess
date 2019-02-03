@@ -12,10 +12,10 @@ export default class Modal {
     this.closeTriggerElement = closeTriggerElement;
     this.OPEN_CLASS = OPEN_CLASS;
 
-    this.$modal = $(this.modalElement);
-    this.$openTrigger = $(this.openTriggerElement);
-    this.$closeTrigger = $(this.closeTriggerElement);
-    this.$body = $('html, body');
+    this.$modal = document.querySelector(this.modalElement);
+    this.$openTrigger = document.querySelector(this.openTriggerElement);
+    this.$closeTrigger = document.querySelector(this.closeTriggerElement);
+    this.$body = document.querySelector('html, body');
   }
 
   set scrollPosition(scrollPosition) {
@@ -30,10 +30,10 @@ export default class Modal {
     if (device.iPhone()) {
       this.scrollPosition = window.pageYOffset;
     }
-    $(`#${id}`).addClass(this.OPEN_CLASS);
+    document.querySelector(`#${id}`).classList.add(this.OPEN_CLASS);
 
     setTimeout(() => {
-      this.$body.addClass(this.getBodyActiveClass());
+      this.$body.classList.add(this.getBodyActiveClass());
     }, 300);
   }
 
@@ -42,21 +42,12 @@ export default class Modal {
       window.scroll(0, this.scrollPosition);
     }
 
-    $(`#${id}`).removeClass(this.OPEN_CLASS);
-    this.$body.removeClass(this.getBodyActiveClass());
+    document.querySelector(`#${id}`).classList.remove(this.OPEN_CLASS);
+    this.$body.classList.remove(this.getBodyActiveClass());
   }
 
-  closeAll() {
-    if (device.iPhone()) {
-      window.scroll(0, this.scrollPosition);
-    }
-
-    this.$modal.removeClass(this.OPEN_CLASS);
-    this.$body.removeClass(this.getBodyActiveClass());
-  }
-
-  getId(e) {
-    return e.attr('data-modal');
+  getId(element) {
+    return element.dataset.modal;
   }
 
   getBodyActiveClass() {

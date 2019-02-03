@@ -59,7 +59,7 @@ class Front extends Config {
   public function enqueue_frontend_scripts() {
 
     $main_admin_script = $this->general_helper->get_manifest_assets_data( 'applicationQuizess.js' );
-    wp_register_script( static::PLUGIN_NAME . '-frontend-scripts', $main_admin_script, array( 'jquery' ), static::PLUGIN_VERSION, true );
+    wp_register_script( static::PLUGIN_NAME . '-frontend-scripts', $main_admin_script, array(), static::PLUGIN_VERSION, true );
     wp_enqueue_script( static::PLUGIN_NAME . '-frontend-scripts' );
 
   }

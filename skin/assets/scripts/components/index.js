@@ -1,20 +1,21 @@
+import general from '../helpers/general';
 import Modal from './modal';
 
-$(function() {
+general.domReady(function() {
   const modal = new Modal();
 
   // -------------------------------------------------------------
   // modal
-  modal.$openTrigger.on('click', function(e) {
+  modal.$openTrigger.addEventListener('click', function(e) {
     e.preventDefault();
-    const id = modal.getId($(this));
+    const id = modal.getId(this);
 
     modal.open(id);
   });
 
-  modal.$closeTrigger.on('click', function(e) {
+  modal.$closeTrigger.addEventListener('click', function(e) {
     e.preventDefault();
-    const id = modal.getId($(this));
+    const id = modal.getId(this);
 
     modal.close(id);
   });

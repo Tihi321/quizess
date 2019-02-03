@@ -110,11 +110,6 @@ const allPlugins = [
     filename: outputCss,
   }),
 
-  new webpack.ProvidePlugin({
-    $: 'jquery',
-    jQuery: 'jquery',
-  }),
-
   // Use BrowserSync For assets
   new BrowserSyncPlugin({
     host: 'localhost',
