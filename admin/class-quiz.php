@@ -88,9 +88,11 @@ class Quiz {
   /**
    * Register custom template for quiz post type
    *
+   * @param string $template_path     Template path variable.
+   * @return string Return new or old template path variable
    * @since 1.2.0
    */
-  public function quiz_single_template() {
+  public function quiz_single_template( $template_path ) {
     if ( get_post_type() === Config::QUIZESS_POST_SLUG ) {
       if ( is_single() ) {
 
