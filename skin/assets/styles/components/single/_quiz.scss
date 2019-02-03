@@ -1,0 +1,65 @@
+$quiz-colors: (
+  text-light:$base-white-color,
+  text-dark: $base-dark-grey-color,
+  btn-light: $base-yellow-color,
+  btn-dark: $base-blue-color,
+);
+
+.quiz {
+  $this: &;
+  &__content {
+    position: relative;
+    height: 50vh;
+    min-height: 800px;
+    display: flex;
+    flex-direction: column;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    &--bg {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      opacity: 0.95;
+    }
+  }
+
+  &__welcome {
+    &--outer {
+      @extend %centered-content;
+      flex: 1;
+      z-index: map-get($zindex, 'quiz-outer');
+    }
+  }
+
+  &__button {
+    &--outer {
+      @extend %centered-content;
+      flex: 1;
+      z-index: map-get($zindex, 'quiz-outer');
+    }
+    &--btn {
+      @extend %button-reset;
+    }
+  }
+
+  &__content.light {
+    #{$this}__welcome--message {
+      color: map-get($quiz-colors, 'text-light');
+    }
+    #{$this}__button--btn {
+      color: map-get($quiz-colors, 'btn-dark');
+    }
+  }
+  &__content.dark {
+    #{$this}__welcome--message {
+      color: map-get($quiz-colors, 'text-dark');
+    }
+    #{$this}__button--btn {
+      color: map-get($quiz-colors, 'btn-dark');
+    }
+  }
+
+}

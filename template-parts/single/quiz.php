@@ -24,13 +24,13 @@ $base_path       = Helpers\General_Helper::get_base_path();
 ?>
 
 <!-- Single Content Section -->
-<section class="single" id="<?php echo esc_attr( $post->ID ); ?>">
+<section class="quiz" id="<?php echo esc_attr( $post->ID ); ?>">
 
-  <div class="single__quiz-content" style="background-image:url('<?php echo esc_attr( $bg_image_url ); ?>');">
-    <div class="single__quiz-content--bg" style="background-color:<?php echo esc_attr( $bg_color ); ?>;">
+  <div class="quiz__content <?php echo esc_attr( $theme ); ?>" style="background-image:url('<?php echo esc_attr( $bg_image_url ); ?>');">
+    <div class="quiz__content--bg" style="background-color:<?php echo esc_attr( $bg_color ); ?>;">
     </div>
-    <div class="single__quiz-welcome--wrap">
-      <h2 class="single__quiz-welcome--message">
+    <div class="quiz__welcome--outer">
+      <h2 class="quiz__welcome--message">
         <?php
         if ( ! empty( $welcome_message ) ) {
           ?>
@@ -40,11 +40,11 @@ $base_path       = Helpers\General_Helper::get_base_path();
         <?php } ?>
       </h2>
     </div>
-    <div class="single__quiz-button--wrap">
+    <div class="quiz__button--outer">
       <?php
       if ( ! empty( $api_url ) ) {
         ?>
-        <button class="single__quiz-button--btn <?php echo esc_attr( $theme ); ?> js-modal-trigger-open" data-modal="<?php echo esc_attr( $modal_id ); ?>" data-api="<?php echo esc_attr( $api_url ); ?>">
+        <button class="quiz__button--btn js-modal-trigger-open" data-modal="<?php echo esc_attr( $modal_id ); ?>" data-api="<?php echo esc_attr( $api_url ); ?>">
           <?php echo esc_html__( 'Start', 'quizess' ); ?>
         </button>
       <?php } ?>

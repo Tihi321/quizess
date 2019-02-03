@@ -7,14 +7,12 @@ general.domReady(function() {
   // -------------------------------------------------------------
   // modal
   modal.$openTrigger.addEventListener('click', function(e) {
-    e.preventDefault();
     const id = modal.getId(this);
 
     modal.open(id);
   });
 
   modal.$closeTrigger.addEventListener('click', function(e) {
-    e.preventDefault();
     const id = modal.getId(this);
 
     modal.close(id);
