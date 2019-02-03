@@ -12,6 +12,7 @@
 namespace Quizess\Includes;
 
 use Quizess\Admin;
+use Quizess\Front;
 use Quizess\Rest;
 use Quizess\Helpers;
 use Quizess\Includes\Config;
@@ -122,9 +123,9 @@ class Main extends Config {
     $story     = new Admin\Story();
 
     // Admin.
-    $this->loader->add_action( 'admin_enqueue_scripts', $admin, 'enqueue_styles', 50 );
+    $this->loader->add_action( 'admin_enqueue_scripts', $admin, 'enqueue_admin_styles', 50 );
     $this->loader->add_action( 'enqueue_block_editor_assets', $admin, 'enqueue_block_styles', 50 );
-    $this->loader->add_action( 'admin_enqueue_scripts', $admin, 'enqueue_scripts' );
+    $this->loader->add_action( 'admin_enqueue_scripts', $admin, 'enqueue_admin_scripts' );
     $this->loader->add_action( 'enqueue_block_editor_assets', $admin, 'enqueue_block_scripts' );
     $this->loader->add_filter( 'get_user_option_admin_color', $admin, 'set_admin_color_based_on_env' );
 
@@ -162,7 +163,11 @@ class Main extends Config {
    * @since 1.0.0
    */
   private function define_plugins_hooks() {
+    $front = new Front\Front( $this->general_helper );
 
+    // Frontend.
+    $this->loader->add_action( 'wp_enqueue_scripts', $front, 'enqueue_frontend_scripts', 50 );
+    $this->loader->add_action( 'wp_enqueue_scripts', $front, 'enqueue_frontend_styles', 50 );
   }
 
   /**

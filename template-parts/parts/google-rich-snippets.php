@@ -2,7 +2,7 @@
 /**
  * Google Rich Snippets
  *
- * @package Quizess
+ * @package Quizess\Template_Parts\Parts
  */
 
 ?>

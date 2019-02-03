@@ -9,6 +9,7 @@
 namespace Quizess\Admin;
 
 use Quizess\Includes\Config;
+use Quizess\Helpers\General_Helper;
 
 /**
  * Class Admin
@@ -16,13 +17,22 @@ use Quizess\Includes\Config;
 class Admin extends Config {
 
   /**
-   * Initialize class
+   * General Helper class
    *
-   * @param object $general_helper accepts general helper object.
+   * @var object General_Helper
    *
    * @since 1.0.0
    */
-  public function __construct( $general_helper ) {
+  public $general_helper;
+
+  /**
+   * Initialize class
+   *
+   * @param General_Helper $general_helper Helper class instance.
+   *
+   * @since 1.0.0
+   */
+  public function __construct( General_Helper $general_helper ) {
     $this->general_helper = $general_helper;
 
   }
@@ -32,13 +42,14 @@ class Admin extends Config {
    *
    * @since 1.0.0
    */
-  public function enqueue_styles() {
+  public function enqueue_admin_styles() {
 
-    $main_admin_style = $this->general_helper->get_manifest_assets_data( 'applicationQuizess.css' );
+    $main_admin_style = $this->general_helper->get_manifest_assets_data( 'adminQuizess.css' );
     wp_register_style( static::PLUGIN_NAME . '-admin-style', $main_admin_style, '', static::PLUGIN_VERSION, false );
     wp_enqueue_style( static::PLUGIN_NAME . '-admin-style' );
 
   }
+
 
   /**
    * Register the Stylesheets for the blocks editor area.
@@ -53,14 +64,15 @@ class Admin extends Config {
 
   }
 
+
   /**
    * Register the JavaScript for the admin area.
    *
    * @since 1.0.0
    */
-  public function enqueue_scripts() {
+  public function enqueue_admin_scripts() {
 
-    $main_admin_script = $this->general_helper->get_manifest_assets_data( 'applicationQuizess.js' );
+    $main_admin_script = $this->general_helper->get_manifest_assets_data( 'adminQuizess.js' );
     wp_register_script( static::PLUGIN_NAME . '-admin-scripts', $main_admin_script, array( 'wp-plugins', 'wp-edit-post', 'wp-element' ), static::PLUGIN_VERSION, true );
     wp_enqueue_script( static::PLUGIN_NAME . '-admin-scripts' );
 
