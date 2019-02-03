@@ -6,6 +6,7 @@ msgstr ""
 #: skin/assets/blocks/components/style-options/index.js:36
 #: skin/assets/blocks/question-block/components/BlockOptions.js:63
 #: skin/assets/blocks/questions-category-block/components/BlockOptions.js:85
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/components/BlockElements.js:45
 msgid "Select"
 msgstr ""
 
@@ -259,39 +260,47 @@ msgid "Choose background image and color"
 msgstr ""
 
 #: skin/assets/blocks/template-blocks/cpt-quizess-options-block/components/BlockElements.js:100
-msgid "Choose failure message for question"
-msgstr ""
-
-#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/components/BlockElements.js:109
-msgid "Use timer"
-msgstr ""
-
-#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/components/BlockElements.js:128
-msgid "Options"
-msgstr ""
-
-#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/components/BlockElements.js:131
-msgid "Some of the global options for this quiz"
-msgstr ""
-
-#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/components/BlockElements.js:32
-msgid "Welcome message"
-msgstr ""
-
-#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/components/BlockElements.js:50
-msgid "Choose welcome message for quiz"
-msgstr ""
-
-#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/components/BlockElements.js:57
-msgid "Success message"
-msgstr ""
-
-#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/components/BlockElements.js:75
 msgid "Choose success message for question"
 msgstr ""
 
-#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/components/BlockElements.js:82
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/components/BlockElements.js:107
 msgid "Failure message"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/components/BlockElements.js:125
+msgid "Choose failure message for question"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/components/BlockElements.js:134
+msgid "Use timer"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/components/BlockElements.js:153
+msgid "Options"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/components/BlockElements.js:156
+msgid "Some of the global options for this quiz"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/components/BlockElements.js:34
+msgid "Default theme"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/components/BlockElements.js:48
+msgid "Default theme will affect buttons like submit, start ect"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/components/BlockElements.js:57
+msgid "Welcome message"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/components/BlockElements.js:75
+msgid "Choose welcome message for quiz"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/components/BlockElements.js:82
+msgid "Success message"
 msgstr ""
 
 #: skin/assets/blocks/template-blocks/cpt-quizess-options-block/index.js:20

@@ -3,37 +3,44 @@ import BlockElements from './BlockElements';
 const App = (props) => {
   const {
     className,
+    dispatchAtributes,
   } = props;
 
   const dispatchAttributesStore = {
     handleUseTimerChange: (timer) => {
-      props.dispatchAtributes({
+      dispatchAtributes({
         action: 'useTimer',
         payload: timer,
       });
     },
     handleTimerChange: (timer) => {
-      props.dispatchAtributes({
+      dispatchAtributes({
         action: 'timer',
         payload: timer,
       });
     },
     handleSuccessMessageChange: (message) => {
-      props.dispatchAtributes({
+      dispatchAtributes({
         action: 'successMessage',
         payload: message,
       });
     },
     handleFailureMessageChange: (message) => {
-      props.dispatchAtributes({
+      dispatchAtributes({
         action: 'failureMessage',
         payload: message,
       });
     },
     handleWelcomeMessageChange: (message) => {
-      props.dispatchAtributes({
+      dispatchAtributes({
         action: 'welcomeMessage',
         payload: message,
+      });
+    },
+    handleThemeChange: (theme) => {
+      dispatchAtributes({
+        action: 'theme',
+        payload: JSON.stringify(theme),
       });
     },
   };

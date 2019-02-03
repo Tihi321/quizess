@@ -80,6 +80,7 @@ final class Blocks_Helper {
           $output['options'] = array(
               'useTimer'       => $this->general_helper->get_array_value( 'useTimer', $quiz_item['attrs'] ),
               'timer'          => $this->general_helper->get_array_value( 'timer', $quiz_item['attrs'] ),
+              'theme'  => ( $this->general_helper->get_array_value( 'theme', $quiz_item['attrs'] ) ) ? json_decode( $this->general_helper->get_array_value( 'theme', $quiz_item['attrs'] ) )->value : 'light',
               'welcomeMessage' => $this->general_helper->get_array_value( 'welcomeMessage', $quiz_item['attrs'] ),
               'successMessage' => $this->general_helper->get_array_value( 'successMessage', $quiz_item['attrs'] ),
               'failureMessage' => $this->general_helper->get_array_value( 'failureMessage', $quiz_item['attrs'] ),
@@ -104,6 +105,7 @@ final class Blocks_Helper {
         case $block_names['question']:
           $questions[ $index ] = [
               'name' => 'question',
+              'style' => $this->get_style_data( $block['attrs'] ),
               'data' => $this->get_question_data( $block['attrs'] ),
           ];
               break;
@@ -116,7 +118,8 @@ final class Blocks_Helper {
             $questions[ $index ] = [
                 'name' => 'category',
                 'category' => $category_name,
-                'questions' => $this->get_blocks_data( $selected ),
+                'style' => $this->get_style_data( $block['attrs'] ),
+                'questions' => $this->get_selected_questions_data( $selected ),
             ];
           }
               break;
@@ -147,12 +150,12 @@ final class Blocks_Helper {
   }
 
   /**
-   * Get blocks data
+   * Get selected questions blocks data
    *
    * @param array $blocks_data Blocks_Helper dependency.
    * @since 1.0.0
    */
-  private function get_blocks_data( $blocks_data ) : array {
+  private function get_selected_questions_data( $blocks_data ) : array {
     $block_ids     = [];
     $question_data = [];
 
@@ -195,6 +198,20 @@ final class Blocks_Helper {
         'showExplanation'  => $this->general_helper->get_array_value( 'showExplanation', $block_data ),
         'explanationType'  => ( $this->general_helper->get_array_value( 'explanationType', $block_data ) ) ? json_decode( $this->general_helper->get_array_value( 'explanationType', $block_data ) )->value : '',
         'explanationMedia' => $this->general_helper->get_array_value( 'explanationMedia', $block_data ),
+    );
+  }
+
+  /**
+   * Get style data
+   *
+   * @param array $block_data Blocks_Helper dependency.
+   * @since 1.0.0
+   */
+  private function get_style_data( $block_data ) : array {
+
+    return array(
+        'direction'  => ( $this->general_helper->get_array_value( 'rows', $block_data ) ) ? json_decode( $this->general_helper->get_array_value( 'rows', $block_data ) )->value : 'row',
+        'theme'  => ( $this->general_helper->get_array_value( 'theme', $block_data ) ) ? json_decode( $this->general_helper->get_array_value( 'theme', $block_data ) )->value : 'light',
     );
   }
 

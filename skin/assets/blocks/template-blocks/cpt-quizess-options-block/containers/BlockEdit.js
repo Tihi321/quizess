@@ -1,49 +1,51 @@
-import {Component} from '@wordpress/element';
 import App from '../components/App';
 
-export default class BlockEdit extends Component {
-  constructor(props) {
-    super(...arguments);
+const BlockEdit = (props) => {
+  const {
+    attributes,
+    className,
+    setAttributes,
+  } = props;
 
-    this.dispatchAtributes = this.dispatchAtributes.bind(this);
-
-  }
-
-  dispatchAtributes = ({action, payload}) => {
+  const dispatchAtributes = ({action, payload}) => {
     switch (action) {
       case 'useTimer':
-        this.props.setAttributes({
+        setAttributes({
           useTimer: payload,
         });
         break;
       case 'timer':
-        this.props.setAttributes({
+        setAttributes({
           timer: payload,
         });
         break;
       case 'successMessage':
-        this.props.setAttributes({
+        setAttributes({
           successMessage: payload,
         });
         break;
       case 'welcomeMessage':
-        this.props.setAttributes({
+        setAttributes({
           welcomeMessage: payload,
         });
         break;
       case 'failureMessage':
-        this.props.setAttributes({
+        setAttributes({
           failureMessage: payload,
+        });
+        break;
+      case 'theme':
+        setAttributes({
+          theme: payload,
         });
         break;
       default:
     }
   };
 
-  render() {
-    const {attributes, className} = this.props;
-    return (
-      <App className={className} attributes={attributes} dispatchAtributes={this.dispatchAtributes} />
-    );
-  }
-}
+  return (
+    <App className={className} attributes={attributes} dispatchAtributes={dispatchAtributes} />
+  );
+};
+
+export default BlockEdit;

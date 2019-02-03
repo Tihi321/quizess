@@ -1,3 +1,4 @@
+import Select from 'react-select';
 import {Fragment} from '@wordpress/element';
 import {
   RangeControl,
@@ -15,6 +16,7 @@ function BlockElements(props) {
       welcomeMessage,
       successMessage,
       failureMessage,
+      theme,
     },
     dispatchAttributesStore: {
       handleTimerChange,
@@ -22,8 +24,31 @@ function BlockElements(props) {
       handleSuccessMessageChange,
       handleFailureMessageChange,
       handleWelcomeMessageChange,
+      handleThemeChange,
     },
   } = props;
+
+  const themeSelectElement = (
+    <Fragment>
+      <div className="qz-label-mce-class">
+        {__('Default theme', 'quizess')}
+      </div>
+      <Select
+        className="columns-select"
+        closeMenuOnSelect={true}
+        value={(theme) ? JSON.parse(theme) : {value: 'light', label: 'Light'}}
+        onChange={handleThemeChange}
+        options={[
+          {value: 'light', label: 'Light'},
+          {value: 'dark', label: 'Dark'},
+        ]}
+        placeholder={__('Select', 'quizess')}
+      />
+      <div className="qz-help-mce-class">
+        {__('Default theme will affect buttons like submit, start ect', 'quizess')}
+      </div>
+    </Fragment>
+  );
 
   /* eslint-disable */
     const welcomeMessageElement = (
@@ -131,6 +156,9 @@ function BlockElements(props) {
         {__('Some of the global options for this quiz', 'quizess')}
       </div>
       <div className="block-options">
+        <div className="qz-panel-group">
+          {themeSelectElement}
+        </div>
         <div className="qz-panel-group">
           {timerElement}
         </div>
