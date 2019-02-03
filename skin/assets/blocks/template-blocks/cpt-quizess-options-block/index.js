@@ -41,6 +41,9 @@ export default registerBlockType(
       timer: {
         type: 'number',
       },
+      welcomeMessage: {
+        type: 'string',
+      },
       successMessage: {
         type: 'string',
       },

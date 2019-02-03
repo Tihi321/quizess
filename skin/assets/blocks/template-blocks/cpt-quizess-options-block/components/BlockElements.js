@@ -12,6 +12,7 @@ function BlockElements(props) {
     attributes: {
       useTimer,
       timer,
+      welcomeMessage,
       successMessage,
       failureMessage,
     },
@@ -20,10 +21,36 @@ function BlockElements(props) {
       handleUseTimerChange,
       handleSuccessMessageChange,
       handleFailureMessageChange,
+      handleWelcomeMessageChange,
     },
   } = props;
 
   /* eslint-disable */
+    const welcomeMessageElement = (
+      <Fragment>
+        <div className="qz-label-mce-class">
+          {__('Welcome message', 'quizess')}
+        </div>
+        <TextElement
+            styleReset={true}
+            outputType='text'
+            className="qz-input-mce-class"
+            value={welcomeMessage}
+            onChange={(message) => handleWelcomeMessageChange(message)}
+            maxChars={100}
+            maxRows={1}
+            warning={false}
+            single={true}
+            init={{
+              selection_toolbar:false,
+              insert_toolbar: false,
+            }}
+          />
+        <div className="qz-help-mce-class">
+          {__('Choose welcome message for quiz', 'quizess')}
+        </div>
+      </Fragment>
+    );
     const successMessageElement = (
       <Fragment>
         <div className="qz-label-mce-class">
@@ -108,6 +135,7 @@ function BlockElements(props) {
           {timerElement}
         </div>
         <div className="qz-panel-group">
+          {welcomeMessageElement}
           {successMessageElement}
           {failureMessageElement}
         </div>

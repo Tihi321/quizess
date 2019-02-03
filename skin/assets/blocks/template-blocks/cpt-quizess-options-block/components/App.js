@@ -30,6 +30,12 @@ const App = (props) => {
         payload: message,
       });
     },
+    handleWelcomeMessageChange: (message) => {
+      props.dispatchAtributes({
+        action: 'welcomeMessage',
+        payload: message,
+      });
+    },
   };
 
   return (

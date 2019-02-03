@@ -26,6 +26,11 @@ export default class BlockEdit extends Component {
           successMessage: payload,
         });
         break;
+      case 'welcomeMessage':
+        this.props.setAttributes({
+          welcomeMessage: payload,
+        });
+        break;
       case 'failureMessage':
         this.props.setAttributes({
           failureMessage: payload,
