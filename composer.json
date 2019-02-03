@@ -6,6 +6,7 @@
   "autoload": {
     "classmap": [
       "admin",
+      "front",
       "helpers",
       "includes",
       "languages",

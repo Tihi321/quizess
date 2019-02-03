@@ -59,6 +59,7 @@ const pluginName = 'quizess';
 const pluginPath = '/skin';
 const pluginFullPath = `${appPath}${pluginPath}`;
 const pluginPublicPath = `/wp-content/plugins/${pluginName}${pluginPath}/public/`;
+const pluginApplicationJs = `${pluginFullPath}/assets/application.js`;
 const pluginAdminJs = `${pluginFullPath}/assets/application-admin.js`;
 const pluginEditorJs = `${pluginFullPath}/assets/application-editor.js`;
 const pluginOutput = `${pluginFullPath}/public`;
@@ -158,8 +159,9 @@ module.exports = [
   {
     context: path.join(__dirname),
     entry: {
-      applicationQuizess: [pluginAdminJs],
+      adminQuizess: [pluginAdminJs],
       blocksQuizess: [pluginEditorJs],
+      applicationQuizess: [pluginApplicationJs],
     },
     output: {
       path: pluginOutput,

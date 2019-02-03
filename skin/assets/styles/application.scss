@@ -1,8 +1,26 @@
 /**
  * #.# Plugin SCSS
  *
- * Loads in all admin area, not just editor
+ * Loads on frontend
 */
 /* stylelint-disable */
 // Vendors - node modules
-@import '~media-blender';
+@import 'media-blender';
+
+// Config
+@import 'config';
+
+// Utils
+@import 'utils/colors';
+@import 'utils/shared-variables';
+@import 'utils/functions';
+@import 'utils/mixins';
+@import 'utils/placeholders';
+@import 'utils/z-indexes';
+
+// Config
+@import 'core';
+
+// Template parts
+@import 'components/parts/modal';
+
