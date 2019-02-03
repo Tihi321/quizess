@@ -96,6 +96,7 @@ class Get_Quizess extends Rest_Routes implements Rest_Callback {
           $output['options'] = array(
               'useTimer'       => $this->general_helper->get_array_value( 'useTimer', $quiz_item['attrs'] ),
               'timer'          => $this->general_helper->get_array_value( 'timer', $quiz_item['attrs'] ),
+              'welcomeMessage' => $this->general_helper->get_array_value( 'welcomeMessage', $quiz_item['attrs'] ),
               'successMessage' => $this->general_helper->get_array_value( 'successMessage', $quiz_item['attrs'] ),
               'failureMessage' => $this->general_helper->get_array_value( 'failureMessage', $quiz_item['attrs'] ),
           );
