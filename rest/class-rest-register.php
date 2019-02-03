@@ -10,32 +10,32 @@ namespace Quizess\Rest;
 
 use Quizess\Rest\Rest_Callbacks;
 use Quizess\Rest\Rest_Fields;
-use Quizess\Helpers\Custom_Fields_Content;
+use Quizess\Helpers\Blocks_Helper;
 
 /**
  * Class Register
  */
 class Rest_Register extends Rest_Routes {
   /**
-   * Custom_Fields_Content reference
+   * Blocks_Helper reference
    *
    * @var object
    *
    * @since 1.0.0
    */
-  protected $custom_fields_content;
+  protected $blocks_helper;
 
   /**
    * Initialize the class
    *
-   * @param Custom_Fields_Content $custom_fields_content Custom_Fields_Content dependency.
+   * @param Blocks_Helper $blocks_helper Blocks_Helper dependency.
    * @since 1.0.0
    */
-  public function __construct( Custom_Fields_Content $custom_fields_content ) {
-    $this->custom_fields_content = $custom_fields_content;
+  public function __construct( Blocks_Helper $blocks_helper ) {
+    $this->blocks_helper = $blocks_helper;
 
     // Callbacks.
-    $this->get_quizess = new Rest_Callbacks\Get_Quizess( $this->custom_fields_content );
+    $this->get_quizess = new Rest_Callbacks\Get_Quizess( $this->blocks_helper );
   }
 
 
@@ -47,7 +47,7 @@ class Rest_Register extends Rest_Routes {
    * @since 1.0.0
    */
   public function register_fields() : void {
-    ( new Rest_Fields\Post_Fields( $this->custom_fields_content ) )->register_block_fields();
+    ( new Rest_Fields\Post_Fields( $this->blocks_helper ) )->register_block_fields();
   }
 
   /**

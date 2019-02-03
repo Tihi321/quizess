@@ -8,7 +8,7 @@
 
 namespace Quizess\Rest\Rest_Fields;
 
-use Quizess\Helpers\Custom_Fields_Content;
+use Quizess\Helpers\Blocks_Helper;
 
 /**
  * Class Pages Fields
@@ -18,22 +18,22 @@ use Quizess\Helpers\Custom_Fields_Content;
  */
 class Post_Fields {
   /**
-   * Custom_Fields_Content reference
+   * Blocks_Helper reference
    *
    * @var object
    *
    * @since 1.0.0
    */
-  protected $custom_fields_content;
+  protected $blocks_helper;
 
   /**
    * Initialize the class
    *
-   * @param Custom_Fields_Content $custom_fields_content Custom_Fields_Content dependency.
+   * @param Blocks_Helper $blocks_helper Blocks_Helper dependency.
    * @since 1.0.0
    */
-  public function __construct( Custom_Fields_Content $custom_fields_content ) {
-    $this->custom_fields_content = $custom_fields_content;
+  public function __construct( Blocks_Helper $blocks_helper ) {
+    $this->blocks_helper = $blocks_helper;
   }
 
   /**
@@ -63,7 +63,7 @@ class Post_Fields {
    * @since 1.0.0
    */
   public function add_parse_gutenberg_blocks( array $post ) {
-    return $this->custom_fields_content->parse_gutenberg_blocks( $post['content']['raw'] );
+    return $this->blocks_helper->parse_gutenberg_blocks( $post['content']['raw'] );
   }
 
   /**
@@ -73,6 +73,6 @@ class Post_Fields {
    * @return array      Custom acf fields to show in the rest response of author posts json.
    */
   public function add_parse_acf_fields( array $post ) {
-    return $this->custom_fields_content->parse_acf_fields( $post['id'] );
+    return $this->blocks_helper->parse_acf_fields( $post['id'] );
   }
 }

@@ -47,11 +47,11 @@ class Main extends Config {
   /**
    * Custom Fields variable
    *
-   * @var Custom_Fields_Content $custom_fields_content Contains functions for rest custom fields.
+   * @var Blocks_Helper $blocks_helper Contains functions for rest custom fields.
    *
    * @since 1.0.0
    */
-  protected $custom_fields_content;
+  protected $blocks_helper;
 
   /**
    * Initialize class
@@ -78,9 +78,9 @@ class Main extends Config {
    * @since 1.0.0
    */
   private function load_dependencies() {
-    $this->loader                = new Loader();
-    $this->general_helper        = new Helpers\General_Helper();
-    $this->custom_fields_content = new Helpers\Custom_Fields_Content();
+    $this->loader         = new Loader();
+    $this->general_helper = new Helpers\General_Helper();
+    $this->blocks_helper  = new Helpers\Blocks_Helper();
 
   }
 
@@ -171,7 +171,7 @@ class Main extends Config {
    * @since 1.0.0
    */
   private function define_rest_routes_hooks() {
-    $rest_routes_register = new Rest\Rest_Register( $this->custom_fields_content );
+    $rest_routes_register = new Rest\Rest_Register( $this->blocks_helper );
 
     // Register New Fields For block atributes on posts.
     $this->loader->add_action( 'rest_api_init', $rest_routes_register, 'register_fields' );
