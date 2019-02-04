@@ -58,6 +58,19 @@ class Admin extends Config {
    */
   public function enqueue_block_styles() {
 
+    // If in development add development not minified react libraries.
+    if ( QIZ_ENV === 'develop' ) {
+      wp_deregister_script( 'react' );
+      wp_deregister_script( 'react-dom' );
+
+      wp_register_script( 'react', General_Helper::get_base_url() . 'skin/public/scripts/vendors/react.development.js', array(), '16.6.3', false );
+
+      wp_register_script( 'react-dom', General_Helper::get_base_url() . 'skin/public/scripts/vendors/react-dom.development.js', array(), '16.6.3', false );
+
+      wp_enqueue_script( 'react' );
+      wp_enqueue_script( 'react-dom' );
+    }
+
     $main_block_style = $this->general_helper->get_manifest_assets_data( 'blocksQuizess.css' );
     wp_register_style( static::PLUGIN_NAME . '-editor--style', $main_block_style, '', static::PLUGIN_VERSION, false );
     wp_enqueue_style( static::PLUGIN_NAME . '-editor--style' );
@@ -106,41 +119,6 @@ class Admin extends Config {
     );
     wp_enqueue_script( static::PLUGIN_NAME . '-editor-scripts' );
 
-  }
-
-
-  /**
-   * Method that changes admin colors based on environment variable
-   *
-   * @param string $color_scheme Color scheme string.
-   * @return string              Modified color scheme.
-   *
-   * @since 1.0.0
-   */
-  public function set_admin_color_based_on_env( $color_scheme ) {
-    if ( ! defined( 'DI_ENV' ) ) {
-      return false;
-    }
-
-    if ( DI_ENV === 'production' ) {
-      $color_scheme = 'sunrise';
-    } elseif ( DI_ENV === 'staging' ) {
-      $color_scheme = 'blue';
-    } elseif ( DI_ENV === 'stg01' ) {
-      $color_scheme = 'ectoplasm';
-    } elseif ( DI_ENV === 'stg02' ) {
-      $color_scheme = 'midnight';
-    } elseif ( DI_ENV === 'tst01' ) {
-      $color_scheme = 'ocean';
-    } elseif ( DI_ENV === 'tst02' ) {
-      $color_scheme = 'coffee';
-    } elseif ( DI_ENV === 'tst03' ) {
-      $color_scheme = 'light';
-    } else {
-      $color_scheme = 'fresh';
-    }
-
-    return $color_scheme;
   }
 
 }

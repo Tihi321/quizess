@@ -58,6 +58,18 @@ class Front extends Config {
    */
   public function enqueue_frontend_scripts() {
 
+    if ( QIZ_ENV === 'develop' ) {
+      wp_deregister_script( 'react' );
+      wp_deregister_script( 'react-dom' );
+
+      wp_register_script( 'react', General_Helper::get_base_url() . 'skin/public/scripts/vendors/react.development.js', array(), '16.6.3', false );
+
+      wp_register_script( 'react-dom', General_Helper::get_base_url() . 'skin/public/scripts/vendors/react-dom.development.js', array(), '16.6.3', false );
+    }
+
+    wp_enqueue_script( 'react' );
+    wp_enqueue_script( 'react-dom' );
+
     $main_admin_script = $this->general_helper->get_manifest_assets_data( 'applicationQuizess.js' );
     wp_register_script( static::PLUGIN_NAME . '-frontend-scripts', $main_admin_script, array(), static::PLUGIN_VERSION, true );
     wp_enqueue_script( static::PLUGIN_NAME . '-frontend-scripts' );

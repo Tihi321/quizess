@@ -73,6 +73,8 @@
     "media-blender": "^2.1.0",
     "postcss-font-magician": "^2.2.1",
     "prompt-sync": "^4.1.6",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
     "react-lottie": "^1.2.3",
     "react-responsive-embed": "^2.1.0",
     "react-select": "^2.1.2"

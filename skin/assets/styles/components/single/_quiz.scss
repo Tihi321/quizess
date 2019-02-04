@@ -42,6 +42,7 @@ $quiz-colors: (
     }
     &--btn {
       @extend %button-reset;
+      padding: 20px 50px;
     }
   }
 
@@ -50,7 +51,7 @@ $quiz-colors: (
       color: map-get($quiz-colors, 'text-light');
     }
     #{$this}__button--btn {
-      color: map-get($quiz-colors, 'btn-dark');
+      background-color: map-get($quiz-colors, 'btn-light');
     }
   }
   &__content.dark {
@@ -58,7 +59,7 @@ $quiz-colors: (
       color: map-get($quiz-colors, 'text-dark');
     }
     #{$this}__button--btn {
-      color: map-get($quiz-colors, 'btn-dark');
+      background-color: map-get($quiz-colors, 'btn-dark');
     }
   }
 

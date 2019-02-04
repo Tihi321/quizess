@@ -62,6 +62,11 @@ class Main extends Config {
    */
   public function __construct() {
 
+    // If global variable is not defined exit.
+    if ( ! defined( 'QIZ_ENV' ) ) {
+      return false;
+    }
+
     $this->load_dependencies();
     $this->set_locale();
     $this->set_assets_manifest_data();
@@ -127,7 +132,6 @@ class Main extends Config {
     $this->loader->add_action( 'enqueue_block_editor_assets', $admin, 'enqueue_block_styles', 50 );
     $this->loader->add_action( 'admin_enqueue_scripts', $admin, 'enqueue_admin_scripts' );
     $this->loader->add_action( 'enqueue_block_editor_assets', $admin, 'enqueue_block_scripts' );
-    $this->loader->add_filter( 'get_user_option_admin_color', $admin, 'set_admin_color_based_on_env' );
 
     // Media.
     $this->loader->add_filter( 'upload_mimes', $media, 'enable_mime_types' );

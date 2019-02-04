@@ -41,6 +41,13 @@ define( 'QZ_ASSETS_PUBLIC_PATH', __DIR__ . '/skin/public/' );
 require __DIR__ . '/vendor/autoload.php';
 
 /**
+ * Define enviroment.
+ *
+ * @since 1.0.0
+ */
+define( 'QIZ_ENV', 'develop' );
+
+/**
  * Begins execution of the plugin.
  *
  * Since everything within the plugin is registered via hooks,

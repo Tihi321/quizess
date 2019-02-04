@@ -45,6 +45,7 @@ const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
@@ -146,6 +147,30 @@ if (!DEV) {
     }),
   ];
   allPlugins.push(new CleanWebpackPlugin([pluginOutput]));
+}
+
+const developmentPlugins = [];
+
+// Use only for development build
+if (DEV) {
+
+  developmentPlugins.copyDevelopmentReact = [
+
+    // Find react in node_modules and copy it to public folder
+    {
+      from: `${appPath}/node_modules/react/umd/react.development.js`,
+      to: `${pluginOutput}/scripts/vendors`,
+    },
+
+    // Find reactDom in node_modules and copy it to public folder
+    {
+      from: `${appPath}/node_modules/react-dom/umd/react-dom.development.js`,
+      to: `${pluginOutput}/scripts/vendors`,
+    },
+
+  ];
+
+  allPlugins.push(new CopyWebpackPlugin(developmentPlugins.copyDevelopmentReact));
 }
 
 module.exports = [
