@@ -84,6 +84,7 @@ final class Blocks_Helper {
               'welcomeMessage' => $this->general_helper->get_array_value( 'welcomeMessage', $quiz_item['attrs'] ),
               'successMessage' => $this->general_helper->get_array_value( 'successMessage', $quiz_item['attrs'] ),
               'failureMessage' => $this->general_helper->get_array_value( 'failureMessage', $quiz_item['attrs'] ),
+              'aboutField' => $this->general_helper->get_array_value( 'aboutField', $quiz_item['attrs'] ),
           );
               break;
         case $block_names['bg-options']:

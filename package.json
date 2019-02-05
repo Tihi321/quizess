@@ -1,7 +1,7 @@
 {
-  "name": "Quizess",
+  "name": "quizess",
   "version": "1.0.0",
-  "author": "Eightshift Team",
+  "author": "Tihomir Selak",
   "private": true,
   "main": "",
   "scripts": {

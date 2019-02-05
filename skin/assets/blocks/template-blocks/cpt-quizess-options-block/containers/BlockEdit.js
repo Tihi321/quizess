@@ -39,6 +39,11 @@ const BlockEdit = (props) => {
           theme: payload,
         });
         break;
+      case 'aboutField':
+        setAttributes({
+          aboutField: payload,
+        });
+        break;
       default:
     }
   };

@@ -43,6 +43,12 @@ const App = (props) => {
         payload: JSON.stringify(theme),
       });
     },
+    handleAboutChange: (about) => {
+      dispatchAtributes({
+        action: 'aboutField',
+        payload: about,
+      });
+    },
   };
 
   return (

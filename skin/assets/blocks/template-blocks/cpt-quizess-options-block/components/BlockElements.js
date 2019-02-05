@@ -17,6 +17,7 @@ function BlockElements(props) {
       successMessage,
       failureMessage,
       theme,
+      aboutField,
     },
     dispatchAttributesStore: {
       handleTimerChange,
@@ -25,6 +26,7 @@ function BlockElements(props) {
       handleFailureMessageChange,
       handleWelcomeMessageChange,
       handleThemeChange,
+      handleAboutChange,
     },
   } = props;
 
@@ -126,6 +128,25 @@ function BlockElements(props) {
         </div>
       </Fragment>
     );
+    const aboutFieldElement = (
+      <Fragment>
+        <div className="qz-label-mce-class">
+          {__('About section', 'quizess')}
+        </div>
+        <TextElement
+            styleReset={true}
+            outputType='text'
+            className="qz-input-mce-class"
+            value={aboutField}
+            onChange={(about) => handleAboutChange(about)}
+            warning={false}
+            tagName="p"
+          />
+        <div className="qz-help-mce-class">
+          {__('Write something about this quiz', 'quizess')}
+        </div>
+      </Fragment>
+    );
     /* eslint-enable */
 
   const timerElement = (
@@ -166,6 +187,9 @@ function BlockElements(props) {
           {welcomeMessageElement}
           {successMessageElement}
           {failureMessageElement}
+        </div>
+        <div className="qz-panel-group">
+          {aboutFieldElement}
         </div>
       </div>
     </Fragment>

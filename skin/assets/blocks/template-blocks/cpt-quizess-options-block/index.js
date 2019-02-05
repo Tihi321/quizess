@@ -53,6 +53,10 @@ export default registerBlockType(
       failureMessage: {
         type: 'string',
       },
+      aboutField: {
+        type: 'string',
+        default: '',
+      },
     },
     edit: BlockEdit,
     save: BlockSave,
