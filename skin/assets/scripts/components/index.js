@@ -1,8 +1,10 @@
 import general from '../helpers/general';
+import App from '../app';
 import Modal from './modal';
 
 general.domReady(function() {
   const modal = new Modal();
+  const app = new App();
 
   // -------------------------------------------------------------
   // modal
@@ -17,4 +19,8 @@ general.domReady(function() {
 
     modal.close(id);
   });
+
+  // -------------------------------------------------------------
+  // app
+  app.init();
 });
