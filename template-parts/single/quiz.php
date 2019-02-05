@@ -15,9 +15,10 @@ $quiz_options = $blocks_helper->get_quiz_options( $post->post_content );
 
 $welcome_message = $general_helper->get_array_value( 'welcomeMessage', $quiz_options['options'] );
 $theme           = $general_helper->get_array_value( 'theme', $quiz_options['options'] );
+$about_field     = $general_helper->get_array_value( 'aboutField', $quiz_options['options'] );
 $bg_color        = $general_helper->get_array_value( 'bgColor', $quiz_options['bgOptions'] );
 $bg_image_url    = $general_helper->get_array_value( 'bgUrl', $quiz_options['bgOptions'] );
-$api_url         = get_site_url() . '/' . Rest_Routes::QUIZESS_SLUG . '/' . $post->ID;
+$api_url         = get_site_url() . '/wp-json/' . Rest_Routes::QUIZESS_SLUG . '/' . $post->ID;
 $modal_id        = 'modal-' . $post->ID;
 $base_path       = Helpers\General_Helper::get_base_path();
 
@@ -26,9 +27,7 @@ $base_path       = Helpers\General_Helper::get_base_path();
 <!-- Single Content Section -->
 <section class="quiz" id="<?php echo esc_attr( $post->ID ); ?>">
 
-  <div class="quiz__content <?php echo esc_attr( $theme ); ?>" style="background-image:url('<?php echo esc_attr( $bg_image_url ); ?>');">
-    <div class="quiz__content--bg" style="background-color:<?php echo esc_attr( $bg_color ); ?>;">
-    </div>
+  <div class="quiz__content <?php echo esc_attr( $theme ); ?>" style="background-color:<?php echo esc_attr( $bg_color ); ?>;background-image:url('<?php echo esc_attr( $bg_image_url ); ?>');">
     <div class="quiz__welcome--outer">
       <h2 class="quiz__welcome--message">
         <?php
@@ -44,8 +43,14 @@ $base_path       = Helpers\General_Helper::get_base_path();
       <?php
       if ( ! empty( $api_url ) ) {
         ?>
-        <button class="quiz__button--btn js-modal-trigger-open" data-modal="<?php echo esc_attr( $modal_id ); ?>" data-api="<?php echo esc_attr( $api_url ); ?>">
-          <?php echo esc_html__( 'Start', 'quizess' ); ?>
+        <div class="js-quiz-start" data-api="<?php echo esc_attr( $api_url ); ?>">
+        </div>
+      <?php } ?>
+      <?php
+      if ( ! empty( $about_field ) ) {
+        ?>
+        <button class="quiz__button--btn js-modal-trigger-open" data-modal="<?php echo esc_attr( $modal_id ); ?>">
+          <?php echo esc_html__( 'About', 'quizess' ); ?>
         </button>
       <?php } ?>
     </div>

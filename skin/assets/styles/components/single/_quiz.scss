@@ -1,4 +1,5 @@
 $quiz-colors: (
+  bg-color: $base-primary-blue,
   text-light:$base-white-color,
   text-dark: $base-dark-grey-color,
   btn-light: $base-yellow-color,
@@ -8,6 +9,7 @@ $quiz-colors: (
 .quiz {
   $this: &;
   &__content {
+    background-color: map-get($quiz-colors, 'bg-color');
     position: relative;
     height: 50vh;
     min-height: 800px;
@@ -16,13 +18,15 @@ $quiz-colors: (
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    &--bg {
+    &::after {
+      content: '';
+      background-color: inherit;
       position: absolute;
       top: 0;
-      bottom: 0;
       right: 0;
       left: 0;
-      opacity: 0.95;
+      bottom: 0;
+      opacity: 0.9;
     }
   }
 
