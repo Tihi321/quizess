@@ -41,7 +41,7 @@
 			"isDefault": false
 		} ],
 		[ "@babel/transform-react-jsx", {
-			"pragma": "createElement"
+			"pragma": "React.createElement"
 		} ],
     [
       "@wordpress/babel-plugin-makepot",
