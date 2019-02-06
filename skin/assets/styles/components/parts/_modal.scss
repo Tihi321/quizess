@@ -1,7 +1,9 @@
 $modal: (
   bg-color: $base-primary-blue,
   preview-bg-color: $base-white-color,
-  text-color: $base-white-color,
+  box-shadow: $base-box-shadow,
+  text-color: $base-dark-grey-color,
+  cubic-ease: $cubic-ease,
   close-size: 35px,
   close-size-tablet: 24px,
   close-icon-size: 20px,
@@ -33,6 +35,8 @@ body.admin-bar {
   padding-top: 50px;
   z-index: map-get($zindex, 'modal');
   opacity: 0;
+  animation-fill-mode: both;
+  animation-timing-function: map-get($modal, 'cubic-ease');
   transition: {
     property: left, opacity;
     timing-function: ease-in;
@@ -48,12 +52,6 @@ body.admin-bar {
     left: 0;
     bottom: 0;
     opacity: 0.9;
-  }
-
-  &--active,
-  &.is-active {
-    opacity: 1;
-    left: 0;
   }
 
   &__close-btn-wrap {
@@ -78,9 +76,13 @@ body.admin-bar {
     &::after {
       content: 'X';
       display: block;
-      color: map-get($modal, 'text-color');
       font-weight: bold;
       font-size: map-get($modal, 'close-icon-size');
+    }
+
+    &:hover {
+      background: transparent;
+      color: map-get($modal, 'bg-color');
     }
   }
 
@@ -93,10 +95,88 @@ body.admin-bar {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: map-get($modal, 'preview-bg-color');
+    padding: 50px;
+    border-radius: 20px;
+    opacity: 0.9;
+    color: map-get($modal, 'text-color');
+    animation-fill-mode: both;
+    animation-timing-function: map-get($modal, 'cubic-ease');
+    box-shadow: 0 0 10px 0 map-get($modal, 'box-shadow');
   }
 
   &__content {
     flex: 1;
+  }
+
+  &.is-active {
+    animation-name: reveal;
+    animation-duration: 0.3s;
+
+    .modal__inner {
+      animation-name: scale-in;
+      animation-duration: 0.6s;
+      animation-timing-function: ease-in-out;
+    }
+  }
+
+  &.is-inactive {
+    animation-name: hide;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in-out;
+
+    .modal__inner {
+      animation-name: scale-out;
+      animation-duration: 0.3s;
+      animation-timing-function: ease-in-out;
+    }
+  }
+
+  @keyframes scale-in {
+    0% {
+      transform: scale(0.9);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes scale-out {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0.9);
+    }
+  }
+  @keyframes reveal {
+    0% {
+      left: 150vw;
+      transform: translateZ(0);
+    }
+    1% {
+      left: 0;
+      opacity: 0;
+    }
+    100% {
+      left: 0;
+      opacity: 1;
+      transform: translateZ(0);
+    }
+  }
+  @keyframes hide {
+    0% {
+      left: 0;
+      opacity: 1;
+      transform: translateZ(0);
+    }
+    99% {
+      left: 0;
+      opacity: 0;
+    }
+    100% {
+      left: 150vw;
+      transform: translateZ(0);
+    }
   }
 
 }

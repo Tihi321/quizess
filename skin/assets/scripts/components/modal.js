@@ -5,12 +5,14 @@ export default class Modal {
     modalElement = '.js-modal',
     openTriggerElement = '.js-modal-trigger-open',
     closeTriggerElement = '.js-modal-trigger-close',
-    OPEN_CLASS = 'is-active'
+    OPEN_CLASS = 'is-active',
+    CLOSED_CLASS = 'is-inactive'
   ) {
     this.modalElement = modalElement;
     this.openTriggerElement = openTriggerElement;
     this.closeTriggerElement = closeTriggerElement;
     this.OPEN_CLASS = OPEN_CLASS;
+    this.CLOSED_CLASS = CLOSED_CLASS;
 
     this.$modal = document.querySelector(this.modalElement);
     this.$openTrigger = document.querySelector(this.openTriggerElement);
@@ -30,7 +32,9 @@ export default class Modal {
     if (device.iPhone()) {
       this.scrollPosition = window.pageYOffset;
     }
-    document.querySelector(`#${id}`).classList.add(this.OPEN_CLASS);
+    const {classList} = document.querySelector(`#${id}`);
+    classList.add(this.OPEN_CLASS);
+    classList.remove(this.CLOSED_CLASS);
 
     setTimeout(() => {
       this.$body.classList.add(this.getBodyActiveClass());
@@ -42,7 +46,10 @@ export default class Modal {
       window.scroll(0, this.scrollPosition);
     }
 
-    document.querySelector(`#${id}`).classList.remove(this.OPEN_CLASS);
+    const {classList} = document.querySelector(`#${id}`);
+
+    classList.add(this.CLOSED_CLASS);
+    classList.remove(this.OPEN_CLASS);
     this.$body.classList.remove(this.getBodyActiveClass());
   }
 

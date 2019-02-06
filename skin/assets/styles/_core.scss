@@ -1,6 +1,10 @@
 
 /* remove default wordpress block margin styles in editor */
 
+body {
+  font-family: $base-font-family;
+}
+
 /* stylelint-disable */
 .editor-block-list__layout .editor-block-list__block[data-align=full] {
   margin-left: 0 !important;
