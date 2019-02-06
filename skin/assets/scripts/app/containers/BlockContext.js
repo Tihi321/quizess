@@ -13,32 +13,44 @@ class BlockProvider extends PureComponent {
     this.state = {
       inProgress: false,
       data: {},
+      modal: false,
     };
   }
 
-  dataStore = {
-    handleFetchApi: () => {
-
-      // Check if state data is loaded.
-      if (Object.entries(this.state.data).length === 0 && this.state.data.constructor === Object) {
-        const {api} = this.props;
+  fetchApi = () => {
+    const {api} = this.props;
+    this.setState(() => {
+      return {
+        inProgress: true,
+      };
+    });
+    fetch(api)
+      .then((response) => {
+        return response.json();
+      })
+      .then((myJson) => {
         this.setState(() => {
           return {
-            inProgress: true,
+            inProgress: false,
+            data: myJson,
+            modal: true,
           };
         });
-        fetch(api)
-          .then((response) => {
-            return response.json();
-          })
-          .then((myJson) => {
-            this.setState(() => {
-              return {
-                inProgress: false,
-                data: myJson,
-              };
-            });
-          });
+      });
+  };
+
+  dataStore = {
+    handleStart: () => {
+
+      // Check if state data is loaded & skip fetch if needed.
+      if (Object.entries(this.state.data).length === 0 && this.state.data.constructor === Object) {
+        this.fetchApi();
+      } else {
+        this.setState(() => {
+          return {
+            modal: true,
+          };
+        });
       }
     },
   };

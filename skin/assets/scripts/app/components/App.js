@@ -6,14 +6,14 @@ const AppConsumer = (props) => {
       inProgress,
       data,
       dataStore: {
-        handleFetchApi,
+        handleStart,
       },
     },
   } = props;
 
   return (
     <button
-      onClick={handleFetchApi}
+      onClick={handleStart}
       className="quiz__button--btn">
       Start
     </button>
