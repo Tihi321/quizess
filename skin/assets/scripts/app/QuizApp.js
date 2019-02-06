@@ -1,25 +1,19 @@
+import App from './components/App';
+import BlockProvider from './containers/BlockContext';
+
 const QuizApp = (props) => {
   const {
     api,
   } = props;
 
-  const fetchApi = () => {
-    fetch(api)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(myJson) {
-        console.log(myJson);
-      });
-  };
-
   return (
-    <button
-      onClick={fetchApi}
-      className="quiz__button--btn">
-      Start
-    </button>
+    <BlockProvider
+      api={api}
+    >
+      <App />
+    </BlockProvider>
   );
+
 };
 
 export default QuizApp;
