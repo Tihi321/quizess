@@ -53,12 +53,20 @@ class BlockProvider extends PureComponent {
         });
       }
     },
+    handleClose: () => {
+      this.setState(() => {
+        return {
+          modal: false,
+        };
+      });
+    },
   };
 
   render() {
     const {
       inProgress,
       data,
+      modal,
     } = this.state;
 
     return (
@@ -70,6 +78,7 @@ class BlockProvider extends PureComponent {
           values: {
             inProgress,
             data,
+            modal,
           },
           dataStore: this.dataStore,
         }}>

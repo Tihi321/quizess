@@ -1,9 +1,10 @@
+import {Fragment} from 'react';
 import {BlockConsumer} from '../containers/BlockContext';
+import Modal from './Modal';
 
 const AppConsumer = (props) => {
   const {
     values: {
-      inProgress,
       data,
       dataStore: {
         handleStart,
@@ -12,11 +13,14 @@ const AppConsumer = (props) => {
   } = props;
 
   return (
-    <button
-      onClick={handleStart}
-      className="quiz__button--btn">
-      Start
-    </button>
+    <Fragment>
+      <button
+        onClick={handleStart}
+        className="quiz__button--btn">
+        Start
+      </button>
+      {(Object.entries(data).length > 0) && <Modal />}
+    </Fragment>
   );
 };
 
@@ -25,7 +29,6 @@ const App = () => (
     {(value) => {
       const {
         values: {
-          inProgress,
           data,
         },
         dataStore,
@@ -33,7 +36,6 @@ const App = () => (
       return (
         <AppConsumer
           values={{
-            inProgress,
             data,
             dataStore,
           }}
