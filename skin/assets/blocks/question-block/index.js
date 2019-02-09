@@ -62,7 +62,6 @@ export default registerBlockType(
       },
       showExplanation: {
         type: 'boolean',
-        default: false,
       },
       explanationType: {
         type: 'string',

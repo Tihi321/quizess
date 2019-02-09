@@ -77,9 +77,10 @@ final class Blocks_Helper {
     foreach ( $parsed_blocks as $index => $quiz_item ) {
       switch ( $quiz_item['blockName'] ) {
         case $block_names['options']:
+          $use_timer = $this->general_helper->get_array_value( 'useTimer', $quiz_item['attrs'] );
+
           $output['options'] = array(
-              'useTimer'       => $this->general_helper->get_array_value( 'useTimer', $quiz_item['attrs'] ),
-              'timer'          => $this->general_helper->get_array_value( 'timer', $quiz_item['attrs'] ),
+              'timer' => ( $use_timer ) ? $this->general_helper->get_array_value( 'timer', $quiz_item['attrs'] ) : null,
               'theme'  => ( $this->general_helper->get_array_value( 'theme', $quiz_item['attrs'] ) ) ? json_decode( $this->general_helper->get_array_value( 'theme', $quiz_item['attrs'] ) )->value : 'light',
               'welcomeMessage' => $this->general_helper->get_array_value( 'welcomeMessage', $quiz_item['attrs'] ),
               'successMessage' => $this->general_helper->get_array_value( 'successMessage', $quiz_item['attrs'] ),
@@ -193,12 +194,17 @@ final class Blocks_Helper {
    */
   private function get_question_data( $block_data ) : array {
 
+    $show_explanation  = $this->general_helper->get_array_value( 'showExplanation', $block_data );
+    $explanation       = $this->general_helper->get_array_value( 'explanation', $block_data );
+    $explanation_type  = ( $this->general_helper->get_array_value( 'explanationType', $block_data ) ) ? json_decode( $this->general_helper->get_array_value( 'explanationType', $block_data ) )->value : null;
+    $explanation_media = json_decode( $this->general_helper->get_array_value( 'explanationMedia', $block_data ) );
+
     return array(
         'question'         => $this->general_helper->get_array_value( 'question', $block_data ),
         'answers'          => $this->get_decoded_array_value( 'answers', $block_data ),
-        'showExplanation'  => $this->general_helper->get_array_value( 'showExplanation', $block_data ),
-        'explanationType'  => ( $this->general_helper->get_array_value( 'explanationType', $block_data ) ) ? json_decode( $this->general_helper->get_array_value( 'explanationType', $block_data ) )->value : '',
-        'explanationMedia' => $this->general_helper->get_array_value( 'explanationMedia', $block_data ),
+        'explanationText'  => ( $show_explanation ) ? $explanation : null,
+        'explanationType'  => ( $show_explanation && $explanation_type !== 'none' ) ? $explanation_type : null,
+        'explanationMedia' => ( $show_explanation && $explanation_media->id ) ? $explanation_media : null,
     );
   }
 

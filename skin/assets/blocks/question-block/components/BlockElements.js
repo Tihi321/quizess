@@ -49,6 +49,7 @@ function BlockElementsConsumer(props) {
     <TextElement
       className="body-bottom-element"
       value={question}
+      outputType="text"
       onChange={(question) => handleQuestionChange(question)}
       maxChars={350}
       single={false}
@@ -66,6 +67,7 @@ function BlockElementsConsumer(props) {
       <TextElement
         className="body-bottom-element"
         value={explanation}
+        outputType="text"
         onChange={(explanation) => handleExplanationChange(explanation)}
         maxChars={350}
         single={false}
@@ -159,8 +161,8 @@ function BlockElementsConsumer(props) {
       {(!templateBlock && title) && titleElement}
       {questionElement}
       <AnswersElement />
-      {(showExplanation) && explanationElement}
-      {(showExplanation) && getPreviewElement()}
+      {(typeof showExplanation !== 'undefined' && showExplanation) && explanationElement}
+      {(typeof showExplanation !== 'undefined' && showExplanation && type !== 'none') && getPreviewElement()}
     </Fragment>
   );
 }

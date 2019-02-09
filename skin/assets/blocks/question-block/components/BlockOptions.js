@@ -35,13 +35,15 @@ function BlockOptionsConsumer(props) {
     },
   } = props;
 
+  const showExplanationChecked = (typeof showExplanation !== 'undefined') ? showExplanation : false;
+
   const explanationCheckElement = (
     <Fragment>
       <PanelRow>
         {__('Show Explanation', 'quizess')}
         <FormToggle
-          checked={showExplanation}
-          onChange={() => handleExplanationChecked(!showExplanation)}
+          checked={showExplanationChecked}
+          onChange={() => handleExplanationChecked(!showExplanationChecked)}
         />
       </PanelRow>
     </Fragment>

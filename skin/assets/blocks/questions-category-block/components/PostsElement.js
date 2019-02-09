@@ -34,10 +34,10 @@ function PostsElementConsumer(props) {
 
     const {title} = post;
     const attr = post.data[0].attrs;
-    const question = (attr.question) ? helpers.setContent(attr.question) : false;
+    const question = (attr.question) ? helpers.setContent(attr.question, 'text') : false;
     const answers = (attr.answers) ? JSON.parse(attr.answers) : false;
     const showExplanation = attr.showExplanation || false;
-    const explanation = (attr.explanation) ? helpers.setContent(attr.explanation) : false;
+    const explanation = (attr.explanation) ? helpers.setContent(attr.explanation, 'text') : false;
     const explanationType = (attr.explanationType) ? JSON.parse(attr.explanationType) : false;
     const explanationMedia = (attr.explanationMedia) ? JSON.parse(attr.explanationMedia) : false;
 
