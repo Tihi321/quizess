@@ -60,7 +60,7 @@ function PostsElementConsumer(props) {
 
   return (
     <div
-      className="quiz-elements-wrap"
+      className="quiz-elements__outer"
       style={{
         backgroundColor: backgroundColor || false,
         color: fontColor || false,

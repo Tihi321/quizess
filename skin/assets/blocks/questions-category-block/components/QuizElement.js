@@ -18,6 +18,7 @@ const QuizElement = (props) => {
     return (
       <QuizComponents.AnswerItem
         key={index}
+        number={index + 1}
         correct={answer.correct}
       >
         {answer.text}
@@ -40,7 +41,7 @@ const QuizElement = (props) => {
 
 
   return (
-    <div className="quiz-element-item">
+    <div className="quiz-elements__item">
       <QuizComponents.QuestionHeader
         title={title}
         questionNumber={questionNumber}

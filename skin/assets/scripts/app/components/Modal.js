@@ -33,9 +33,9 @@ const ModalConsumer = (props) => {
       style={modalStyle}
     >
       <div className="modal__inner">
-        <div className="modal__close-btn-wrap">
+        <div className="modal__close-outer">
           <button
-            className="modal__close-btn"
+            className="btn-close"
             onClick={handleClose}
           >
           </button>

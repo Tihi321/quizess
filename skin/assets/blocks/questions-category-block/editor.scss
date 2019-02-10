@@ -1,0 +1,108 @@
+$question-category-block: (
+  primary-bg-color: $base-primary-blue,
+  primary-text-color: $base-white-color,
+);
+
+.wp-block-quizess-questions-category-block {
+  @extend %block-element-default;
+  background-color: map-get($question-category-block, 'primary-bg-color');
+  color: map-get($question-category-block, 'primary-text-color');
+
+  .quiz-elements {
+    &__outer {
+      padding: 10px;
+    }
+    &__item {
+      border: 1px solid;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+    }
+  }
+
+  .question {
+    &__header {
+      @include text-size(small);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px;
+      position: relative;
+    }
+    &__category {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 1.2px;
+    }
+    &__title {
+      @include text-size(small);
+    }
+
+    &__text {
+      text-align: center;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+  }
+
+  .answers-item {
+
+    &__outer {
+      transition: opacity 0.3s ease;
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+
+    &--correct {
+      display: flex;
+      flex-direction: column;
+      &::after {
+        @include text-size(tiny);
+        content: 'Correct';
+        display: block;
+        text-transform: uppercase;
+        text-align: center;
+      }
+    }
+  }
+
+  .explanation {
+    &__title {
+      @extend %question-top-title;
+    }
+    &__header {
+      @extend %explanation-header;
+    }
+    &__text {
+      p {
+        @include text-size(medium);
+      }
+    }
+  }
+
+
+  .preview-media {
+    @extend %preview-media-wrap;
+
+    &__lottie,
+    &__image,
+    &__video {
+      margin: 0;
+    }
+    .media-video-class {
+      display: block;
+    }
+  }
+
+  .block-placeholder {
+    background-color: map-get($question-category-block, 'primary-bg-color');
+    color: map-get($question-category-block, 'primary-text-color');
+  }
+
+  .placeholder-icon {
+    fill: map-get($question-category-block, 'primary-text-color');
+  }
+}

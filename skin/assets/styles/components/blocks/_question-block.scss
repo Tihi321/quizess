@@ -1,0 +1,10 @@
+$question-block-variables: (
+  primary-bg-color: $base-primary-blue,
+  primary-text-color: $base-white-color,
+);
+
+.quizess-question-block {
+  background-color: map-get($question-block-variables, 'primary-bg-color');
+  color: map-get($question-block-variables, 'primary-text-color');
+
+}

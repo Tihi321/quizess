@@ -12,14 +12,14 @@ const QuestionHeaderConsumer = (props) => {
   } = props;
 
   return (
-    <div className="question-header">
-      <div className="question-title">
+    <div className="question__header">
+      <div className="question__title">
         {__('Title', 'quizess')}: {title}
       </div>
-      <div className="question-category">
+      <div className="question__category">
         {__('Category', 'quizess')}: {categoryValue}
       </div>
-      <div className="question-number">
+      <div className="question__number">
         {questionNumber + 1} / {numberOfQuestions}
       </div>
     </div>

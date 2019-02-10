@@ -59,7 +59,6 @@ const BlockOptionsConsumer = (props) => {
 
   const categorySelectElement = (
     <Select
-      className="category-select"
       isDisabled={isDisabled}
       isSearchable
       closeMenuOnSelect={true}
@@ -73,7 +72,6 @@ const BlockOptionsConsumer = (props) => {
 
   const postsElement = (
     <Select
-      className="posts-select"
       isDisabled={isDisabledPosts}
       isSearchable
       isMulti

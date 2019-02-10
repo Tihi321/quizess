@@ -37,17 +37,15 @@ function AnswersElementConsumer(props) {
 
   return (
     <Fragment>
-      <div className="answers-element">
-        <div className="answers-label">
-          <h4 className="answers-label--title">{__('Answers', 'quizess')}</h4>
-          <p className="answers-label--description">{__('Add a possible answer', 'quizess')}</p>
-        </div>
-        <AnswersComponents.AnswersParent>
-          {answerElements}
-        </AnswersComponents.AnswersParent>
-        <div className="add-buttopn-wrap">
-          <button type="button" onClick={handleAddAnswer} className={classnames('add-question-btn', `theme-${themeClass}`)}>{__('Add answer', 'quizess')}</button>
-        </div>
+      <div className="answers-label">
+        <h4 className="answers-label__title">{__('Answers', 'quizess')}</h4>
+        <p className="answers-label__description">{__('Add a possible answer', 'quizess')}</p>
+      </div>
+      <AnswersComponents.AnswersParent>
+        {answerElements}
+      </AnswersComponents.AnswersParent>
+      <div className="add-answer__outer">
+        <button type="button" onClick={handleAddAnswer} className={classnames('btn', `btn--${themeClass}`)}>{__('Add answer', 'quizess')}</button>
       </div>
     </Fragment>
   );

@@ -13,21 +13,21 @@ const AnswerItem = (props) => {
 
   return (
     <li key={id} className="answers-item">
-      <div className="answers-item--wrap">
-        <div className="answers-item--number">{id + 1}</div>
+      <div className="answers-item__outer">
+        <div className="answers-item__number">{id + 1}</div>
         <input
-          className="answers-item--text"
+          className="answers-item__text"
           type="text"
           placeholder={`Answer number #${id + 1}`}
           value={text}
           onChange={handleAnswerOnChange(id)}
         />
-        <div className="radio-wrap">
-          <label htmlFor={`radio-${clientId}-${id}`}>{__('Correct', 'quizess')}</label>
-          <input className="radio-input" onChange={handleCorrectAnswer} type="radio" name="answer" id={`radio-${clientId}-${id}`} value={id} checked={correct}></input>
+        <div className="answers-correct">
+          <label htmlFor={`correct-${clientId}-${id}`}>{__('Correct', 'quizess')}</label>
+          <input className="answers-correct__input" onChange={handleCorrectAnswer} type="radio" name="answer" id={`correct-${clientId}-${id}`} value={id} checked={correct}></input>
         </div>
       </div>
-      <button type="button" onClick={handleRemoveAnswer(id)} className="remove-button button button-secondary">-</button>
+      <button type="button" onClick={handleRemoveAnswer(id)} className="btn-remove button button-secondary">-</button>
     </li>
   );
 };

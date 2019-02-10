@@ -3,7 +3,7 @@ import {RawHTML} from '@wordpress/element';
 const MainQuestion = (props) => {
 
   return (
-    <div className="main-question">
+    <div className="question__text">
       <RawHTML>
         {props.children}
       </RawHTML>

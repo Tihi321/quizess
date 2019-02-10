@@ -1,0 +1,53 @@
+$answer-list-colors: (
+  item-box-shadow: $base-box-shadow,
+);
+
+.answers-list {
+  display: flex;
+  flex-wrap: wrap;
+  .answers-item {
+    cursor: default;
+    list-style: none;
+    font-size: 16px;
+    width: 100%;
+    padding: 10px;
+    margin: 5px 10px;
+
+    &__outer {
+      box-shadow: 1px 1px 3px 0 map-get($answer-list-colors, 'box-shadow');
+      width: 100%;
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    &__text {
+      display: block;
+      flex: 1;
+    }
+    &__number {
+      margin-right: 10px;
+    }
+  }
+  &--columns {
+    .answers-item {
+      width: 40%;
+      flex: 1;
+    }
+  }
+  &--light {
+    .answers-item__outer {
+      background-color: map-deep-get($theme-colors, light, 'bg-color');
+      border: 1px solid map-deep-get($theme-colors, light, 'border-color');
+      color: map-deep-get($theme-colors, light, 'color');
+    }
+  }
+  &--dark {
+    .answers-item__outer {
+      background-color: map-deep-get($theme-colors, dark, 'bg-color');
+      border: 1px solid map-deep-get($theme-colors, dark, 'border-color');
+      color: map-deep-get($theme-colors, dark, 'color');
+    }
+  }
+}

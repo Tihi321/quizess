@@ -16,13 +16,13 @@ const ExplanationPreview = (props) => {
   } = props;
 
   const imageElement = (
-    <figure className="image-preview">
+    <figure className="preview-media__image">
       <img className="media-image-class" src={url} alt={alt} />
     </figure>
   );
 
   const videoElement = (
-    <figure className="video-preview">
+    <figure className="preview-media__video">
       <video className="media-video-class" controls>
         <source src={url} />
         {__('Your browser does not support the video tag.', 'quizess')}
@@ -36,7 +36,7 @@ const ExplanationPreview = (props) => {
       autoplay={true}
       loop={false}
       controls={false}
-      className="lottie-preview"
+      className="preview-media__lottie"
     />
   );
 
@@ -58,7 +58,7 @@ const ExplanationPreview = (props) => {
   };
 
   return (
-    <div className="explanation-preview">
+    <div className="preview-media">
       {previewElement()}
     </div>
   );

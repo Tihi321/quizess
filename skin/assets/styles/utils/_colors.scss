@@ -10,3 +10,16 @@ $base-yellow-color:      #FEB916;
 $base-smear-color:       #795548;
 
 $base-box-shadow: rgba($base-light-blue-color, 0.5);
+
+$theme-colors: (
+  light: (
+    color: $base-smear-color,
+    bg-color: $base-yellow-color,
+    border-color: $base-light-blue-color,
+  ),
+  dark: (
+    color: $base-white-color,
+    bg-color: $base-blue-color,
+    border-color: $base-white-color,
+  ),
+);

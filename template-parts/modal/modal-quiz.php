@@ -10,8 +10,8 @@
 
 <div class="modal js-modal" id="<?php echo esc_attr( $modal_id ); ?>" style="background-color:<?php echo esc_attr( $bg_color ); ?>;background-image:url('<?php echo esc_attr( $bg_image_url ); ?>');">
   <div class="modal__inner">
-    <div class="modal__close-btn-wrap">
-      <button class="modal__close-btn js-modal-trigger-close" data-modal="<?php echo esc_attr( $modal_id ); ?>">
+    <div class="modal__close-outer">
+      <button class="btn-close js-modal-trigger-close" data-modal="<?php echo esc_attr( $modal_id ); ?>">
       </button>
     </div>
     <div class="modal__content">

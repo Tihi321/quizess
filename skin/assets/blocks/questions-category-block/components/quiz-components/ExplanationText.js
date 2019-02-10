@@ -7,9 +7,9 @@ const ExplanationText = (props) => {
   } = props;
 
   return (
-    <div className="explanation-header">
-      <div className="explanation-title">{__('Explanation', 'quizess')}</div>
-      {(children) && <div className="explanation-text">
+    <div className="explanation__header">
+      <div className="explanation__title">{__('Explanation', 'quizess')}</div>
+      {(children) && <div className="explanation__text">
         <RawHTML>
           {children}
         </RawHTML>

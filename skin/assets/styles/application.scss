@@ -21,7 +21,17 @@
 // Config
 @import 'core';
 
+// Componenets
+@import 'components/buttons/buttons';
+@import 'components/parts/answers-list';
+
 // Template parts
 @import 'components/parts/modal';
+
+// Single
 @import 'components/single/quiz';
+
+// Blocks.
+@import 'components/blocks/question-block';
+@import 'components/blocks/questions-category-block';
 

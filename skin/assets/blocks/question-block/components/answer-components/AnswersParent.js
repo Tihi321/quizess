@@ -7,14 +7,18 @@ const AnswersParentConsumer = (props) => {
       theme,
       rows,
       children,
+      templateBlock,
     },
   } = props;
 
-  const rowsValue = (rows) ? JSON.parse(rows).value : 'row';
-  const themeClass = (theme) ? JSON.parse(theme).value : 'light';
+  const rowsValue = (rows && !templateBlock) ? JSON.parse(rows).value : 'row';
+  const themeClass = (theme && !templateBlock) ? JSON.parse(theme).value : 'light';
 
   return (
-    <ul className={classnames(`answers-items-list ${rowsValue}`, `theme-${themeClass}`)}>
+    <ul
+      className={
+        classnames('answers-list', `answers-list--${rowsValue}`, `answers-list--${themeClass}`)}
+    >
       {children}
     </ul>
   );
@@ -28,12 +32,14 @@ const AnswersParent = ({children}) => (
           attributes: {
             theme,
             rows,
+            templateBlock,
           },
         },
       } = value;
       return (
         <AnswersParentConsumer
           values={{
+            templateBlock,
             theme,
             rows,
             children,

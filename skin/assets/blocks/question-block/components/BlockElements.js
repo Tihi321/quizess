@@ -30,7 +30,8 @@ function BlockElementsConsumer(props) {
     },
   } = props;
 
-  const type = (explanationType) ? JSON.parse(explanationType).value : '';
+  const typeValue = (explanationType) ? JSON.parse(explanationType).value : '';
+  const showPreview = typeof showExplanation !== 'undefined' && showExplanation;
 
   let explanationMediaJson = {
     url: '',
@@ -62,10 +63,9 @@ function BlockElementsConsumer(props) {
     />
   );
   const explanationElement = (
-    <div className="explanation-header">
-      <div className="explanation-title">{__('Explanation', 'quizess')}</div>
+    <div className="explanation__header">
+      <div className="explanation__title">{__('Explanation', 'quizess')}</div>
       <TextElement
-        className="body-bottom-element"
         value={explanation}
         outputType="text"
         onChange={(explanation) => handleExplanationChange(explanation)}
@@ -84,7 +84,7 @@ function BlockElementsConsumer(props) {
 
   const imageElement = (
     <MediaElement
-      className="image-preview"
+      className="preview-media__image"
       mediaId={explanationMediaJson.id}
       mediaUrl={explanationMediaJson.url}
       mediaAlt={explanationMediaJson.alt}
@@ -104,7 +104,7 @@ function BlockElementsConsumer(props) {
 
   const videoElement = (
     <VideoElement
-      className="video-preview"
+      className="preview-media__video"
       mediaId={explanationMediaJson.id}
       mediaUrl={explanationMediaJson.url}
       onSelectMedia={handleOnSelectVideo}
@@ -113,7 +113,7 @@ function BlockElementsConsumer(props) {
 
   const lottieElement = (
     <LottieElement
-      className="lottie-preview"
+      className="preview-media__lottie"
       mediaId={explanationMediaJson.id}
       mediaUrl={explanationMediaJson.url}
       onSelectMedia={handleOnSelectLottie}
@@ -123,7 +123,7 @@ function BlockElementsConsumer(props) {
 
   const titleElement = (
     <div
-      className="question-title-block"
+      className="question__title"
     >
       {helpers.setContent(title, 'text')}
     </div>
@@ -131,7 +131,7 @@ function BlockElementsConsumer(props) {
 
   const getPreviewElement = () => {
     let output;
-    switch (type) {
+    switch (typeValue) {
       case 'image':
         output = imageElement;
         break;
@@ -149,7 +149,7 @@ function BlockElementsConsumer(props) {
     }
 
     return (
-      <div className="explanation-preview">
+      <div className="preview-media">
         {output}
       </div>
     );
@@ -161,8 +161,8 @@ function BlockElementsConsumer(props) {
       {(!templateBlock && title) && titleElement}
       {questionElement}
       <AnswersElement />
-      {(typeof showExplanation !== 'undefined' && showExplanation) && explanationElement}
-      {(typeof showExplanation !== 'undefined' && showExplanation && type !== 'none') && getPreviewElement()}
+      {(showPreview) && explanationElement}
+      {(showPreview && (typeValue && typeValue !== 'none')) && getPreviewElement()}
     </Fragment>
   );
 }

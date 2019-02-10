@@ -4,9 +4,6 @@ $modal: (
   box-shadow: $base-box-shadow,
   text-color: $base-dark-grey-color,
   cubic-ease: $cubic-ease,
-  close-size: 35px,
-  close-size-tablet: 24px,
-  close-icon-size: 20px,
 );
 
 body.admin-bar {
@@ -15,7 +12,6 @@ body.admin-bar {
     box-sizing: inherit;
   }
 }
-
 
 .modal {
   background-color: map-get($modal, 'bg-color');
@@ -54,36 +50,10 @@ body.admin-bar {
     opacity: 0.9;
   }
 
-  &__close-btn-wrap {
+  &__close-outer {
     width: 100%;
     text-align: right;
     padding-bottom: 5px;
-  }
-  &__close-btn {
-    @extend %button-reset;
-    background: transparent;
-    color: map-get($modal, 'text-color');
-    cursor: pointer;
-
-    width: map-get($modal, 'close-size');
-    height: map-get($modal, 'close-size');
-
-    @include media(tablet up) {
-      width: map-get($modal, 'close-size-tablet');
-      height: map-get($modal, 'close-size-tablet');
-    }
-
-    &::after {
-      content: 'X';
-      display: block;
-      font-weight: bold;
-      font-size: map-get($modal, 'close-icon-size');
-    }
-
-    &:hover {
-      background: transparent;
-      color: map-get($modal, 'bg-color');
-    }
   }
 
   &__inner {

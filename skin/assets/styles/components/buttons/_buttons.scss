@@ -1,0 +1,56 @@
+$close-button-colors: (
+  bg-color: $base-primary-blue,
+  text-color: $base-dark-grey-color,
+);
+
+$button-variables: (
+  padding: 10px 50px,
+);
+
+$close-button-variables: (
+  close-size: 35px,
+  close-size-tablet: 24px,
+  close-icon-size: 20px,
+);
+
+.btn-close {
+  @extend %button-reset;
+  background: transparent;
+  color: map-get($close-button-colors, 'text-color');
+  cursor: pointer;
+
+  width: map-get($close-button-variables, 'close-size');
+  height: map-get($close-button-variables, 'close-size');
+
+  @include media(tablet up) {
+    width: map-get($close-button-variables, 'close-size-tablet');
+    height: map-get($close-button-variables, 'close-size-tablet');
+  }
+
+  &::after {
+    content: 'X';
+    display: block;
+    font-weight: bold;
+    font-size: map-get($close-button-variables, 'close-icon-size');
+  }
+
+  &:hover {
+    background: transparent;
+    color: map-get($close-button-colors, 'bg-color');
+  }
+}
+
+.btn {
+  @include text-size(large);
+  padding: map-get($button-variables, 'padding');
+  &--light {
+    background-color: map-deep-get($theme-colors, light, 'bg-color');
+    border: 1px solid map-deep-get($theme-colors, light, 'border-color');
+    color: map-deep-get($theme-colors, light, 'color');
+  }
+  &--dark {
+    background-color: map-deep-get($theme-colors, dark, 'bg-color');
+    border: 1px solid map-deep-get($theme-colors, dark, 'border-color');
+    color: map-deep-get($theme-colors, dark, 'color');
+  }
+}

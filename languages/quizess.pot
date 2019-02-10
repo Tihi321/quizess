@@ -5,7 +5,7 @@ msgstr ""
 
 #: skin/assets/blocks/components/style-options/index.js:36
 #: skin/assets/blocks/question-block/components/BlockOptions.js:65
-#: skin/assets/blocks/question-block/components/BlockOptions.js:63
+#: skin/assets/blocks/questions-category-block/components/BlockOptions.js:83
 #: skin/assets/blocks/questions-category-block/components/BlockOptions.js:85
 #: skin/assets/blocks/template-blocks/cpt-quizess-options-block/components/BlockElements.js:47
 msgid "Select"
@@ -85,20 +85,19 @@ msgstr ""
 msgid "Sorry, we could not embed that content."
 msgstr ""
 
-#: skin/assets/blocks/question-block/components/AnswersElement.js:42
+#: skin/assets/blocks/question-block/components/AnswersElement.js:41
 msgid "Answers"
 msgstr ""
 
-#: skin/assets/blocks/question-block/components/AnswersElement.js:43
+#: skin/assets/blocks/question-block/components/AnswersElement.js:42
 msgid "Add a possible answer"
 msgstr ""
 
-#: skin/assets/blocks/question-block/components/AnswersElement.js:49
+#: skin/assets/blocks/question-block/components/AnswersElement.js:48
 msgid "Add answer"
 msgstr ""
 
-#: skin/assets/blocks/question-block/components/BlockElements.js:66
-#: skin/assets/blocks/question-block/components/BlockElements.js:65
+#: skin/assets/blocks/question-block/components/BlockElements.js:67
 #: skin/assets/blocks/questions-category-block/components/quiz-components/ExplanationText.js:11
 msgid "Explanation"
 msgstr ""
@@ -120,25 +119,22 @@ msgid "Choose explanation media type."
 msgstr ""
 
 #: skin/assets/blocks/question-block/components/BlockOptions.js:142
-#: skin/assets/blocks/question-block/components/BlockOptions.js:140
-#: skin/assets/blocks/questions-category-block/components/BlockOptions.js:121
+#: skin/assets/blocks/questions-category-block/components/BlockOptions.js:119
 msgid "Font Settings"
 msgstr ""
 
 #: skin/assets/blocks/question-block/components/BlockOptions.js:148
-#: skin/assets/blocks/question-block/components/BlockOptions.js:146
-#: skin/assets/blocks/questions-category-block/components/BlockOptions.js:127
+#: skin/assets/blocks/questions-category-block/components/BlockOptions.js:125
 msgid "Font Color"
 msgstr ""
 
 #: skin/assets/blocks/question-block/components/BlockOptions.js:153
-#: skin/assets/blocks/question-block/components/BlockOptions.js:151
-#: skin/assets/blocks/questions-category-block/components/BlockOptions.js:132
+#: skin/assets/blocks/questions-category-block/components/BlockOptions.js:130
 msgid "Background Settings"
 msgstr ""
 
 #: skin/assets/blocks/question-block/components/BlockOptions.js:159
-#: skin/assets/blocks/question-block/components/BlockOptions.js:157
+#: skin/assets/blocks/questions-category-block/components/BlockOptions.js:136
 #: skin/assets/blocks/questions-category-block/components/BlockOptions.js:138
 #: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/components/BlockOptions.js:30
 msgid "Background Color"
@@ -169,11 +165,13 @@ msgid "Lottie"
 msgstr ""
 
 #: skin/assets/blocks/question-block/components/BlockOptions.js:94
-#: skin/assets/blocks/question-block/components/BlockOptions.js:92
-#: skin/assets/blocks/question-block/index.js:29
+#: skin/assets/blocks/question-block/index.js:31
 #: skin/assets/blocks/questions-category-block/components/quiz-components/QuestionHeader.js:17
-#: skin/assets/blocks/questions-category-block/index.js:29
+#: skin/assets/blocks/question-block/index.js:29
+#: skin/assets/blocks/questions-category-block/index.js:31
+#: skin/assets/blocks/section-block/index.js:31
 #: skin/assets/blocks/section-block/index.js:29
+#: skin/assets/blocks/questions-category-block/index.js:29
 #: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/index.js:29
 #: skin/assets/blocks/template-blocks/cpt-quizess-options-block/index.js:29
 msgid "Title"
@@ -187,26 +185,32 @@ msgstr ""
 msgid "Correct"
 msgstr ""
 
-#: skin/assets/blocks/question-block/index.js:20
+#: skin/assets/blocks/question-block/index.js:22
 msgid "Question Block"
 msgstr ""
 
-#: skin/assets/blocks/question-block/index.js:21
-#: skin/assets/blocks/questions-category-block/index.js:21
+#: skin/assets/blocks/question-block/index.js:23
+#: skin/assets/blocks/questions-category-block/index.js:23
 msgid "This is question block"
 msgstr ""
 
+#: skin/assets/blocks/question-block/index.js:32
+#: skin/assets/blocks/questions-category-block/index.js:32
+#: skin/assets/blocks/section-block/index.js:32
+#: skin/assets/blocks/section-block/index.js:30
 #: skin/assets/blocks/question-block/index.js:30
 #: skin/assets/blocks/questions-category-block/index.js:30
-#: skin/assets/blocks/section-block/index.js:30
 #: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/index.js:30
 #: skin/assets/blocks/template-blocks/cpt-quizess-options-block/index.js:30
 msgid "Body"
 msgstr ""
 
+#: skin/assets/blocks/question-block/index.js:33
+#: skin/assets/blocks/questions-category-block/index.js:33
+#: skin/assets/blocks/section-block/index.js:33
+#: skin/assets/blocks/section-block/index.js:31
 #: skin/assets/blocks/question-block/index.js:31
 #: skin/assets/blocks/questions-category-block/index.js:31
-#: skin/assets/blocks/section-block/index.js:31
 #: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/index.js:31
 #: skin/assets/blocks/template-blocks/cpt-quizess-options-block/index.js:31
 msgid "Quizess"
@@ -224,32 +228,32 @@ msgstr ""
 msgid "Loading"
 msgstr ""
 
-#: skin/assets/blocks/questions-category-block/components/BlockOptions.js:101
-msgid "Select Category for question posts."
-msgstr ""
-
-#: skin/assets/blocks/questions-category-block/components/BlockOptions.js:106
+#: skin/assets/blocks/questions-category-block/components/BlockOptions.js:104
 msgid "Posts"
 msgstr ""
 
-#: skin/assets/blocks/questions-category-block/components/BlockOptions.js:110
+#: skin/assets/blocks/questions-category-block/components/BlockOptions.js:108
 msgid "Select Question posts from the category."
 msgstr ""
 
-#: skin/assets/blocks/questions-category-block/components/BlockOptions.js:97
+#: skin/assets/blocks/questions-category-block/components/BlockOptions.js:95
 #: skin/assets/blocks/questions-category-block/components/quiz-components/QuestionHeader.js:20
 msgid "Category"
 msgstr ""
 
-#: skin/assets/blocks/questions-category-block/index.js:20
+#: skin/assets/blocks/questions-category-block/components/BlockOptions.js:99
+msgid "Select Category for question posts."
+msgstr ""
+
+#: skin/assets/blocks/questions-category-block/index.js:22
 msgid "Questions Category Block"
 msgstr ""
 
-#: skin/assets/blocks/section-block/index.js:20
+#: skin/assets/blocks/section-block/index.js:22
 msgid "Section Block"
 msgstr ""
 
-#: skin/assets/blocks/section-block/index.js:21
+#: skin/assets/blocks/section-block/index.js:23
 msgid "This is section block"
 msgstr ""
 

@@ -18,6 +18,15 @@
 
 // Config
 @import 'core';
+@import 'editor-core';
+
+// Buttons
+@import 'components/buttons/buttons';
+@import 'components/parts/answers-list';
+
+// Blocks Editor Styles.
+@import '../blocks/editor.scss';
 
 // Blocks.
-@import '../blocks/styles.scss';
+@import 'components/blocks/question-block';
+@import 'components/blocks/questions-category-block';
