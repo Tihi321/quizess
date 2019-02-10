@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import BlockElements from './BlockElements';
 import BlockOptions from './BlockOptions';
 import {BlockConsumer} from '../containers/BlockContext';
@@ -5,19 +6,26 @@ import {BlockConsumer} from '../containers/BlockContext';
 const AppConsumer = (props) => {
   const {
     values: {
+      blockClass,
       className,
       backgroundColor,
       fontColor,
+      templateBlock,
     },
   } = props;
 
+  const blockStyle = (!templateBlock) ? {
+    backgroundColor: backgroundColor || false,
+    color: fontColor || false,
+  } : {};
+
   return (
     <div
-      className={className}
-      style={{
-        backgroundColor: backgroundColor || false,
-        color: fontColor || false,
-      }}>
+      className={classnames(
+        className,
+        blockClass,
+      )}
+      style={blockStyle}>
       <BlockOptions />
       <BlockElements />
     </div>
@@ -31,7 +39,9 @@ const App = () => (
         values: {
           attributes: {
             backgroundColor,
+            blockClass,
             fontColor,
+            templateBlock,
           },
           className,
         },
@@ -39,6 +49,8 @@ const App = () => (
       return (
         <AppConsumer
           values={{
+            templateBlock,
+            blockClass,
             backgroundColor,
             fontColor,
             className,

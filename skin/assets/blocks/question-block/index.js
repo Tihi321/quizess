@@ -11,11 +11,13 @@ import BlockEdit from './containers/BlockEdit';
 import BlockSave from './containers/BlockSave';
 import pluginConfig from '../../config';
 
+const blockName = 'question-block';
+
 /**
  * Register block
  */
 export default registerBlockType(
-  `${pluginConfig.pluginName}/question-block`,
+  `${pluginConfig.pluginName}/${blockName}`,
   {
     title: __('Question Block', 'quizess'),
     description: __('This is question block', 'quizess'),
@@ -38,6 +40,10 @@ export default registerBlockType(
       templateBlock: {
         type: 'boolean',
         default: false,
+      },
+      blockClass: {
+        type: 'string',
+        default: `${pluginConfig.pluginName}-${blockName}`,
       },
       rows: {
         type: 'string',

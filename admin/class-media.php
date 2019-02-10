@@ -31,8 +31,8 @@ class Media {
    * @since 1.0.0
    */
   public function enable_mime_types( $mimes ) {
-    $mimes['svg'] = 'image/svg+xml';
-    $mimes['zip'] = 'application/zip';
+    $mimes['svg']  = 'image/svg+xml';
+    $mimes['zip']  = 'application/zip';
     $mimes['json'] = 'application/json';
     return $mimes;
   }

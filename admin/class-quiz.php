@@ -32,7 +32,7 @@ class Quiz {
         array(
             'quizess/section-block',
             array(
-                'classWrap' => 'post-body-insert-wrap',
+                'wrapClass' => 'quizess-quiz-section',
                 'allowedBlocks' => $allowed_blocks,
             ),
         ),

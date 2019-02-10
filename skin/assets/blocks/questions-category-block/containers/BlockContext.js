@@ -52,6 +52,7 @@ class BlockProvider extends PureComponent {
       attributes,
       allPosts,
       categories,
+      className,
     } = this.props;
 
     return (
@@ -64,6 +65,7 @@ class BlockProvider extends PureComponent {
             attributes,
             allPosts,
             categories,
+            className,
           },
           attributesStore: this.attributesStore,
         }}>

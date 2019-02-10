@@ -56,9 +56,7 @@ const edit = (props) => {
       categories={categories}
       className={className}
     >
-      <App
-        className={className}
-      />
+      <App />
     </BlockProvider>
   );
 };

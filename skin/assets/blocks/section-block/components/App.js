@@ -4,14 +4,18 @@ import BlockElements from './BlockElements';
 const App = (props) => {
   const {
     className,
-    attributes: {classWrap},
+    attributes: {
+      blockClass,
+      wrapClass,
+    },
   } = props;
 
   return (
     <div
       className={classnames(
-        (classWrap),
         className,
+        blockClass,
+        wrapClass || false,
       )}>
       <BlockElements
         attributes={props.attributes}

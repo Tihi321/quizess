@@ -11,11 +11,13 @@ import BlockEdit from './containers/BlockEdit';
 import BlockSave from './containers/BlockSave';
 import pluginConfig from '../../config';
 
+const blockName = 'section-block';
+
 /**
  * Register block
  */
 export default registerBlockType(
-  `${pluginConfig.pluginName}/section-block`,
+  `${pluginConfig.pluginName}/${blockName}`,
   {
     title: __('Section Block', 'quizess'),
     description: __('This is section block', 'quizess'),
@@ -35,9 +37,12 @@ export default registerBlockType(
       inserter: false,
     },
     attributes: {
-      classWrap: {
+      blockClass: {
         type: 'string',
-        default: '',
+        default: `${pluginConfig.pluginName}-${blockName}`,
+      },
+      wrapClass: {
+        type: 'string',
       },
       allowedBlocks: {
         type: 'array',
