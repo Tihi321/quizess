@@ -58,17 +58,21 @@ class Admin extends Config {
    */
   public function enqueue_block_styles() {
 
-    // If in development add development not minified react libraries.
-    if ( QIZ_ENV === 'develop' ) {
-      wp_deregister_script( 'react' );
-      wp_deregister_script( 'react-dom' );
+    // If script debug is not enabled import react development.
+    if ( defined( 'SCRIPT_DEBUG' ) && ! SCRIPT_DEBUG ) {
 
-      wp_register_script( 'react', General_Helper::get_base_url() . 'skin/public/scripts/vendors/react.development.js', array(), '16.6.3', false );
+        // If in development add development not minified react libraries.
+      if ( QIZ_ENV === 'develop' ) {
+        wp_deregister_script( 'react' );
+        wp_deregister_script( 'react-dom' );
 
-      wp_register_script( 'react-dom', General_Helper::get_base_url() . 'skin/public/scripts/vendors/react-dom.development.js', array(), '16.6.3', false );
+        wp_register_script( 'react', General_Helper::get_base_url() . 'skin/public/scripts/vendors/react.development.js', array(), '16.6.3', false );
 
-      wp_enqueue_script( 'react' );
-      wp_enqueue_script( 'react-dom' );
+        wp_register_script( 'react-dom', General_Helper::get_base_url() . 'skin/public/scripts/vendors/react-dom.development.js', array(), '16.6.3', false );
+
+        wp_enqueue_script( 'react' );
+        wp_enqueue_script( 'react-dom' );
+      }
     }
 
     $main_block_style = $this->general_helper->get_manifest_assets_data( 'blocksQuizess.css' );

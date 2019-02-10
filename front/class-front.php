@@ -58,6 +58,7 @@ class Front extends Config {
    */
   public function enqueue_frontend_scripts() {
 
+    // If in development add development not minified react libraries.
     if ( QIZ_ENV === 'develop' ) {
       wp_deregister_script( 'react' );
       wp_deregister_script( 'react-dom' );
