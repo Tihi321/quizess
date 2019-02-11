@@ -6,6 +6,9 @@ const ModalConsumer = (props) => {
     values: {
       modal,
       data: {
+        options: {
+          theme,
+        },
         bgOptions: {
           bgColor,
           bgUrl,
@@ -24,7 +27,15 @@ const ModalConsumer = (props) => {
 
   const modalClasses = classnames(
     'modal',
-    (modal) ? 'is-active' : 'is-inactive ',
+    (modal) ? 'is-active' : 'is-inactive',
+  );
+  const modalInnerClasses = classnames(
+    'modal__inner',
+    `modal__inner--${theme}`,
+  );
+  const closeBtnClasses = classnames(
+    'btn-close',
+    `btn-close--${theme}`,
   );
 
   return (
@@ -32,10 +43,10 @@ const ModalConsumer = (props) => {
       className={modalClasses}
       style={modalStyle}
     >
-      <div className="modal__inner">
+      <div className={modalInnerClasses}>
         <div className="modal__close-outer">
           <button
-            className="btn-close"
+            className={closeBtnClasses}
             onClick={handleClose}
           >
           </button>

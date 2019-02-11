@@ -1,4 +1,6 @@
 import device from '../helpers/devices';
+import general from '../helpers/general';
+import selectors from '../helpers/selectors';
 
 export default class Modal {
   constructor(
@@ -14,10 +16,12 @@ export default class Modal {
     this.OPEN_CLASS = OPEN_CLASS;
     this.CLOSED_CLASS = CLOSED_CLASS;
 
+    this.isIphone = device.iPhone();
+
     this.$modal = document.querySelector(this.modalElement);
     this.$openTrigger = document.querySelector(this.openTriggerElement);
     this.$closeTrigger = document.querySelector(this.closeTriggerElement);
-    this.$body = document.querySelector('html, body');
+    this.$body = selectors.getBody();
   }
 
   set scrollPosition(scrollPosition) {
@@ -29,7 +33,7 @@ export default class Modal {
   }
 
   open(id) {
-    if (device.iPhone()) {
+    if (this.isIphone) {
       this.scrollPosition = window.pageYOffset;
     }
     const {classList} = document.querySelector(`#${id}`);
@@ -37,12 +41,12 @@ export default class Modal {
     classList.remove(this.CLOSED_CLASS);
 
     setTimeout(() => {
-      this.$body.classList.add(this.getBodyActiveClass());
+      this.$body.classList.add(general.getBodyActiveClass(this.isIphone));
     }, 300);
   }
 
   close(id) {
-    if (device.iPhone()) {
+    if (this.isIphone) {
       window.scroll(0, this.scrollPosition);
     }
 
@@ -50,23 +54,10 @@ export default class Modal {
 
     classList.add(this.CLOSED_CLASS);
     classList.remove(this.OPEN_CLASS);
-    this.$body.classList.remove(this.getBodyActiveClass());
+    this.$body.classList.remove(general.getBodyActiveClass(this.isIphone));
   }
 
   getId(element) {
     return element.dataset.modal;
-  }
-
-  getBodyActiveClass() {
-    let activeClass = '';
-
-    // For Iphone and iPad check and add different style
-    if (device.iPhone()) {
-      activeClass = 'u-no-scroll-ios';
-    } else {
-      activeClass = 'u-no-scroll';
-    }
-
-    return activeClass;
   }
 }
