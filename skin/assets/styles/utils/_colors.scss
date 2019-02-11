@@ -6,20 +6,29 @@ $base-white-color:       #FFFFFF;
 $base-light-blue-color:  #607D8B;
 $base-blue-color:        #2746A1;
 $base-primary-blue:      #0073A8;
+$base-froly-color:       #F3635A;
+$base-punch-color:       #DC453A;
 $base-yellow-color:      #FEB916;
+$base-sushi-color:       #8BC34A;
+$base-persian-color:     #009688;
 $base-smear-color:       #795548;
 
 $base-box-shadow: rgba($base-light-blue-color, 0.5);
+$base-modal-bg: rgba($base-dark-grey-color, 0.2);
 
 $theme-colors: (
   light: (
-    color: $base-smear-color,
+    color: $base-dark-grey-color,
     bg-color: $base-yellow-color,
     border-color: $base-light-blue-color,
+    btn-primary-color: $base-sushi-color,
+    btn-secondary-color: $base-persian-color,
   ),
   dark: (
     color: $base-white-color,
     bg-color: $base-blue-color,
     border-color: $base-white-color,
+    btn-primary-color: $base-froly-color,
+    btn-secondary-color: $base-punch-color,
   ),
 );

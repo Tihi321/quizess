@@ -1,9 +1,5 @@
 $quiz-colors: (
   bg-color: $base-primary-blue,
-  text-light:$base-white-color,
-  text-dark: $base-dark-grey-color,
-  btn-light: $base-yellow-color,
-  btn-dark: $base-blue-color,
 );
 
 .quiz {
@@ -19,14 +15,25 @@ $quiz-colors: (
     background-size: cover;
     background-repeat: no-repeat;
     &::after {
-      content: '';
-      background-color: inherit;
-      position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
-      bottom: 0;
-      opacity: 0.9;
+      @extend %blur-bg;
+    }
+
+    &--light {
+      #{$this}__welcome--message {
+        color: map-deep-get($theme-colors, light, 'color');
+      }
+      #{$this}__button--btn {
+        background-color: map-deep-get($theme-colors, light, 'btn-primary-color');
+      }
+    }
+
+    &--dark {
+      #{$this}__welcome--message {
+        color: map-deep-get($theme-colors, dark, 'color');
+      }
+      #{$this}__button--btn {
+        background-color: map-deep-get($theme-colors, dark, 'btn-primary-color');
+      }
     }
   }
 
@@ -47,23 +54,6 @@ $quiz-colors: (
     &--btn {
       @extend %button-reset;
       padding: 20px 50px;
-    }
-  }
-
-  &__content.light {
-    #{$this}__welcome--message {
-      color: map-get($quiz-colors, 'text-light');
-    }
-    #{$this}__button--btn {
-      background-color: map-get($quiz-colors, 'btn-light');
-    }
-  }
-  &__content.dark {
-    #{$this}__welcome--message {
-      color: map-get($quiz-colors, 'text-dark');
-    }
-    #{$this}__button--btn {
-      background-color: map-get($quiz-colors, 'btn-dark');
     }
   }
 

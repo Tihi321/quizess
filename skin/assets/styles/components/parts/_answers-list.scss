@@ -16,6 +16,7 @@ $answer-list-colors: (
     &__outer {
       box-shadow: 1px 1px 3px 0 map-get($answer-list-colors, 'box-shadow');
       width: 100%;
+      height: 100%;
       padding: 10px;
       display: flex;
       flex-wrap: wrap;
@@ -33,7 +34,7 @@ $answer-list-colors: (
   &--columns {
     .answers-item {
       width: 40%;
-      flex: 1;
+      flex-grow: 1;
     }
   }
   &--light {

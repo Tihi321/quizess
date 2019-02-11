@@ -48,6 +48,7 @@ $question-category-block: (
   }
 
   .answers-item {
+    position: relative;
 
     &__outer {
       transition: opacity 0.3s ease;
@@ -64,7 +65,10 @@ $question-category-block: (
         content: 'Correct';
         display: block;
         text-transform: uppercase;
-        text-align: center;
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
       }
     }
   }

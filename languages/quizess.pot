@@ -6,7 +6,6 @@ msgstr ""
 #: skin/assets/blocks/components/style-options/index.js:36
 #: skin/assets/blocks/question-block/components/BlockOptions.js:65
 #: skin/assets/blocks/questions-category-block/components/BlockOptions.js:83
-#: skin/assets/blocks/questions-category-block/components/BlockOptions.js:85
 #: skin/assets/blocks/template-blocks/cpt-quizess-options-block/components/BlockElements.js:47
 msgid "Select"
 msgstr ""
@@ -135,7 +134,6 @@ msgstr ""
 
 #: skin/assets/blocks/question-block/components/BlockOptions.js:159
 #: skin/assets/blocks/questions-category-block/components/BlockOptions.js:136
-#: skin/assets/blocks/questions-category-block/components/BlockOptions.js:138
 #: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/components/BlockOptions.js:30
 msgid "Background Color"
 msgstr ""
@@ -167,11 +165,8 @@ msgstr ""
 #: skin/assets/blocks/question-block/components/BlockOptions.js:94
 #: skin/assets/blocks/question-block/index.js:31
 #: skin/assets/blocks/questions-category-block/components/quiz-components/QuestionHeader.js:17
-#: skin/assets/blocks/question-block/index.js:29
 #: skin/assets/blocks/questions-category-block/index.js:31
 #: skin/assets/blocks/section-block/index.js:31
-#: skin/assets/blocks/section-block/index.js:29
-#: skin/assets/blocks/questions-category-block/index.js:29
 #: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/index.js:29
 #: skin/assets/blocks/template-blocks/cpt-quizess-options-block/index.js:29
 msgid "Title"
@@ -197,9 +192,6 @@ msgstr ""
 #: skin/assets/blocks/question-block/index.js:32
 #: skin/assets/blocks/questions-category-block/index.js:32
 #: skin/assets/blocks/section-block/index.js:32
-#: skin/assets/blocks/section-block/index.js:30
-#: skin/assets/blocks/question-block/index.js:30
-#: skin/assets/blocks/questions-category-block/index.js:30
 #: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/index.js:30
 #: skin/assets/blocks/template-blocks/cpt-quizess-options-block/index.js:30
 msgid "Body"
@@ -208,9 +200,6 @@ msgstr ""
 #: skin/assets/blocks/question-block/index.js:33
 #: skin/assets/blocks/questions-category-block/index.js:33
 #: skin/assets/blocks/section-block/index.js:33
-#: skin/assets/blocks/section-block/index.js:31
-#: skin/assets/blocks/question-block/index.js:31
-#: skin/assets/blocks/questions-category-block/index.js:31
 #: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/index.js:31
 #: skin/assets/blocks/template-blocks/cpt-quizess-options-block/index.js:31
 msgid "Quizess"

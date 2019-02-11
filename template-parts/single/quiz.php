@@ -27,7 +27,7 @@ $base_path       = Helpers\General_Helper::get_base_path();
 <!-- Single Content Section -->
 <section class="quiz" id="<?php echo esc_attr( $post->ID ); ?>">
 
-  <div class="quiz__content <?php echo esc_attr( $theme ); ?>" style="background-color:<?php echo esc_attr( $bg_color ); ?>;background-image:url('<?php echo esc_attr( $bg_image_url ); ?>');">
+  <div class="quiz__content quiz__content--<?php echo esc_attr( $theme ); ?>" style="background-color:<?php echo esc_attr( $bg_color ); ?>;background-image:url('<?php echo esc_attr( $bg_image_url ); ?>');">
     <div class="quiz__welcome--outer">
       <h2 class="quiz__welcome--message">
         <?php
