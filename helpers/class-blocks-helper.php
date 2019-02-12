@@ -200,6 +200,7 @@ final class Blocks_Helper {
     $explanation_media = json_decode( $this->general_helper->get_array_value( 'explanationMedia', $block_data ) );
 
     return array(
+        'title'         => $this->general_helper->get_array_value( 'title', $block_data ),
         'question'         => $this->general_helper->get_array_value( 'question', $block_data ),
         'answers'          => $this->get_decoded_array_value( 'answers', $block_data ),
         'explanationText'  => ( $show_explanation ) ? $explanation : null,
