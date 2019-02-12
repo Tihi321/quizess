@@ -96,7 +96,11 @@ class Helper {
 
     const newLinesArray = string.split(splitChar);
 
-    return newLinesArray.length > maxRows;
+    if (newLinesArray[newLinesArray.length - 1] === '') {
+      newLinesArray.pop();
+    }
+
+    return newLinesArray.length >= maxRows;
   }
 
   youTubeGetID(url) {
