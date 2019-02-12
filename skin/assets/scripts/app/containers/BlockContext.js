@@ -20,6 +20,7 @@ class BlockProvider extends PureComponent {
       inProgress: false,
       data: {},
       modal: false,
+      current: 0,
     };
   }
 
@@ -53,6 +54,7 @@ class BlockProvider extends PureComponent {
         return response.json();
       })
       .then((myJson) => {
+        const data = general.parseQuizData(myJson);
         this.setState(() => {
           return {
             inProgress: false,

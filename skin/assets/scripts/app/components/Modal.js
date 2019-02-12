@@ -52,9 +52,6 @@ const ModalConsumer = (props) => {
           </button>
         </div>
         <div className="modal__content">
-          <h1>
-            koma
-          </h1>
           <div>
 
           </div>
