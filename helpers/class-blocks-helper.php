@@ -183,7 +183,7 @@ final class Blocks_Helper {
       ];
     }
 
-    return array( $question_data );
+    return $question_data;
   }
 
   /**

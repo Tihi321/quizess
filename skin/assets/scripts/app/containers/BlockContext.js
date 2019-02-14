@@ -58,7 +58,7 @@ class BlockProvider extends PureComponent {
         this.setState(() => {
           return {
             inProgress: false,
-            data: myJson,
+            data,
             modal: true,
           };
         });

@@ -16,50 +16,75 @@ const general = {
   },
   parseQuizData(data) {
     const questions = [];
-    const {blocks} = data;
+    const {
+      blocks,
+      bgOptions,
+      options,
+    } = data;
     blocks.forEach((el) => {
+      let output;
       switch (el.name) {
         case 'category':
-          questions.push(...this.getCategoryArrayData(el));
+          output = this.getCategoryArrayData(el);
+          if (output.length > 0) {
+            questions.push(...output);
+          }
           break;
         case 'question':
-          questions.push(...this.getQuestionData(el));
+          output = this.getQuestionData(el);
+          if (output) {
+            questions.push(output);
+          }
           break;
         default:
       }
     });
 
-    return data;
+    return {
+      options,
+      bgOptions,
+      questions,
+    };
   },
   getCategoryArrayData(elements) {
-    const {questions} = elements;
-    console.log(questions);
-    return [3, 4, 5];
+    const {
+      questions,
+      style,
+      category,
+    } = elements;
+
+    const output = questions.map((value, id) => {
+      const {data} = value;
+      data.title = category;
+      return this.getQuestionData({data, style});
+    });
+
+    const filteredOutput = output.filter((val) => val !== false);
+
+    return filteredOutput;
   },
   getQuestionData(element) {
 
-    console.log(element);
+    const questionText = element.data.question;
+    const answersArray = element.data.answers;
+
+    if (!questionText || !answersArray) {
+      return false;
+    }
+
     const question = {
       name: 'question',
       theme: element.style.theme,
       direction: element.style.direction,
       title: element.data.title,
-      question: element.data.question,
-      answers: element.data.answers,
+      question: questionText,
+      answers: answersArray,
+      explanationText: element.data.explanationText,
+      explanationType: element.data.explanationType,
+      explanationMedia: element.data.explanationMedia,
     };
-    const explanation = (element.data.explanationText) ? {
-      name: 'explanation',
-      theme: element.style.theme,
-      text: element.data.explanationText,
-      mediaType: element.data.explanationType,
-      media: element.data.explanationMedia,
-    } : false;
 
-    if (!explanation) {
-      return [question];
-    }
-
-    return [question, explanation];
+    return question;
   },
 };
 
