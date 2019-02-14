@@ -52,10 +52,18 @@ class BlockProvider extends PureComponent {
       });
     },
     handleAddAnswer: () => {
+      let correct = false;
+      const newAnswersArr = this.answersArr.filter((value, id) => value.text !== '');
+      newAnswersArr.forEach((answer) => {
+        if (answer.correct) {
+          correct = true;
+        }
+      });
       this.props.dispatchAtributes({
         action: 'answers',
-        payload: this.answersArr.concat([{
+        payload: newAnswersArr.concat([{
           text: '',
+          correct: (correct === false) || false,
         }]),
       });
     },

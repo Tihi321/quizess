@@ -198,11 +198,15 @@ final class Blocks_Helper {
     $explanation       = $this->general_helper->get_array_value( 'explanation', $block_data );
     $explanation_type  = ( $this->general_helper->get_array_value( 'explanationType', $block_data ) ) ? json_decode( $this->general_helper->get_array_value( 'explanationType', $block_data ) )->value : null;
     $explanation_media = json_decode( $this->general_helper->get_array_value( 'explanationMedia', $block_data ) );
+    $title             = $this->general_helper->get_array_value( 'title', $block_data );
+    $question          = $this->general_helper->get_array_value( 'question', $block_data );
+    $answers_array     = $this->get_decoded_array_value( 'answers', $block_data );
+    $filtered_array    = array_filter( $answers_array, array( $this, 'filter_empty_answers' ) );
 
     return array(
-        'title'         => $this->general_helper->get_array_value( 'title', $block_data ),
-        'question'         => $this->general_helper->get_array_value( 'question', $block_data ),
-        'answers'          => $this->get_decoded_array_value( 'answers', $block_data ),
+        'title'            => ( $title ) ? $title : null,
+        'question'         => ( $question ) ? $question : null,
+        'answers'          => ( ! empty( $filtered_array ) ) ? $filtered_array : null,
         'explanationText'  => ( $show_explanation ) ? $explanation : null,
         'explanationType'  => ( $show_explanation && $explanation_type !== 'none' ) ? $explanation_type : null,
         'explanationMedia' => ( $show_explanation && $explanation_media->id ) ? $explanation_media : null,
@@ -228,7 +232,7 @@ final class Blocks_Helper {
    *
    * @param string      $key     Post object content.
    * @param string|null $content     Post object content.
-   * @return array         JSON with Parsed blocks atributes data.
+   * @return array      JSON with Parsed blocks atributes data.
    *
    * @since 1.0.0
    */
@@ -238,6 +242,20 @@ final class Blocks_Helper {
 
     return $output;
   }
+
+  /**
+   * Check if answer text value is not empty and return it.
+   *
+   * @param array $array Questions array to filter.
+   * @return bool return true if answer is valid.
+   *
+   * @since 1.0.0
+   */
+  private function filter_empty_answers( $array ) {
+
+    return ( $array['text'] !== '' );
+  }
+
 
 
   /**
