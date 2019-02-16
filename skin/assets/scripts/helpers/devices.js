@@ -1,5 +1,6 @@
-const device = {
-  iPhone() {
+class Devices {
+
+  iPhone = () => {
     let checkIphone = false;
 
     if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/iPad/i))) {
@@ -7,7 +8,11 @@ const device = {
     }
 
     return checkIphone;
-  },
-};
+  }
 
-export default device;
+}
+
+const devices = new Devices();
+Object.freeze(devices);
+
+export default devices;

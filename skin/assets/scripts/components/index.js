@@ -1,8 +1,8 @@
-import general from '../helpers/general';
+import generalHelper from '../helpers/general-helper';
 import App from '../app';
 import Modal from './modal';
 
-general.domReady(function() {
+generalHelper.domReady(function() {
   const modal = new Modal();
   const app = new App();
 

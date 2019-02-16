@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
-import device from '../../helpers/devices';
-import general from '../../helpers/general';
+import devices from '../../helpers/devices';
+import generalHelper from '../../helpers/general-helper';
+import quizHelper from '../../helpers/quiz-helper';
 import selectors from '../../helpers/selectors';
 
 // Set Up The Initial Context
@@ -14,9 +15,12 @@ class BlockProvider extends PureComponent {
     super(props);
 
     this.$body = selectors.getBody();
-    this.isIphone = device.iPhone();
+    this.isIphone = devices.iPhone();
+
+    const {theme} = props;
 
     this.state = {
+      theme,
       inProgress: false,
       data: {},
       modal: false,
@@ -29,7 +33,7 @@ class BlockProvider extends PureComponent {
       this.scrollPosition = window.pageYOffset;
     }
     setTimeout(() => {
-      this.$body.classList.add(general.getBodyActiveClass(this.isIphone));
+      this.$body.classList.add(generalHelper.getBodyActiveClass(this.isIphone));
     }, 300);
   }
 
@@ -38,7 +42,7 @@ class BlockProvider extends PureComponent {
       this.scrollPosition = window.pageYOffset;
     }
     setTimeout(() => {
-      this.$body.classList.remove(general.getBodyActiveClass(this.isIphone));
+      this.$body.classList.remove(generalHelper.getBodyActiveClass(this.isIphone));
     }, 300);
   }
 
@@ -54,7 +58,7 @@ class BlockProvider extends PureComponent {
         return response.json();
       })
       .then((myJson) => {
-        const data = general.parseQuizData(myJson);
+        const data = quizHelper.parseQuizData(myJson);
         this.setState(() => {
           return {
             inProgress: false,
@@ -96,6 +100,7 @@ class BlockProvider extends PureComponent {
       inProgress,
       data,
       modal,
+      theme,
     } = this.state;
 
     return (
@@ -108,6 +113,7 @@ class BlockProvider extends PureComponent {
             inProgress,
             data,
             modal,
+            theme,
           },
           dataStore: this.dataStore,
         }}>

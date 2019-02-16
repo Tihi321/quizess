@@ -14,4 +14,3 @@ const selectors = new Selectors();
 Object.freeze(selectors);
 
 export default selectors;
-

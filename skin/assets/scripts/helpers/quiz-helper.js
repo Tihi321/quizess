@@ -1,20 +1,6 @@
-const general = {
-  domReady(callback) {
-    return document.readyState === 'interactive' || document.readyState === 'complete' ? callback() : document.addEventListener('DOMContentLoaded', callback);
-  },
-  getBodyActiveClass(isIphone = false) {
-    let activeClass = '';
+class QuizHelper {
 
-    // For Iphone and iPad check and add different style
-    if (isIphone) {
-      activeClass = 'u-no-scroll-ios';
-    } else {
-      activeClass = 'u-no-scroll';
-    }
-
-    return activeClass;
-  },
-  parseQuizData(data) {
+  parseQuizData = (data) => {
     const questions = [];
     const {
       blocks,
@@ -45,8 +31,9 @@ const general = {
       bgOptions,
       questions,
     };
-  },
-  getCategoryArrayData(elements) {
+  }
+
+  getCategoryArrayData = (elements) => {
     const {
       questions,
       style,
@@ -62,8 +49,9 @@ const general = {
     const filteredOutput = output.filter((val) => val !== false);
 
     return filteredOutput;
-  },
-  getQuestionData(element) {
+  }
+
+  getQuestionData = (element) => {
 
     const questionText = element.data.question;
     const answersArray = element.data.answers;
@@ -85,7 +73,11 @@ const general = {
     };
 
     return question;
-  },
-};
+  }
 
-export default general;
+}
+
+const quizHelper = new QuizHelper();
+Object.freeze(quizHelper);
+
+export default quizHelper;
