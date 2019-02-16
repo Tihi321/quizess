@@ -2,7 +2,7 @@ import {Fragment} from '@wordpress/element';
 import {__} from '@wordpress/i18n';
 import classnames from 'classnames';
 import {BlockConsumer} from '../containers/BlockContext';
-import AnswersComponents from './AnswersComponents';
+import {AnswersParent, AnswerItem} from './AnswersComponents';
 
 function AnswersElementConsumer(props) {
   const {
@@ -17,11 +17,11 @@ function AnswersElementConsumer(props) {
     },
   } = props;
 
-  const themeClass = (theme) ? JSON.parse(theme).value : 'light';
+  const themeClass = theme ? JSON.parse(theme).value : 'light';
 
   const answerElements = answers.map((answer, id) => {
     return (
-      <AnswersComponents.AnswerItem
+      <AnswerItem
         key={id}
         clientId={clientId}
         id={id}
@@ -34,18 +34,22 @@ function AnswersElementConsumer(props) {
     );
   });
 
-
   return (
     <Fragment>
       <div className="answers-label">
         <h4 className="answers-label__title">{__('Answers', 'quizess')}</h4>
-        <p className="answers-label__description">{__('Add a possible answer', 'quizess')}</p>
+        <p className="answers-label__description">
+          {__('Add a possible answer', 'quizess')}
+        </p>
       </div>
-      <AnswersComponents.AnswersParent>
-        {answerElements}
-      </AnswersComponents.AnswersParent>
+      <AnswersParent>{answerElements}</AnswersParent>
       <div className="add-answer__outer">
-        <button type="button" onClick={handleAddAnswer} className={classnames('btn', `btn--${themeClass}`)}>{__('Add answer', 'quizess')}</button>
+        <button
+          type="button"
+          onClick={handleAddAnswer}
+          className={classnames('btn', `btn--${themeClass}`)}>
+          {__('Add answer', 'quizess')}
+        </button>
       </div>
     </Fragment>
   );
@@ -58,9 +62,7 @@ const AnswersElement = () => (
         values: {
           clientId,
           answers,
-          attributes: {
-            theme,
-          },
+          attributes: {theme},
         },
         attributesStore: {
           handleAnswerOnChange,
