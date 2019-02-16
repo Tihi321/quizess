@@ -43,13 +43,13 @@ $base_path       = Helpers\General_Helper::get_base_path();
       <?php
       if ( ! empty( $api_url ) ) {
         ?>
-        <div class="js-quiz-start" data-api="<?php echo esc_attr( $api_url ); ?>">
+        <div class="js-quiz-start" data-api="<?php echo esc_attr( $api_url ); ?>" data-theme="<?php echo esc_attr( $theme ); ?>">
         </div>
       <?php } ?>
       <?php
       if ( ! empty( $about_field ) ) {
         ?>
-        <button class="quiz__button--btn js-modal-trigger-open" data-modal="<?php echo esc_attr( $modal_id ); ?>">
+        <button class="btn btn--<?php echo esc_attr( $theme ); ?> js-modal-trigger-open" data-modal="<?php echo esc_attr( $modal_id ); ?>">
           <?php echo esc_html__( 'About', 'quizess' ); ?>
         </button>
       <?php } ?>

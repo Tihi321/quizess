@@ -56,14 +56,27 @@ body.admin-bar {
   }
 
   &__close-outer {
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 100%;
-    text-align: right;
-    padding-bottom: 5px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    &--light {
+      background: map-deep-get($theme-colors, light, 'primary-color');
+    }
+    &--dark {
+      background: map-deep-get($theme-colors, dark, 'primary-color');
+    }
   }
 
   &__inner {
     z-index: map-get($zindex, 'modal');
     -webkit-overflow-scrolling: touch;
+    overflow: hidden;
+    position: relative;
     height: 90%;
     width: 100%;
     max-width: 1200px;

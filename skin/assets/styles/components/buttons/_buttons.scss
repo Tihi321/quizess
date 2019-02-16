@@ -1,5 +1,5 @@
 $button-variables: (
-  padding: 10px 50px,
+  padding: 20px 50px,
 );
 
 $close-button-variables: (
@@ -7,13 +7,17 @@ $close-button-variables: (
   close-size-tablet: 24px,
   close-icon-size: 20px,
 );
+$button-colors: (
+  color: $base-white-color,
+  box-shadow: $dark-box-shadow,
+);
 
 .btn-close {
   @extend %button-reset;
-  $this: &;
   background: transparent;
   cursor: pointer;
-  opacity: 0.6;
+  opacity: 1;
+  color: map-get($button-colors, 'color');
   transition: opacity 0.3s ease;
 
   width: map-get($close-button-variables, 'close-size');
@@ -25,20 +29,7 @@ $close-button-variables: (
   }
   &:hover {
     background: transparent;
-  }
-
-  &--light {
-    color: map-deep-get($theme-colors, light, 'color');
-    &:hover {
-      opacity: 1;
-    }
-  }
-
-  &--dark {
-    color: map-deep-get($theme-colors, dark, 'color');
-    &:hover {
-      opacity: 1;
-    }
+    opacity: 0.8;
   }
 
   &::after {
@@ -51,16 +42,25 @@ $close-button-variables: (
 }
 
 .btn {
+  @extend %button-reset;
+
   @include text-size(large);
+  color: map-get($button-colors, 'color');
   padding: map-get($button-variables, 'padding');
+  box-shadow: 1px 2px 0 0 map-get($button-colors, 'box-shadow');
+  &:hover {
+    box-shadow: 1px 1px 0 0 map-get($button-colors, 'box-shadow');
+  }
   &--light {
-    background-color: map-deep-get($theme-colors, light, 'bg-color');
-    border: 1px solid map-deep-get($theme-colors, light, 'border-color');
-    color: map-deep-get($theme-colors, light, 'color');
+    background-color: map-deep-get($theme-colors, light, 'primary-color');
+    &:hover {
+      background-color: map-deep-get($theme-colors, light, 'primary-color');
+    }
   }
   &--dark {
-    background-color: map-deep-get($theme-colors, dark, 'bg-color');
-    border: 1px solid map-deep-get($theme-colors, dark, 'border-color');
-    color: map-deep-get($theme-colors, dark, 'color');
+    background-color: map-deep-get($theme-colors, dark, 'primary-color');
+    &:hover {
+      background-color: map-deep-get($theme-colors, dark, 'primary-color');
+    }
   }
 }

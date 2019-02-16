@@ -1,6 +1,7 @@
 import {Fragment} from 'react';
 import {BlockConsumer} from '../containers/BlockContext';
 import Modal from './Modal';
+import {Button} from './QuizComponents';
 
 const AppConsumer = (props) => {
   const {
@@ -14,11 +15,11 @@ const AppConsumer = (props) => {
 
   return (
     <Fragment>
-      <button
+      <Button
         onClick={handleStart}
-        className="quiz__button--btn">
+      >
         Start
-      </button>
+      </Button>
       {(Object.entries(data).length > 0) && <Modal />}
     </Fragment>
   );

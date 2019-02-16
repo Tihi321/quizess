@@ -22,17 +22,11 @@ $quiz-colors: (
       #{$this}__welcome--message {
         color: map-deep-get($theme-colors, light, 'color');
       }
-      #{$this}__button--btn {
-        background-color: map-deep-get($theme-colors, light, 'btn-primary-color');
-      }
     }
 
     &--dark {
       #{$this}__welcome--message {
         color: map-deep-get($theme-colors, dark, 'color');
-      }
-      #{$this}__button--btn {
-        background-color: map-deep-get($theme-colors, dark, 'btn-primary-color');
       }
     }
   }
@@ -50,10 +44,6 @@ $quiz-colors: (
       @extend %centered-content;
       flex: 1;
       z-index: map-get($zindex, 'quiz-outer');
-    }
-    &--btn {
-      @extend %button-reset;
-      padding: 20px 50px;
     }
   }
 

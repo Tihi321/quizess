@@ -14,6 +14,7 @@ $base-persian-color:     #009688;
 $base-smear-color:       #795548;
 
 $base-box-shadow: rgba($base-light-blue-color, 0.5);
+$dark-box-shadow: rgba($base-dark-grey-color, 0.5);
 $base-modal-bg: rgba($base-dark-grey-color, 0.2);
 
 $theme-colors: (
@@ -21,14 +22,14 @@ $theme-colors: (
     color: $base-dark-grey-color,
     bg-color: $base-yellow-color,
     border-color: $base-light-blue-color,
-    btn-primary-color: $base-sushi-color,
-    btn-secondary-color: $base-persian-color,
+    primary-color: $base-sushi-color,
+    secondary-color: $base-persian-color,
   ),
   dark: (
     color: $base-white-color,
     bg-color: $base-blue-color,
     border-color: $base-white-color,
-    btn-primary-color: $base-froly-color,
-    btn-secondary-color: $base-punch-color,
+    primary-color: $base-froly-color,
+    secondary-color: $base-punch-color,
   ),
 );
