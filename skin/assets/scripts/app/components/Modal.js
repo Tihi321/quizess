@@ -1,22 +1,14 @@
 import classnames from 'classnames';
 import {BlockConsumer} from '../containers/BlockContext';
+import TopBar from './modal/TopBar';
 
 const ModalConsumer = (props) => {
   const {
     values: {
+      theme,
+      bgColor,
+      bgUrl,
       modal,
-      data: {
-        options: {
-          theme,
-        },
-        bgOptions: {
-          bgColor,
-          bgUrl,
-        },
-      },
-      dataStore: {
-        handleClose,
-      },
     },
   } = props;
 
@@ -33,10 +25,6 @@ const ModalConsumer = (props) => {
     'modal__inner',
     `modal__inner--${theme}`,
   );
-  const closeBtnClasses = classnames(
-    'btn-close',
-    `btn-close--${theme}`,
-  );
 
   return (
     <div
@@ -44,17 +32,9 @@ const ModalConsumer = (props) => {
       style={modalStyle}
     >
       <div className={modalInnerClasses}>
-        <div className="modal__close-outer">
-          <button
-            className={closeBtnClasses}
-            onClick={handleClose}
-          >
-          </button>
-        </div>
+        <TopBar />
         <div className="modal__content">
-          <div>
 
-          </div>
         </div>
       </div>
     </div>
@@ -67,16 +47,24 @@ const Modal = () => (
       const {
         values: {
           modal,
-          data,
+          data: {
+            options: {
+              theme,
+            },
+            bgOptions: {
+              bgColor,
+              bgUrl,
+            },
+          },
         },
-        dataStore,
       } = value;
       return (
         <ModalConsumer
           values={{
-            data,
+            theme,
+            bgColor,
+            bgUrl,
             modal,
-            dataStore,
           }}
         />
       );

@@ -1,0 +1,32 @@
+$button-variables: (
+  padding: 20px 50px,
+);
+
+$button-colors: (
+  color: $base-white-color,
+  box-shadow: $dark-box-shadow,
+);
+
+.btn {
+  @extend %button-reset;
+
+  @include text-size(large);
+  color: map-get($button-colors, 'color');
+  padding: map-get($button-variables, 'padding');
+  box-shadow: 1px 2px 0 0 map-get($button-colors, 'box-shadow');
+  &:hover {
+    box-shadow: 1px 1px 0 0 map-get($button-colors, 'box-shadow');
+  }
+  &--light {
+    background-color: map-deep-get($theme-colors, light, 'primary-color');
+    &:hover {
+      background-color: map-deep-get($theme-colors, light, 'primary-color');
+    }
+  }
+  &--dark {
+    background-color: map-deep-get($theme-colors, dark, 'primary-color');
+    &:hover {
+      background-color: map-deep-get($theme-colors, dark, 'primary-color');
+    }
+  }
+}

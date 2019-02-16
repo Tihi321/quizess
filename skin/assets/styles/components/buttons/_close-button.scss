@@ -1,0 +1,38 @@
+$close-button-variables: (
+  close-size: 35px,
+  close-size-tablet: 24px,
+  close-icon-size: 20px,
+);
+$close-button-colors: (
+  color: $base-white-color,
+);
+
+.btn-close {
+  @extend %button-reset;
+  background: transparent;
+  cursor: pointer;
+  opacity: 1;
+  color: map-get($close-button-colors, 'color');
+  transition: opacity 0.3s ease;
+
+  width: map-get($close-button-variables, 'close-size');
+  height: map-get($close-button-variables, 'close-size');
+
+  @include media(tablet up) {
+    width: map-get($close-button-variables, 'close-size-tablet');
+    height: map-get($close-button-variables, 'close-size-tablet');
+  }
+  &:hover {
+    background: transparent;
+    opacity: 0.8;
+  }
+
+  &::after {
+    content: 'X';
+    display: block;
+    font-weight: bold;
+    font-size: map-get($close-button-variables, 'close-icon-size');
+  }
+
+}
+

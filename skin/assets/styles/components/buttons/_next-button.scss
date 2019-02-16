@@ -1,0 +1,49 @@
+$button-variables: (
+  padding: 15px 20px,
+);
+
+$button-colors: (
+  color: $base-white-color,
+  box-shadow: $dark-box-shadow,
+);
+
+.next-btn {
+  $this: &;
+  display: flex;
+  min-width: 250px;
+  font-weight: bold;
+  cursor: pointer;
+
+  @include text-size(default);
+  color: map-get($button-colors, 'color');
+
+  box-shadow: 1px 2px 0 0 map-get($button-colors, 'box-shadow');
+  &:hover {
+    box-shadow: 1px 1px 0 0 map-get($button-colors, 'box-shadow');
+  }
+  &--light {
+    #{$this}__content {
+      background-color: map-deep-get($theme-colors, light, 'primary-color');
+    }
+    #{$this}__graphic {
+      background-color: map-deep-get($theme-colors, light, 'secondary-color');
+    }
+  }
+  &--dark {
+    #{$this}__content {
+      background-color: map-deep-get($theme-colors, dark, 'primary-color');
+    }
+    #{$this}__graphic {
+      background-color: map-deep-get($theme-colors, dark, 'secondary-color');
+    }
+  }
+
+  &__content {
+    padding: map-get($button-variables, 'padding');
+    flex: 1;
+  }
+
+  &__graphic {
+    padding: map-get($button-variables, 'padding');
+  }
+}

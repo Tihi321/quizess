@@ -84,7 +84,7 @@ msgstr ""
 msgid "Sorry, we could not embed that content."
 msgstr ""
 
-#: skin/assets/blocks/question-block/components/AnswersElement.js:41
+#: skin/assets/blocks/question-block/components/AnswersElement.js:40
 msgid "Answers"
 msgstr ""
 
@@ -92,7 +92,7 @@ msgstr ""
 msgid "Add a possible answer"
 msgstr ""
 
-#: skin/assets/blocks/question-block/components/AnswersElement.js:48
+#: skin/assets/blocks/question-block/components/AnswersElement.js:51
 msgid "Add answer"
 msgstr ""
 
