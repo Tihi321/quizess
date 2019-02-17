@@ -1,3 +1,5 @@
+@import './components//answer-input/style';
+
 .wp-block-quizess-question-block {
   @extend %block-element-default;
   padding: 10px;
@@ -14,28 +16,13 @@
     }
   }
 
-  .answers-item {
-    margin: 20px 0;
-    list-style: none;
-    display: flex;
-    align-items: center;
-
-    .answers-correct {
-      text-align: center;
-      width: 100%;
-      &__input {
-        margin: 4px 4px 0 5px;
-      }
-    }
-  }
-
   .add-answer__outer {
     text-align: center;
     margin-top: 20px;
   }
 
   .btn-remove {
-    margin-left: 10px;
+    margin: 0 10px;
   }
 
   .question__title,

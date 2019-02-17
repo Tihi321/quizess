@@ -1,0 +1,40 @@
+$answer-colors: (
+  item-box-shadow: $base-box-shadow,
+);
+
+.answer {
+  cursor: default;
+  list-style: none;
+  font-size: 16px;
+  width: 100%;
+  padding: 10px;
+  margin: 5px 10px;
+  box-shadow: 1px 1px 3px 0 map-get($answer-colors, 'box-shadow');
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  &__text {
+    display: block;
+    flex: 1;
+  }
+  &__number {
+    margin-right: 10px;
+  }
+  &--light {
+    &--normal,
+    &--correct {
+      background-color: map-deep-get($theme-colors, light, 'bg-color');
+      border: 1px solid map-deep-get($theme-colors, light, 'border-color');
+      color: map-deep-get($theme-colors, light, 'color');
+    }
+  }
+  &--dark {
+    &--normal,
+    &--correct {
+      background-color: map-deep-get($theme-colors, dark, 'bg-color');
+      border: 1px solid map-deep-get($theme-colors, dark, 'border-color');
+      color: map-deep-get($theme-colors, dark, 'color');
+    }
+  }
+}

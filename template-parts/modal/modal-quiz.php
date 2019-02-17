@@ -10,7 +10,7 @@
 
 <div class="modal js-modal" id="<?php echo esc_attr( $modal_id ); ?>" style="background-color:<?php echo esc_attr( $bg_color ); ?>;background-image:url('<?php echo esc_attr( $bg_image_url ); ?>');">
   <div class="modal__inner modal__inner--<?php echo esc_attr( $theme ); ?>">
-    <div class="modal__close-outer modal__close-outer--<?php echo esc_attr( $theme ); ?>">
+    <div class="modal__top-bar modal__top-bar--<?php echo esc_attr( $theme ); ?>">
       <button class="btn-close js-modal-trigger-close" data-modal="<?php echo esc_attr( $modal_id ); ?>">
       </button>
     </div>

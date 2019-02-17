@@ -22,11 +22,13 @@
 
 // Buttons
 @import 'components/buttons/buttons';
-@import 'components/parts/answers-list';
+@import '../app/components/quiz/button/style';
+@import '../app/components/quiz/next-button/style';
+@import '../app/components/answers/answer/style';
+@import '../app/components/answers/answers-parent/style';
 
 // Blocks Editor Styles.
 @import '../blocks/editor.scss';
 
 // Blocks.
 @import 'components/blocks/question-block';
-@import 'components/blocks/questions-category-block';

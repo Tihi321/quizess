@@ -1,0 +1,17 @@
+.answers-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  &--row {
+    .answers-item {
+      width: 100%;
+    }
+  }
+
+  &--columns {
+    .answers-item {
+      width: 40%;
+      flex-grow: 1;
+    }
+  }
+}

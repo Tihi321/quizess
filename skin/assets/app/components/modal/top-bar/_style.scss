@@ -1,0 +1,18 @@
+.modal {
+  &__top-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    &--light {
+      background: map-deep-get($theme-colors, light, 'primary-color');
+    }
+    &--dark {
+      background: map-deep-get($theme-colors, dark, 'primary-color');
+    }
+  }
+}

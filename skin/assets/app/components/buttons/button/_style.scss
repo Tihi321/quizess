@@ -4,7 +4,6 @@ $button-variables: (
 
 $button-colors: (
   color: $base-white-color,
-  box-shadow: $dark-box-shadow,
 );
 
 .btn {
@@ -13,20 +12,17 @@ $button-colors: (
   @include text-size(large);
   color: map-get($button-colors, 'color');
   padding: map-get($button-variables, 'padding');
-  box-shadow: 1px 2px 0 0 map-get($button-colors, 'box-shadow');
-  &:hover {
-    box-shadow: 1px 1px 0 0 map-get($button-colors, 'box-shadow');
-  }
+  transition: background-color 150ms ease-in-out;
   &--light {
     background-color: map-deep-get($theme-colors, light, 'primary-color');
     &:hover {
-      background-color: map-deep-get($theme-colors, light, 'primary-color');
+      background-color: map-deep-get($theme-colors, light, 'secondary-color');
     }
   }
   &--dark {
     background-color: map-deep-get($theme-colors, dark, 'primary-color');
     &:hover {
-      background-color: map-deep-get($theme-colors, dark, 'primary-color');
+      background-color: map-deep-get($theme-colors, dark, 'secondary-color');
     }
   }
 }
