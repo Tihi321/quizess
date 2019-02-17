@@ -10,6 +10,7 @@ const ModalConsumer = (props) => {
       bgUrl,
       modal,
       handleClose,
+      children,
     },
   } = props;
 
@@ -38,14 +39,14 @@ const ModalConsumer = (props) => {
           closeCallback={handleClose}
         />
         <div className="modal__content">
-
+          {children}
         </div>
       </div>
     </div>
   );
 };
 
-const Modal = () => (
+const Modal = ({children}) => (
   <AppConsumer>
     {(value) => {
       const {
@@ -73,6 +74,7 @@ const Modal = () => (
             bgUrl,
             modal,
             handleClose,
+            children,
           }}
         />
       );
