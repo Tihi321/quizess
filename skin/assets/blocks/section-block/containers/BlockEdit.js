@@ -1,5 +1,5 @@
 import {Component} from '@wordpress/element';
-import App from '../components/App';
+import App from '../sections/App';
 
 class BlockEdit extends Component {
 

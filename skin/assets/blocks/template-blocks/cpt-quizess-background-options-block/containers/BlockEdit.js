@@ -1,4 +1,4 @@
-import App from '../components/App';
+import App from '../sections/App';
 
 const BlockEdit = (props) => {
   const {

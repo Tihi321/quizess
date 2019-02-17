@@ -5,12 +5,12 @@ import quizHelper from '../../helpers/quiz-helper';
 import selectors from '../../helpers/selectors';
 
 // Set Up The Initial Context
-const BlockContext = React.createContext();
+const AppContext = React.createContext();
 
 // Create an exportable consumer that can be injected into components
-export const BlockConsumer = BlockContext.Consumer;
+export const AppConsumer = AppContext.Consumer;
 
-class BlockProvider extends PureComponent {
+class AppProvider extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -24,6 +24,9 @@ class BlockProvider extends PureComponent {
       inProgress: false,
       data: {},
       modal: false,
+      selectedAnswer: 0,
+      correctAnswers: 0,
+      questionStats: [],
       current: 0,
     };
   }
@@ -101,28 +104,32 @@ class BlockProvider extends PureComponent {
       data,
       modal,
       theme,
+      correctAnswers,
+      questionStats,
     } = this.state;
 
     return (
 
       // value prop is where we define what values
       // that are accessible to consumer components
-      <BlockContext.Provider
+      <AppContext.Provider
         value={{
           values: {
             inProgress,
             data,
             modal,
             theme,
+            correctAnswers,
+            questionStats,
           },
           dataStore: this.dataStore,
         }}>
         {this.props.children}
-      </BlockContext.Provider>
+      </AppContext.Provider>
     );
   }
 }
 
-export default BlockProvider;
+export default AppProvider;
 
 

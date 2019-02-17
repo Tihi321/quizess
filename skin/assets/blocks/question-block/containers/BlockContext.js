@@ -28,7 +28,7 @@ class BlockProvider extends PureComponent {
         payload: newAnswer,
       });
     },
-    handleAnswerOnChange: (pid) => (e) => {
+    handleAnswerOnChange: (pid, newText) => {
       const newAnswer = this.answersArr.map((value, id) => {
         if (pid !== id) {
           return value;
@@ -36,7 +36,7 @@ class BlockProvider extends PureComponent {
 
         return {
           ...value,
-          text: e.target.value,
+          text: newText,
         };
       });
 

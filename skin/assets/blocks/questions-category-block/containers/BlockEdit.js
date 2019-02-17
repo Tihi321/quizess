@@ -1,5 +1,5 @@
 import {withSelect} from '@wordpress/data';
-import App from '../components/App';
+import App from '../sections';
 import BlockProvider from './BlockContext';
 
 const edit = (props) => {
