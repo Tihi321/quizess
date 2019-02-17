@@ -69,6 +69,7 @@ class Front extends Config {
     }
 
     wp_enqueue_script( 'wp-element' );
+    wp_enqueue_script( 'wp-components' );
     wp_enqueue_script( 'wp-i18n' );
     wp_enqueue_script( 'react' );
     wp_enqueue_script( 'react-dom' );
