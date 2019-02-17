@@ -1,12 +1,13 @@
 import {Fragment} from 'react';
-import {BlockConsumer} from '../containers/BlockContext';
+import {AppConsumer} from '../containers/AppContext';
 import Modal from './Modal';
-import {Button} from './QuizComponents';
+import {Button} from '../components';
 
-const AppConsumer = (props) => {
+const MainConsumer = (props) => {
   const {
     values: {
       data,
+      theme,
       dataStore: {
         handleStart,
       },
@@ -16,6 +17,7 @@ const AppConsumer = (props) => {
   return (
     <Fragment>
       <Button
+        theme={theme}
         onClick={handleStart}
       >
         Start
@@ -26,24 +28,26 @@ const AppConsumer = (props) => {
 };
 
 const App = () => (
-  <BlockConsumer>
+  <AppConsumer>
     {(value) => {
       const {
         values: {
           data,
+          theme,
         },
         dataStore,
       } = value;
       return (
-        <AppConsumer
+        <MainConsumer
           values={{
             data,
             dataStore,
+            theme,
           }}
         />
       );
     }}
-  </BlockConsumer>
+  </AppConsumer>
 );
 
 export default App;

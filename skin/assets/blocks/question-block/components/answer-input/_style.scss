@@ -1,0 +1,47 @@
+$answer-input-colors: (
+  input-bg-color: $base-white-color,
+);
+
+.answers-input {
+  margin: 20px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+
+  &__outer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10px;
+
+    &--light {
+      background-color: map-deep-get($theme-colors, light, 'bg-color');
+      border: 1px solid map-deep-get($theme-colors, light, 'border-color');
+      color: map-deep-get($theme-colors, light, 'color');
+    }
+    &--dark {
+      background-color: map-deep-get($theme-colors, dark, 'bg-color');
+      border: 1px solid map-deep-get($theme-colors, dark, 'border-color');
+      color: map-deep-get($theme-colors, dark, 'color');
+    }
+  }
+
+  &__number {
+    margin-right: 10px;
+  }
+
+  &__text {
+    background-color: map-get($answer-input-colors, 'input-bg-color');
+    width: 60%;
+    flex-grow: 1;
+  }
+
+  .answers-correct {
+    text-align: center;
+    width: 100%;
+    &__input {
+      margin: 4px 4px 0 5px;
+    }
+  }
+}

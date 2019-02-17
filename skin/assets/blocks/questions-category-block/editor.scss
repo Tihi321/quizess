@@ -47,32 +47,6 @@ $question-category-block: (
     }
   }
 
-  .answers-item {
-    position: relative;
-
-    &__outer {
-      transition: opacity 0.3s ease;
-      &:hover {
-        opacity: 0.9;
-      }
-    }
-
-    &--correct {
-      display: flex;
-      flex-direction: column;
-      &::after {
-        @include text-size(tiny);
-        content: 'Correct';
-        display: block;
-        text-transform: uppercase;
-        position: absolute;
-        bottom: -5px;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-    }
-  }
-
   .explanation {
     &__title {
       @extend %question-top-title;

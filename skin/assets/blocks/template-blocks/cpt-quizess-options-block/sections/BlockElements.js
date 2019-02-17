@@ -65,8 +65,8 @@ function BlockElements(props) {
             value={welcomeMessage}
             onChange={(message) => handleWelcomeMessageChange(message)}
             maxChars={100}
-            maxRows={1}
-            warning={false}
+            maxRows={4}
+            warning={true}
             single={true}
             init={{
               selection_toolbar:false,
@@ -139,7 +139,9 @@ function BlockElements(props) {
             className="qz-input-mce-class"
             value={aboutField}
             onChange={(about) => handleAboutChange(about)}
-            warning={false}
+            maxChars={1000}
+            maxRows={10}
+            warning={true}
             tagName="p"
           />
         <div className="qz-help-mce-class">

@@ -1,6 +1,6 @@
 import classnames from 'classnames';
-import {BlockConsumer} from '../containers/BlockContext';
-import TopBar from './modal/TopBar';
+import {AppConsumer} from '../containers/AppContext';
+import {TopBar} from '../components';
 
 const ModalConsumer = (props) => {
   const {
@@ -9,6 +9,7 @@ const ModalConsumer = (props) => {
       bgColor,
       bgUrl,
       modal,
+      handleClose,
     },
   } = props;
 
@@ -32,7 +33,10 @@ const ModalConsumer = (props) => {
       style={modalStyle}
     >
       <div className={modalInnerClasses}>
-        <TopBar />
+        <TopBar
+          theme={theme}
+          closeCallback={handleClose}
+        />
         <div className="modal__content">
 
         </div>
@@ -42,7 +46,7 @@ const ModalConsumer = (props) => {
 };
 
 const Modal = () => (
-  <BlockConsumer>
+  <AppConsumer>
     {(value) => {
       const {
         values: {
@@ -57,6 +61,9 @@ const Modal = () => (
             },
           },
         },
+        dataStore: {
+          handleClose,
+        },
       } = value;
       return (
         <ModalConsumer
@@ -65,11 +72,12 @@ const Modal = () => (
             bgColor,
             bgUrl,
             modal,
+            handleClose,
           }}
         />
       );
     }}
-  </BlockConsumer>
+  </AppConsumer>
 );
 
 export default Modal;

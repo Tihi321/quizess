@@ -1,6 +1,6 @@
-import devices from '../helpers/devices';
-import generalHelper from '../helpers/general-helper';
-import selectors from '../helpers/selectors';
+import devices from '../../helpers/devices';
+import generalHelper from '../../helpers/general-helper';
+import selectors from '../../helpers/selectors';
 
 export default class Modal {
   constructor(
