@@ -1,4 +1,5 @@
 import {Fragment} from 'react';
+import {__} from '@wordpress/i18n';
 import {AppConsumer} from '../containers/AppContext';
 import Modal from './Modal';
 import {Button} from '../components';
@@ -20,7 +21,7 @@ const MainConsumer = (props) => {
         theme={theme}
         onClick={handleStart}
       >
-        Start
+        {__('Start', 'quizess')}
       </Button>
       {(Object.entries(data).length > 0) && <Modal />}
     </Fragment>

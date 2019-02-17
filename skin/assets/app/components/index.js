@@ -4,6 +4,10 @@ import TopBar from './modal/top-bar';
 import Button from './buttons/button';
 import NextButton from './buttons/next-button';
 import Timer from './quiz/timer';
+import QuestionHeader from './question/header';
+import MainQuestion from './question/text';
+import ExplanationText from './explanation/text';
+import ExplanationPreview from './explanation/preview';
 
 export {Answer};
 export {AnswersParent};
@@ -11,3 +15,7 @@ export {TopBar};
 export {Button};
 export {NextButton};
 export {Timer};
+export {QuestionHeader};
+export {MainQuestion};
+export {ExplanationText};
+export {ExplanationPreview};

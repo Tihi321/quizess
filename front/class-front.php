@@ -68,6 +68,8 @@ class Front extends Config {
       wp_register_script( 'react-dom', General_Helper::get_base_url() . 'skin/public/scripts/vendors/react-dom.development.js', array(), '16.6.3', false );
     }
 
+    wp_enqueue_script( 'wp-element' );
+    wp_enqueue_script( 'wp-i18n' );
     wp_enqueue_script( 'react' );
     wp_enqueue_script( 'react-dom' );
 

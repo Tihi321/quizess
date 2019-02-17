@@ -1,8 +1,11 @@
-import {AnswersParent, Answer} from '../../../app/components';
-import QuestionHeader from './quiz/QuestionHeader';
-import MainQuestion from './/quiz/MainQuestion';
-import ExplanationText from './quiz/ExplanationText';
-import ExplanationPreview from './quiz/ExplanationPreview';
+import {
+  AnswersParent,
+  Answer,
+  MainQuestion,
+  ExplanationText,
+  ExplanationPreview,
+} from '../../../app/components';
+import QuestionHeader from './question-header';
 
 export {QuestionHeader};
 export {MainQuestion};

@@ -23,9 +23,11 @@ const QuizElementConsumer = (props) => {
       explanationType,
       explanationMedia,
       numberOfQuestions,
+      category,
     },
   } = props;
 
+  const categoryValue = JSON.parse(category).label;
   const themeValue = (theme) ? JSON.parse(theme).value : 'light';
 
   const answersElements = answers.map((answer, index) => {
@@ -54,6 +56,7 @@ const QuizElementConsumer = (props) => {
     <div className="quiz-elements__item">
       <QuestionHeader
         title={title}
+        category={categoryValue}
         questionNumber={questionNumber}
         numberOfQuestions={numberOfQuestions}
       />
@@ -82,6 +85,7 @@ const QuizElement = ({
           attributes: {
             theme,
             rows,
+            category,
           },
         },
       } = value;
@@ -99,6 +103,7 @@ const QuizElement = ({
             explanationType,
             explanationMedia,
             numberOfQuestions,
+            category,
           }}
         />
       );

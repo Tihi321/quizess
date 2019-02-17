@@ -1,3 +1,5 @@
+@import './components//question-header/style';
+
 $question-category-block: (
   primary-bg-color: $base-primary-blue,
   primary-text-color: $base-white-color,
@@ -19,34 +21,6 @@ $question-category-block: (
     }
   }
 
-  .question {
-    &__header {
-      @include text-size(small);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 5px;
-      position: relative;
-    }
-    &__category {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      text-transform: uppercase;
-      font-weight: bold;
-      letter-spacing: 1.2px;
-    }
-    &__title {
-      @include text-size(small);
-    }
-
-    &__text {
-      text-align: center;
-      margin-bottom: 20px;
-      overflow: hidden;
-    }
-  }
-
   .explanation {
     &__title {
       @extend %question-top-title;
@@ -54,16 +28,10 @@ $question-category-block: (
     &__header {
       @extend %explanation-header;
     }
-    &__text {
-      p {
-        @include text-size(medium);
-      }
-    }
   }
 
 
   .preview-media {
-    @extend %preview-media-wrap;
 
     &__lottie,
     &__image,
