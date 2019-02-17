@@ -33,13 +33,16 @@
 @import '../app/components/explanation/preview/style';
 @import '../app/components/explanation/text/style';
 @import '../app/components/question/text/style';
+@import '../app/components/question/timer/style';
 
 // Template parts
 @import 'components/parts/modal';
+@import 'components/parts/question-header';
+
+// Sections
+@import 'components/sections/question';
 
 // Single
 @import 'components/single/quiz';
 
-// Blocks.
-@import 'components/blocks/question-block';
 

@@ -24,10 +24,14 @@ class AppProvider extends PureComponent {
       inProgress: false,
       data: {},
       modal: false,
-      selectedAnswer: 0,
-      correctAnswers: 0,
       questionStats: [],
-      current: 0,
+      questionsTotal: 0,
+      currentQuestion: 0,
+      selectedAnswer: {
+        id: 0,
+        correct: false,
+      },
+      correctAnswers: 0,
     };
   }
 
@@ -62,8 +66,10 @@ class AppProvider extends PureComponent {
       })
       .then((myJson) => {
         const data = quizHelper.parseQuizData(myJson);
+        const {questions} = data;
         this.setState(() => {
           return {
+            questionsTotal: questions.length,
             inProgress: false,
             data,
             modal: true,
@@ -96,6 +102,9 @@ class AppProvider extends PureComponent {
         };
       });
     },
+    handleOnStop: () => {
+      console.log('stooped');
+    },
   };
 
   render() {
@@ -106,6 +115,8 @@ class AppProvider extends PureComponent {
       theme,
       correctAnswers,
       questionStats,
+      currentQuestion,
+      questionsTotal,
     } = this.state;
 
     return (
@@ -121,6 +132,8 @@ class AppProvider extends PureComponent {
             theme,
             correctAnswers,
             questionStats,
+            currentQuestion,
+            questionsTotal,
           },
           dataStore: this.dataStore,
         }}>

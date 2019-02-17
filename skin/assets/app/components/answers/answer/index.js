@@ -3,6 +3,7 @@ import {Fragment} from 'react';
 
 const Answer = (props) => {
   const {
+    correct,
     number = 0,
     children,
     theme,
@@ -52,7 +53,7 @@ const Answer = (props) => {
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
-      onClick();
+      onClick(number, correct);
     }
   };
 
@@ -62,7 +63,9 @@ const Answer = (props) => {
       onKeyPress={handleKeyPress}
       tabIndex={number}
       role="button"
-      onClick={onClick}
+      onClick={() => {
+        onClick(number, correct);
+      }}
     >
       {answerElements}
     </div>
