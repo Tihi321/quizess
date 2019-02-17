@@ -1,0 +1,22 @@
+.question {
+  &__header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &__number,
+  &__title {
+    @include text-size(medium);
+    cursor: default;
+    font-weight: bold;
+  }
+
+}
