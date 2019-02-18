@@ -171,6 +171,7 @@ class Main extends Config {
 
     // Frontend.
     $this->loader->add_action( 'wp_enqueue_scripts', $front, 'enqueue_frontend_scripts', 50 );
+    $this->loader->add_action( 'wp_enqueue_scripts', $front, 'enqueue_localized_frontend_scripts', 50 );
     $this->loader->add_action( 'wp_enqueue_scripts', $front, 'enqueue_frontend_styles', 50 );
   }
 

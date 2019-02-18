@@ -80,5 +80,33 @@ class Front extends Config {
 
   }
 
+  /**
+   * Register the JavaScript for the frontend area.
+   *
+   * @since 1.0.0
+   */
+  public function enqueue_localized_frontend_scripts() {
+
+    // Glbal variables for ajax and translations.
+    wp_localize_script(
+      static::PLUGIN_NAME . '-frontend-scripts',
+      'quizessOptions',
+      array(
+          'root' => esc_url_raw( rest_url() ),
+      )
+    );
+
+    if ( is_user_logged_in() ) {
+      // Glbal variables for ajax and translations.
+      wp_localize_script(
+        static::PLUGIN_NAME . '-frontend-scripts',
+        'userLogged',
+        array(
+            'nonce' => wp_create_nonce( 'wp_rest' ),
+        )
+      );
+    }
+  }
+
 
 }

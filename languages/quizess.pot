@@ -25,6 +25,18 @@ msgstr ""
 msgid "End !!!"
 msgstr ""
 
+#: skin/assets/app/sections/Router.js:34
+msgid "This question is incomplete"
+msgstr ""
+
+#: skin/assets/app/sections/Router.js:45
+msgid "Submit"
+msgstr ""
+
+#: skin/assets/app/sections/Router.js:45
+msgid "Next Question"
+msgstr ""
+
 #: skin/assets/app/sections/index.js:25
 msgid "Start"
 msgstr ""
@@ -109,7 +121,15 @@ msgstr ""
 msgid "Correct"
 msgstr ""
 
-#: skin/assets/app/components/question/header/index.js:14
+#: skin/assets/blocks/question-block/index.js:22
+msgid "Question Block"
+msgstr ""
+
+#: skin/assets/blocks/question-block/index.js:23
+#: skin/assets/blocks/questions-category-block/index.js:23
+msgid "This is question block"
+msgstr ""
+
 #: skin/assets/blocks/question-block/index.js:31
 #: skin/assets/blocks/question-block/sections/BlockOptions.js:94
 #: skin/assets/blocks/questions-category-block/components/question-header/index.js:14
@@ -118,15 +138,6 @@ msgstr ""
 #: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/index.js:29
 #: skin/assets/blocks/template-blocks/cpt-quizess-options-block/index.js:29
 msgid "Title"
-msgstr ""
-
-#: skin/assets/blocks/question-block/index.js:22
-msgid "Question Block"
-msgstr ""
-
-#: skin/assets/blocks/question-block/index.js:23
-#: skin/assets/blocks/questions-category-block/index.js:23
-msgid "This is question block"
 msgstr ""
 
 #: skin/assets/blocks/question-block/index.js:32
@@ -145,15 +156,15 @@ msgstr ""
 msgid "Quizess"
 msgstr ""
 
-#: skin/assets/blocks/question-block/sections/AnswersElement.js:46
+#: skin/assets/blocks/question-block/sections/AnswersElement.js:47
 msgid "Answers"
 msgstr ""
 
-#: skin/assets/blocks/question-block/sections/AnswersElement.js:48
+#: skin/assets/blocks/question-block/sections/AnswersElement.js:49
 msgid "Add a possible answer"
 msgstr ""
 
-#: skin/assets/blocks/question-block/sections/AnswersElement.js:62
+#: skin/assets/blocks/question-block/sections/AnswersElement.js:63
 msgid "Add answer"
 msgstr ""
 
@@ -222,7 +233,6 @@ msgstr ""
 msgid "Enter optional question title."
 msgstr ""
 
-#: skin/assets/app/components/question/header/index.js:17
 #: skin/assets/blocks/questions-category-block/components/question-header/index.js:17
 #: skin/assets/blocks/questions-category-block/sections/BlockOptions.js:95
 msgid "Category"

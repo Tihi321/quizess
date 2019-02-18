@@ -18,7 +18,7 @@ $theme           = $general_helper->get_array_value( 'theme', $quiz_options['opt
 $about_field     = $general_helper->get_array_value( 'aboutField', $quiz_options['options'] );
 $bg_color        = $general_helper->get_array_value( 'bgColor', $quiz_options['bgOptions'] );
 $bg_image_url    = $general_helper->get_array_value( 'bgUrl', $quiz_options['bgOptions'] );
-$api_url         = get_site_url() . '/wp-json/' . Rest_Routes::QUIZESS_SLUG . '/' . $post->ID;
+$api_url         = Rest_Routes::QUIZESS_SLUG . '/' . $post->ID;
 $modal_id        = 'modal-' . $post->ID;
 $base_path       = Helpers\General_Helper::get_base_path();
 
