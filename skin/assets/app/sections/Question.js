@@ -1,59 +1,82 @@
-import classnames from 'classnames';
+import {Fragment} from 'react';
 import {AppConsumer} from '../containers/AppContext';
 import QuestionHeader from '../parts/QuestionHeader';
+import {
+  MainQuestion,
+  AnswersParent,
+  Answer,
+} from '../components';
 
 const QuestionConsumer = (props) => {
   const {
     values: {
-      theme,
-      questionValues: {
+      questionData: {
         answers,
         direction,
         question,
         theme: questionTheme,
         title,
-        explanationMedia,
-        explanationText,
-        explanationType,
       },
+      handleAnswerChange,
+      selectedAnswer,
     },
   } = props;
 
+  const answersElements = answers.map((value, index) => {
+    const {correct, text} = value;
+    const {id} = selectedAnswer;
+    const state = (index + 1 === id) ? 1 : 0;
+    return (
+      <Answer
+        key={index}
+        onClick={handleAnswerChange}
+        correct={correct}
+        theme={questionTheme}
+        number={index + 1}
+        state={state}
+      >
+        {text}
+      </Answer>
+    );
+  });
 
-  const questionClasses = classnames(
-    'question',
-    `question--${theme}`,
-  );
+
+
 
   return (
-    <div
-      className={questionClasses}
-    >
+    <Fragment>
       <QuestionHeader
         title={title}
       />
-    </div>
+      <MainQuestion>
+        {question}
+      </MainQuestion>
+      <AnswersParent
+        rows={direction}
+      >
+        {answersElements}
+      </AnswersParent>
+    </Fragment>
   );
 };
 
-const Question = (questionData) => (
+const Question = ({questionData}) => (
   <AppConsumer>
     {(value) => {
       const {
         values: {
-          data: {
-            options: {
-              theme,
-            },
-          },
+          selectedAnswer,
+        },
+        dataStore: {
+          handleAnswerChange,
         },
       } = value;
-      const questionValues = questionData.questionData;
       return (
         <QuestionConsumer
           values={{
-            theme,
-            questionValues,
+            questionData,
+            handleAnswerChange,
+            selectedAnswer,
           }}
         />
       );

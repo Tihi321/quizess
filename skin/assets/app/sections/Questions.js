@@ -1,7 +1,7 @@
 import {Fragment} from 'react';
 import {__} from '@wordpress/i18n';
 import {AppConsumer} from '../containers/AppContext';
-import Question from './Question';
+import Router from './Router';
 
 const QuestionsConsumer = (props) => {
   const {
@@ -32,7 +32,7 @@ const QuestionsConsumer = (props) => {
 
   return (
     <Fragment>
-      <Question
+      <Router
         questionData={questions[currentQuestion]}
       />
     </Fragment>

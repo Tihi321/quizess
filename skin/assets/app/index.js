@@ -6,6 +6,7 @@ export default class App {
     this.$appElement = document.querySelector(appElement);
     this.apiAddress = this.$appElement.dataset.api;
     this.theme = this.$appElement.dataset.theme;
+
   }
 
   init() {

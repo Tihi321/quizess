@@ -29,6 +29,7 @@ const QuizElementConsumer = (props) => {
 
   const categoryValue = JSON.parse(category).label;
   const themeValue = (theme) ? JSON.parse(theme).value : 'light';
+  const rowsValue = (rows) ? JSON.parse(rows).value : 'row';
 
   const answersElements = answers.map((answer, index) => {
     return (
@@ -61,7 +62,7 @@ const QuizElementConsumer = (props) => {
         numberOfQuestions={numberOfQuestions}
       />
       <MainQuestion>{question}</MainQuestion>
-      <AnswersParent rows={rows}>{answersElements}</AnswersParent>
+      <AnswersParent rows={rowsValue}>{answersElements}</AnswersParent>
       {showExplanation && explanationElements}
     </div>
   );

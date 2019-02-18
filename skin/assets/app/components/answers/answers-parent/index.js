@@ -7,7 +7,7 @@ const AnswersParent = (props) => {
     children,
   } = props;
 
-  const rowsValue = (rows && !templateBlock) ? JSON.parse(rows).value : 'row';
+  const rowsValue = (rows && !templateBlock) ? rows : 'row';
 
   return (
     <ul

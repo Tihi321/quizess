@@ -1,3 +1,4 @@
+/* global quizessOptions, userLogged */
 import React, {PureComponent} from 'react';
 import devices from '../../helpers/devices';
 import generalHelper from '../../helpers/general-helper';
@@ -24,6 +25,8 @@ class AppProvider extends PureComponent {
       inProgress: false,
       data: {},
       modal: false,
+      submitedAnswer: false,
+      showExplanation: false,
       questionStats: [],
       questionsTotal: 0,
       currentQuestion: 0,
@@ -53,14 +56,47 @@ class AppProvider extends PureComponent {
     }, 300);
   }
 
+  sendQuizData = () => {
+
+    const {root} = quizessOptions;
+    const {nonce} = userLogged;
+
+    // Test to send data to registered quiz payer.
+    fetch(`${root}wp/v2/posts/1`, {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      mode: 'same-origin', // no-cors, cors, *same-origin
+      credentials: 'same-origin', // include, *same-origin, omit
+      headers: {
+        Accept: 'application/json',
+        'X-WP-Nonce': nonce,
+      },
+      redirect: 'follow', // manual, *follow, error
+      referrer: 'no-referrer', // no-referrer, *client
+      body: {
+        title: 'Hello Moon',
+      },
+    })
+      .then(function(res) {
+        return res.json();
+      })
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.error('Error:', error);
+      });
+
+  }
+
   fetchApi = () => {
+    const {root} = quizessOptions;
     const {api} = this.props;
     this.setState(() => {
       return {
         inProgress: true,
       };
     });
-    fetch(api)
+    fetch(root + api)
       .then((response) => {
         return response.json();
       })
@@ -105,6 +141,23 @@ class AppProvider extends PureComponent {
     handleOnStop: () => {
       console.log('stooped');
     },
+    handleAnswerChange: (number, correct) => {
+      this.setState(() => {
+        return {
+          selectedAnswer: {
+            id: number,
+            correct,
+          },
+        };
+      });
+    },
+    handleSubmitChange: () => {
+      this.setState(() => {
+        return {
+          submitedAnswer: true,
+        };
+      });
+    },
   };
 
   render() {
@@ -117,6 +170,9 @@ class AppProvider extends PureComponent {
       questionStats,
       currentQuestion,
       questionsTotal,
+      selectedAnswer,
+      showExplanation,
+      submitedAnswer,
     } = this.state;
 
     return (
@@ -134,6 +190,9 @@ class AppProvider extends PureComponent {
             questionStats,
             currentQuestion,
             questionsTotal,
+            selectedAnswer,
+            showExplanation,
+            submitedAnswer,
           },
           dataStore: this.dataStore,
         }}>

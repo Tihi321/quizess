@@ -23,6 +23,7 @@ function AnswersElementConsumer(props) {
   } = props;
 
   const themeClass = (theme) ? JSON.parse(theme).value : 'light';
+  const rowsValue = (rows) ? JSON.parse(rows).value : 'row';
 
   const answerElements = answers.map((answer, id) => {
     return (
@@ -50,7 +51,7 @@ function AnswersElementConsumer(props) {
       </div>
       <AnswersParent
         templateBlock={templateBlock}
-        rows={rows}
+        rows={rowsValue}
       >
         {answerElements}
       </AnswersParent>

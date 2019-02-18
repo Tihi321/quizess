@@ -1,3 +1,4 @@
+/* global pluginOptions */
 import generalHelper from '../helpers/general-helper';
 import App from '../app';
 import Modal from './components/modal';
