@@ -3,6 +3,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
+#: skin/assets/app/components/explanation/preview/index.js:26
 #: skin/assets/app/components/explanation/preview/index.js:28
 #: skin/assets/blocks/elements/VideoElement/index.js:45
 msgid "Your browser does not support the video tag."
@@ -10,10 +11,11 @@ msgstr ""
 
 #: skin/assets/app/components/explanation/text/index.js:11
 #: skin/assets/blocks/question-block/sections/BlockElements.js:67
+#: skin/assets/blocks/questions-category-block/sections/ExplanationHeader.js:11
 msgid "Explanation"
 msgstr ""
 
-#: skin/assets/app/parts/QuestionHeader.js:34
+#: skin/assets/app/parts/QuestionHeader.js:38
 msgid "Question"
 msgstr ""
 
@@ -25,15 +27,23 @@ msgstr ""
 msgid "End !!!"
 msgstr ""
 
-#: skin/assets/app/sections/Router.js:34
+#: skin/assets/app/sections/Router.js:33
 msgid "This question is incomplete"
 msgstr ""
 
-#: skin/assets/app/sections/Router.js:45
+#: skin/assets/app/sections/Router.js:47
+msgid "Show Expplanation"
+msgstr ""
+
+#: skin/assets/app/sections/Router.js:47
+msgid "Hide Expplanation"
+msgstr ""
+
+#: skin/assets/app/sections/Router.js:51
 msgid "Submit"
 msgstr ""
 
-#: skin/assets/app/sections/Router.js:45
+#: skin/assets/app/sections/Router.js:51
 msgid "Next Question"
 msgstr ""
 

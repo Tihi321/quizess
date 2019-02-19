@@ -19,21 +19,24 @@ const QuestionConsumer = (props) => {
       },
       handleAnswerChange,
       selectedAnswer,
+      submitedAnswer,
     },
   } = props;
 
   const answersElements = answers.map((value, index) => {
     const {correct, text} = value;
     const {id} = selectedAnswer;
-    const state = (index + 1 === id) ? 1 : 0;
+    const selected = (index + 1 === id) ? 1 : 0;
+    const correctAnswer = (correct) ? 2 : 3;
+    const state = (submitedAnswer) ? correctAnswer : 1;
     return (
       <Answer
         key={index}
-        onClick={handleAnswerChange}
+        onClick={(!submitedAnswer) ? handleAnswerChange : false}
         correct={correct}
         theme={questionTheme}
         number={index + 1}
-        state={state}
+        state={(selected) ? state : 0}
       >
         {text}
       </Answer>
@@ -66,6 +69,7 @@ const Question = ({questionData}) => (
       const {
         values: {
           selectedAnswer,
+          submitedAnswer,
         },
         dataStore: {
           handleAnswerChange,
@@ -77,6 +81,7 @@ const Question = ({questionData}) => (
             questionData,
             handleAnswerChange,
             selectedAnswer,
+            submitedAnswer,
           }}
         />
       );

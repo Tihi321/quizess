@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import {Fragment} from 'react';
 import {__} from '@wordpress/i18n';
 import Question from './Question';
 import Explanation from './Explanation';
@@ -19,14 +19,13 @@ const RouterConsumer = (props) => {
       },
       questionData,
       handleSubmitChange,
+      handleExplanationChange,
       submitedAnswer,
       selectedAnswer: {
         id,
       },
     },
   } = props;
-
-  console.log(questionData);
 
   if (!answers || !question) {
     return (
@@ -36,22 +35,42 @@ const RouterConsumer = (props) => {
     );
   }
 
+  const explanationDataCheck = (!(explanationMedia || explanationText)) || true;
 
-  const questionClasses = classnames(
-    'quiz',
-    `quiz--${theme}`,
+  const explanationButtonElement = (
+    <NextButton
+      theme={theme}
+      onClick={handleExplanationChange}
+      disabled={false}
+      featured={true}
+    >
+      {(!showExplanation) ? __('Show Expplanation', 'quizess') : __('Hide Expplanation', 'quizess')}
+    </NextButton>
   );
 
   const nextButtonText = (!submitedAnswer) ? __('Submit', 'quizess') : __('Next Question', 'quizess');
 
+  const questionElement = (
+    <Question
+      questionData={questionData}
+    />
+  );
+
+  const explanationElement = (
+    <Explanation
+      type={explanationType}
+      text={explanationText}
+      media={explanationMedia}
+    />
+  );
+
+  const renderElement = (!showExplanation) ? questionElement : explanationElement;
+
   return (
-    <div
-      className={questionClasses}
-    >
-      <Question
-        questionData={questionData}
-      />
-      <div className="quiz__footer">
+    <Fragment>
+      {renderElement}
+      <div className="modal__footer">
+        {(submitedAnswer && explanationDataCheck) && explanationButtonElement}
         <NextButton
           theme={theme}
           onClick={handleSubmitChange}
@@ -61,7 +80,7 @@ const RouterConsumer = (props) => {
           {nextButtonText}
         </NextButton>
       </div>
-    </div>
+    </Fragment>
   );
 };
 
@@ -81,6 +100,7 @@ const Router = ({questionData}) => (
         },
         dataStore: {
           handleSubmitChange,
+          handleExplanationChange,
         },
       } = value;
       return (
@@ -92,6 +112,7 @@ const Router = ({questionData}) => (
             selectedAnswer,
             handleSubmitChange,
             submitedAnswer,
+            handleExplanationChange,
           }}
         />
       );

@@ -1,36 +1,51 @@
-import classnames from 'classnames';
+import {Fragment} from 'react';
+import {RawHTML} from '@wordpress/element';
 import {AppConsumer} from '../containers/AppContext';
-import QuestionHeader from '../parts/QuestionHeader';
+import {ExplanationPreview} from '../components';
 
 const ExplanationConsumer = (props) => {
   const {
     values: {
-      theme,
       selectedAnswer,
-      explanationMedia,
-      explanationText,
-      explanationType,
+      failureMessage,
+      successMessage,
+      type,
+      text,
+      media,
     },
   } = props;
 
+  const {correct} = selectedAnswer;
+  const messageText = (correct) ? successMessage : failureMessage;
 
-  const questionClasses = classnames(
-    'explanation',
-    `explanation--${theme}`,
+  const textElement = (
+    <RawHTML className="quiz__explanation">
+      {text}
+    </RawHTML>
+  );
+
+  const mediaPrevieElement = (
+    <ExplanationPreview
+      type={type}
+      media={media}
+    />
   );
 
   return (
-    <div
-      className={questionClasses}
-    >
-    </div>
+    <Fragment>
+      <RawHTML className="quiz__message" >
+        {messageText}
+      </RawHTML>
+      {(text) && textElement}
+      {(type && media) && mediaPrevieElement}
+    </Fragment>
   );
 };
 
 const Explanation = ({
-  explanationMedia,
-  explanationText,
-  explanationType,
+  type,
+  text,
+  media,
 }) => (
   <AppConsumer>
     {(value) => {
@@ -39,7 +54,6 @@ const Explanation = ({
           selectedAnswer,
           data: {
             options: {
-              theme,
               failureMessage,
               successMessage,
             },
@@ -50,12 +64,11 @@ const Explanation = ({
         <ExplanationConsumer
           values={{
             selectedAnswer,
-            theme,
             failureMessage,
             successMessage,
-            explanationMedia,
-            explanationText,
-            explanationType,
+            type,
+            text,
+            media,
           }}
         />
       );
