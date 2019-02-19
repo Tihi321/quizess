@@ -5,7 +5,6 @@ import Button from './buttons/button';
 import NextButton from './buttons/next-button';
 import Timer from './question/timer';
 import MainQuestion from './question/text';
-import ExplanationText from './explanation/text';
 import ExplanationPreview from './explanation/preview';
 
 export {Answer};
@@ -15,5 +14,4 @@ export {Button};
 export {NextButton};
 export {Timer};
 export {MainQuestion};
-export {ExplanationText};
 export {ExplanationPreview};

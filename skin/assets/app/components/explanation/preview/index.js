@@ -5,10 +5,8 @@ import LottieControl from '../../../../blocks/elements/LottieElement/LottieContr
 
 const ExplanationPreview = (props) => {
   const {
-    explanationType: {
-      value,
-    },
-    children: {
+    type,
+    media: {
       url,
       alt,
       id,
@@ -45,7 +43,7 @@ const ExplanationPreview = (props) => {
   );
 
   const previewElement = () => {
-    switch (value) {
+    switch (type) {
       case 'video':
         return videoElement;
       case 'youtube':
