@@ -11,6 +11,8 @@ const QuestionHeaderConsumer = (props) => {
       questionsTotal,
       timer,
       handleOnStop,
+      stopTimer,
+      playTimer,
     },
   } = props;
 
@@ -27,6 +29,8 @@ const QuestionHeaderConsumer = (props) => {
           disabled={(timer === null) || false}
           endTime={timer}
           onEnd={handleOnStop}
+          stop={stopTimer}
+          play={playTimer}
         />
       </div>
       {(title) && titleElement}
@@ -44,6 +48,8 @@ const QuestionHeader = ({title}) => (
         values: {
           questionsTotal,
           currentQuestion,
+          stopTimer,
+          playTimer,
           data: {
             options: {
               timer,
@@ -62,6 +68,8 @@ const QuestionHeader = ({title}) => (
             questionsTotal,
             timer,
             handleOnStop,
+            stopTimer,
+            playTimer,
           }}
         />
       );

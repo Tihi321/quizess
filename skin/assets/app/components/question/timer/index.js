@@ -13,15 +13,19 @@ class Timer extends PureComponent {
     this.endTime = endTime;
     this.onEnd = onEnd;
 
+    const {disabled} = props;
+
+    this.dontStart = (disabled || endTime === 0) || false;
+
     this.state = {
-      time: 0,
+      time: this.endTime,
     };
 
   }
 
   startTimer = () => {
     this.timer = setInterval(() => this.setState({
-      time: this.state.time + 1,
+      time: this.state.time - 1,
     }), 1000);
   }
 
@@ -30,28 +34,26 @@ class Timer extends PureComponent {
   }
 
   resetTimer = () => {
-    this.setState({time: 0});
+    this.setState({time: this.endTime});
   }
 
   componentDidMount() {
-    const {disabled} = this.props;
-    if (!disabled) {
+    if (!this.dontStart) {
       this.startTimer();
     }
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
 
-    const {stop, clear} = this.props;
-    if (this.endTime === this.state.time || stop) {
+    const {stop, play} = this.props;
+    if (this.state.time === 0 || stop) {
       this.stopTimer();
-      if (this.onEnd) {
-        this.onEnd();
-      }
+      this.resetTimer();
+      this.onEnd();
     }
 
-    if (clear) {
-      this.resetTimer();
+    if (play) {
+      this.startTimer();
     }
 
   }

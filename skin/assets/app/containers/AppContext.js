@@ -35,6 +35,8 @@ class AppProvider extends PureComponent {
         correct: false,
       },
       correctAnswers: 0,
+      stopTimer: false,
+      playTimer: false,
     };
   }
 
@@ -112,7 +114,34 @@ class AppProvider extends PureComponent {
           };
         });
       });
-  };
+  }
+
+  resetNextQuestion = () => {
+
+    const {
+      selectedAnswer,
+      correctAnswers,
+      questionStats,
+      currentQuestion,
+    } = this.state;
+    const {correct} = selectedAnswer;
+    this.setState(() => {
+      return {
+        currentQuestion: currentQuestion + 1,
+        correctAnswers: (correct) ? correctAnswers + 1 : correctAnswers,
+        questionStats: questionStats.concat(selectedAnswer),
+        showExplanation: false,
+        submitedAnswer: false,
+        stopTimer: false,
+        playTimer: false,
+        selectedAnswer: {
+          id: 0,
+          correct: false,
+        },
+      };
+    });
+
+  }
 
   dataStore = {
     handleStart: () => {
@@ -139,7 +168,22 @@ class AppProvider extends PureComponent {
       });
     },
     handleOnStop: () => {
-      console.log('stooped');
+
+      if (!this.state.submitedAnswer) {
+        const {selectedAnswer: {id}, selectedAnswer} = this.state;
+        this.setState(() => {
+          return {
+            submitedAnswer: true,
+            playTimer: true,
+            stopTimer: true,
+            selectedAnswer: (id !== 0) ? selectedAnswer : {
+              id: -1,
+              correct: false,
+            },
+          };
+        });
+      }
+
     },
     handleAnswerChange: (number, correct) => {
       this.setState(() => {
@@ -152,9 +196,25 @@ class AppProvider extends PureComponent {
       });
     },
     handleSubmitChange: () => {
+
+      if (!this.state.submitedAnswer) {
+        this.setState(() => {
+          return {
+            submitedAnswer: true,
+            stopTimer: true,
+            playTimer: true,
+          };
+        });
+        return;
+      }
+
+      this.resetNextQuestion();
+    },
+    handleExplanationChange: () => {
+      const {showExplanation} = this.state;
       this.setState(() => {
         return {
-          submitedAnswer: true,
+          showExplanation: !showExplanation,
         };
       });
     },
@@ -173,6 +233,8 @@ class AppProvider extends PureComponent {
       selectedAnswer,
       showExplanation,
       submitedAnswer,
+      stopTimer,
+      playTimer,
     } = this.state;
 
     return (
@@ -193,6 +255,8 @@ class AppProvider extends PureComponent {
             selectedAnswer,
             showExplanation,
             submitedAnswer,
+            stopTimer,
+            playTimer,
           },
           dataStore: this.dataStore,
         }}>

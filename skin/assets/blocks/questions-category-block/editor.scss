@@ -28,6 +28,13 @@ $question-category-block: (
     &__header {
       @extend %explanation-header;
     }
+
+    &__text {
+      p {
+        @include text-size(medium);
+        text-align: center;
+      }
+    }
   }
 
 

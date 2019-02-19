@@ -1,11 +1,11 @@
 import {Fragment} from '@wordpress/element';
 import {BlockConsumer} from '../containers/BlockContext';
+import ExplanationHeader from './ExplanationHeader';
 import {
   QuestionHeader,
   MainQuestion,
   AnswersParent,
   Answer,
-  ExplanationText,
   ExplanationPreview,
 } from '../components';
 
@@ -44,12 +44,12 @@ const QuizElementConsumer = (props) => {
     );
   });
 
+  const {value} = explanationType;
+
   const explanationElements = (
     <Fragment>
-      <ExplanationText>{explanation}</ExplanationText>
-      <ExplanationPreview explanationType={explanationType}>
-        {explanationMedia}
-      </ExplanationPreview>
+      <ExplanationHeader>{explanation}</ExplanationHeader>
+      <ExplanationPreview type={value} media={explanationMedia} />
     </Fragment>
   );
 
