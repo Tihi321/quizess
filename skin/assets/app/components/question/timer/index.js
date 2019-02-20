@@ -58,6 +58,10 @@ class Timer extends PureComponent {
 
   }
 
+  componentWillUnmount() {
+    this.stopTimer();
+  }
+
   getTimerElement = () => {
     const {disabled} = this.props;
     if (disabled) {

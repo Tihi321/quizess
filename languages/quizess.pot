@@ -4,27 +4,66 @@ msgstr ""
 "X-Generator: babel-plugin-makepot\n"
 
 #: skin/assets/app/components/explanation/preview/index.js:26
-#: skin/assets/app/components/explanation/preview/index.js:28
 #: skin/assets/blocks/elements/VideoElement/index.js:45
 msgid "Your browser does not support the video tag."
 msgstr ""
 
-#: skin/assets/app/components/explanation/text/index.js:11
-#: skin/assets/blocks/question-block/sections/BlockElements.js:67
-#: skin/assets/blocks/questions-category-block/sections/ExplanationHeader.js:11
-msgid "Explanation"
+#: skin/assets/app/components/modal/hall-of-fame/index.js:27
+#: skin/assets/app/components/modal/hall-of-fame/index.js:28
+#: skin/assets/blocks/question-block/components/answer-input/index.js:57
+msgid "Correct"
+msgstr ""
+
+#: skin/assets/app/components/modal/hall-of-fame/index.js:27
+msgid "Incorrect"
+msgstr ""
+
+#: skin/assets/app/components/modal/hall-of-fame/index.js:36
+msgid "Congratulation, you have successfuly completed quiz."
+msgstr ""
+
+#: skin/assets/app/components/modal/hall-of-fame/index.js:42
+msgid "Try again"
+msgstr ""
+
+#: skin/assets/app/components/modal/hall-of-fame/index.js:46
+msgid "Score"
+msgstr ""
+
+#: skin/assets/app/components/modal/hall-of-fame/index.js:49
+msgid "Percent"
+msgstr ""
+
+#: skin/assets/app/components/modal/hall-of-fame/index.js:54
+msgid "Number"
+msgstr ""
+
+#: skin/assets/app/components/modal/hall-of-fame/index.js:57
+#: skin/assets/app/components/modal/hall-of-fame/index.js:58
+#: skin/assets/app/components/modal/hall-of-fame/index.js:59
+#: skin/assets/blocks/components/style-options/index.js:47
+#: skin/assets/blocks/question-block/sections/BlockOptions.js:129
+msgid "Type"
 msgstr ""
 
 #: skin/assets/app/parts/QuestionHeader.js:38
 msgid "Question"
 msgstr ""
 
-#: skin/assets/app/sections/Questions.js:18
-msgid "Nothing to see here, this quiz has no questions !!!"
+#: skin/assets/app/sections/Modal.js:45
+msgid "Leaving already"
 msgstr ""
 
-#: skin/assets/app/sections/Questions.js:26
-msgid "End !!!"
+#: skin/assets/app/sections/Modal.js:52
+msgid "Cancel"
+msgstr ""
+
+#: skin/assets/app/sections/Modal.js:58
+msgid "Exit"
+msgstr ""
+
+#: skin/assets/app/sections/Questions.js:23
+msgid "Nothing to see here, this quiz has no questions !!!"
 msgstr ""
 
 #: skin/assets/app/sections/Router.js:33
@@ -60,11 +99,6 @@ msgstr ""
 
 #: skin/assets/blocks/components/style-options/index.js:43
 msgid "Style Options"
-msgstr ""
-
-#: skin/assets/blocks/components/style-options/index.js:47
-#: skin/assets/blocks/question-block/sections/BlockOptions.js:129
-msgid "Type"
 msgstr ""
 
 #: skin/assets/blocks/components/style-options/index.js:51
@@ -127,10 +161,6 @@ msgstr ""
 msgid "Sorry, we could not embed that content."
 msgstr ""
 
-#: skin/assets/blocks/question-block/components/answer-input/index.js:57
-msgid "Correct"
-msgstr ""
-
 #: skin/assets/blocks/question-block/index.js:22
 msgid "Question Block"
 msgstr ""
@@ -176,6 +206,11 @@ msgstr ""
 
 #: skin/assets/blocks/question-block/sections/AnswersElement.js:63
 msgid "Add answer"
+msgstr ""
+
+#: skin/assets/blocks/question-block/sections/BlockElements.js:67
+#: skin/assets/blocks/questions-category-block/sections/ExplanationHeader.js:11
+msgid "Explanation"
 msgstr ""
 
 #: skin/assets/blocks/question-block/sections/BlockOptions.js:115
