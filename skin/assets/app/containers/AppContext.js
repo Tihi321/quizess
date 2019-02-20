@@ -27,6 +27,7 @@ class AppProvider extends PureComponent {
       modal: false,
       submitedAnswer: false,
       showExplanation: false,
+      showExit: false,
       questionStats: [],
       questionsTotal: 0,
       currentQuestion: 0,
@@ -119,17 +120,11 @@ class AppProvider extends PureComponent {
   resetNextQuestion = () => {
 
     const {
-      selectedAnswer,
-      correctAnswers,
-      questionStats,
       currentQuestion,
     } = this.state;
-    const {correct} = selectedAnswer;
     this.setState(() => {
       return {
         currentQuestion: currentQuestion + 1,
-        correctAnswers: (correct) ? correctAnswers + 1 : correctAnswers,
-        questionStats: questionStats.concat(selectedAnswer),
         showExplanation: false,
         submitedAnswer: false,
         stopTimer: false,
@@ -141,6 +136,64 @@ class AppProvider extends PureComponent {
       };
     });
 
+  }
+
+  resetQuiz = (exit) => {
+
+    const output = {
+      submitedAnswer: false,
+      showExplanation: false,
+      questionStats: [],
+      currentQuestion: 0,
+      selectedAnswer: {
+        id: 0,
+        correct: false,
+      },
+      correctAnswers: 0,
+      stopTimer: false,
+      playTimer: false,
+    };
+
+    if (exit) {
+      output.modal = false;
+      output.showExit = false;
+      this.unSetBody();
+    }
+
+    this.setState(() => {
+      return output;
+    });
+  }
+
+  submitAnswer = (onStop) => {
+    const {
+      selectedAnswer: {
+        id,
+        correct,
+      },
+      selectedAnswer,
+      correctAnswers,
+      questionStats,
+    } = this.state;
+
+    const newState = {
+      submitedAnswer: true,
+      playTimer: true,
+      stopTimer: true,
+      correctAnswers: (correct) ? correctAnswers + 1 : correctAnswers,
+      questionStats: questionStats.concat(selectedAnswer),
+    };
+
+    if (onStop) {
+      newState.selectedAnswer = (id !== 0) ? selectedAnswer : {
+        id: -1,
+        correct: false,
+      };
+    }
+
+    this.setState(() => {
+      return newState;
+    });
   }
 
   dataStore = {
@@ -160,30 +213,28 @@ class AppProvider extends PureComponent {
       }
     },
     handleClose: () => {
-      this.unSetBody();
+      this.resetQuiz(true);
+    },
+    handleCancelClose: () => {
       this.setState(() => {
         return {
-          modal: false,
+          showExit: false,
+        };
+      });
+    },
+    handleShowExit: () => {
+      this.setState(() => {
+        return {
+          showExit: true,
         };
       });
     },
     handleOnStop: () => {
 
-      if (!this.state.submitedAnswer) {
-        const {selectedAnswer: {id}, selectedAnswer} = this.state;
-        this.setState(() => {
-          return {
-            submitedAnswer: true,
-            playTimer: true,
-            stopTimer: true,
-            selectedAnswer: (id !== 0) ? selectedAnswer : {
-              id: -1,
-              correct: false,
-            },
-          };
-        });
+      const {submitedAnswer} = this.state;
+      if (!submitedAnswer) {
+        this.submitAnswer(true);
       }
-
     },
     handleAnswerChange: (number, correct) => {
       this.setState(() => {
@@ -197,14 +248,9 @@ class AppProvider extends PureComponent {
     },
     handleSubmitChange: () => {
 
-      if (!this.state.submitedAnswer) {
-        this.setState(() => {
-          return {
-            submitedAnswer: true,
-            stopTimer: true,
-            playTimer: true,
-          };
-        });
+      const {submitedAnswer} = this.state;
+      if (!submitedAnswer) {
+        this.submitAnswer();
         return;
       }
 
@@ -217,6 +263,9 @@ class AppProvider extends PureComponent {
           showExplanation: !showExplanation,
         };
       });
+    },
+    handleTryAgain: () => {
+      this.resetQuiz();
     },
   };
 
@@ -235,6 +284,7 @@ class AppProvider extends PureComponent {
       submitedAnswer,
       stopTimer,
       playTimer,
+      showExit,
     } = this.state;
 
     return (
@@ -257,6 +307,7 @@ class AppProvider extends PureComponent {
             submitedAnswer,
             stopTimer,
             playTimer,
+            showExit,
           },
           dataStore: this.dataStore,
         }}>
