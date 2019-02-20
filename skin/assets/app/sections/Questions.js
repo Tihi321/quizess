@@ -2,7 +2,7 @@ import {Fragment} from 'react';
 import {__} from '@wordpress/i18n';
 import {AppConsumer} from '../containers/AppContext';
 import Router from './Router';
-import {HallOfFame} from './../components';
+import {HallOfFame, Placeholder} from './../components';
 
 const QuestionsConsumer = (props) => {
   const {
@@ -19,9 +19,9 @@ const QuestionsConsumer = (props) => {
 
   if (!Array.isArray(questions) || !questions.length) {
     return (
-      <div>
+      <Placeholder>
         {__('Nothing to see here, this quiz has no questions !!!', 'quizess')}
-      </div>
+      </Placeholder>
     );
   }
 

@@ -3,7 +3,7 @@ import {__} from '@wordpress/i18n';
 import Question from './Question';
 import Explanation from './Explanation';
 import {AppConsumer} from '../containers/AppContext';
-import {NextButton} from '../components';
+import {NextButton, Placeholder} from '../components';
 
 const RouterConsumer = (props) => {
   const {
@@ -29,9 +29,9 @@ const RouterConsumer = (props) => {
 
   if (!answers || !question) {
     return (
-      <div>
+      <Placeholder>
         {__('This question is incomplete', 'quizess')}
-      </div>
+      </Placeholder>
     );
   }
 

@@ -5,6 +5,7 @@ import Button from './buttons/button';
 import NextButton from './buttons/next-button';
 import Timer from './question/timer';
 import MainQuestion from './question/text';
+import Placeholder from './question/placeholder';
 import ExplanationPreview from './explanation/preview';
 import HallOfFame from './modal/hall-of-fame';
 
@@ -15,5 +16,6 @@ export {Button};
 export {NextButton};
 export {Timer};
 export {MainQuestion};
+export {Placeholder};
 export {ExplanationPreview};
 export {HallOfFame};
