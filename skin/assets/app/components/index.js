@@ -6,6 +6,7 @@ import NextButton from './buttons/next-button';
 import Timer from './question/timer';
 import MainQuestion from './question/text';
 import ExplanationPreview from './explanation/preview';
+import HallOfFame from './modal/hall-of-fame';
 
 export {Answer};
 export {AnswersParent};
@@ -15,3 +16,4 @@ export {NextButton};
 export {Timer};
 export {MainQuestion};
 export {ExplanationPreview};
+export {HallOfFame};
