@@ -17,6 +17,10 @@ class GeneralHelper {
     return activeClass;
   }
 
+  percentage = (value, outOff) => {
+    return (value * 100) / outOff;
+  }
+
 }
 
 const generalHelper = new GeneralHelper();

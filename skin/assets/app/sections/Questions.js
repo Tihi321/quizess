@@ -2,13 +2,18 @@ import {Fragment} from 'react';
 import {__} from '@wordpress/i18n';
 import {AppConsumer} from '../containers/AppContext';
 import Router from './Router';
+import {HallOfFame} from './../components';
 
 const QuestionsConsumer = (props) => {
   const {
     values: {
       questionsTotal,
       currentQuestion,
+      correctAnswers,
+      questionStats,
       questions,
+      theme,
+      handleTryAgain,
     },
   } = props;
 
@@ -20,10 +25,16 @@ const QuestionsConsumer = (props) => {
     );
   }
 
-  if (currentQuestion + 1 === questionsTotal) {
+  if (currentQuestion + 1 > questionsTotal) {
     return (
       <div>
-        {__('End !!!', 'quizess')}
+        <HallOfFame
+          theme={theme}
+          onClick={handleTryAgain}
+          questionsTotal={questionsTotal}
+          correctAnswers={correctAnswers}
+          questionStats={questionStats}
+        />
       </div>
     );
   }
@@ -46,9 +57,17 @@ const Questions = () => (
         values: {
           currentQuestion,
           questionsTotal,
+          questionStats,
+          correctAnswers,
           data: {
             questions,
+            options: {
+              theme,
+            },
           },
+        },
+        dataStore: {
+          handleTryAgain,
         },
       } = value;
       return (
@@ -57,6 +76,10 @@ const Questions = () => (
             questionsTotal,
             currentQuestion,
             questions,
+            theme,
+            questionStats,
+            correctAnswers,
+            handleTryAgain,
           }}
         />
       );
