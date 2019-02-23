@@ -126,6 +126,7 @@ class Main extends Config {
     $quiz      = new Admin\Quiz();
     $questions = new Admin\Questions();
     $story     = new Admin\Story();
+    $users     = new Admin\Users();
 
     // Admin.
     $this->loader->add_action( 'admin_enqueue_scripts', $admin, 'enqueue_admin_styles', 50 );
@@ -139,6 +140,12 @@ class Main extends Config {
     $this->loader->add_filter( 'wp_handle_upload_prefilter', $media, 'check_svg_on_media_upload' );
     $this->loader->add_filter( 'after_setup_theme', $media, 'enable_full_width' );
     $this->loader->add_filter( 'wp_check_filetype_and_ext', $media, 'disable_mime_check', 10, 4 );
+
+    // Users.
+    $this->loader->add_action( 'show_user_profile', $users, 'show_extra_user_meta_fields', 10, 1 );
+    $this->loader->add_action( 'edit_user_profile', $users, 'show_extra_user_meta_fields', 10, 1 );
+    $this->loader->add_action( 'personal_options_update', $users, 'save_extra_user_meta_fields' );
+    $this->loader->add_action( 'edit_user_profile_update', $users, 'save_extra_user_meta_fields' );
 
     // Blocks.
     // Whitelist blocks.

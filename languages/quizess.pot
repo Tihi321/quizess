@@ -43,47 +43,47 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: skin/assets/app/parts/QuestionHeader.js:38
+#: skin/assets/app/parts/QuestionHeader.js:35
 msgid "Question"
 msgstr ""
 
-#: skin/assets/app/sections/Modal.js:45
+#: skin/assets/app/sections/Modal.js:43
 msgid "Leaving already"
 msgstr ""
 
-#: skin/assets/app/sections/Modal.js:52
+#: skin/assets/app/sections/Modal.js:50
 msgid "Cancel"
 msgstr ""
 
-#: skin/assets/app/sections/Modal.js:58
+#: skin/assets/app/sections/Modal.js:56
 msgid "Exit"
 msgstr ""
 
-#: skin/assets/app/sections/Questions.js:23
+#: skin/assets/app/sections/Questions.js:21
 msgid "Nothing to see here, this quiz has no questions !!!"
 msgstr ""
 
-#: skin/assets/app/sections/Router.js:33
+#: skin/assets/app/sections/Router.js:31
 msgid "This question is incomplete"
 msgstr ""
 
-#: skin/assets/app/sections/Router.js:47
+#: skin/assets/app/sections/Router.js:45
 msgid "Show Expplanation"
 msgstr ""
 
-#: skin/assets/app/sections/Router.js:47
+#: skin/assets/app/sections/Router.js:45
 msgid "Hide Expplanation"
 msgstr ""
 
-#: skin/assets/app/sections/Router.js:51
+#: skin/assets/app/sections/Router.js:49
 msgid "Submit"
 msgstr ""
 
-#: skin/assets/app/sections/Router.js:51
+#: skin/assets/app/sections/Router.js:49
 msgid "Next Question"
 msgstr ""
 
-#: skin/assets/app/sections/index.js:25
+#: skin/assets/app/sections/index.js:21
 msgid "Start"
 msgstr ""
 
