@@ -7,13 +7,9 @@ import {Button} from '../components';
 
 const MainConsumer = (props) => {
   const {
-    values: {
-      data,
-      theme,
-      dataStore: {
-        handleStart,
-      },
-    },
+    theme,
+    data,
+    handleStart,
   } = props;
 
   return (
@@ -39,15 +35,15 @@ const App = () => (
           data,
           theme,
         },
-        dataStore,
+        dataStore: {
+          handleStart,
+        },
       } = value;
       return (
         <MainConsumer
-          values={{
-            data,
-            dataStore,
-            theme,
-          }}
+          data={data}
+          handleStart={handleStart}
+          theme={theme}
         />
       );
     }}

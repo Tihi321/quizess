@@ -5,17 +5,15 @@ import {TopBar, Button} from '../components';
 
 const ModalConsumer = (props) => {
   const {
-    values: {
-      theme,
-      bgColor,
-      bgUrl,
-      modal,
-      showExit,
-      handleShowExit,
-      handleCancelClose,
-      handleClose,
-      children,
-    },
+    theme,
+    bgColor,
+    bgUrl,
+    modal,
+    showExit,
+    handleShowExit,
+    handleCancelClose,
+    handleClose,
+    children,
   } = props;
 
   const modalStyle = {
@@ -107,17 +105,15 @@ const Modal = ({children}) => (
       } = value;
       return (
         <ModalConsumer
-          values={{
-            theme,
-            showExit,
-            bgColor,
-            bgUrl,
-            modal,
-            handleShowExit,
-            handleCancelClose,
-            handleClose,
-            children,
-          }}
+          theme={theme}
+          showExit={showExit}
+          bgColor={bgColor}
+          bgUrl={bgUrl}
+          modal={modal}
+          handleShowExit={handleShowExit}
+          handleCancelClose={handleCancelClose}
+          handleClose={handleClose}
+          children={children}
         />
       );
     }}

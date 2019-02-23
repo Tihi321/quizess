@@ -7,23 +7,21 @@ import {NextButton, Placeholder} from '../components';
 
 const RouterConsumer = (props) => {
   const {
-    values: {
-      theme,
-      showExplanation,
-      questionData: {
-        answers,
-        question,
-        explanationMedia,
-        explanationText,
-        explanationType,
-      },
-      questionData,
-      handleSubmitChange,
-      handleExplanationChange,
-      submitedAnswer,
-      selectedAnswer: {
-        id,
-      },
+    theme,
+    showExplanation,
+    questionData: {
+      answers,
+      question,
+      explanationMedia,
+      explanationText,
+      explanationType,
+    },
+    questionData,
+    handleSubmitChange,
+    handleExplanationChange,
+    submitedAnswer,
+    selectedAnswer: {
+      id,
     },
   } = props;
 
@@ -105,15 +103,13 @@ const Router = ({questionData}) => (
       } = value;
       return (
         <RouterConsumer
-          values={{
-            theme,
-            questionData,
-            showExplanation,
-            selectedAnswer,
-            handleSubmitChange,
-            submitedAnswer,
-            handleExplanationChange,
-          }}
+          theme={theme}
+          questionData={questionData}
+          showExplanation={showExplanation}
+          selectedAnswer={selectedAnswer}
+          handleSubmitChange={handleSubmitChange}
+          submitedAnswer={submitedAnswer}
+          handleExplanationChange={handleExplanationChange}
         />
       );
     }}

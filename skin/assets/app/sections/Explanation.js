@@ -5,14 +5,12 @@ import {ExplanationPreview} from '../components';
 
 const ExplanationConsumer = (props) => {
   const {
-    values: {
-      selectedAnswer,
-      failureMessage,
-      successMessage,
-      type,
-      text,
-      media,
-    },
+    selectedAnswer,
+    failureMessage,
+    successMessage,
+    type,
+    text,
+    media,
   } = props;
 
   const {correct} = selectedAnswer;
@@ -62,14 +60,12 @@ const Explanation = ({
       } = value;
       return (
         <ExplanationConsumer
-          values={{
-            selectedAnswer,
-            failureMessage,
-            successMessage,
-            type,
-            text,
-            media,
-          }}
+          selectedAnswer={selectedAnswer}
+          failureMessage={failureMessage}
+          successMessage={successMessage}
+          type={type}
+          text={text}
+          media={media}
         />
       );
     }}

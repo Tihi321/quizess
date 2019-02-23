@@ -6,15 +6,13 @@ import {HallOfFame, Placeholder} from './../components';
 
 const QuestionsConsumer = (props) => {
   const {
-    values: {
-      questionsTotal,
-      currentQuestion,
-      correctAnswers,
-      questionStats,
-      questions,
-      theme,
-      handleTryAgain,
-    },
+    questionsTotal,
+    currentQuestion,
+    correctAnswers,
+    questionStats,
+    questions,
+    theme,
+    handleTryAgain,
   } = props;
 
   if (!Array.isArray(questions) || !questions.length) {
@@ -72,15 +70,13 @@ const Questions = () => (
       } = value;
       return (
         <QuestionsConsumer
-          values={{
-            questionsTotal,
-            currentQuestion,
-            questions,
-            theme,
-            questionStats,
-            correctAnswers,
-            handleTryAgain,
-          }}
+          questionsTotal={questionsTotal}
+          currentQuestion={currentQuestion}
+          questions={questions}
+          theme={theme}
+          questionStats={questionStats}
+          correctAnswers={correctAnswers}
+          handleTryAgain={handleTryAgain}
         />
       );
     }}

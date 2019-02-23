@@ -3,17 +3,14 @@ import {Timer} from '../components';
 import {AppConsumer} from '../containers/AppContext';
 
 const QuestionHeaderConsumer = (props) => {
-
   const {
-    values: {
-      title,
-      currentQuestion,
-      questionsTotal,
-      timer,
-      handleOnStop,
-      stopTimer,
-      playTimer,
-    },
+    title,
+    currentQuestion,
+    questionsTotal,
+    timer,
+    handleOnStop,
+    stopTimer,
+    playTimer,
   } = props;
 
   const titleElement = (
@@ -62,15 +59,13 @@ const QuestionHeader = ({title}) => (
       } = value;
       return (
         <QuestionHeaderConsumer
-          values={{
-            title,
-            currentQuestion,
-            questionsTotal,
-            timer,
-            handleOnStop,
-            stopTimer,
-            playTimer,
-          }}
+          title={title}
+          currentQuestion={currentQuestion}
+          questionsTotal={questionsTotal}
+          timer={timer}
+          handleOnStop={handleOnStop}
+          stopTimer={stopTimer}
+          playTimer={playTimer}
         />
       );
     }}

@@ -9,18 +9,16 @@ import {
 
 const QuestionConsumer = (props) => {
   const {
-    values: {
-      questionData: {
-        answers,
-        direction,
-        question,
-        theme: questionTheme,
-        title,
-      },
-      handleAnswerChange,
-      selectedAnswer,
-      submitedAnswer,
+    questionData: {
+      answers,
+      direction,
+      question,
+      theme: questionTheme,
+      title,
     },
+    handleAnswerChange,
+    selectedAnswer,
+    submitedAnswer,
   } = props;
 
   const answersElements = answers.map((value, index) => {
@@ -77,12 +75,10 @@ const Question = ({questionData}) => (
       } = value;
       return (
         <QuestionConsumer
-          values={{
-            questionData,
-            handleAnswerChange,
-            selectedAnswer,
-            submitedAnswer,
-          }}
+          questionData={questionData}
+          handleAnswerChange={handleAnswerChange}
+          selectedAnswer={selectedAnswer}
+          submitedAnswer={submitedAnswer}
         />
       );
     }}
