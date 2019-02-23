@@ -157,6 +157,7 @@ class Main extends Config {
     // Register custom post type quiz.
     $this->loader->add_action( 'init', $quiz, 'register_post_type' );
     $this->loader->add_action( 'init', $quiz, 'register_categories' );
+    $this->loader->add_action( 'init', $quiz, 'register_post_meta' );
     $this->loader->add_filter( 'template_include', $quiz, 'quiz_single_template', 10, 4 );
 
     // Register custom post type story.

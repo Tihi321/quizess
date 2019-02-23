@@ -9,6 +9,11 @@ const BlockEdit = (props) => {
 
   const dispatchAtributes = ({action, payload}) => {
     switch (action) {
+      case 'metaValue':
+        setAttributes({
+          metaValue: payload,
+        });
+        break;
       case 'useTimer':
         setAttributes({
           useTimer: payload,

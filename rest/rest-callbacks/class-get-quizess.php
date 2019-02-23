@@ -71,7 +71,9 @@ class Get_Quizess extends Rest_Routes implements Rest_Callback {
       return new \WP_Error( 'awesome_no_blocks', 'No blocks found', array( 'status' => 404 ) );
     }
 
-    $output = $this->blocks_helper->get_decoded_quiz_values( $parsed_quiz_array );
+    $output           = $this->blocks_helper->get_decoded_quiz_values( $parsed_quiz_array );
+    $scores           = get_post_meta( $quiz_id, Config::SCORES_META_KEY, true );
+    $output['scores'] = ( $scores ) ? $scores : '';
 
     return new \WP_REST_Response( $output, 200 );
   }
