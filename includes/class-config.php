@@ -56,6 +56,15 @@ abstract class Config {
    */
   const QUIZESS_POST_SLUG = 'quiz';
 
+  /**
+   * The custom post meta field for quizess
+   *
+   * @var string
+   *
+   * @since 1.0.0
+   */
+  const SCORES_META_KEY = '_quizess_scores';
+
 
   /**
    * The custom post type slug for quizess categories

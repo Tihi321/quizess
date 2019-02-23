@@ -36,6 +36,10 @@ class Rest_Register extends Rest_Routes {
 
     // Callbacks.
     $this->get_quizess = new Rest_Callbacks\Get_Quizess( $this->blocks_helper );
+    $this->post_scores = new Rest_Callbacks\Post_Scores();
+
+    // Security.
+    $this->rest_security = new Rest_Security();
   }
 
 
@@ -72,6 +76,16 @@ class Rest_Register extends Rest_Routes {
                   'required' => true,
               ),
           ),
+      )
+    );
+    register_rest_route(
+      static::REST_API_BASE . static::REST_API_VERSION,
+      static::QUIZESS_SCORES,
+      array(
+          'methods'  => 'POST',
+          'callback' => [ $this->post_scores, static::REST_CALLBACK ],
+          'permission_callback' => [ $this->rest_security, self::USER_PERMISION_CHECK ],
+
       )
     );
   }

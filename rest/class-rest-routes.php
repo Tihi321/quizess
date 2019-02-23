@@ -36,11 +36,25 @@ class Rest_Routes extends Config {
   const REST_CALLBACK = 'rest_callback';
 
   /**
+   * Rest callback name
+   *
+   * @since 1.0.0
+   */
+  const USER_PERMISION_CHECK = 'user_authentication_check';
+
+  /**
    * Quizess custom post type route name
    *
    * @since 1.0.0
    */
   const QUIZESS_POSTS = '/quiz/(?P<id>\d+)';
+
+  /**
+   * Quizess custom post type submit a score route
+   *
+   * @since 1.0.0
+   */
+  const QUIZESS_SCORES = '/scores';
 
   /**
    * Quizess custom route slug
