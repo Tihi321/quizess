@@ -107,28 +107,6 @@ class Quiz {
   }
 
   /**
-   * Register custom post meta fields for post.
-   *
-   * @since 1.2.0
-   */
-  public function register_post_meta() : void {
-    register_meta(
-      'post',
-      Config::SCORES_META_KEY,
-      array(
-          'show_in_rest' => true,
-          'single' => true,
-          'type' => 'string',
-          'auth_callback' => function() {
-            $current_user_id = get_current_user_id();
-            $user_can = get_user_meta( $current_user_id, 'user_player_quizess', true );
-            return $user_can;
-          },
-      )
-    );
-  }
-
-  /**
    * Track scores metabox
    *
    * @return void
@@ -186,10 +164,8 @@ class Quiz {
 
     $track_scores = ! empty( $_POST[ Config::TRACK_SCORES_META_KEY ] ) ? \sanitize_text_field( \wp_unslash( $_POST[ Config::TRACK_SCORES_META_KEY ] ) ) : '';
 
-    $rest_output = ( $track_scores_checkbox === 'on' ) ? 'Yes on' : 'no';
-
     \update_post_meta( $post_id, Config::TRACK_SCORES_META_KEY, $track_scores );
-    \update_post_meta( $post_id, Config::SCORES_META_KEY, $rest_output );
+
   }
 
 }

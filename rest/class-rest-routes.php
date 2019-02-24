@@ -63,4 +63,11 @@ class Rest_Routes extends Config {
    */
   const QUIZESS_SLUG = self::REST_API_BASE . self::REST_API_VERSION . '/quiz';
 
+  /**
+   * Quizess custom route slug
+   *
+   * @since 1.0.0
+   */
+  const QUIZESS_SCORES_SLUG = self::REST_API_BASE . self::REST_API_VERSION . self::QUIZESS_SCORES;
+
 }

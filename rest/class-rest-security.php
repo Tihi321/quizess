@@ -3,17 +3,19 @@
  * Class that handles REST security checks
  *
  * @since   1.0.0
- * @package Developer_Portal\Rest
+ * @package Quizess\Rest_Routes
  */
 
-declare( strict_types=1 );
-
 namespace Quizess\Rest;
+
+use Quizess\Includes\Config;
+use Quizess\Helpers\Error_Logger;
 
 /**
  * Class containing registered rest routes
  */
 final class Rest_Security {
+  use Error_Logger;
 
   /**
    * Ensure that user exists, is logged in and is able to submit scores
@@ -28,6 +30,39 @@ final class Rest_Security {
    * @since 1.0.0
    */
   public function user_authentication_check( \WP_REST_Request $request ) {
+
+    $headers = $request->get_headers();
+
+    if ( empty( $headers ) ) {
+      return $this->error_handler( 'empty_header' );
+    }
+
+    if ( empty( $request->get_body() ) ) {
+      return $this->error_handler( 'empty_body' );
+    }
+
+    if ( ! is_user_logged_in() ) {
+      return $this->error_handler( 'user_not_authenticated' );
+    }
+
+    $current_user_id = get_current_user_id();
+    $user_player     = get_user_meta( $current_user_id, Config::USER_PLAYER_TOGGLE, true );
+
+    if ( $user_player !== 'yes' ) {
+      return $this->error_handler( 'user_not_player' );
+    }
+
+    $body = \json_decode( $request->get_body(), true );
+
+    $quiz_id = $body['id'];
+    $correct = $body['correct'];
+    $total   = $body['total'];
+    $stats   = $body['stats'];
+
+    if ( empty( $quiz_id ) || empty( $correct ) || empty( $total ) || empty( $stats ) ) {
+      return $this->error_handler();
+    }
+
     return true;
   }
 

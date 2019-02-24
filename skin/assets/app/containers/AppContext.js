@@ -19,8 +19,10 @@ class AppProvider extends PureComponent {
     this.isIphone = devices.iPhone();
 
     const {theme} = props;
+    const {userPlayer} = userLogged;
 
     this.state = {
+      userPlayer: (userPlayer === 'yes') || false,
       theme,
       inProgress: false,
       data: {},
@@ -62,10 +64,19 @@ class AppProvider extends PureComponent {
   sendQuizData = () => {
 
     const {root} = quizessOptions;
-    const {nonce} = userLogged;
+    const {nonce, scoresApi} = userLogged;
+    const {questionStats, questionsTotal, correctAnswers} = this.state;
+    const {quizId} = this.props;
+
+    const bodyData = JSON.stringify({
+      id: quizId,
+      stats: questionStats,
+      total: questionsTotal,
+      correct: correctAnswers,
+    });
 
     // Test to send data to registered quiz payer.
-    fetch(`${root}wp/v2/posts/1`, {
+    fetch(`${root}${scoresApi}`, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       mode: 'same-origin', // no-cors, cors, *same-origin
       credentials: 'same-origin', // include, *same-origin, omit
@@ -75,9 +86,7 @@ class AppProvider extends PureComponent {
       },
       redirect: 'follow', // manual, *follow, error
       referrer: 'no-referrer', // no-referrer, *client
-      body: {
-        title: 'Hello Moon',
-      },
+      body: bodyData,
     })
       .then(function(res) {
         return res.json();
@@ -93,13 +102,14 @@ class AppProvider extends PureComponent {
 
   fetchApi = () => {
     const {root} = quizessOptions;
-    const {api} = this.props;
+    const {quizApi} = quizessOptions;
+    const {quizId} = this.props;
     this.setState(() => {
       return {
         inProgress: true,
       };
     });
-    fetch(root + api)
+    fetch(root + quizApi + quizId)
       .then((response) => {
         return response.json();
       })
@@ -265,6 +275,12 @@ class AppProvider extends PureComponent {
       });
     },
     handleTryAgain: () => {
+      const {userPlayer} = this.state;
+
+      if (userPlayer) {
+        this.sendQuizData();
+      }
+
       this.resetQuiz();
     },
   };

@@ -3,14 +3,14 @@ import AppProvider from './AppContext';
 
 const AppStore = (props) => {
   const {
-    api,
     theme,
+    quizId,
   } = props;
 
   return (
     <AppProvider
-      api={api}
       theme={theme}
+      quizId={quizId}
     >
       <App />
     </AppProvider>

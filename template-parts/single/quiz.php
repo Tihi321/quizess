@@ -6,7 +6,6 @@
  */
 
 use Quizess\Helpers;
-use Quizess\Rest\Rest_Routes;
 
 $blocks_helper  = new Helpers\Blocks_Helper();
 $general_helper = new Helpers\General_Helper();
@@ -18,7 +17,6 @@ $theme           = $general_helper->get_array_value( 'theme', $quiz_options['opt
 $about_field     = $general_helper->get_array_value( 'aboutField', $quiz_options['options'] );
 $bg_color        = $general_helper->get_array_value( 'bgColor', $quiz_options['bgOptions'] );
 $bg_image_url    = $general_helper->get_array_value( 'bgUrl', $quiz_options['bgOptions'] );
-$api_url         = Rest_Routes::QUIZESS_SLUG . '/' . $post->ID;
 $modal_id        = 'modal-' . $post->ID;
 $base_path       = Helpers\General_Helper::get_base_path();
 
@@ -41,9 +39,9 @@ $base_path       = Helpers\General_Helper::get_base_path();
     </div>
     <div class="quiz__button--outer">
       <?php
-      if ( ! empty( $api_url ) ) {
+      if ( ! empty( $post->ID ) ) {
         ?>
-        <div class="js-quiz-start" data-api="<?php echo esc_attr( $api_url ); ?>" data-theme="<?php echo esc_attr( $theme ); ?>">
+        <div class="js-quiz-start" data-quiz-id="<?php echo esc_attr( $post->ID ); ?>" data-theme="<?php echo esc_attr( $theme ); ?>">
         </div>
       <?php } ?>
       <?php

@@ -10,6 +10,7 @@ namespace Quizess\Front;
 
 use Quizess\Includes\Config;
 use Quizess\Helpers\General_Helper;
+use Quizess\Rest\Rest_Routes;
 
 /**
  * Class Front
@@ -93,6 +94,7 @@ class Front extends Config {
       'quizessOptions',
       array(
           'root' => esc_url_raw( rest_url() ),
+          'quizApi' => Rest_Routes::QUIZESS_SLUG . '/',
       )
     );
 
@@ -102,7 +104,17 @@ class Front extends Config {
         static::PLUGIN_NAME . '-frontend-scripts',
         'userLogged',
         array(
+            'userPlayer' => 'yes',
+            'scoresApi' => Rest_Routes::QUIZESS_SCORES_SLUG,
             'nonce' => wp_create_nonce( 'wp_rest' ),
+        )
+      );
+    } else {
+      wp_localize_script(
+        static::PLUGIN_NAME . '-frontend-scripts',
+        'userLogged',
+        array(
+            'userPlayer' => 'no',
         )
       );
     }
