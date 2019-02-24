@@ -9,6 +9,7 @@
 namespace Quizess\Admin;
 
 use Quizess\Helpers\General_Helper;
+use Quizess\Includes\Config;
 
 /**
  * Class Users
@@ -57,18 +58,10 @@ class Users {
       return false;
     }
 
-    if ( isset( $_POST['user-player-toggle'] ) ) {
-      $user_player = sanitize_text_field( wp_unslash( $_POST['user-player-toggle'] ) );
+    $user_player = ! empty( $_POST[ Config::USER_PLAYER_TOGGLE ] ) ? \sanitize_text_field( \wp_unslash( $_POST[ Config::USER_PLAYER_TOGGLE ] ) ) : '';
+    $output_value = ( $user_player === 'on' ) ? 'yes' : 'no';
 
-      if ( $user_player === 'user-player-yes' ) {
-
-        update_user_meta( $user_id, 'user_player_quizess', 1 );
-
-      } elseif ( $user_player === 'user-player-no' ) {
-
-        update_user_meta( $user_id, 'user_player_quizess', 0 );
-      }
-    }
+    \update_user_meta( $user_id, Config::USER_PLAYER_TOGGLE, $output_value );
   }
 
 }

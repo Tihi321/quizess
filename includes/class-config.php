@@ -65,6 +65,15 @@ abstract class Config {
    */
   const SCORES_META_KEY = '_quizess_scores';
 
+  /**
+   * The custom post meta field for quizess
+   *
+   * @var string
+   *
+   * @since 1.0.0
+   */
+  const TRACK_SCORES_META_KEY = '_track_scores';
+
 
   /**
    * The custom post type slug for quizess categories
@@ -125,5 +134,18 @@ abstract class Config {
    * @since 1.0.0
    */
   const NONCE_NAME = 'quizess_nonce';
+
+  // -------------------------------------------------------
+  // USERS
+  // -------------------------------------------------------
+
+  /**
+   * The custom post type slug
+   *
+   * @var string
+   *
+   * @since 1.0.0
+   */
+  const USER_PLAYER_TOGGLE = 'user_player_quizess';
 
 }
