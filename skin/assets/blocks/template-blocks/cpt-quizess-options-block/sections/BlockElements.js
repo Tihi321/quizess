@@ -18,7 +18,6 @@ function BlockElements(props) {
       failureMessage,
       theme,
       aboutField,
-      metaValue,
     },
     dispatchAttributesStore: {
       handleTimerChange,
@@ -28,7 +27,6 @@ function BlockElements(props) {
       handleWelcomeMessageChange,
       handleThemeChange,
       handleAboutChange,
-      handleMetaValueChange,
     },
   } = props;
 
@@ -55,31 +53,6 @@ function BlockElements(props) {
   );
 
   /* eslint-disable */
-    const metaValueElement = (
-      <Fragment>
-        <div className="qz-label-mce-class">
-          {__('Meta Value', 'quizess')}
-        </div>
-        <TextElement
-            styleReset={true}
-            outputType='text'
-            className="qz-input-mce-class"
-            value={metaValue}
-            onChange={(newMetaValue) => handleMetaValueChange(newMetaValue)}
-            maxChars={100}
-            maxRows={4}
-            warning={true}
-            single={true}
-            init={{
-              selection_toolbar:false,
-              insert_toolbar: false,
-            }}
-          />
-        <div className="qz-help-mce-class">
-          {__('Choose welcome message for quiz', 'quizess')}
-        </div>
-      </Fragment>
-    );
     const welcomeMessageElement = (
       <Fragment>
         <div className="qz-label-mce-class">
@@ -213,7 +186,6 @@ function BlockElements(props) {
           {timerElement}
         </div>
         <div className="qz-panel-group">
-          {metaValueElement}
           {welcomeMessageElement}
           {successMessageElement}
           {failureMessageElement}

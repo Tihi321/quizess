@@ -35,11 +35,6 @@ export default registerBlockType(
       html: false,
     },
     attributes: {
-      metaValue: {
-        type: 'string',
-        source: 'meta',
-        meta: '_quizess_scores',
-      },
       useTimer: {
         type: 'boolean',
       },

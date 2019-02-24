@@ -43,7 +43,7 @@ class Quiz {
         'public'              => true,
         'menu_position'       => 5,
         'menu_icon'           => 'dashicons-welcome-learn-more',
-        'supports'            => array( 'title', 'editor', 'custom-fields' ),
+        'supports'            => array( 'title', 'editor' ),
         'exclude_from_search' => true,
         'publicly_queryable'  => true,
         'show_in_rest'        => true,
@@ -126,6 +126,70 @@ class Quiz {
           },
       )
     );
+  }
+
+  /**
+   * Track scores metabox
+   *
+   * @return void
+   */
+  public function track_scores_metabox() : void {
+    add_meta_box(
+      Config::TRACK_SCORES_META_KEY,
+      esc_html__( 'Hall of fame', 'developer-portal' ),
+      [ $this, 'track_scores_metabox_view' ],
+      Config::QUIZESS_POST_SLUG,
+      'side'
+    );
+  }
+
+  /**
+   * View callback for the track scores metabox
+   *
+   * @param  \WP_Post $post Post object of the current page.
+   * @return void
+   */
+  public function track_scores_metabox_view( \WP_Post $post ) : void {
+    $track_scores = \get_post_meta( $post->ID, Config::TRACK_SCORES_META_KEY, true );
+    $checked      = ( $track_scores === 'on' ) ? 'checked' : '';
+    ?>
+    <div class="qz-panel-group">
+      <div class="components-panel__row">
+        <label for="track-scores-checkbox-id"><?php esc_html_e( 'Track scores', 'developer-portal' ); ?></label>
+        <label class="toggle-switch">
+          <input class="toggle-switch__input" name="<?php echo esc_attr( Config::TRACK_SCORES_META_KEY ); ?>" id="track-scores-checkbox-id" type="checkbox" <?php echo esc_attr( $checked ); ?>>
+          <span class="toggle-switch__slider"></span>
+        </label>
+      </div>
+    </div>
+    <?php
+    \wp_nonce_field( 'track_scores_action', 'track_scores_nonce' );
+  }
+
+  /**
+   * Save method for the track scores metabox
+   *
+   * @param int $post_id Post ID.
+   * @return void
+   */
+  public function track_scores_metabox_save( int $post_id ) : void {
+
+    // Check if nonce is set.
+    if ( ! isset( $_POST['track_scores_nonce'] ) || ! \wp_verify_nonce( \sanitize_key( $_POST['track_scores_nonce'] ), 'track_scores_action' ) ) {
+      return;
+    }
+
+    // Check if user has permissions to save data.
+    if ( ! \current_user_can( 'edit_pages', $post_id ) ) {
+      return;
+    }
+
+    $track_scores = ! empty( $_POST[ Config::TRACK_SCORES_META_KEY ] ) ? \sanitize_text_field( \wp_unslash( $_POST[ Config::TRACK_SCORES_META_KEY ] ) ) : '';
+
+    $rest_output = ( $track_scores_checkbox === 'on' ) ? 'Yes on' : 'no';
+
+    \update_post_meta( $post_id, Config::TRACK_SCORES_META_KEY, $track_scores );
+    \update_post_meta( $post_id, Config::SCORES_META_KEY, $rest_output );
   }
 
 }

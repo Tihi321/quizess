@@ -7,12 +7,6 @@ const App = (props) => {
   } = props;
 
   const dispatchAttributesStore = {
-    handleMetaValueChange: (metaValue) => {
-      dispatchAtributes({
-        action: 'metaValue',
-        payload: metaValue,
-      });
-    },
     handleUseTimerChange: (timer) => {
       dispatchAtributes({
         action: 'useTimer',
