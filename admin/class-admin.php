@@ -85,13 +85,30 @@ class Admin extends Config {
   /**
    * Register the JavaScript for the admin area.
    *
+   * @param string $hook page top slug.
    * @since 1.0.0
    */
-  public function enqueue_admin_scripts() {
+  public function enqueue_admin_scripts( string $hook ) : void {
 
-    $main_admin_script = $this->general_helper->get_manifest_assets_data( 'adminQuizess.js' );
-    wp_register_script( static::PLUGIN_NAME . '-admin-scripts', $main_admin_script, array( 'wp-plugins', 'wp-edit-post', 'wp-element' ), static::PLUGIN_VERSION, true );
-    wp_enqueue_script( static::PLUGIN_NAME . '-admin-scripts' );
+    // load scripts only on dasboard page.
+    if ( $hook === 'toplevel_page_quizess_dashboard' ) {
+
+      $main_admin_script = $this->general_helper->get_manifest_assets_data( 'adminQuizess.js' );
+      wp_register_script(
+        static::PLUGIN_NAME . '-admin-scripts',
+        $main_admin_script,
+        array(
+            'wp-plugins',
+            'wp-edit-post',
+            'wp-element',
+        ),
+        static::PLUGIN_VERSION,
+        true
+      );
+
+      wp_enqueue_script( static::PLUGIN_NAME . '-admin-scripts' );
+
+    }
 
   }
 

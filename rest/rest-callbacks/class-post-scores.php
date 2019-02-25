@@ -53,10 +53,13 @@ class Post_Scores extends Rest_Routes implements Rest_Callback {
     }
 
     $quiz_stats = [
-        $user_display_name => [
-            'tries' => 1,
-            'correct' => $correct,
-            'total' => $total,
+        'players' => [
+            $current_user_id => [
+                'name' => $user_display_name,
+                'attempts' => 1,
+                'correct' => $correct,
+                'total' => $total,
+            ],
         ],
         'stats' => $question_stats,
     ];
@@ -69,16 +72,18 @@ class Post_Scores extends Rest_Routes implements Rest_Callback {
         add_post_meta( $quiz_id, Config::SCORES_META_KEY, $quiz_stats );
 
     } else {
+        $user_scores        = [];
         $updated_stats      = [];
-        $current_user_stats = $scores[ $user_display_name ];
+        $current_user_stats = $scores['players'][ $current_user_id ];
         $current_stats      = $scores['stats'];
 
       if ( empty( $current_user_stats ) ) {
-        $updated_stats = $quiz_stats[ $user_display_name ];
+        $user_scores = $quiz_stats[ $current_user_id ];
       } else {
-        $updated_stats[ $user_display_name ]['tries']   = $current_user_stats['tries'] + 1;
-        $updated_stats[ $user_display_name ]['correct'] = $current_user_stats['correct'] + $correct;
-        $updated_stats[ $user_display_name ]['total']   = $current_user_stats['total'] + $total;
+        $user_scores['name']     = $current_user_stats['name'];
+        $user_scores['attempts'] = $current_user_stats['attempts'] + 1;
+        $user_scores['correct']  = $current_user_stats['correct'] + $correct;
+        $user_scores['total']    = $current_user_stats['total'] + $total;
       }
 
       if ( empty( $current_stats ) ) {
@@ -89,11 +94,14 @@ class Post_Scores extends Rest_Routes implements Rest_Callback {
         }
       }
 
-        update_post_meta( $quiz_id, Config::SCORES_META_KEY, $updated_stats );
+        $scores['players'][ $current_user_id ] = $user_scores;
+        $scores['stats']                       = $updated_stats;
+
+        update_post_meta( $quiz_id, Config::SCORES_META_KEY, $scores );
 
     }
 
-    return new \WP_REST_Response( $updated_stats, 200 );
+    return new \WP_REST_Response( $scores, 200 );
   }
 
 }

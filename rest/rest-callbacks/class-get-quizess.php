@@ -57,6 +57,9 @@ class Get_Quizess extends Rest_Routes implements Rest_Callback {
    */
   public function rest_callback( \WP_REST_Request $request ) {
 
+    $players_data  = [];
+    $scores_output = null;
+
     $quiz_id        = $request->get_param( 'id' );
     $quiz_post_type = get_post_type( $quiz_id );
     $quiz           = get_post( $quiz_id );
@@ -71,9 +74,20 @@ class Get_Quizess extends Rest_Routes implements Rest_Callback {
       return new \WP_Error( 'awesome_no_blocks', 'No blocks found', array( 'status' => 404 ) );
     }
 
-    $output           = $this->blocks_helper->get_decoded_quiz_values( $parsed_quiz_array );
-    $scores           = get_post_meta( $quiz_id, Config::SCORES_META_KEY, true );
-    $output['scores'] = ( $scores ) ? $scores : '';
+    $output = $this->blocks_helper->get_decoded_quiz_values( $parsed_quiz_array );
+    $scores = get_post_meta( $quiz_id, Config::SCORES_META_KEY, true );
+
+    if ( $scores ) {
+      $players = $scores['players'];
+
+      foreach ( $players as $key => $player ) {
+        $players_data[] = $player;
+      }
+      $scores_output['players'] = $players_data;
+      $scores_output['stats']   = $scores['stats'];
+    }
+
+    $output['scores'] = $scores_output;
 
     return new \WP_REST_Response( $output, 200 );
   }
