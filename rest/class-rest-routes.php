@@ -43,11 +43,25 @@ class Rest_Routes extends Config {
   const USER_PERMISION_CHECK = 'user_authentication_check';
 
   /**
+   * Rest callback name
+   *
+   * @since 1.0.0
+   */
+  const USER_BASIC_AUTHENTIFICATION = 'user_basic_authentication_check';
+
+  /**
    * Quizess custom post type route name
    *
    * @since 1.0.0
    */
   const QUIZESS_POSTS = '/quiz/(?P<id>\d+)';
+
+  /**
+   * Quizess custom post type submit a score route
+   *
+   * @since 1.0.0
+   */
+  const QUIZESS_SCORE = '/score';
 
   /**
    * Quizess custom post type submit a score route
@@ -68,6 +82,6 @@ class Rest_Routes extends Config {
    *
    * @since 1.0.0
    */
-  const QUIZESS_SCORES_SLUG = self::REST_API_BASE . self::REST_API_VERSION . self::QUIZESS_SCORES;
+  const QUIZESS_SCORE_SLUG = self::REST_API_BASE . self::REST_API_VERSION . self::QUIZESS_SCORE;
 
 }

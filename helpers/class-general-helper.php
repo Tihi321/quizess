@@ -136,6 +136,28 @@ class General_Helper extends Config {
   }
 
   /**
+   * Checks if user submited & can submit only one quiz user needs to be authenticated
+   *
+   * @param int $posts_id post ID to check if scores has been submited.
+   * @param int $users_id users ID to check against.
+   * @return bool returns true is user can submit.
+   */
+  public function can_user_submit( int $posts_id, int $users_id ) : bool {
+
+    $scores = get_post_meta( $posts_id, Config::SCORES_META_KEY, true );
+    if ( ! empty( $scores ) ) {
+      $player_scores = $scores['players'][ $users_id ];
+      $user_single   = get_user_meta( $users_id, Config::USER_SINGLE_TOGGLE, true );
+
+      if ( ! empty( $player_scores ) && $user_single === 'yes' ) {
+        return false;
+      }
+    }
+    return true;
+
+  }
+
+  /**
    * Cmpatibility notice
    *
    * @return void

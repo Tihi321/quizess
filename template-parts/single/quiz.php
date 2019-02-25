@@ -24,14 +24,10 @@ $base_path       = Helpers\General_Helper::get_base_path();
 
 // check if user can submit scores.
 if ( is_user_logged_in() ) {
-  $scores = get_post_meta( $post->ID, Config::SCORES_META_KEY, true );
-  if ( ! empty( $scores ) ) {
-    $current_user_id = get_current_user_id();
-    $player_scores   = $scores['players'][ $current_user_id ];
-    $user_single     = get_user_meta( $current_user_id, Config::USER_SINGLE_TOGGLE, true );
-    if ( ! empty( $player_scores ) && $user_single === 'yes' ) {
-      $user_submit = '0';
-    }
+  $current_user_id = get_current_user_id();
+  $can_user_submit = $general_helper->can_user_submit( $post->ID, $current_user_id );
+  if ( ! $can_user_submit ) {
+    $user_submit = '0';
   }
 }
 

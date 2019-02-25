@@ -14,9 +14,9 @@ use Quizess\Helpers\General_Helper;
 use Quizess\Includes\Config;
 
 /**
- * Class Get_Quizess
+ * Class Post_Score
  */
-class Post_Scores extends Rest_Routes implements Rest_Callback {
+class Post_Score extends Rest_Routes implements Rest_Callback {
 
   /**
    * Update quiz data rest route callback
@@ -36,10 +36,12 @@ class Post_Scores extends Rest_Routes implements Rest_Callback {
    */
   public function rest_callback( \WP_REST_Request $request ) {
 
-    $question_stats    = [];
-    $current_user_id   = get_current_user_id();
-    $user_data         = get_userdata( $current_user_id );
-    $user_display_name = $user_data->data->display_name;
+    $current_user_id = get_current_user_id();
+    $user_player     = get_user_meta( $current_user_id, Config::USER_PLAYER_TOGGLE, true );
+
+    if ( $user_player !== 'yes' ) {
+      return $this->error_handler( 'user_not_player' );
+    }
 
     $body = \json_decode( $request->get_body(), true );
 
@@ -47,6 +49,29 @@ class Post_Scores extends Rest_Routes implements Rest_Callback {
     $correct = $body['correct'];
     $total   = $body['total'];
     $stats   = $body['stats'];
+
+    if ( empty( $quiz_id ) || empty( $correct ) || empty( $total ) || empty( $stats ) ) {
+      return $this->error_handler();
+    }
+
+    $scores = get_post_meta( $quiz_id, Config::SCORES_META_KEY, true );
+
+    if ( ! empty( $scores ) ) {
+
+      $player_scores = $scores['players'][ $current_user_id ];
+      $user_single   = get_user_meta( $current_user_id, Config::USER_SINGLE_TOGGLE, true );
+
+      if ( ! empty( $player_scores ) && $user_single === 'yes' ) {
+
+        return $this->error_handler( 'user_submit_limit' );
+
+      }
+    }
+
+    $question_stats    = [];
+    $current_user_id   = get_current_user_id();
+    $user_data         = get_userdata( $current_user_id );
+    $user_display_name = $user_data->data->display_name;
 
     foreach ( $stats as $key => $stat ) {
       $question_stats[] = ( $stat['correct'] === true ) ? 1 : 0;
@@ -63,8 +88,6 @@ class Post_Scores extends Rest_Routes implements Rest_Callback {
         ],
         'stats' => $question_stats,
     ];
-
-    $scores = get_post_meta( $quiz_id, Config::SCORES_META_KEY, true );
 
     if ( ! empty( $scores ) ) {
 

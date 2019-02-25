@@ -105,7 +105,7 @@ class Front extends Config {
         'userLogged',
         array(
             'userPlayer' => 'yes',
-            'scoresApi' => Rest_Routes::QUIZESS_SCORES_SLUG,
+            'scoresApi' => Rest_Routes::QUIZESS_SCORE_SLUG,
             'nonce' => wp_create_nonce( 'wp_rest' ),
         )
       );
