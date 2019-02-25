@@ -21,8 +21,18 @@ class Questions {
    * @since 1.0.0
    */
   public function register_post_type() {
+
+    $labels = array(
+        'name'          => esc_html__( 'Questions', 'quizess' ),
+        'singular_name' => esc_html__( 'Question', 'quizess' ),
+        'all_items'     => esc_html__( 'View Questions', 'quizess' ),
+        'edit_item'     => esc_html__( 'Edit Question', 'quizess' ),
+        'update_item'   => esc_html__( 'Update Question', 'quizess' ),
+        'add_new'       => esc_html__( 'Add New Question', 'quizess' ),
+    );
+
     $args = array(
-        'label'               => esc_html( 'Questions', 'quizess' ),
+        'labels'              => $labels,
         'public'              => true,
         'menu_position'       => 5,
         'menu_icon'           => 'dashicons-welcome-learn-more',
@@ -30,6 +40,8 @@ class Questions {
         'exclude_from_search' => true,
         'publicly_queryable'  => true,
         'show_in_rest'        => true,
+        'show_ui'             => true,
+        'show_in_menu'        => false,
         'can_export'          => true,
         'template' => array(
             array(
@@ -51,16 +63,16 @@ class Questions {
    */
   public function register_categories() {
     $labels = array(
-        'name'              => esc_html( 'Topics', 'quizess' ),
-        'singular_name'     => esc_html( 'Topic', 'quizess' ),
-        'search_items'      => esc_html( 'Search Topics', 'quizess' ),
-        'all_items'         => esc_html( 'All Topics', 'quizess' ),
-        'parent_item'       => esc_html( 'Parent Topic', 'quizess' ),
-        'parent_item_colon' => esc_html( 'Parent Topic', 'quizess' ),
-        'edit_item'         => esc_html( 'Edit Topic', 'quizess' ),
-        'update_item'       => esc_html( 'Update Topic', 'quizess' ),
-        'add_new_item'      => esc_html( 'Add New Topic', 'quizess' ),
-        'new_item_name'     => esc_html( 'New Topic Name', 'quizess' ),
+        'name'              => esc_html__( 'Question Topics', 'quizess' ),
+        'singular_name'     => esc_html__( 'Question Topic', 'quizess' ),
+        'search_items'      => esc_html__( 'Search Question Topics', 'quizess' ),
+        'all_items'         => esc_html__( 'All Question Topics', 'quizess' ),
+        'parent_item'       => esc_html__( 'Parent Question Topic', 'quizess' ),
+        'parent_item_colon' => esc_html__( 'Parent Question Topic', 'quizess' ),
+        'edit_item'         => esc_html__( 'Edit Question Topic', 'quizess' ),
+        'update_item'       => esc_html__( 'Update Question Topic', 'quizess' ),
+        'add_new_item'      => esc_html__( 'Add New Question Topic', 'quizess' ),
+        'new_item_name'     => esc_html__( 'New Question Topic Name', 'quizess' ),
     );
 
     $args = array(
@@ -68,6 +80,7 @@ class Questions {
         'hierarchical'        => true,
         'show_in_rest'        => true,
         'show_ui'             => true,
+        'show_in_menu'        => false,
         'query_vars'          => true,
     );
 

@@ -121,11 +121,11 @@ class Main extends Config {
    */
   private function define_admin_hooks() {
     $admin     = new Admin\Admin( $this->general_helper );
+    $menu_page = new Admin\Menu_Page();
     $media     = new Admin\Media();
     $blocks    = new Admin\Blocks();
     $quiz      = new Admin\Quiz();
     $questions = new Admin\Questions();
-    $story     = new Admin\Story();
     $users     = new Admin\Users();
 
     // Admin.
@@ -133,6 +133,11 @@ class Main extends Config {
     $this->loader->add_action( 'enqueue_block_editor_assets', $admin, 'enqueue_block_styles', 50 );
     $this->loader->add_action( 'admin_enqueue_scripts', $admin, 'enqueue_admin_scripts' );
     $this->loader->add_action( 'enqueue_block_editor_assets', $admin, 'enqueue_block_scripts' );
+
+    // Menu page.
+    $this->loader->add_action( 'admin_menu', $menu_page, 'register_menu_page' );
+    $this->loader->add_action( 'admin_menu', $menu_page, 'register_submenu_pages' );
+    $this->loader->add_filter( 'parent_file', $menu_page, 'parent_menu_focus' );
 
     // Media.
     $this->loader->add_filter( 'upload_mimes', $media, 'enable_mime_types' );
@@ -160,10 +165,6 @@ class Main extends Config {
     $this->loader->add_action( 'add_meta_boxes', $quiz, 'track_scores_metabox' );
     $this->loader->add_action( 'save_post', $quiz, 'track_scores_metabox_save', 10, 3 );
     $this->loader->add_filter( 'template_include', $quiz, 'quiz_single_template', 10, 4 );
-
-    // Register custom post type story.
-    $this->loader->add_action( 'init', $story, 'register_post_type' );
-    $this->loader->add_action( 'init', $story, 'register_categories' );
 
     // Register custom post type auestion.
     $this->loader->add_action( 'init', $questions, 'register_post_type' );

@@ -17,14 +17,6 @@ use Quizess\Includes\Config;
 class Users {
 
   /**
-   * Initialize class
-   *
-   * @since 1.2.0
-   */
-  public function __construct() {
-  }
-
-  /**
    * Shows extra user's meta fields for users.
    *
    * @param WP_User $user   WP_User object.

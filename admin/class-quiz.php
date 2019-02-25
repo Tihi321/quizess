@@ -38,18 +38,29 @@ class Quiz {
         ),
     );
 
+    $labels = array(
+        'name'          => esc_html__( 'Quizess', 'quizess' ),
+        'singular_name' => esc_html__( 'Quiz', 'quizess' ),
+        'all_items'     => esc_html__( 'View Quizzes', 'quizess' ),
+        'edit_item'     => esc_html__( 'Edit Quiz', 'quizess' ),
+        'update_item'   => esc_html__( 'Update Quiz', 'quizess' ),
+        'add_new'       => esc_html__( 'Add New Quiz', 'quizess' ),
+    );
+
     $args = array(
-        'label'               => esc_html( 'Quizess', 'quizess' ),
-        'public'              => true,
-        'menu_position'       => 5,
+        'labels'              => $labels,
         'menu_icon'           => 'dashicons-welcome-learn-more',
         'supports'            => array( 'title', 'editor' ),
+        'public'              => true,
         'exclude_from_search' => true,
         'publicly_queryable'  => true,
         'show_in_rest'        => true,
+        'show_ui'             => true,
+        'show_in_menu'        => false,
         'can_export'          => true,
         'template'            => $template,
         'template_lock'       => 'all',
+        'taxonomies'          => array( Config::QUIZESS_CATEGORY_SLUG ),
     );
     register_post_type( Config::QUIZESS_POST_SLUG, $args );
   }
@@ -61,22 +72,23 @@ class Quiz {
    */
   public function register_categories() {
     $labels = array(
-        'name'              => esc_html( 'Topics', 'quizess' ),
-        'singular_name'     => esc_html( 'Topic', 'quizess' ),
-        'search_items'      => esc_html( 'Search Topics', 'quizess' ),
-        'all_items'         => esc_html( 'All Topics', 'quizess' ),
-        'parent_item'       => esc_html( 'Parent Topic', 'quizess' ),
-        'parent_item_colon' => esc_html( 'Parent Topic', 'quizess' ),
-        'edit_item'         => esc_html( 'Edit Topic', 'quizess' ),
-        'update_item'       => esc_html( 'Update Topic', 'quizess' ),
-        'add_new_item'      => esc_html( 'Add New Topic', 'quizess' ),
-        'new_item_name'     => esc_html( 'New Topic Name', 'quizess' ),
+        'name'              => esc_html__( 'Quiz Topics', 'quizess' ),
+        'singular_name'     => esc_html__( 'Quiz Topic', 'quizess' ),
+        'search_items'      => esc_html__( 'Search Quiz Topics', 'quizess' ),
+        'all_items'         => esc_html__( 'All Quiz Topics', 'quizess' ),
+        'parent_item'       => esc_html__( 'Parent Quiz Topic', 'quizess' ),
+        'parent_item_colon' => esc_html__( 'Parent Quiz Topic', 'quizess' ),
+        'edit_item'         => esc_html__( 'Edit Quiz Topic', 'quizess' ),
+        'update_item'       => esc_html__( 'Update Quiz Topic', 'quizess' ),
+        'add_new_item'      => esc_html__( 'Add New Quiz Topic', 'quizess' ),
+        'new_item_name'     => esc_html__( 'New Topic Quiz Name', 'quizess' ),
     );
 
     $args = array(
         'labels'              => $labels,
         'hierarchical'        => true,
         'show_ui'             => true,
+        'show_in_menu'        => false,
         'query_vars'          => true,
         'show_in_rest'        => true,
     );

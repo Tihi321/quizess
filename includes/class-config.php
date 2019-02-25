@@ -103,25 +103,6 @@ abstract class Config {
    */
   const QUESTION_CATEGORY_SLUG = 'question-topic';
 
-  /**
-   * The custom post type slug for stories
-   *
-   * @var string
-   *
-   * @since 1.0.0
-   */
-  const STORIES_POST_SLUG = 'story';
-
-
-  /**
-   * The custom post type slug for stories categories
-   *
-   * @var string
-   *
-   * @since 1.0.0
-   */
-  const STORIES_CATEGORY_SLUG = 'story-topic';
-
   // -------------------------------------------------------
   // NONCE
   // -------------------------------------------------------
