@@ -51,9 +51,13 @@ class Users {
     }
 
     $user_player = ! empty( $_POST[ Config::USER_PLAYER_TOGGLE ] ) ? \sanitize_text_field( \wp_unslash( $_POST[ Config::USER_PLAYER_TOGGLE ] ) ) : '';
-    $output_value = ( $user_player === 'on' ) ? 'yes' : 'no';
+    $user_single = ! empty( $_POST[ Config::USER_SINGLE_TOGGLE ] ) ? \sanitize_text_field( \wp_unslash( $_POST[ Config::USER_SINGLE_TOGGLE ] ) ) : '';
 
-    \update_user_meta( $user_id, Config::USER_PLAYER_TOGGLE, $output_value );
+    $user_output   = ( $user_player === 'on' ) ? 'yes' : 'no';
+    $single_output = ( $user_single === 'on' ) ? 'yes' : 'no';
+
+    \update_user_meta( $user_id, Config::USER_PLAYER_TOGGLE, $user_output );
+    \update_user_meta( $user_id, Config::USER_SINGLE_TOGGLE, $single_output );
   }
 
 }

@@ -8,7 +8,6 @@
 
 namespace Quizess\Admin;
 
-use Quizess\Helpers\General_Helper;
 use Quizess\Includes\Config;
 
 /**
@@ -72,7 +71,7 @@ class Menu_Page {
             'page_title'  => esc_html__( 'Quizess', 'quizess' ),
             'menu_title'  => esc_html__( 'All Quizess', 'quizess' ),
             'capability'  => self::USER_CAPABILITY,
-            'menu_slug'   => 'edit.php?post_type=quiz',
+            'menu_slug'   => 'edit.php?post_type=' . Config::QUIZESS_POST_SLUG,
             'function'    => null,
         ),
 
@@ -82,7 +81,7 @@ class Menu_Page {
             'page_title'  => esc_html__( 'New Quiz', 'quizess' ),
             'menu_title'  => esc_html__( 'Add New Quiz', 'quizess' ),
             'capability'  => self::USER_CAPABILITY,
-            'menu_slug'   => 'post-new.php?post_type=quiz',
+            'menu_slug'   => 'post-new.php?post_type=' . Config::QUIZESS_POST_SLUG,
             'function'    => null,
         ),
 
@@ -92,7 +91,7 @@ class Menu_Page {
             'page_title'  => esc_html__( 'Quiz Topics', 'quizess' ),
             'menu_title'  => esc_html__( 'Quiz Topics', 'quizess' ),
             'capability'  => self::USER_CAPABILITY,
-            'menu_slug'   => 'edit-tags.php?taxonomy=quiz-topic&post_type=quiz',
+            'menu_slug'   => 'edit-tags.php?taxonomy=' . Config::QUIZESS_CATEGORY_SLUG . '&post_type=' . Config::QUIZESS_POST_SLUG,
             'function'    => null,
         ),
 
@@ -102,7 +101,7 @@ class Menu_Page {
             'page_title'  => esc_html__( 'Questions', 'quizess' ),
             'menu_title'  => esc_html__( 'All Questions', 'quizess' ),
             'capability'  => self::USER_CAPABILITY,
-            'menu_slug'   => 'edit.php?post_type=question',
+            'menu_slug'   => 'edit.php?post_type=' . Config::QUESTION_POST_SLUG,
             'function'    => null,
         ),
 
@@ -112,7 +111,7 @@ class Menu_Page {
             'page_title'  => esc_html__( 'New Question', 'quizess' ),
             'menu_title'  => esc_html__( 'Add New Question', 'quizess' ),
             'capability'  => self::USER_CAPABILITY,
-            'menu_slug'   => 'post-new.php?post_type=question',
+            'menu_slug'   => 'post-new.php?post_type=' . Config::QUESTION_POST_SLUG,
             'function'    => null,
         ),
 
@@ -122,7 +121,7 @@ class Menu_Page {
             'page_title'  => esc_html__( 'Question Topics', 'quizess' ),
             'menu_title'  => esc_html__( 'Question Topics', 'quizess' ),
             'capability'  => self::USER_CAPABILITY,
-            'menu_slug'   => 'edit-tags.php?taxonomy=question-topic&post_type=question',
+            'menu_slug'   => 'edit-tags.php?taxonomy=' . Config::QUESTION_CATEGORY_SLUG . '&post_type=' . Config::QUESTION_POST_SLUG,
             'function'    => null,
         ),
 
@@ -155,19 +154,33 @@ class Menu_Page {
     global $submenu_file, $current_screen, $pagenow;
 
     // Set the submenu as active/current while anywhere in your Custom Post Type.
-    if ( $current_screen->post_type === 'quiz' ) {
+    if ( $current_screen->post_type === Config::QUIZESS_POST_SLUG || $current_screen->post_type === Config::QUESTION_POST_SLUG ) {
+
+      $post_type     = '';
+      $taxonomy_type = '';
+
+      switch ( $current_screen->post_type ) {
+        case Config::QUIZESS_POST_SLUG:
+          $post_type     = Config::QUIZESS_POST_SLUG;
+          $taxonomy_type = Config::QUIZESS_CATEGORY_SLUG;
+              break;
+        default:
+          $post_type     = Config::QUESTION_POST_SLUG;
+          $taxonomy_type = Config::QUESTION_CATEGORY_SLUG;
+              break;
+      }
 
       if ( $pagenow === 'post.php' ) {
           // phpcs:ignore WordPress.WP.GlobalVariablesOverride.OverrideProhibited
-          $submenu_file = 'edit.php?post_type=' . $current_screen->post_type;
+          $submenu_file = "edit.php?post_type={$post_type}";
       }
 
       if ( $pagenow === 'edit-tags.php' ) {
           // phpcs:ignore WordPress.WP.GlobalVariablesOverride.OverrideProhibited
-          $submenu_file = 'edit-tags.php?taxonomy=quiz-topic&post_type=' . $current_screen->post_type;
+          $submenu_file = "edit-tags.php?taxonomy={$taxonomy_type}&post_type={$post_type}";
       }
 
-        $parent_file = 'quizess_dashboard';
+        $parent_file = self::PARENT_MENU_SLUG;
 
     }
 

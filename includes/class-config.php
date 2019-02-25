@@ -56,6 +56,16 @@ abstract class Config {
    */
   const QUIZESS_POST_SLUG = 'quiz';
 
+
+  /**
+   * The custom post type slug for quizess categories
+   *
+   * @var string
+   *
+   * @since 1.0.0
+   */
+  const QUIZESS_CATEGORY_SLUG = 'quiz-topic';
+
   /**
    * The custom post meta field for quizess
    *
@@ -73,16 +83,6 @@ abstract class Config {
    * @since 1.0.0
    */
   const TRACK_SCORES_META_KEY = '_track_scores';
-
-
-  /**
-   * The custom post type slug for quizess categories
-   *
-   * @var string
-   *
-   * @since 1.0.0
-   */
-  const QUIZESS_CATEGORY_SLUG = 'quiz-topic';
 
   /**
    * The custom post type slug for question
@@ -121,12 +121,21 @@ abstract class Config {
   // -------------------------------------------------------
 
   /**
-   * The custom post type slug
+   * Toggle to track user progress in quizess
    *
    * @var string
    *
    * @since 1.0.0
    */
   const USER_PLAYER_TOGGLE = 'user_player_quizess';
+
+  /**
+   * This is set so user can submit only one quiz
+   *
+   * @var string
+   *
+   * @since 1.0.0
+   */
+  const USER_SINGLE_TOGGLE = 'user_single_quizess';
 
 }
