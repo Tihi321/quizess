@@ -66,7 +66,7 @@ class Post_Scores extends Rest_Routes implements Rest_Callback {
 
     $scores = get_post_meta( $quiz_id, Config::SCORES_META_KEY, true );
 
-    if ( $scores === '' ) {
+    if ( ! empty( $scores ) ) {
 
         delete_post_meta( $quiz_id, Config::SCORES_META_KEY );
         add_post_meta( $quiz_id, Config::SCORES_META_KEY, $quiz_stats );

@@ -18,10 +18,11 @@ class AppProvider extends PureComponent {
     this.$body = selectors.getBody();
     this.isIphone = devices.iPhone();
 
-    const {theme} = props;
+    const {theme, userSubmit} = props;
     const {userPlayer} = userLogged;
 
     this.state = {
+      userSubmit: (userSubmit === '1') || false,
       userPlayer: (userPlayer === 'yes') || false,
       theme,
       inProgress: false,
@@ -275,9 +276,9 @@ class AppProvider extends PureComponent {
       });
     },
     handleTryAgain: () => {
-      const {userPlayer} = this.state;
+      const {userPlayer, userSubmit} = this.state;
 
-      if (userPlayer) {
+      if (userPlayer && userSubmit) {
         this.sendQuizData();
       }
 

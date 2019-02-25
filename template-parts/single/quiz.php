@@ -6,10 +6,12 @@
  */
 
 use Quizess\Helpers;
+use Quizess\Includes\Config;
 
 $blocks_helper  = new Helpers\Blocks_Helper();
 $general_helper = new Helpers\General_Helper();
 
+$user_submit  = '1';
 $quiz_options = $blocks_helper->get_quiz_options( $post->post_content );
 
 $welcome_message = $general_helper->get_array_value( 'welcomeMessage', $quiz_options['options'] );
@@ -19,6 +21,20 @@ $bg_color        = $general_helper->get_array_value( 'bgColor', $quiz_options['b
 $bg_image_url    = $general_helper->get_array_value( 'bgUrl', $quiz_options['bgOptions'] );
 $modal_id        = 'modal-' . $post->ID;
 $base_path       = Helpers\General_Helper::get_base_path();
+
+// check if user can submit scores.
+if ( is_user_logged_in() ) {
+  $scores = get_post_meta( $post->ID, Config::SCORES_META_KEY, true );
+  if ( ! empty( $scores ) ) {
+    $current_user_id = get_current_user_id();
+    $player_scores   = $scores['players'][ $current_user_id ];
+    $user_single     = get_user_meta( $current_user_id, Config::USER_SINGLE_TOGGLE, true );
+    if ( ! empty( $player_scores ) && $user_single === 'yes' ) {
+      $user_submit = '0';
+    }
+  }
+}
+
 
 ?>
 
@@ -41,7 +57,7 @@ $base_path       = Helpers\General_Helper::get_base_path();
       <?php
       if ( ! empty( $post->ID ) ) {
         ?>
-        <div class="js-quiz-start" data-quiz-id="<?php echo esc_attr( $post->ID ); ?>" data-theme="<?php echo esc_attr( $theme ); ?>">
+        <div class="js-quiz-start" data-quiz-id="<?php echo esc_attr( $post->ID ); ?>" data-theme="<?php echo esc_attr( $theme ); ?>" data-user-submit="<?php echo esc_attr( $user_submit ); ?>">
         </div>
       <?php } ?>
       <?php

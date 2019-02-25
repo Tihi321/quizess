@@ -63,6 +63,20 @@ final class Rest_Security {
       return $this->error_handler();
     }
 
+    $scores = get_post_meta( $quiz_id, Config::SCORES_META_KEY, true );
+
+    if ( ! empty( $scores ) ) {
+
+      $player_scores = $scores['players'][ $current_user_id ];
+      $user_single   = get_user_meta( $current_user_id, Config::USER_SINGLE_TOGGLE, true );
+
+      if ( ! empty( $player_scores ) && $user_single === 'yes' ) {
+
+        return $this->error_handler( 'user_submit_limit' );
+
+      }
+    }
+
     return true;
   }
 

@@ -50,6 +50,11 @@ trait Error_Logger {
           $code          = 403;
             break;
 
+      case 'user_submit_limit':
+          $error_message = esc_html__( 'Uer submit limit reached.', 'quizess' );
+          $code          = 403;
+            break;
+
       default:
           $error_message = esc_html__( 'Not all quiz values present', 'quizess' );
           $code          = 400;
