@@ -14,9 +14,9 @@ use Quizess\Helpers\General_Helper;
 use Quizess\Includes\Config;
 
 /**
- * Class Delete_Score
+ * Class Patch_Scores
  */
-class Delete_Score extends Rest_Routes implements Rest_Callback {
+class Patch_Scores extends Rest_Routes implements Rest_Callback {
 
   /**
    * Update quiz data rest route callback

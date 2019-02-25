@@ -38,7 +38,7 @@ class Rest_Register extends Rest_Routes {
     $this->get_quizess  = new Rest_Callbacks\Get_Quizess( $this->blocks_helper );
     $this->get_scores   = new Rest_Callbacks\Get_Scores();
     $this->post_score   = new Rest_Callbacks\Post_Score();
-    $this->delete_score = new Rest_Callbacks\Delete_Score();
+    $this->patch_scores = new Rest_Callbacks\Patch_Scores();
 
     // Security.
     $this->rest_security = new Rest_Security();
@@ -91,8 +91,8 @@ class Rest_Register extends Rest_Routes {
               'permission_callback' => [ $this->rest_security, self::USER_PERMISION_CHECK ],
           ),
           array(
-              'methods'  => 'DELETE',
-              'callback' => [ $this->delete_score, static::REST_CALLBACK ],
+              'methods'  => 'PATCH',
+              'callback' => [ $this->patch_scores, static::REST_CALLBACK ],
           ),
       )
     );
