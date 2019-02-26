@@ -10,6 +10,7 @@ msgstr ""
 
 #: skin/assets/app/components/modal/hall-of-fame/index.js:27
 #: skin/assets/blocks/question-block/components/answer-input/index.js:57
+#: skin/assets/dashboard/components/scores-parent/index.js:21
 msgid "Correct"
 msgstr ""
 
@@ -39,6 +40,7 @@ msgstr ""
 
 #: skin/assets/app/components/modal/hall-of-fame/index.js:57
 #: skin/assets/blocks/components/style-options/index.js:47
+#: skin/assets/blocks/components/toolbars/style-options.js:47
 #: skin/assets/blocks/question-block/sections/BlockOptions.js:129
 msgid "Type"
 msgstr ""
@@ -88,25 +90,31 @@ msgid "Start"
 msgstr ""
 
 #: skin/assets/blocks/components/style-options/index.js:36
+#: skin/assets/blocks/components/toolbars/style-options.js:36
 #: skin/assets/blocks/question-block/sections/BlockOptions.js:65
 #: skin/assets/blocks/questions-category-block/sections/BlockOptions.js:83
 #: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:47
+#: skin/assets/dashboard/sections/index.js:21
 msgid "Select"
 msgstr ""
 
 #: skin/assets/blocks/components/style-options/index.js:43
+#: skin/assets/blocks/components/toolbars/style-options.js:43
 msgid "Style Options"
 msgstr ""
 
 #: skin/assets/blocks/components/style-options/index.js:51
+#: skin/assets/blocks/components/toolbars/style-options.js:51
 msgid "Choose weather place answers in row or 2 columns."
 msgstr ""
 
 #: skin/assets/blocks/components/style-options/index.js:56
+#: skin/assets/blocks/components/toolbars/style-options.js:56
 msgid "Theme"
 msgstr ""
 
 #: skin/assets/blocks/components/style-options/index.js:60
+#: skin/assets/blocks/components/toolbars/style-options.js:60
 msgid "Theme color for answers"
 msgstr ""
 
@@ -387,6 +395,27 @@ msgstr ""
 
 #: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:84
 msgid "Success message"
+msgstr ""
+
+#: skin/assets/dashboard/components/scores-item/index.js:42
+#: skin/assets/dashboard/components/scores-parent/index.js:30
+msgid "Remove"
+msgstr ""
+
+#: skin/assets/dashboard/components/scores-parent/index.js:15
+msgid "Name"
+msgstr ""
+
+#: skin/assets/dashboard/components/scores-parent/index.js:18
+msgid "Attempts"
+msgstr ""
+
+#: skin/assets/dashboard/components/scores-parent/index.js:24
+msgid "Total"
+msgstr ""
+
+#: skin/assets/dashboard/components/scores-parent/index.js:27
+msgid "Success"
 msgstr ""
 
 #: skin/assets/editor/editor-fields/post-title.js:21

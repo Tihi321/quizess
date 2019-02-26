@@ -113,6 +113,7 @@ class Admin extends Config {
         static::PLUGIN_NAME . '-admin-scripts',
         'quizessDashboard',
         array(
+            'root' => esc_url_raw( rest_url() ),
             'scoresApi' => Rest_Routes::QUIZESS_SCORES_SLUG,
             'dashboardNonce' => wp_create_nonce( 'quizess_dashboard_nonce' ),
             'nonce' => wp_create_nonce( 'wp_rest' ),
