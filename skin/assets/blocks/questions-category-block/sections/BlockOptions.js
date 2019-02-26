@@ -7,7 +7,7 @@ import {__} from '@wordpress/i18n';
 import Select from 'react-select';
 import makeAnimated from 'react-select/lib/animated';
 import {BlockConsumer} from '../containers/BlockContext';
-import StyleOptions from '../../components/style-options';
+import StyleOptions from '../../components/toolbars/style-options';
 
 const BlockOptionsConsumer = (props) => {
   const {

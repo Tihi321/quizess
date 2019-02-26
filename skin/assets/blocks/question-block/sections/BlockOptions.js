@@ -12,7 +12,7 @@ import {__} from '@wordpress/i18n';
 import Select from 'react-select';
 import TextElement from '../../elements/TextElement';
 import {BlockConsumer} from '../containers/BlockContext';
-import StyleOptions from '../../components/style-options';
+import StyleOptions from '../../components/toolbars/style-options';
 
 function BlockOptionsConsumer(props) {
   const {
