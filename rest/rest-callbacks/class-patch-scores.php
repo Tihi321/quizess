@@ -36,7 +36,7 @@ class Patch_Scores extends Rest_Routes implements Rest_Callback {
    */
   public function rest_callback( \WP_REST_Request $request ) {
 
-    $scores = 'scores';
+    $scores = 'patched';
 
     return new \WP_REST_Response( $scores, 200 );
   }

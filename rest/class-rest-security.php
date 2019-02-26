@@ -92,6 +92,13 @@ final class Rest_Security {
    */
   public function user_basic_authentication_check( \WP_REST_Request $request ) {
 
+    // Disable security check on GET method.
+    if ( $request->get_method() === 'GET' ) {
+      return true;
+    }
+
+    $headers = $request->get_headers();
+
     if ( empty( $headers ) ) {
       return $this->error_handler( 'empty_header' );
     }

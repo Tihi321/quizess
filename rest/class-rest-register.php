@@ -98,12 +98,12 @@ class Rest_Register extends Rest_Routes {
           array(
               'methods'  => 'GET',
               'callback' => [ $this->get_scores, static::REST_CALLBACK ],
-              'permission_callback' => [ $this->rest_security, self::USER_BASIC_AUTHENTIFICATION ],
 
           ),
           array(
               'methods'  => 'PATCH',
               'callback' => [ $this->patch_scores, static::REST_CALLBACK ],
+              'permission_callback' => [ $this->rest_security, self::USER_BASIC_AUTHENTIFICATION ],
           ),
       )
     );

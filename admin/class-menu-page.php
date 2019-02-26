@@ -9,6 +9,7 @@
 namespace Quizess\Admin;
 
 use Quizess\Includes\Config;
+use Quizess\Helpers\General_Helper;
 
 /**
  * Class Menu_Page
@@ -194,7 +195,12 @@ class Menu_Page {
    * @since 1.4.0
    */
   public function dashboard_callback() {
-    return null;
+
+    $dashboard_template = General_Helper::get_base_path() . 'template-parts/admin/dashboard.php';
+    if ( ! empty( $dashboard_template ) ) {
+      include $dashboard_template;
+    }
+
   }
 
 }
