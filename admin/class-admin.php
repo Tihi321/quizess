@@ -8,6 +8,7 @@
 
 namespace Quizess\Admin;
 
+use Quizess\Rest\Rest_Routes;
 use Quizess\Includes\Config;
 use Quizess\Helpers\General_Helper;
 
@@ -107,6 +108,16 @@ class Admin extends Config {
       );
 
       wp_enqueue_script( static::PLUGIN_NAME . '-admin-scripts' );
+
+      wp_localize_script(
+        static::PLUGIN_NAME . '-admin-scripts',
+        'quizessDashboard',
+        array(
+            'scoresApi' => Rest_Routes::QUIZESS_SCORES_SLUG,
+            'dashboardNonce' => wp_create_nonce( 'quizess_dashboard_nonce' ),
+            'nonce' => wp_create_nonce( 'wp_rest' ),
+        )
+      );
 
     }
 

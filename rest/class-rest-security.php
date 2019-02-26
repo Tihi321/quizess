@@ -45,6 +45,38 @@ final class Rest_Security {
       return $this->error_handler( 'user_not_authenticated' );
     }
 
+    $current_user_id = get_current_user_id();
+    $user_player     = get_user_meta( $current_user_id, Config::USER_PLAYER_TOGGLE, true );
+
+    if ( $user_player !== 'yes' ) {
+      return $this->error_handler( 'user_not_player' );
+    }
+
+    $body = \json_decode( $request->get_body(), true );
+
+    $quiz_id = $body['id'];
+    $correct = $body['correct'];
+    $total   = $body['total'];
+    $stats   = $body['stats'];
+
+    if ( empty( $quiz_id ) || empty( $correct ) || empty( $total ) || empty( $stats ) ) {
+      return $this->error_handler();
+    }
+
+    $scores = get_post_meta( $quiz_id, Config::SCORES_META_KEY, true );
+
+    if ( ! empty( $scores ) ) {
+
+      $player_scores = $scores['players'][ $current_user_id ];
+      $user_single   = get_user_meta( $current_user_id, Config::USER_SINGLE_TOGGLE, true );
+
+      if ( ! empty( $player_scores ) && $user_single === 'yes' ) {
+
+        return $this->error_handler( 'user_submit_limit' );
+
+      }
+    }
+
     return true;
   }
 
@@ -59,6 +91,10 @@ final class Rest_Security {
    * @since 1.0.0
    */
   public function user_basic_authentication_check( \WP_REST_Request $request ) {
+
+    if ( empty( $headers ) ) {
+      return $this->error_handler( 'empty_header' );
+    }
 
     if ( ! is_user_logged_in() ) {
       return $this->error_handler( 'user_not_authenticated' );

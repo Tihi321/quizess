@@ -85,15 +85,9 @@ class Rest_Register extends Rest_Routes {
       static::REST_API_BASE . static::REST_API_VERSION,
       static::QUIZESS_SCORE,
       array(
-          array(
-              'methods'  => 'POST',
-              'callback' => [ $this->post_score, static::REST_CALLBACK ],
-              'permission_callback' => [ $this->rest_security, self::USER_PERMISION_CHECK ],
-          ),
-          array(
-              'methods'  => 'PATCH',
-              'callback' => [ $this->patch_scores, static::REST_CALLBACK ],
-          ),
+          'methods'  => 'POST',
+          'callback' => [ $this->post_score, static::REST_CALLBACK ],
+          'permission_callback' => [ $this->rest_security, self::USER_PERMISION_CHECK ],
       )
     );
 
@@ -106,6 +100,10 @@ class Rest_Register extends Rest_Routes {
               'callback' => [ $this->get_scores, static::REST_CALLBACK ],
               'permission_callback' => [ $this->rest_security, self::USER_BASIC_AUTHENTIFICATION ],
 
+          ),
+          array(
+              'methods'  => 'PATCH',
+              'callback' => [ $this->patch_scores, static::REST_CALLBACK ],
           ),
       )
     );
