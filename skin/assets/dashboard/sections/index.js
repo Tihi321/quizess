@@ -9,13 +9,14 @@ const MainConsumer = (props) => {
     dataLoaded,
     scoresData,
     handleScoresSelect,
+    selectedQuiz,
   } = props;
 
   const quizSelectElement = (
     <Select
       className="columns-select"
       closeMenuOnSelect={true}
-      value={scoresData[0]}
+      value={(selectedQuiz) ? selectedQuiz.value : false}
       onChange={handleScoresSelect}
       options={scoresData}
       placeholder={__('Select', 'quizess')}
@@ -40,6 +41,7 @@ const Dashboard = () => (
         values: {
           scoresData,
           dataLoaded,
+          selectedQuiz,
         },
         dataStore: {
           handleScoresSelect,
@@ -50,6 +52,7 @@ const Dashboard = () => (
           dataLoaded={dataLoaded}
           scoresData={scoresData}
           handleScoresSelect={handleScoresSelect}
+          selectedQuiz={selectedQuiz}
         />
       );
     }}

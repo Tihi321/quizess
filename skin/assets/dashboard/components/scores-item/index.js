@@ -4,6 +4,7 @@ import generalHelper from '../../../helpers/general-helper';
 const ScoresItem = (props) => {
   const {
     quizId,
+    index,
     playerId,
     name,
     attempts,
@@ -36,7 +37,7 @@ const ScoresItem = (props) => {
         <button
           className="scores-list__remove"
           onClick={() => {
-            onClick(playerId, quizId);
+            onClick(playerId, quizId, index);
           }}
         >
           {__('Remove', 'quizess')}

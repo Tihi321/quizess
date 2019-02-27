@@ -20,6 +20,7 @@ const ScoresConsumer = (props) => {
     return (
       <ScoresItem
         key={index}
+        index={index}
         quizId={selectedQuiz.id}
         playerId={value.id}
         name={name}

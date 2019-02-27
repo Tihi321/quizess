@@ -23,7 +23,7 @@ class DashboardProvider extends PureComponent {
 
   parseScoresData = (data) => {
 
-    const quizArray = Object.keys(data).map((key) => {
+    const quizArray = Object.keys(data).map((key, index) => {
 
       const statsArray = Object.keys(data[key].players).map((playerId) => {
         return {
@@ -64,7 +64,30 @@ class DashboardProvider extends PureComponent {
       });
   }
 
-    sendQuizData = (playerId, quizId) => {
+    removeQuizScore = (quizId, playerIndex) => {
+      const {scoresData} = this.state;
+
+      const newSelectedQuiz = {};
+
+      const newScoresData = scoresData.map((quiz) => {
+        if (quiz.value === quizId) {
+          quiz.stats.splice(playerIndex, 1);
+          newSelectedQuiz.data = quiz.stats;
+          newSelectedQuiz.id = quiz.value;
+        }
+        return quiz;
+      });
+
+      this.setState(() => {
+        return {
+          selectedQuiz: newSelectedQuiz,
+          scoresData: newScoresData,
+        };
+      });
+
+    }
+
+    removeScoreData = (playerId, quizId, playerIndex) => {
 
       const {
         root,
@@ -74,8 +97,8 @@ class DashboardProvider extends PureComponent {
       } = quizessDashboard;
 
       const bodyData = JSON.stringify({
-        'player-id': playerId,
-        'quiz-id': quizId,
+        playerId,
+        quizId,
       });
 
       // Test to send data to registered quiz payer.
@@ -92,13 +115,13 @@ class DashboardProvider extends PureComponent {
         referrer: 'no-referrer', // no-referrer, *client
         body: bodyData,
       })
-        .then(function(res) {
+        .then((res) => {
           return res.json();
         })
-        .then(function(response) {
-          console.log(response);
+        .then((response) => {
+          this.removeQuizScore(quizId, playerIndex);
         })
-        .catch(function(error) {
+        .catch((error) => {
           console.error('Error:', error);
         });
 
@@ -115,8 +138,8 @@ class DashboardProvider extends PureComponent {
         };
       });
     },
-    handleOnRemove: (playerId, quizId) => {
-      this.sendQuizData(playerId, quizId);
+    handleOnRemove: (playerId, quizId, index) => {
+      this.removeScoreData(playerId, quizId, index);
     },
 
   };
