@@ -20,9 +20,8 @@ trait Error_Logger {
    * Returns array with the error code and reason of the error.
    *
    * @param string $status      Status description.
-   * @param string $message     Optional error message.
    */
-  public function error_handler( string $status, ?string $message = '' ) {
+  public function error_handler( string $status = '' ) {
 
     switch ( $status ) {
       case 'empty_body':
@@ -61,6 +60,6 @@ trait Error_Logger {
             break;
     }
 
-    \wp_send_json_error( $status, (int) $code );
+    \wp_send_json_error( $error_message, (int) $code );
   }
 }

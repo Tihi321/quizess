@@ -145,8 +145,9 @@ class General_Helper extends Config {
   public function can_user_submit( int $posts_id, int $users_id ) : bool {
 
     $scores = get_post_meta( $posts_id, Config::SCORES_META_KEY, true );
-    if ( ! empty( $scores ) ) {
-      $player_scores = $scores['players'][ $users_id ];
+
+    if ( isset( $scores ) ) {
+      $player_scores = $this->get_array_value( $users_id, $scores['players'] );
       $user_single   = get_user_meta( $users_id, Config::USER_SINGLE_TOGGLE, true );
 
       if ( ! empty( $player_scores ) && $user_single === 'yes' ) {
