@@ -9,8 +9,6 @@
 namespace Quizess\Rest\Rest_Callbacks;
 
 use Quizess\Rest\Rest_Routes;
-use Quizess\Helpers\Blocks_Helper;
-use Quizess\Helpers\General_Helper;
 use Quizess\Includes\Config;
 
 /**

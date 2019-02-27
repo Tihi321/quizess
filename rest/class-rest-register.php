@@ -11,11 +11,22 @@ namespace Quizess\Rest;
 use Quizess\Rest\Rest_Callbacks;
 use Quizess\Rest\Rest_Fields;
 use Quizess\Helpers\Blocks_Helper;
+use Quizess\Helpers\General_Helper;
 
 /**
  * Class Register
  */
 class Rest_Register extends Rest_Routes {
+
+  /**
+   * General Helper class
+   *
+   * @var object General_Helper
+   *
+   * @since 1.0.0
+   */
+  protected $general_helper;
+
   /**
    * Blocks_Helper reference
    *
@@ -28,20 +39,23 @@ class Rest_Register extends Rest_Routes {
   /**
    * Initialize the class
    *
-   * @param Blocks_Helper $blocks_helper Blocks_Helper dependency.
+   * @param Blocks_Helper  $blocks_helper Blocks_Helper dependency.
+   * @param General_Helper $general_helper Helper class instance.
+   *
    * @since 1.0.0
    */
-  public function __construct( Blocks_Helper $blocks_helper ) {
-    $this->blocks_helper = $blocks_helper;
+  public function __construct( Blocks_Helper $blocks_helper, General_Helper $general_helper ) {
+    $this->blocks_helper  = $blocks_helper;
+    $this->general_helper = $general_helper;
 
     // Callbacks.
     $this->get_quizess  = new Rest_Callbacks\Get_Quizess( $this->blocks_helper );
     $this->get_scores   = new Rest_Callbacks\Get_Scores();
-    $this->post_score   = new Rest_Callbacks\Post_Score();
+    $this->post_score   = new Rest_Callbacks\Post_Score( $this->general_helper );
     $this->patch_scores = new Rest_Callbacks\Patch_Scores();
 
     // Security.
-    $this->rest_security = new Rest_Security();
+    $this->rest_security = new Rest_Security( $this->general_helper );
   }
 
 

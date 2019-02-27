@@ -10,12 +10,34 @@ namespace Quizess\Rest;
 
 use Quizess\Includes\Config;
 use Quizess\Helpers\Error_Logger;
+use Quizess\Helpers\General_Helper;
 
 /**
  * Class containing registered rest routes
  */
 final class Rest_Security {
   use Error_Logger;
+
+  /**
+   * General Helper class
+   *
+   * @var object General_Helper
+   *
+   * @since 1.0.0
+   */
+  protected $general_helper;
+
+  /**
+   * Initialize class
+   *
+   * @param General_Helper $general_helper Helper class instance.
+   *
+   * @since 1.0.0
+   */
+  public function __construct( General_Helper $general_helper ) {
+    $this->general_helper = $general_helper;
+
+  }
 
   /**
    * Ensure that user exists, is logged in and is able to submit scores
@@ -54,27 +76,19 @@ final class Rest_Security {
 
     $body = \json_decode( $request->get_body(), true );
 
-    $quiz_id = $body['id'];
-    $correct = $body['correct'];
-    $total   = $body['total'];
-    $stats   = $body['stats'];
+    $quiz_id = $this->general_helper->get_array_value( 'id', $body );
+    $correct = $this->general_helper->get_array_value( 'correct', $body );
+    $total   = $this->general_helper->get_array_value( 'total', $body );
+    $stats   = $this->general_helper->get_array_value( 'stats', $body );
 
-    if ( empty( $quiz_id ) || empty( $correct ) || empty( $total ) || empty( $stats ) ) {
+    if ( ! isset( $quiz_id ) || ! isset( $correct ) || ! isset( $total ) || ! isset( $stats ) ) {
       return $this->error_handler();
     }
 
-    $scores = get_post_meta( $quiz_id, Config::SCORES_META_KEY, true );
+    $can_user_submit = $this->general_helper->can_user_submit( $quiz_id, $current_user_id );
 
-    if ( ! empty( $scores ) ) {
-
-      $player_scores = $scores['players'][ $current_user_id ];
-      $user_single   = get_user_meta( $current_user_id, Config::USER_SINGLE_TOGGLE, true );
-
-      if ( ! empty( $player_scores ) && $user_single === 'yes' ) {
-
-        return $this->error_handler( 'user_submit_limit' );
-
-      }
+    if ( ! $can_user_submit ) {
+      return false;
     }
 
     return true;
@@ -105,6 +119,14 @@ final class Rest_Security {
 
     if ( ! is_user_logged_in() ) {
       return $this->error_handler( 'user_not_authenticated' );
+    }
+
+    if ( ! isset( $headers['dashboard_nonce'] ) && ! wp_verify_nonce( sanitize_key( $headers['dashboard_nonce'] ), 'quizess_dashboard_nonce' ) ) {
+      return $this->error_handler( 'user_not_authenticated' );
+    }
+
+    if ( empty( $request->get_body() ) ) {
+      return $this->error_handler( 'empty_body' );
     }
 
     return true;

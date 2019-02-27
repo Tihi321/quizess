@@ -191,7 +191,7 @@ class Main extends Config {
    * @since 1.0.0
    */
   private function define_rest_routes_hooks() {
-    $rest_routes_register = new Rest\Rest_Register( $this->blocks_helper );
+    $rest_routes_register = new Rest\Rest_Register( $this->blocks_helper, $this->general_helper );
 
     // Register New Fields For block atributes on posts.
     $this->loader->add_action( 'rest_api_init', $rest_routes_register, 'register_fields' );

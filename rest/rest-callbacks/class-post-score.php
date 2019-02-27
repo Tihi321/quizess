@@ -9,14 +9,35 @@
 namespace Quizess\Rest\Rest_Callbacks;
 
 use Quizess\Rest\Rest_Routes;
-use Quizess\Helpers\Blocks_Helper;
-use Quizess\Helpers\General_Helper;
 use Quizess\Includes\Config;
+use Quizess\Helpers\General_Helper;
 
 /**
  * Class Post_Score
  */
 class Post_Score extends Rest_Routes implements Rest_Callback {
+
+  /**
+   * General Helper class
+   *
+   * @var object General_Helper
+   *
+   * @since 1.0.0
+   */
+  protected $general_helper;
+
+  /**
+   * Initialize class
+   *
+   * @param General_Helper $general_helper Helper class instance.
+   *
+   * @since 1.0.0
+   */
+  public function __construct( General_Helper $general_helper ) {
+    $this->general_helper = $general_helper;
+
+  }
+
 
   /**
    * Update quiz data rest route callback
@@ -38,10 +59,10 @@ class Post_Score extends Rest_Routes implements Rest_Callback {
 
     $body = \json_decode( $request->get_body(), true );
 
-    $quiz_id = $body['id'];
-    $correct = $body['correct'];
-    $total   = $body['total'];
-    $stats   = $body['stats'];
+    $quiz_id = $this->general_helper->get_array_value( 'id', $body );
+    $correct = $this->general_helper->get_array_value( 'correct', $body );
+    $total   = $this->general_helper->get_array_value( 'total', $body );
+    $stats   = $this->general_helper->get_array_value( 'stats', $body );
 
     $question_stats = [];
 
@@ -67,7 +88,7 @@ class Post_Score extends Rest_Routes implements Rest_Callback {
 
     $scores = get_post_meta( $quiz_id, Config::SCORES_META_KEY, true );
 
-    if ( ! empty( $scores ) ) {
+    if ( empty( $scores ) ) {
 
         delete_post_meta( $quiz_id, Config::SCORES_META_KEY );
         add_post_meta( $quiz_id, Config::SCORES_META_KEY, $quiz_stats );
@@ -79,7 +100,7 @@ class Post_Score extends Rest_Routes implements Rest_Callback {
         $current_stats      = $scores['stats'];
 
       if ( empty( $current_user_stats ) ) {
-        $user_scores = $quiz_stats[ $current_user_id ];
+        $user_scores = $quiz_stats['players'][ $current_user_id ];
       } else {
         $user_scores['name']     = $current_user_stats['name'];
         $user_scores['attempts'] = $current_user_stats['attempts'] + 1;
@@ -88,10 +109,10 @@ class Post_Score extends Rest_Routes implements Rest_Callback {
       }
 
       if ( empty( $current_stats ) ) {
-        $updated_stats['stats'] = $quiz_stats['stats'];
+        $updated_stats = $quiz_stats['stats'];
       } else {
         foreach ( $quiz_stats['stats'] as $index => $stat ) {
-          $updated_stats['stats'][] = ( $current_stats[ $index ] ) ? $current_stats[ $index ] + $quiz_stats['stats'][ $index ] : $quiz_stats['stats'][ $index ];
+          $updated_stats[] = ( $current_stats[ $index ] ) ? $current_stats[ $index ] + $quiz_stats['stats'][ $index ] : $quiz_stats['stats'][ $index ];
         }
       }
 
@@ -102,7 +123,7 @@ class Post_Score extends Rest_Routes implements Rest_Callback {
 
     }
 
-    return new \WP_REST_Response( $scores, 200 );
+    return new \WP_REST_Response( [ __( 'message', 'quizess' ) => __( 'Scores successfully posted', 'quizess' ) ], 200 );
   }
 
 }

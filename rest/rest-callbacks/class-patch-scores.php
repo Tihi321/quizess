@@ -9,8 +9,6 @@
 namespace Quizess\Rest\Rest_Callbacks;
 
 use Quizess\Rest\Rest_Routes;
-use Quizess\Helpers\Blocks_Helper;
-use Quizess\Helpers\General_Helper;
 use Quizess\Includes\Config;
 
 /**
@@ -36,9 +34,20 @@ class Patch_Scores extends Rest_Routes implements Rest_Callback {
    */
   public function rest_callback( \WP_REST_Request $request ) {
 
-    $scores = 'patched';
+    $body = \json_decode( $request->get_body(), true );
 
-    return new \WP_REST_Response( $scores, 200 );
+    $player_id = $body['playerId'];
+    $quiz_id   = $body['quizId'];
+
+    $scores = get_post_meta( $quiz_id, Config::SCORES_META_KEY, true );
+
+    // Remove player id from scores.
+    unset( $scores['players'][ $player_id ] );
+
+    // Save new scores without player id score.
+    update_post_meta( $quiz_id, Config::SCORES_META_KEY, $scores );
+
+    return new \WP_REST_Response( __( 'Player scores removed', 'quizess' ), 200 );
   }
 
 }
