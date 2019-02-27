@@ -41,6 +41,7 @@ class AppProvider extends PureComponent {
       correctAnswers: 0,
       stopTimer: false,
       playTimer: false,
+      scoresSubmited: false,
     };
   }
 
@@ -62,12 +63,24 @@ class AppProvider extends PureComponent {
     }, 300);
   }
 
-  sendQuizData = () => {
+  sendQuizData = (canceled = false) => {
 
     const {root} = quizessOptions;
     const {nonce, scoresApi} = userLogged;
     const {questionStats, questionsTotal, correctAnswers} = this.state;
     const {quizId} = this.props;
+
+    if (canceled) {
+      for (let index = 0; index < questionsTotal; index++) {
+        if (!questionStats[index]) {
+          questionStats[index] = {
+            id: -1,
+            correct: false,
+          };
+        }
+
+      }
+    }
 
     const bodyData = JSON.stringify({
       id: quizId,
@@ -89,13 +102,21 @@ class AppProvider extends PureComponent {
       referrer: 'no-referrer', // no-referrer, *client
       body: bodyData,
     })
-      .then(function(res) {
+      .then((res) => {
         return res.json();
       })
-      .then(function(response) {
+      .then((response) => {
+
         console.log(response);
+
+        this.setState(() => {
+          return {
+            scoresSubmited: true,
+          };
+        });
+
       })
-      .catch(function(error) {
+      .catch((error) => {
         console.error('Error:', error);
       });
 
@@ -163,6 +184,7 @@ class AppProvider extends PureComponent {
       correctAnswers: 0,
       stopTimer: false,
       playTimer: false,
+      scoresSubmited: false,
     };
 
     if (exit) {
@@ -224,6 +246,11 @@ class AppProvider extends PureComponent {
       }
     },
     handleClose: () => {
+      const {userPlayer, userSubmit} = this.state;
+
+      if (userPlayer && userSubmit) {
+        this.sendQuizData(true);
+      }
       this.resetQuiz(true);
     },
     handleCancelClose: () => {
@@ -276,13 +303,14 @@ class AppProvider extends PureComponent {
       });
     },
     handleTryAgain: () => {
+      this.resetQuiz();
+    },
+    handleSubmitScore: () => {
       const {userPlayer, userSubmit} = this.state;
 
       if (userPlayer && userSubmit) {
         this.sendQuizData();
       }
-
-      this.resetQuiz();
     },
   };
 
@@ -302,6 +330,7 @@ class AppProvider extends PureComponent {
       stopTimer,
       playTimer,
       showExit,
+      scoresSubmited,
     } = this.state;
 
     return (
@@ -325,6 +354,7 @@ class AppProvider extends PureComponent {
             stopTimer,
             playTimer,
             showExit,
+            scoresSubmited,
           },
           dataStore: this.dataStore,
         }}>

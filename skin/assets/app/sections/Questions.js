@@ -12,7 +12,9 @@ const QuestionsConsumer = (props) => {
     questionStats,
     questions,
     theme,
+    scoresSubmited,
     handleTryAgain,
+    handleSubmitScore,
   } = props;
 
   if (!Array.isArray(questions) || !questions.length) {
@@ -24,16 +26,17 @@ const QuestionsConsumer = (props) => {
   }
 
   if (currentQuestion + 1 > questionsTotal) {
+    if (!scoresSubmited) {
+      handleSubmitScore();
+    }
     return (
-      <div>
-        <HallOfFame
-          theme={theme}
-          onClick={handleTryAgain}
-          questionsTotal={questionsTotal}
-          correctAnswers={correctAnswers}
-          questionStats={questionStats}
-        />
-      </div>
+      <HallOfFame
+        theme={theme}
+        onClick={handleTryAgain}
+        questionsTotal={questionsTotal}
+        correctAnswers={correctAnswers}
+        questionStats={questionStats}
+      />
     );
   }
 
@@ -57,6 +60,7 @@ const Questions = () => (
           questionsTotal,
           questionStats,
           correctAnswers,
+          scoresSubmited,
           data: {
             questions,
             options: {
@@ -66,6 +70,7 @@ const Questions = () => (
         },
         dataStore: {
           handleTryAgain,
+          handleSubmitScore,
         },
       } = value;
       return (
@@ -74,9 +79,11 @@ const Questions = () => (
           currentQuestion={currentQuestion}
           questions={questions}
           theme={theme}
+          scoresSubmited={scoresSubmited}
           questionStats={questionStats}
           correctAnswers={correctAnswers}
           handleTryAgain={handleTryAgain}
+          handleSubmitScore={handleSubmitScore}
         />
       );
     }}
