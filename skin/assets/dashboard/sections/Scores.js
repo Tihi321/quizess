@@ -2,12 +2,17 @@ import {DashboardConsumer} from '../containers/DashboardContext';
 import {
   ScoresParent,
   ScoresItem,
+  StatsParent,
+  StatsItem,
 } from '../components';
 
 const ScoresConsumer = (props) => {
   const {
     selectedQuiz,
     handleOnRemove,
+    stats,
+    statsPage,
+    handleOnStatsPageChange,
   } = props;
 
   const scoresElement = selectedQuiz.data.map((value, index) => {
@@ -33,12 +38,32 @@ const ScoresConsumer = (props) => {
     );
   });
 
+  const statsElement = stats.map((value, index) => {
+    return (
+      <StatsItem
+        key={index}
+        number={index}
+        correct={value}
+      >
+      </StatsItem>
+    );
+  });
 
 
   return (
-    <ScoresParent>
-      {scoresElement}
-    </ScoresParent>
+    <div>
+      <ScoresParent>
+        {scoresElement}
+      </ScoresParent>
+      <StatsParent
+        pagination={true}
+        items={3}
+        page={statsPage}
+        onPageChange={handleOnStatsPageChange}
+      >
+        {statsElement}
+      </StatsParent>
+    </div>
   );
 };
 
@@ -48,15 +73,25 @@ const Scores = () => (
       const {
         values: {
           selectedQuiz,
+          scoresData,
+          statsPage,
         },
         dataStore: {
           handleOnRemove,
+          handleOnStatsPageChange,
         },
       } = value;
+
+      // question stats
+      const stats = (selectedQuiz.index > -1) ? scoresData[selectedQuiz.index].questionStats : [];
+
       return (
         <ScoresConsumer
+          statsPage={statsPage}
           selectedQuiz={selectedQuiz}
+          stats={stats}
           handleOnRemove={handleOnRemove}
+          handleOnStatsPageChange={handleOnStatsPageChange}
         />
       );
     }}

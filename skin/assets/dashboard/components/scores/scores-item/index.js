@@ -1,5 +1,5 @@
 import {__} from '@wordpress/i18n';
-import generalHelper from '../../../helpers/general-helper';
+import generalHelper from '../../../../helpers/general-helper';
 
 const ScoresItem = (props) => {
   const {

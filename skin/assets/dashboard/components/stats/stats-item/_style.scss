@@ -1,0 +1,14 @@
+.scores-list {
+  &__item {
+    display: flex;
+  }
+  &__inner {
+    flex: 1;
+    padding: 10px;
+  }
+
+  &__title {
+    font-weight: bold;
+    border: 1px solid;
+  }
+}
