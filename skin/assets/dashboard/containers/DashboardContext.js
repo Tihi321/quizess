@@ -17,7 +17,9 @@ class DashboardProvider extends PureComponent {
       selectedQuiz: {
         id: 0,
         data: [],
+        index: -1,
       },
+      statsPage: 0,
     };
   }
 
@@ -36,6 +38,8 @@ class DashboardProvider extends PureComponent {
         value: key,
         label: data[key].title,
         stats: statsArray,
+        quizIndex: index,
+        questionStats: data[key].stats,
       };
     });
 
@@ -134,12 +138,20 @@ class DashboardProvider extends PureComponent {
           selectedQuiz: {
             id: quizScore.value,
             data: quizScore.stats,
+            index: quizScore.quizIndex,
           },
         };
       });
     },
     handleOnRemove: (playerId, quizId, index) => {
       this.removeScoreData(playerId, quizId, index);
+    },
+    handleOnStatsPageChange: (pageNumber) => {
+      this.setState(() => {
+        return {
+          statsPage: pageNumber,
+        };
+      });
     },
 
   };
@@ -153,6 +165,7 @@ class DashboardProvider extends PureComponent {
       scoresData,
       dataLoaded,
       selectedQuiz,
+      statsPage,
     } = this.state;
 
     return (
@@ -165,6 +178,7 @@ class DashboardProvider extends PureComponent {
             scoresData,
             dataLoaded,
             selectedQuiz,
+            statsPage,
           },
           dataStore: this.dataStore,
         }}>
