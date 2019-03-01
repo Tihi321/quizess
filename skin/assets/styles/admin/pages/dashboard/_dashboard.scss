@@ -1,0 +1,45 @@
+$dashboard-colors: (
+  title-color: $base-primary-blue,
+);
+
+.dashboard {
+  $this: &;
+
+  &__outer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__tables {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    text-align: center;
+    margin: 0 0 20px;
+    color: map-get($dashboard-colors, 'title-color');
+    text-transform: uppercase;
+  }
+
+  &__scores {
+    flex: 1;
+    margin-right: 20px;
+
+    #{$this}__table__inner {
+      width: 20%;
+    }
+  }
+  &__stats {
+    max-width: 250px;
+  }
+  &__table__inner {
+    &--explanation {
+      @include text-size(tiny);
+      font-style: italic;
+    }
+  }
+}

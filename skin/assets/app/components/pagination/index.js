@@ -1,8 +1,10 @@
 import {chunk} from 'lodash';
+import {__} from '@wordpress/i18n';
 import classnames from 'classnames';
 
 const Pagination = (props) => {
   const {
+    className = 'pagination',
     items = 1,
     page = 0,
     onPageChange,
@@ -31,7 +33,7 @@ const Pagination = (props) => {
 
   const paginationElements = (elements) ? elements.map((value, index) => {
     const paginationItemClasses = classnames(
-      'pagination__item',
+      `${className}__item`,
       {active: (index === page)},
     );
 
@@ -63,11 +65,11 @@ const Pagination = (props) => {
       return ('');
     }
 
-    const sign = (value === 'more') ? '>>' : '<<';
+    const sign = (value === 'more') ? __('Next', 'quizess') : __('Prev', 'quizess');
 
     return (
       <li
-        className="pagination__item"
+        className={`${className}__item`}
         role="treeitem"
         onKeyPress={() => {
           handlePageChange(value);
@@ -84,7 +86,7 @@ const Pagination = (props) => {
 
   return (
     <ul
-      className="pagination__menu"
+      className={`${className}__menu`}
     >
       {getArrowElements('less')}
       {paginationElements}

@@ -3,6 +3,7 @@ import generalHelper from '../../../../helpers/general-helper';
 
 const ScoresItem = (props) => {
   const {
+    className = 'scores',
     quizId,
     index,
     playerId,
@@ -15,27 +16,32 @@ const ScoresItem = (props) => {
 
   const success = generalHelper.percentage(correct, total);
 
+  const scores = [
+    name,
+    attempts,
+    correct,
+    total,
+    `${success}%`,
+  ];
+
+  const scoresElements = scores.map((score, index) => {
+    return (
+      <div
+        className={`${className}__inner`}
+        key={index}
+      >
+        {score}
+      </div>
+    );
+  });
+
   return (
     <li
-      className="scores-list__item">
-      <div className="scores-list__inner">
-        {name}
-      </div>
-      <div className="scores-list__inner">
-        {attempts}
-      </div>
-      <div className="scores-list__inner">
-        {correct}
-      </div>
-      <div className="scores-list__inner">
-        {total}
-      </div>
-      <div className="scores-list__inner">
-        {success}%
-      </div>
-      <div className="scores-list__inner">
+      className={`${className}__item`}>
+      {scoresElements}
+      <div className={`${className}__inner`}>
         <button
-          className="scores-list__remove"
+          className={`${className}__remove`}
           onClick={() => {
             onClick(playerId, quizId, index);
           }}

@@ -14,7 +14,7 @@ const MainConsumer = (props) => {
 
   const quizSelectElement = (
     <Select
-      className="columns-select"
+      className="quiz-select"
       closeMenuOnSelect={true}
       value={(selectedQuiz) ? selectedQuiz.value : false}
       onChange={handleScoresSelect}
@@ -25,8 +25,8 @@ const MainConsumer = (props) => {
 
   return (
     <Fragment>
-      <h1>
-        This is dashboard
+      <h1 className="dashboard__title">
+        {__('Dashboard', 'quizess')}
       </h1>
       {(dataLoaded) && quizSelectElement}
       <Scores />

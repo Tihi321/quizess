@@ -10,9 +10,8 @@ msgstr ""
 
 #: skin/assets/app/components/modal/hall-of-fame/index.js:27
 #: skin/assets/blocks/question-block/components/answer-input/index.js:57
-#: skin/assets/dashboard/components/scores-parent/index.js:21
 #: skin/assets/dashboard/components/scores/scores-parent/index.js:21
-#: skin/assets/dashboard/components/stats/stats-parent/index.js:35
+#: skin/assets/dashboard/components/stats/stats-parent/index.js:28
 msgid "Correct"
 msgstr ""
 
@@ -37,7 +36,7 @@ msgid "Percent"
 msgstr ""
 
 #: skin/assets/app/components/modal/hall-of-fame/index.js:54
-#: skin/assets/dashboard/components/stats/stats-parent/index.js:32
+#: skin/assets/dashboard/components/stats/stats-parent/index.js:25
 msgid "Number"
 msgstr ""
 
@@ -45,6 +44,14 @@ msgstr ""
 #: skin/assets/blocks/components/toolbars/style-options.js:47
 #: skin/assets/blocks/question-block/sections/BlockOptions.js:129
 msgid "Type"
+msgstr ""
+
+#: skin/assets/app/components/pagination/index.js:68
+msgid "Next"
+msgstr ""
+
+#: skin/assets/app/components/pagination/index.js:68
+msgid "Prev"
 msgstr ""
 
 #: skin/assets/app/parts/QuestionHeader.js:35
@@ -394,39 +401,37 @@ msgstr ""
 msgid "Success message"
 msgstr ""
 
-#: skin/assets/dashboard/components/scores-item/index.js:43
-#: skin/assets/dashboard/components/scores-parent/index.js:30
-#: skin/assets/dashboard/components/scores/scores-item/index.js:43
-#: skin/assets/dashboard/components/scores/scores-parent/index.js:30
+#: skin/assets/dashboard/components/scores/scores-item/index.js:49
+#: skin/assets/dashboard/components/scores/scores-parent/index.js:24
 msgid "Remove"
 msgstr ""
 
-#: skin/assets/dashboard/components/scores-parent/index.js:15
-#: skin/assets/dashboard/components/scores/scores-parent/index.js:15
+#: skin/assets/dashboard/components/scores/scores-parent/index.js:19
 msgid "Name"
 msgstr ""
 
-#: skin/assets/dashboard/components/scores-parent/index.js:18
-#: skin/assets/dashboard/components/scores/scores-parent/index.js:18
+#: skin/assets/dashboard/components/scores/scores-parent/index.js:20
 msgid "Attempts"
 msgstr ""
 
-#: skin/assets/dashboard/components/scores-parent/index.js:24
-#: skin/assets/dashboard/components/scores/scores-parent/index.js:24
+#: skin/assets/dashboard/components/scores/scores-parent/index.js:22
 msgid "Total"
 msgstr ""
 
-#: skin/assets/dashboard/components/scores-parent/index.js:27
-#: skin/assets/dashboard/components/scores/scores-parent/index.js:27
+#: skin/assets/dashboard/components/scores/scores-parent/index.js:23
 msgid "Success"
 msgstr ""
 
-#: skin/assets/dashboard/components/stats/stats-parent/index.js:25
+#: skin/assets/dashboard/components/stats/stats-parent/index.js:35
 msgid "Question success rate"
 msgstr ""
 
-#: skin/assets/dashboard/components/stats/stats-parent/index.js:26
+#: skin/assets/dashboard/components/stats/stats-parent/index.js:36
 msgid "Number of successful attempts"
+msgstr ""
+
+#: skin/assets/dashboard/sections/index.js:29
+msgid "Dashboard"
 msgstr ""
 
 #: skin/assets/editor/editor-fields/post-title.js:21

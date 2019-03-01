@@ -1,19 +1,17 @@
-import {__} from '@wordpress/i18n';
-import generalHelper from '../../../../helpers/general-helper';
-
 const StatsItem = (props) => {
   const {
+    className = 'stats',
     number,
     correct,
   } = props;
 
   return (
     <li
-      className="scores-list__item">
-      <div className="scores-list__inner">
+      className={`${className}__item`}>
+      <div className={`${className}__inner`}>
         {number + 1}.
       </div>
-      <div className="scores-list__inner">
+      <div className={`${className}__inner`}>
         {correct}
       </div>
     </li>

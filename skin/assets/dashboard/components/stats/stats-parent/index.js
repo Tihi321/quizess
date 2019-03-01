@@ -1,9 +1,10 @@
 import {__} from '@wordpress/i18n';
 import {chunk} from 'lodash';
-import Pagination from '../../pagination';
+import Pagination from '../../../../app/components/pagination';
 
 const StatsParent = (props) => {
   const {
+    className = 'stats',
     pagination = false,
     items,
     page,
@@ -11,31 +12,30 @@ const StatsParent = (props) => {
     children,
   } = props;
 
-  const singleCheck = ((!children || !pagination) || children.length < 5) || false;
-
+  const singleCheck = ((!children || !pagination) || children.length < items) || false;
   const elements = (singleCheck) ? children : chunk(children, items);
 
   const statsListElement = (
     <ul
-      className="scores-list__parent"
+      className={`${className}__parent`}
     >
       <li
-        className="scores-list__item scores-list__item--title">
-        <div className="scores-list__inner scores-list__title">
-          <div>{__('Question success rate', 'quizess')}</div>
-          <div>{__('Number of successful attempts', 'quizess')}</div>
-        </div>
-      </li>
-      <li
-        className="scores-list__item scores-list__item--title">
-        <div className="scores-list__inner scores-list__title">
+        className={`${className}__item ${className}__item--title`}>
+        <div className={`${className}__inner ${className}__title`}>
           {__('Number', 'quizess')}
         </div>
-        <div className="scores-list__inner scores-list__title">
+        <div className={`${className}__inner ${className}__title`}>
           {__('Correct', 'quizess')}
         </div>
       </li>
       {(singleCheck) ? elements : elements[page]}
+      <li
+        className={`${className}__item ${className}__item--title`}>
+        <div className={`${className}__inner ${className}__explanation`}>
+          <div className={`${className}__inner--explanation`}>{__('Question success rate', 'quizess')}</div>
+          <div className={`${className}__inner--explanation`}>{__('Number of successful attempts', 'quizess')}</div>
+        </div>
+      </li>
     </ul>
   );
 
@@ -45,11 +45,11 @@ const StatsParent = (props) => {
 
   return (
     <div
-      className="stats__pagination"
+      className={`${className}__list`}
     >
       {statsListElement}
       <Pagination
-        items={3}
+        items={items}
         page={page}
         onPageChange={onPageChange}
         elementItems={children}

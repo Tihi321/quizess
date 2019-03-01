@@ -6,7 +6,5 @@
  */
 
 ?>
- <div class="quizess__dashboard">
-  <div class="quizess__app js-quizess-dashboard">
-  </div>
+ <div class="dashboard__outer js-quizess-dashboard">
  </div>

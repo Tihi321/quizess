@@ -1,4 +1,4 @@
-.scores-list {
+.scores {
   &__item {
     display: flex;
   }
@@ -9,6 +9,5 @@
 
   &__title {
     font-weight: bold;
-    border: 1px solid;
   }
 }

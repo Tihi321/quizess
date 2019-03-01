@@ -1,37 +1,68 @@
 import {__} from '@wordpress/i18n';
+import {chunk} from 'lodash';
+import Pagination from '../../../../app/components/pagination';
 
 const ScoresParent = (props) => {
   const {
+    className = 'scores',
+    pagination = false,
+    items,
+    page,
+    onPageChange,
     children,
   } = props;
 
-  return (
+  const singleCheck = ((!children || !pagination) || children.length < items) || false;
+  const elements = (singleCheck) ? children : chunk(children, items);
+
+  const titles = [
+    __('Name', 'quizess'),
+    __('Attempts', 'quizess'),
+    __('Correct', 'quizess'),
+    __('Total', 'quizess'),
+    __('Success', 'quizess'),
+    __('Remove', 'quizess'),
+  ];
+
+  const titleElements = titles.map((title, index) => {
+    return (
+      <div
+        className={`${className}__inner ${className}__title`}
+        key={index}
+      >
+        {title}
+      </div>
+    );
+  });
+
+  const scoresListElement = (
     <ul
-      className="scores-list__parent"
+      className={`${className}__parent`}
     >
       <li
-        className="scores-list__item scores-list__item--title">
-        <div className="scores-list__inner scores-list__title">
-          {__('Name', 'quizess')}
-        </div>
-        <div className="scores-list__inner scores-list__title">
-          {__('Attempts', 'quizess')}
-        </div>
-        <div className="scores-list__inner scores-list__title">
-          {__('Correct', 'quizess')}
-        </div>
-        <div className="scores-list__inner scores-list__title">
-          {__('Total', 'quizess')}
-        </div>
-        <div className="scores-list__inner scores-list__title">
-          {__('Success', 'quizess')}
-        </div>
-        <div className="scores-list__inner scores-list__title">
-          {__('Remove', 'quizess')}
-        </div>
+        className={`${className}__item ${className}__item--title`}>
+        {titleElements}
       </li>
-      {children}
+      {(singleCheck) ? elements : elements[page]}
     </ul>
+  );
+
+  if (singleCheck) {
+    return scoresListElement;
+  }
+
+  return (
+    <div
+      className={`${className}__list`}
+    >
+      {scoresListElement}
+      <Pagination
+        items={items}
+        page={page}
+        onPageChange={onPageChange}
+        elementItems={children}
+      />
+    </div>
   );
 };
 

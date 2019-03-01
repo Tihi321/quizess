@@ -12,7 +12,9 @@ const ScoresConsumer = (props) => {
     handleOnRemove,
     stats,
     statsPage,
+    scorePage,
     handleOnStatsPageChange,
+    handleOnScorePageChange,
   } = props;
 
   const scoresElement = selectedQuiz.data.map((value, index) => {
@@ -24,6 +26,7 @@ const ScoresConsumer = (props) => {
     } = value;
     return (
       <ScoresItem
+        className="dashboard__table"
         key={index}
         index={index}
         quizId={selectedQuiz.id}
@@ -41,6 +44,7 @@ const ScoresConsumer = (props) => {
   const statsElement = stats.map((value, index) => {
     return (
       <StatsItem
+        className="dashboard__table"
         key={index}
         number={index}
         correct={value}
@@ -51,18 +55,35 @@ const ScoresConsumer = (props) => {
 
 
   return (
-    <div>
-      <ScoresParent>
-        {scoresElement}
-      </ScoresParent>
-      <StatsParent
-        pagination={true}
-        items={3}
-        page={statsPage}
-        onPageChange={handleOnStatsPageChange}
+    <div
+      className="dashboard__tables"
+    >
+      <div
+        className="dashboard__scores"
       >
-        {statsElement}
-      </StatsParent>
+        <ScoresParent
+          className="dashboard__table"
+          pagination={true}
+          items={10}
+          page={scorePage}
+          onPageChange={handleOnScorePageChange}
+        >
+          {scoresElement}
+        </ScoresParent>
+      </div>
+      <div
+        className="dashboard__stats"
+      >
+        <StatsParent
+          className="dashboard__table"
+          pagination={true}
+          items={10}
+          page={statsPage}
+          onPageChange={handleOnStatsPageChange}
+        >
+          {statsElement}
+        </StatsParent>
+      </div>
     </div>
   );
 };
@@ -74,11 +95,13 @@ const Scores = () => (
         values: {
           selectedQuiz,
           scoresData,
+          scorePage,
           statsPage,
         },
         dataStore: {
           handleOnRemove,
           handleOnStatsPageChange,
+          handleOnScorePageChange,
         },
       } = value;
 
@@ -87,10 +110,12 @@ const Scores = () => (
 
       return (
         <ScoresConsumer
+          scorePage={scorePage}
           statsPage={statsPage}
           selectedQuiz={selectedQuiz}
           stats={stats}
           handleOnRemove={handleOnRemove}
+          handleOnScorePageChange={handleOnScorePageChange}
           handleOnStatsPageChange={handleOnStatsPageChange}
         />
       );

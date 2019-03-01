@@ -6,11 +6,25 @@
 /* stylelint-disable */
 // Vendors - node modules
 @import 'media-blender';
+
+// Utils
 @import 'utils/colors';
+@import 'utils/shared-variables';
+@import 'utils/functions';
+@import 'utils/mixins';
+@import 'utils/placeholders';
+@import 'utils/z-indexes';
 
 // Config
 @import 'admin-core';
 
 // Componenets
-@import '../dashboard/components/scores-item/style';
-@import '../dashboard/components/scores-parent/style';
+@import '../dashboard/components/scores/scores-item/style';
+@import '../dashboard/components/scores/scores-parent/style';
+@import '../dashboard/components/stats/stats-item/style';
+@import '../dashboard/components/stats/stats-parent/style';
+@import '../app/components/pagination/style';
+
+// Pages
+@import './admin/pages/dashboard/dashboard';
+@import './admin/pages/dashboard/tables';

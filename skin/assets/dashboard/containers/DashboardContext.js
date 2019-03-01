@@ -20,6 +20,7 @@ class DashboardProvider extends PureComponent {
         index: -1,
       },
       statsPage: 0,
+      scorePage: 0,
     };
   }
 
@@ -153,6 +154,13 @@ class DashboardProvider extends PureComponent {
         };
       });
     },
+    handleOnScorePageChange: (pageNumber) => {
+      this.setState(() => {
+        return {
+          scorePage: pageNumber,
+        };
+      });
+    },
 
   };
 
@@ -166,6 +174,7 @@ class DashboardProvider extends PureComponent {
       dataLoaded,
       selectedQuiz,
       statsPage,
+      scorePage,
     } = this.state;
 
     return (
@@ -179,6 +188,7 @@ class DashboardProvider extends PureComponent {
             dataLoaded,
             selectedQuiz,
             statsPage,
+            scorePage,
           },
           dataStore: this.dataStore,
         }}>
