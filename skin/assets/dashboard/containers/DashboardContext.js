@@ -11,6 +11,9 @@ class DashboardProvider extends PureComponent {
   constructor(props) {
     super(props);
 
+    this.messageElement = document.querySelector(props.messageElementSelector);
+    this.messageTextElement = document.querySelector(props.messageTextSelector);
+
     this.state = {
       dataLoaded: false,
       scoresData: [],
@@ -22,6 +25,10 @@ class DashboardProvider extends PureComponent {
       statsPage: 0,
       scorePage: 0,
     };
+
+    this.IS_SHOWN_CLASS = 'is-shown';
+    this.IS_SUCCESS_CLASS = 'is-success';
+    this.IS_ERROR_CLASS = 'is-error';
   }
 
   parseScoresData = (data) => {
@@ -92,6 +99,36 @@ class DashboardProvider extends PureComponent {
 
     }
 
+    setMessageCallback = (message, elementClass) => {
+      const {
+        messageElement,
+        messageTextElement,
+        IS_SHOWN_CLASS,
+        IS_SUCCESS_CLASS,
+        IS_ERROR_CLASS,
+      } = this;
+
+      messageTextElement.innerHTML = message;
+
+      messageElement.classList.remove(IS_SUCCESS_CLASS);
+      messageElement.classList.remove(IS_ERROR_CLASS);
+
+      messageElement.classList.add(elementClass);
+      messageElement.classList.add(IS_SHOWN_CLASS);
+
+      setTimeout(this.removeElementCallback, 5000);
+
+    }
+
+    removeElementCallback = () => {
+      const {
+        messageElement,
+        IS_SHOWN_CLASS,
+      } = this;
+
+      messageElement.classList.remove(IS_SHOWN_CLASS);
+    }
+
     removeScoreData = (playerId, quizId, playerIndex) => {
 
       const {
@@ -124,10 +161,16 @@ class DashboardProvider extends PureComponent {
           return res.json();
         })
         .then((response) => {
+          const {IS_SUCCESS_CLASS} = this;
+
+          this.setMessageCallback(response, IS_SUCCESS_CLASS);
           this.removeQuizScore(quizId, playerIndex);
+
         })
         .catch((error) => {
-          console.error('Error:', error);
+          const {IS_ERROR_CLASS} = this;
+
+          this.setMessageCallback(error, IS_ERROR_CLASS);
         });
 
     }

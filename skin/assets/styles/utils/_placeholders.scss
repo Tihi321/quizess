@@ -87,3 +87,35 @@
   opacity: 0.9;
   filter: blur(8px);
 }
+
+%trait-message {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: $zindex-trait-messagge;
+  display: flex;
+  justify-content: center;
+  transform: translateY(100%);
+  transition: ease 300ms transform 200ms;
+  &.is-shown {
+    transform: translateY(0);
+  }
+  &.is-error {
+    background-color: $base-punch-color;
+  }
+  &.is-success {
+    background-color: $base-primary-blue;
+  }
+
+  .trait-text {
+    display: block;
+    margin: 16px;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 26px;
+    color: $base-white-color;
+  }
+}

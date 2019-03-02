@@ -5,7 +5,11 @@ $dashboard-colors: (
 .dashboard {
   $this: &;
 
-  &__outer {
+  &__message {
+    @extend %trait-message;
+  }
+
+  &__app {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;

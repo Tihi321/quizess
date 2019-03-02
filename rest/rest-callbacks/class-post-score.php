@@ -123,7 +123,7 @@ class Post_Score extends Rest_Routes implements Rest_Callback {
 
     }
 
-    return new \WP_REST_Response( [ __( 'message', 'quizess' ) => __( 'Scores successfully posted', 'quizess' ) ], 200 );
+    return new \WP_REST_Response( __( 'Quiz submit success', 'quizess' ), 200 );
   }
 
 }
