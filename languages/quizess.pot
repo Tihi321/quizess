@@ -9,7 +9,6 @@ msgid "Your browser does not support the video tag."
 msgstr ""
 
 #: skin/assets/app/components/modal/hall-of-fame/index.js:30
-#: skin/assets/app/components/modal/hall-of-fame/index.js:27
 #: skin/assets/blocks/question-block/components/answer-input/index.js:57
 #: skin/assets/dashboard/components/scores/scores-parent/index.js:21
 #: skin/assets/dashboard/components/stats/stats-parent/index.js:28
@@ -98,12 +97,6 @@ msgstr ""
 msgid "Start"
 msgstr ""
 
-#: skin/assets/app/components/modal/hall-of-fame/index.js:57
-#: skin/assets/blocks/components/toolbars/style-options.js:47
-#: skin/assets/blocks/question-block/sections/BlockOptions.js:129
-msgid "Type"
-msgstr ""
-
 #: skin/assets/blocks/components/toolbars/style-options.js:36
 #: skin/assets/blocks/question-block/sections/BlockOptions.js:65
 #: skin/assets/blocks/questions-category-block/sections/BlockOptions.js:83
@@ -114,6 +107,11 @@ msgstr ""
 
 #: skin/assets/blocks/components/toolbars/style-options.js:43
 msgid "Style Options"
+msgstr ""
+
+#: skin/assets/blocks/components/toolbars/style-options.js:47
+#: skin/assets/blocks/question-block/sections/BlockOptions.js:129
+msgid "Type"
 msgstr ""
 
 #: skin/assets/blocks/components/toolbars/style-options.js:51

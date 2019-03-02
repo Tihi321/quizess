@@ -38,6 +38,8 @@
 
 // Template parts
 @import 'components/parts/modal';
+@import 'components/parts/modal-scores';
+@import 'components/parts/modal-last-score';
 @import 'components/parts/question-header';
 
 // Footer
@@ -45,6 +47,7 @@
 
 // Sections
 @import 'components/sections/question';
+@import 'components/sections/hall-fame';
 
 // Single
 @import 'components/single/quiz';

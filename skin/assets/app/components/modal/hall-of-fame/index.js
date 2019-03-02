@@ -20,13 +20,13 @@ const HallOfFame = (props) => {
     } = item;
     return (
       <li key={index} className="hall-fame__table-item">
-        <div className="hall-fame__question-number">
+        <div className="hall-fame__inner hall-fame__question-number">
           {index + 1}
         </div>
-        <div className="hall-fame__question-answer">
+        <div className="hall-fame__inner hall-fame__question-answer">
           {id}
         </div>
-        <div className="hall-fame__question-type">
+        <div className="hall-fame__inner hall-fame__question-type">
           {(correct) ? __('Correct', 'quizess') : __('Incorrect', 'quizess')}
         </div>
       </li>
@@ -53,13 +53,13 @@ const HallOfFame = (props) => {
         </div>
         <ul className="hall-fame__table">
           <li className="hall-fame__table-item">
-            <div className="hall-fame__question-number">
+            <div className="hall-fame__inner hall-fame__question-number">
               {__('Question', 'quizess')}
             </div>
-            <div className="hall-fame__question-answer">
+            <div className="hall-fame__inner hall-fame__question-answer">
               {__('Answer', 'quizess')}
             </div>
-            <div className="hall-fame__question-type">
+            <div className="hall-fame__inner hall-fame__question-type">
               {__('Correct/Incorrect', 'quizess')}
             </div>
           </li>

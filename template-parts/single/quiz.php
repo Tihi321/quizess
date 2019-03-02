@@ -13,7 +13,7 @@ $general_helper = new Helpers\General_Helper();
 
 $user_submit  = '1';
 $quiz_options = $blocks_helper->get_quiz_options( $post->post_content );
-$quiz_scores  = $blocks_helper->get_quiz_scores( $post->ID );
+$quiz_scores  = $blocks_helper->get_quiz_scores( $post->ID, true );
 
 $welcome_message = $general_helper->get_array_value( 'welcomeMessage', $quiz_options['options'] );
 $theme           = $general_helper->get_array_value( 'theme', $quiz_options['options'] );

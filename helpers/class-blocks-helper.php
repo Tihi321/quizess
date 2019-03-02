@@ -154,14 +154,19 @@ final class Blocks_Helper {
   /**
    * Return blocks scores data
    *
-   * @param int $quiz_id Quid id.
+   * @param int  $quiz_id Quid id.
+   * @param bool $with_id With second param you can retun values with user id.
    * @since 1.0.0
    */
-  public function get_quiz_scores( $quiz_id ) : array {
+  public function get_quiz_scores( $quiz_id, $with_id = false ) : array {
     $players_data  = [];
     $scores_output = null;
 
     $scores = get_post_meta( $quiz_id, Config::SCORES_META_KEY, true );
+
+    if ( $with_id ) {
+      return $scores;
+    }
 
     if ( $scores ) {
       $players = $scores['players'];

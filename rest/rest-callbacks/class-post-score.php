@@ -65,9 +65,15 @@ class Post_Score extends Rest_Routes implements Rest_Callback {
     $stats   = $this->general_helper->get_array_value( 'stats', $body );
 
     $question_stats = [];
+    $answer_stats   = [];
 
     foreach ( $stats as $key => $stat ) {
-      $question_stats[] = ( $stat['correct'] === true ) ? 1 : 0;
+      $cur_correct      = ( $stat['correct'] === true ) ? 1 : 0;
+      $question_stats[] = $cur_correct;
+      $answer_stats[]   = [
+          'number' => $stat['id'],
+          'correct' => $cur_correct,
+      ];
     }
 
     $current_user_id   = get_current_user_id();
@@ -81,6 +87,11 @@ class Post_Score extends Rest_Routes implements Rest_Callback {
                 'attempts' => 1,
                 'correct' => $correct,
                 'total' => $total,
+                'last' => [
+                    'correct' => $correct,
+                    'total' => $total,
+                    'answers' => $answer_stats,
+                ],
             ],
         ],
         'stats' => $question_stats,
@@ -106,6 +117,7 @@ class Post_Score extends Rest_Routes implements Rest_Callback {
         $user_scores['attempts'] = $current_user_stats['attempts'] + 1;
         $user_scores['correct']  = $current_user_stats['correct'] + $correct;
         $user_scores['total']    = $current_user_stats['total'] + $total;
+        $user_scores['last']     = $quiz_stats['players'][ $current_user_id ]['last'];
       }
 
       if ( empty( $current_stats ) ) {
@@ -123,7 +135,7 @@ class Post_Score extends Rest_Routes implements Rest_Callback {
 
     }
 
-    return new \WP_REST_Response( __( 'Quiz submit success', 'quizess' ), 200 );
+    return new \WP_REST_Response( __( 'Scores successfully submitted', 'quizess' ), 200 );
   }
 
 }

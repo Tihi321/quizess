@@ -1,0 +1,37 @@
+.hall-fame {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  &__header {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 50px;
+  }
+
+  &__table {
+    width: 100%;
+    &-item {
+      display: flex;
+      text-align: center;
+      padding: 5px;
+    }
+  }
+  &__inner {
+    width: 30%;
+  }
+
+  &__score {
+    margin-right: 50px;
+  }
+}

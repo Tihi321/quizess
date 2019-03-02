@@ -1,0 +1,12 @@
+.scores {
+  &__parent {
+    margin: 0;
+  }
+  &__item {
+    display: flex;
+  }
+
+  &__inner {
+    width: 20%;
+  }
+}

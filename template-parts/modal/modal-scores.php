@@ -6,6 +6,8 @@
  * @since 1.0.0
  */
 
+$user_id = get_current_user_id();
+
 ?>
 
 <div class="modal js-modal" id="<?php echo esc_attr( $scores_modal_id ); ?>" style="background-color:<?php echo esc_attr( $bg_color ); ?>;background-image:url('<?php echo esc_attr( $bg_image_url ); ?>');">
@@ -19,6 +21,33 @@
         <?php echo esc_html__( 'Scores', 'quizess' ); ?>
       </h1>
     <?php if ( ! empty( $player_scores ) ) { ?>
+      <?php if ( ! empty( $user_id ) ) { ?>
+        <div class="modal_last-score last-score">
+          <div class="last-score__title">
+            <?php echo esc_html__( 'Last score', 'quizess' ); ?>
+          </div>
+          <ul class="last-score__parent">
+            <li class="last-score__item last-score__item--title">
+            <?php
+            $last_score_titles_template = $base_path . 'template-parts/modal/parts/last-score-titles.php';
+
+            if ( ! empty( $last_score_titles_template ) ) {
+              include $last_score_titles_template;
+            }
+            ?>
+            </li>
+            <li class="last-score__item">
+            <?php
+            $last_score_item_template = $base_path . 'template-parts/modal/parts/last-score-item.php';
+
+            if ( ! empty( $last_score_item_template ) ) {
+              include $last_score_item_template;
+            }
+            ?>
+            </li>
+          </ul>
+        </div>
+      <?php } ?>
       <div class="modal__scores scores">
         <ul class="scores__parent">
           <li class="scores__item scores__item--title">

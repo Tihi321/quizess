@@ -163,7 +163,7 @@ class General_Helper extends Config {
       $player_scores = $this->get_array_value( $users_id, $scores['players'] );
       $user_single   = get_user_meta( $users_id, Config::USER_SINGLE_TOGGLE, true );
 
-      if ( ! empty( $player_scores ) && $user_single === 'yes' ) {
+      if ( ! empty( $player_scores['last'] ) && $user_single === 'yes' ) {
         return false;
       }
     }

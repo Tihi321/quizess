@@ -88,7 +88,7 @@ final class Rest_Security {
     $can_user_submit = $this->general_helper->can_user_submit( $quiz_id, $current_user_id );
 
     if ( ! $can_user_submit ) {
-      return false;
+      return $this->error_handler( 'user_submit_limit' );
     }
 
     return true;
