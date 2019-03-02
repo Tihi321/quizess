@@ -11,7 +11,7 @@ const HallOfFame = (props) => {
     questionStats,
   } = props;
 
-  const percentSuccess = generalHelper.percentage(correctAnswers, questionsTotal);
+  const percentSuccess = generalHelper.getPercentage(correctAnswers, questionsTotal);
 
   const statsElements = questionStats.map((item, index) => {
     const {
@@ -21,6 +21,9 @@ const HallOfFame = (props) => {
     return (
       <li key={index} className="hall-fame__table-item">
         <div className="hall-fame__question-number">
+          {index + 1}
+        </div>
+        <div className="hall-fame__question-answer">
           {id}
         </div>
         <div className="hall-fame__question-type">
@@ -51,10 +54,13 @@ const HallOfFame = (props) => {
         <ul className="hall-fame__table">
           <li className="hall-fame__table-item">
             <div className="hall-fame__question-number">
-              {__('Number', 'quizess')}
+              {__('Question', 'quizess')}
+            </div>
+            <div className="hall-fame__question-answer">
+              {__('Answer', 'quizess')}
             </div>
             <div className="hall-fame__question-type">
-              {__('Type', 'quizess')}
+              {__('Correct/Incorrect', 'quizess')}
             </div>
           </li>
           {statsElements}

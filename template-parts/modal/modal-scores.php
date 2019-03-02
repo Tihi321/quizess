@@ -18,8 +18,33 @@
       <h1 class="modal__title">
         <?php echo esc_html__( 'Scores', 'quizess' ); ?>
       </h1>
-      <div class="modal__scores">
+    <?php if ( ! empty( $player_scores ) ) { ?>
+      <div class="modal__scores scores">
+        <ul class="scores__parent">
+          <li class="scores__item scores__item--title">
+            <?php
+            $score_titles_template = $base_path . 'template-parts/modal/parts/score-titles.php';
+
+            if ( ! empty( $score_titles_template ) ) {
+              include $score_titles_template;
+            }
+            ?>
+          </li>
+          <li class="scores__item">
+            <?php
+            foreach ( $player_scores as $index => $player ) {
+
+              $score_item_template = $base_path . 'template-parts/modal/parts/score-item.php';
+
+              if ( ! empty( $score_item_template ) ) {
+                include $score_item_template;
+              }
+            }
+            ?>
+          </li>
+        </ul>
       </div>
+    <?php } ?>
     </div>
   </div>
 </div>

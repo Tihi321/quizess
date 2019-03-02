@@ -22,7 +22,7 @@ const StatsParent = (props) => {
       <li
         className={`${className}__item ${className}__item--title`}>
         <div className={`${className}__inner ${className}__title`}>
-          {__('Number', 'quizess')}
+          {__('Question', 'quizess')}
         </div>
         <div className={`${className}__inner ${className}__title`}>
           {__('Correct', 'quizess')}

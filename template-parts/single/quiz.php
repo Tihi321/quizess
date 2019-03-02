@@ -34,63 +34,27 @@ if ( is_user_logged_in() ) {
   }
 }
 
-
 ?>
 
 <!-- Single Content Section -->
 <section class="quiz" id="<?php echo esc_attr( $post->ID ); ?>">
 
   <div class="quiz__content quiz__content--<?php echo esc_attr( $theme ); ?>" style="background-color:<?php echo esc_attr( $bg_color ); ?>;background-image:url('<?php echo esc_attr( $bg_image_url ); ?>');">
-    <div class="quiz__welcome--outer">
-      <h2 class="quiz__welcome--message">
-        <?php
-        if ( ! empty( $welcome_message ) ) {
-          ?>
-          <?php echo esc_html( $welcome_message ); ?>
-          <?php } else { ?>
-          <?php echo esc_html__( 'Welcome to our quiz', 'quizess' ); ?>
-        <?php } ?>
-      </h2>
-    </div>
-    <div class="quiz__button--outer">
-      <?php
-      if ( ! empty( $post->ID ) ) {
-        ?>
-        <div class="js-quiz-start" data-quiz-id="<?php echo esc_attr( $post->ID ); ?>" data-theme="<?php echo esc_attr( $theme ); ?>" data-user-submit="<?php echo esc_attr( $user_submit ); ?>">
-        </div>
-      <?php } ?>
-      <?php
-      if ( ! empty( $about_field ) ) {
-        ?>
-        <button class="btn btn--<?php echo esc_attr( $theme ); ?> js-modal-trigger-open" data-modal="<?php echo esc_attr( $about_modal_id ); ?>">
-          <?php echo esc_html__( 'About', 'quizess' ); ?>
-        </button>
-      <?php } ?>
-      <?php
-      if ( ! empty( $player_scores ) ) {
-        ?>
-        <button class="btn btn--<?php echo esc_attr( $theme ); ?> js-modal-trigger-open" data-modal="<?php echo esc_attr( $scores_modal_id ); ?>">
-          <?php echo esc_html__( 'High scores', 'quizess' ); ?>
-        </button>
-      <?php } ?>
-    </div>
+    <?php
+    $title_template = $base_path . 'template-parts/sections/title-section.php';
+
+    if ( ! empty( $title_template ) ) {
+      include $title_template;
+    }
+    ?>
+    <?php
+    $content_template = $base_path . 'template-parts/sections/bottom-section.php';
+
+    if ( ! empty( $content_template ) ) {
+      include $content_template;
+    }
+    ?>
   </div>
-
-  <?php
-  $about_modal_path = $base_path . 'template-parts/modal/modal-about.php';
-
-  if ( ! empty( $about_modal_path ) ) {
-    include $about_modal_path;
-  }
-  ?>
-
-  <?php
-  $scores_modal_path = $base_path . 'template-parts/modal/modal-scores.php';
-
-  if ( ! empty( $scores_modal_path ) ) {
-    include $scores_modal_path;
-  }
-  ?>
 
   <?php
   $google_snippets_path = $base_path . 'template-parts/parts/google-rich-snippets.php';

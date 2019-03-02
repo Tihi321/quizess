@@ -14,7 +14,7 @@ const ScoresItem = (props) => {
     onClick,
   } = props;
 
-  const success = generalHelper.percentage(correct, total);
+  const success = generalHelper.getPercentage(correct, total);
 
   const scores = [
     name,

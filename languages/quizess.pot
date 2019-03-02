@@ -8,6 +8,7 @@ msgstr ""
 msgid "Your browser does not support the video tag."
 msgstr ""
 
+#: skin/assets/app/components/modal/hall-of-fame/index.js:30
 #: skin/assets/app/components/modal/hall-of-fame/index.js:27
 #: skin/assets/blocks/question-block/components/answer-input/index.js:57
 #: skin/assets/dashboard/components/scores/scores-parent/index.js:21
@@ -15,35 +16,38 @@ msgstr ""
 msgid "Correct"
 msgstr ""
 
-#: skin/assets/app/components/modal/hall-of-fame/index.js:27
+#: skin/assets/app/components/modal/hall-of-fame/index.js:30
 msgid "Incorrect"
 msgstr ""
 
-#: skin/assets/app/components/modal/hall-of-fame/index.js:36
+#: skin/assets/app/components/modal/hall-of-fame/index.js:39
 msgid "Congratulation, you have successfuly completed quiz."
 msgstr ""
 
-#: skin/assets/app/components/modal/hall-of-fame/index.js:42
+#: skin/assets/app/components/modal/hall-of-fame/index.js:45
 msgid "Try again"
 msgstr ""
 
-#: skin/assets/app/components/modal/hall-of-fame/index.js:46
+#: skin/assets/app/components/modal/hall-of-fame/index.js:49
 msgid "Score"
 msgstr ""
 
-#: skin/assets/app/components/modal/hall-of-fame/index.js:49
+#: skin/assets/app/components/modal/hall-of-fame/index.js:52
 msgid "Percent"
 msgstr ""
 
-#: skin/assets/app/components/modal/hall-of-fame/index.js:54
+#: skin/assets/app/components/modal/hall-of-fame/index.js:57
+#: skin/assets/app/parts/QuestionHeader.js:35
 #: skin/assets/dashboard/components/stats/stats-parent/index.js:25
-msgid "Number"
+msgid "Question"
 msgstr ""
 
-#: skin/assets/app/components/modal/hall-of-fame/index.js:57
-#: skin/assets/blocks/components/toolbars/style-options.js:47
-#: skin/assets/blocks/question-block/sections/BlockOptions.js:129
-msgid "Type"
+#: skin/assets/app/components/modal/hall-of-fame/index.js:60
+msgid "Answer"
+msgstr ""
+
+#: skin/assets/app/components/modal/hall-of-fame/index.js:63
+msgid "Correct/Incorrect"
 msgstr ""
 
 #: skin/assets/app/components/pagination/index.js:68
@@ -52,10 +56,6 @@ msgstr ""
 
 #: skin/assets/app/components/pagination/index.js:68
 msgid "Prev"
-msgstr ""
-
-#: skin/assets/app/parts/QuestionHeader.js:35
-msgid "Question"
 msgstr ""
 
 #: skin/assets/app/sections/Modal.js:43
@@ -96,6 +96,12 @@ msgstr ""
 
 #: skin/assets/app/sections/index.js:21
 msgid "Start"
+msgstr ""
+
+#: skin/assets/app/components/modal/hall-of-fame/index.js:57
+#: skin/assets/blocks/components/toolbars/style-options.js:47
+#: skin/assets/blocks/question-block/sections/BlockOptions.js:129
+msgid "Type"
 msgstr ""
 
 #: skin/assets/blocks/components/toolbars/style-options.js:36

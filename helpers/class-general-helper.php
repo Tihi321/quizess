@@ -136,6 +136,19 @@ class General_Helper extends Config {
   }
 
   /**
+   * Calculates percentage of 2 numbers
+   *
+   * @param int $value number for which we calculate percent.
+   * @param int $out_off number off which we calculate percent.
+   * @return int returns percent number.
+   */
+  public function get_gercentage( int $value, int $out_off ) : int {
+
+    return ( $value * 100 ) / $out_off;
+
+  }
+
+  /**
    * Checks if user submited & can submit only one quiz user needs to be authenticated
    *
    * @param int $posts_id post ID to check if scores has been submited.
