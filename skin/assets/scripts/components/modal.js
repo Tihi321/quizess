@@ -4,13 +4,11 @@ import selectors from '../../helpers/selectors';
 
 export default class Modal {
   constructor(
-    modalElement = '.js-modal',
     openTriggerElement = '.js-modal-trigger-open',
     closeTriggerElement = '.js-modal-trigger-close',
     OPEN_CLASS = 'is-active',
     CLOSED_CLASS = 'is-inactive'
   ) {
-    this.modalElement = modalElement;
     this.openTriggerElement = openTriggerElement;
     this.closeTriggerElement = closeTriggerElement;
     this.OPEN_CLASS = OPEN_CLASS;
@@ -18,10 +16,11 @@ export default class Modal {
 
     this.isIphone = devices.iPhone();
 
-    this.$modal = document.querySelector(this.modalElement);
-    this.$openTrigger = document.querySelector(this.openTriggerElement);
-    this.$closeTrigger = document.querySelector(this.closeTriggerElement);
+    this.$openTriggers = document.querySelectorAll(this.openTriggerElement);
+    this.$closeTriggers = document.querySelectorAll(this.closeTriggerElement);
+
     this.$body = selectors.getBody();
+
   }
 
   set scrollPosition(scrollPosition) {

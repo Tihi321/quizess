@@ -9,16 +9,19 @@ generalHelper.domReady(function() {
 
   // -------------------------------------------------------------
   // modal
-  modal.$openTrigger.addEventListener('click', function(e) {
-    const id = modal.getId(this);
+  modal.$openTriggers.forEach((element) => {
+    element.addEventListener('click', function(e) {
+      const id = modal.getId(this);
 
-    modal.open(id);
+      modal.open(id);
+    });
   });
+  modal.$closeTriggers.forEach((element) => {
+    element.addEventListener('click', function(e) {
+      const id = modal.getId(this);
 
-  modal.$closeTrigger.addEventListener('click', function(e) {
-    const id = modal.getId(this);
-
-    modal.close(id);
+      modal.close(id);
+    });
   });
 
   // -------------------------------------------------------------
