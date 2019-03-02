@@ -13,13 +13,16 @@ $general_helper = new Helpers\General_Helper();
 
 $user_submit  = '1';
 $quiz_options = $blocks_helper->get_quiz_options( $post->post_content );
+$quiz_scores  = $blocks_helper->get_quiz_scores( $post->ID );
 
 $welcome_message = $general_helper->get_array_value( 'welcomeMessage', $quiz_options['options'] );
 $theme           = $general_helper->get_array_value( 'theme', $quiz_options['options'] );
 $about_field     = $general_helper->get_array_value( 'aboutField', $quiz_options['options'] );
 $bg_color        = $general_helper->get_array_value( 'bgColor', $quiz_options['bgOptions'] );
 $bg_image_url    = $general_helper->get_array_value( 'bgUrl', $quiz_options['bgOptions'] );
-$modal_id        = 'modal-' . $post->ID;
+$player_scores   = $general_helper->get_array_value( 'players', $quiz_scores );
+$about_modal_id  = 'modal--about-' . $post->ID;
+$scores_modal_id = 'modal--scores-' . $post->ID;
 $base_path       = Helpers\General_Helper::get_base_path();
 
 // check if user can submit scores.
@@ -59,18 +62,33 @@ if ( is_user_logged_in() ) {
       <?php
       if ( ! empty( $about_field ) ) {
         ?>
-        <button class="btn btn--<?php echo esc_attr( $theme ); ?> js-modal-trigger-open" data-modal="<?php echo esc_attr( $modal_id ); ?>">
+        <button class="btn btn--<?php echo esc_attr( $theme ); ?> js-modal-trigger-open" data-modal="<?php echo esc_attr( $about_modal_id ); ?>">
           <?php echo esc_html__( 'About', 'quizess' ); ?>
+        </button>
+      <?php } ?>
+      <?php
+      if ( ! empty( $player_scores ) ) {
+        ?>
+        <button class="btn btn--<?php echo esc_attr( $theme ); ?> js-modal-trigger-open" data-modal="<?php echo esc_attr( $scores_modal_id ); ?>">
+          <?php echo esc_html__( 'High scores', 'quizess' ); ?>
         </button>
       <?php } ?>
     </div>
   </div>
 
   <?php
-  $modal_path = $base_path . 'template-parts/modal/modal-quiz.php';
+  $about_modal_path = $base_path . 'template-parts/modal/modal-about.php';
 
-  if ( ! empty( $modal_path ) ) {
-    include $modal_path;
+  if ( ! empty( $about_modal_path ) ) {
+    include $about_modal_path;
+  }
+  ?>
+
+  <?php
+  $scores_modal_path = $base_path . 'template-parts/modal/modal-scores.php';
+
+  if ( ! empty( $scores_modal_path ) ) {
+    include $scores_modal_path;
   }
   ?>
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Quiz modal
+ * About modal
  *
  * @package Quizess\Template_Parts\Modal
  * @since 1.0.0
@@ -8,17 +8,17 @@
 
 ?>
 
-<div class="modal js-modal" id="<?php echo esc_attr( $modal_id ); ?>" style="background-color:<?php echo esc_attr( $bg_color ); ?>;background-image:url('<?php echo esc_attr( $bg_image_url ); ?>');">
+<div class="modal js-modal" id="<?php echo esc_attr( $about_modal_id ); ?>" style="background-color:<?php echo esc_attr( $bg_color ); ?>;background-image:url('<?php echo esc_attr( $bg_image_url ); ?>');">
   <div class="modal__inner modal__inner--<?php echo esc_attr( $theme ); ?>">
     <div class="modal__top-bar modal__top-bar--<?php echo esc_attr( $theme ); ?>">
-      <button class="btn-close js-modal-trigger-close" data-modal="<?php echo esc_attr( $modal_id ); ?>">
+      <button class="btn-close js-modal-trigger-close" data-modal="<?php echo esc_attr( $about_modal_id ); ?>">
       </button>
     </div>
     <div class="modal__content">
-      <h1>
+      <h1 class="modal__title">
         <?php echo esc_html__( 'About', 'quizess' ); ?>
       </h1>
-      <div>
+      <div class="modal__about">
         <?php echo wp_kses_post( $about_field ); ?>
       </div>
     </div>

@@ -152,6 +152,31 @@ final class Blocks_Helper {
   }
 
   /**
+   * Return blocks scores data
+   *
+   * @param int $quiz_id Quid id.
+   * @since 1.0.0
+   */
+  public function get_quiz_scores( $quiz_id ) : array {
+    $players_data  = [];
+    $scores_output = null;
+
+    $scores = get_post_meta( $quiz_id, Config::SCORES_META_KEY, true );
+
+    if ( $scores ) {
+      $players = $scores['players'];
+
+      foreach ( $players as $key => $player ) {
+        $players_data[] = $player;
+      }
+      $scores_output['players'] = $players_data;
+      $scores_output['stats']   = $scores['stats'];
+    }
+
+    return $scores_output;
+  }
+
+  /**
    * Get selected questions blocks data
    *
    * @param array $blocks_data Blocks_Helper dependency.
