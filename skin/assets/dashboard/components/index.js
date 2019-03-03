@@ -1,9 +1,7 @@
-import ScoresParent from './scores/scores-parent';
-import ScoresItem from './scores/scores-item';
-import StatsParent from './stats/stats-parent';
-import StatsItem from './stats/stats-item';
+import Dialog from './dialog';
+import TableParent from './table/table-parent';
+import TableItems from './table/table-items';
 
-export {ScoresParent};
-export {ScoresItem};
-export {StatsParent};
-export {StatsItem};
+export {Dialog};
+export {TableParent};
+export {TableItems};

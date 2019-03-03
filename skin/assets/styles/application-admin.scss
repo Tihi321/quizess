@@ -19,10 +19,9 @@
 @import 'admin-core';
 
 // Componenets
-@import '../dashboard/components/scores/scores-item/style';
-@import '../dashboard/components/scores/scores-parent/style';
-@import '../dashboard/components/stats/stats-item/style';
-@import '../dashboard/components/stats/stats-parent/style';
+@import '../dashboard/components/dialog/style';
+@import '../dashboard/components/table/table-parent/style';
+@import '../dashboard/components/table/table-items/style';
 @import '../app/components/pagination/style';
 
 // Pages

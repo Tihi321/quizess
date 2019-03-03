@@ -1,0 +1,17 @@
+.dialog {
+  &__title {
+    display: flex;
+  }
+  &__button {
+    flex: 1;
+    padding: 10px;
+  }
+  &__confirm {
+    flex: 1;
+    padding: 10px;
+  }
+  &__cancel {
+    flex: 1;
+    padding: 10px;
+  }
+}
