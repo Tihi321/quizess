@@ -1,20 +1,80 @@
 $dashboard-colors: (
   title-color: $base-primary-blue,
+  details-bg: $base-modal-bg,
+  menu-item-color: $base-white-color,
+  menu-item-bg: $base-light-blue-color,
+  menu-item-bg-active: $base-primary-blue,
+  menu-item-bg-hover: $base-primary-blue,
 );
 
 .dashboard {
   $this: &;
+
+  &__options {
+    display: flex;
+    flex: 1;
+  }
+
+  &__menu {
+    width: 20%;
+    margin: 0;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+
+    &-item {
+      margin: 0;
+    }
+
+    &-button {
+      @include text-size(default);
+      border: none;
+      padding: 20px 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
+      width: 100%;
+      font-weight: bold;
+      cursor: pointer;
+      color: map-get($dashboard-colors, 'menu-item-color');
+      background: map-get($dashboard-colors, 'menu-item-bg');
+
+      &.active {
+        background: map-get($dashboard-colors, 'menu-item-bg-active');
+      }
+
+      &:hover {
+        background: map-get($dashboard-colors, 'menu-item-bg-hover');
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  &__page {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__details {
+    background-color: map-get($dashboard-colors, 'details-bg');
+  }
 
   &__message {
     @extend %trait-message;
   }
 
   &__app {
-    max-width: 800px;
-    margin: 0 auto;
+    margin-left: -20px;
     padding: 20px;
     display: flex;
     flex-direction: column;
+    min-height: 80vh;
   }
 
   &__tables {
@@ -32,11 +92,8 @@ $dashboard-colors: (
   &__scores {
     flex: 1;
     margin-right: 20px;
-
-    #{$this}__table__inner {
-      width: 20%;
-    }
   }
+
   &__stats {
     max-width: 250px;
   }

@@ -17,12 +17,26 @@ class DashboardProvider extends PureComponent {
     this.state = {
       dataLoaded: false,
       scoresData: [],
-      selectedQuiz: {
+      optionsPage: {
         id: 0,
+        title: 'Settings',
+      },
+      selectedQuiz: {
+        value: 0,
+        label: '',
         data: [],
         index: -1,
       },
+      selectedPlayerDetails: {
+        playerId: -1,
+        playerIndex: -1,
+        quizId: -1,
+        lastScoreStats: {},
+      },
+      showDetails: false,
+      showRemove: false,
       statsPage: 0,
+      answerStatsPage: 0,
       scorePage: 0,
     };
 
@@ -79,21 +93,18 @@ class DashboardProvider extends PureComponent {
     removeQuizScore = (quizId, playerIndex) => {
       const {scoresData} = this.state;
 
-      const newSelectedQuiz = {};
-
       const newScoresData = scoresData.map((quiz) => {
         if (quiz.value === quizId) {
           quiz.stats.splice(playerIndex, 1);
-          newSelectedQuiz.data = quiz.stats;
-          newSelectedQuiz.id = quiz.value;
         }
         return quiz;
       });
 
       this.setState(() => {
         return {
-          selectedQuiz: newSelectedQuiz,
           scoresData: newScoresData,
+          showRemove: false,
+          showDetails: false,
         };
       });
 
@@ -175,12 +186,31 @@ class DashboardProvider extends PureComponent {
 
     }
 
+    removeLastScoreData = (playerId, quizId, playerIndex) => {
+
+    }
+
+
+  // data Store
   dataStore = {
+    handleOptionsMenu: (index, title) => {
+      this.setState(() => {
+        return {
+          optionsPage: {
+            id: index,
+            title,
+          },
+          showDetails: false,
+          showRemove: false,
+        };
+      });
+    },
     handleScoresSelect: (quizScore) => {
       this.setState(() => {
         return {
           selectedQuiz: {
-            id: quizScore.value,
+            value: quizScore.value,
+            label: quizScore.label,
             data: quizScore.stats,
             index: quizScore.quizIndex,
           },
@@ -190,6 +220,23 @@ class DashboardProvider extends PureComponent {
     handleOnRemove: (playerId, quizId, index) => {
       this.removeScoreData(playerId, quizId, index);
     },
+    handleOnShowRemove: () => {
+      this.setState(() => {
+        return {
+          showRemove: true,
+        };
+      });
+    },
+    handleOnCancelRemove: () => {
+      this.setState(() => {
+        return {
+          showRemove: false,
+        };
+      });
+    },
+    handleOnRemoveLastScore: (playerId, quizId, index) => {
+      this.removeLastScoreData(playerId, quizId, index);
+    },
     handleOnStatsPageChange: (pageNumber) => {
       this.setState(() => {
         return {
@@ -197,10 +244,43 @@ class DashboardProvider extends PureComponent {
         };
       });
     },
+    handleOnAnswerPageChange: (pageNumber) => {
+      this.setState(() => {
+        return {
+          answerStatsPage: pageNumber,
+        };
+      });
+    },
     handleOnScorePageChange: (pageNumber) => {
       this.setState(() => {
         return {
           scorePage: pageNumber,
+        };
+      });
+    },
+    handleOnShowDetails: (playerId, playerIndex, quizId, lastScore) => {
+      this.setState(() => {
+        return {
+          selectedPlayerDetails: {
+            playerId,
+            playerIndex,
+            quizId,
+            lastScoreStats: lastScore,
+          },
+          showDetails: true,
+        };
+      });
+    },
+    handleOnCloseDetails: () => {
+      this.setState(() => {
+        return {
+          selectedPlayerDetails: {
+            playerId: -1,
+            playerIndex: -1,
+            quizId: -1,
+            lastScoreStats: {},
+          },
+          showDetails: false,
         };
       });
     },
@@ -217,7 +297,12 @@ class DashboardProvider extends PureComponent {
       dataLoaded,
       selectedQuiz,
       statsPage,
+      answerStatsPage,
       scorePage,
+      showDetails,
+      showRemove,
+      selectedPlayerDetails,
+      optionsPage,
     } = this.state;
 
     return (
@@ -231,7 +316,12 @@ class DashboardProvider extends PureComponent {
             dataLoaded,
             selectedQuiz,
             statsPage,
+            answerStatsPage,
             scorePage,
+            showDetails,
+            showRemove,
+            selectedPlayerDetails,
+            optionsPage,
           },
           dataStore: this.dataStore,
         }}>

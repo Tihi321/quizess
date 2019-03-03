@@ -1,55 +1,97 @@
+import {__} from '@wordpress/i18n';
 import {DashboardConsumer} from '../containers/DashboardContext';
 import {
-  ScoresParent,
-  ScoresItem,
-  StatsParent,
-  StatsItem,
+  TableParent,
+  TableItems,
 } from '../components';
+import generalHelper from '../../helpers/general-helper';
 
 const ScoresConsumer = (props) => {
   const {
     selectedQuiz,
-    handleOnRemove,
     stats,
     statsPage,
     scorePage,
     handleOnStatsPageChange,
     handleOnScorePageChange,
+    handleOnShowDetails,
   } = props;
 
-  const scoresElement = selectedQuiz.data.map((value, index) => {
+  const scoreTitles = [
+    __('Name', 'quizess'),
+    __('Attempts', 'quizess'),
+    __('Correct', 'quizess'),
+    __('Total', 'quizess'),
+    __('Success', 'quizess'),
+    '',
+  ];
+
+  const statsTitles = [
+    __('Question', 'quizess'),
+    __('Correct', 'quizess'),
+  ];
+
+  const statsDescriptions = [
+    __('Question success rate', 'quizess'),
+    __('Number of successful attempts', 'quizess'),
+  ];
+
+  const scoresElement = selectedQuiz.data.map((values, index) => {
     const {
       name,
       attempts,
       correct,
       total,
-    } = value;
+      last,
+      id,
+    } = values;
+
+    const success = generalHelper.getPercentage(correct, total);
+
+    const items = [
+      name,
+      attempts,
+      correct,
+      total,
+      `${success}%`,
+    ];
+
+    const detailsButton = (
+      <div className="dashboard__table__inner">
+        <button
+          className="dashboard__table__button"
+          onClick={() => {
+            handleOnShowDetails(id, index, selectedQuiz.value, last);
+          }}
+        >
+          {__('View Details', 'quizess')}
+        </button>
+      </div>
+    );
+
     return (
-      <ScoresItem
+      <TableItems
         className="dashboard__table"
         key={index}
-        index={index}
-        quizId={selectedQuiz.id}
-        playerId={value.id}
-        name={name}
-        correct={correct}
-        total={total}
-        attempts={attempts}
-        onClick={handleOnRemove}
+        items={items}
       >
-      </ScoresItem>
+        {detailsButton}
+      </TableItems>
     );
   });
 
   const statsElement = stats.map((value, index) => {
+    const items = [
+      index + 1,
+      value,
+    ];
     return (
-      <StatsItem
+      <TableItems
         className="dashboard__table"
         key={index}
-        number={index}
-        correct={value}
+        items={items}
       >
-      </StatsItem>
+      </TableItems>
     );
   });
 
@@ -61,28 +103,31 @@ const ScoresConsumer = (props) => {
       <div
         className="dashboard__scores"
       >
-        <ScoresParent
+        <TableParent
           className="dashboard__table"
           pagination={true}
           items={10}
           page={scorePage}
           onPageChange={handleOnScorePageChange}
+          titles={scoreTitles}
         >
           {scoresElement}
-        </ScoresParent>
+        </TableParent>
       </div>
       <div
         className="dashboard__stats"
       >
-        <StatsParent
+        <TableParent
           className="dashboard__table"
           pagination={true}
+          titles={statsTitles}
+          description={statsDescriptions}
           items={10}
           page={statsPage}
           onPageChange={handleOnStatsPageChange}
         >
           {statsElement}
-        </StatsParent>
+        </TableParent>
       </div>
     </div>
   );
@@ -97,9 +142,10 @@ const Scores = () => (
           scoresData,
           scorePage,
           statsPage,
+          modal,
         },
         dataStore: {
-          handleOnRemove,
+          handleOnShowDetails,
           handleOnStatsPageChange,
           handleOnScorePageChange,
         },
@@ -114,7 +160,8 @@ const Scores = () => (
           statsPage={statsPage}
           selectedQuiz={selectedQuiz}
           stats={stats}
-          handleOnRemove={handleOnRemove}
+          modal={modal}
+          handleOnShowDetails={handleOnShowDetails}
           handleOnScorePageChange={handleOnScorePageChange}
           handleOnStatsPageChange={handleOnStatsPageChange}
         />
