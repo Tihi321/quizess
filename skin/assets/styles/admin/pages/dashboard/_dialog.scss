@@ -1,0 +1,11 @@
+$dialog-colors: (
+  border-color: $base-primary-blue,
+);
+
+.dialog {
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  border: 1px solid map-get($dialog-colors, 'border-color');
+  text-align: center;
+}

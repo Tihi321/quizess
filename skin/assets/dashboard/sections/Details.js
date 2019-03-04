@@ -26,13 +26,15 @@ const DetailsConsumer = (props) => {
   } = props;
 
   if (showRemove) {
-    return <Dialog
-      message={__('It will delete all records from player', 'quizess')}
-      onConfirm={() => {
-        handleOnRemove(playerId, quizId, playerIndex);
-      }}
-      onCancel={handleOnCancelRemove}
-    />;
+    return <div className="details__dialog">
+      <Dialog
+        message={__('It will delete all records from player', 'quizess')}
+        onConfirm={() => {
+          handleOnRemove(playerId, quizId, playerIndex);
+        }}
+        onCancel={handleOnCancelRemove}
+      />
+    </div>;
   }
 
   const unrecorded = __('Unrecorded', 'quizess');
@@ -59,7 +61,7 @@ const DetailsConsumer = (props) => {
   const removeLastButton = (
     <div className="dashboard__table__inner">
       <button
-        className="dashboard__table__button"
+        className="dashboard__table__button dashboard__table__button--warning"
         onClick={() => {
           handleOnRemoveLastScore(playerId, quizId, playerIndex);
         }}
@@ -72,7 +74,7 @@ const DetailsConsumer = (props) => {
   const showRemoveButton = (
     <div className="dashboard__table__inner">
       <button
-        className="dashboard__table__button"
+        className="dashboard__table__button dashboard__table__button--warning"
         onClick={handleOnShowRemove}
       >
         {__('Delete', 'quizess')}
@@ -150,9 +152,9 @@ const DetailsConsumer = (props) => {
   );
 
   const backButton = (
-    <div className="dashboard__table__inner">
+    <div className="dashboard__back-outer">
       <button
-        className="dashboard__table__button"
+        className="dashboard__back-button dashboard__table__button--primary"
         onClick={handleOnCloseDetails}
       >
         {__('Back', 'quizess')}

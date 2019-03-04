@@ -59,7 +59,7 @@ const ScoresConsumer = (props) => {
     const detailsButton = (
       <div className="dashboard__table__inner">
         <button
-          className="dashboard__table__button"
+          className="dashboard__table__button dashboard__table__button--primary"
           onClick={() => {
             handleOnShowDetails(id, index, selectedQuiz.value, last);
           }}

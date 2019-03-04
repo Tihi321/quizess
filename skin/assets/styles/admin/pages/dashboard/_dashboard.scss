@@ -55,14 +55,20 @@ $dashboard-colors: (
     }
   }
 
+  &__back-outer {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  &__back-button {
+    width: 100%;
+    padding: 15px 5px;
+  }
+
   &__page {
     flex: 1;
     display: flex;
     flex-direction: column;
-  }
-
-  &__details {
-    background-color: map-get($dashboard-colors, 'details-bg');
   }
 
   &__message {
@@ -96,11 +102,16 @@ $dashboard-colors: (
 
   &__stats {
     max-width: 250px;
+    width: 100%;
   }
   &__table__inner {
     &--explanation {
       @include text-size(tiny);
       font-style: italic;
     }
+  }
+
+  &__quiz-select {
+    margin-bottom: 20px;
   }
 }

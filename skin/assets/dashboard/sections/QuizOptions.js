@@ -21,7 +21,7 @@ const QuizOptionsConsumer = (props) => {
 
   const quizSelectElement = (
     <Select
-      className="quiz-select"
+      className="dashboard__quiz-select"
       closeMenuOnSelect={true}
       value={(selectedQuiz.label) ? selectedQuiz : false}
       onChange={handleScoresSelect}
