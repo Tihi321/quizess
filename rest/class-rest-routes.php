@@ -71,6 +71,13 @@ class Rest_Routes extends Config {
   const QUIZESS_SCORES = '/scores';
 
   /**
+   * Quizess custom post type submit a score route
+   *
+   * @since 1.0.0
+   */
+  const QUIZESS_OPTIONS = '/options';
+
+  /**
    * Quizess custom route slug
    *
    * @since 1.0.0
@@ -90,5 +97,12 @@ class Rest_Routes extends Config {
    * @since 1.0.0
    */
   const QUIZESS_SCORES_SLUG = self::REST_API_BASE . self::REST_API_VERSION . self::QUIZESS_SCORES;
+
+  /**
+   * Quizess custom route slug
+   *
+   * @since 1.0.0
+   */
+  const QUIZESS_OPTIONS_SLUG = self::REST_API_BASE . self::REST_API_VERSION . self::QUIZESS_OPTIONS;
 
 }

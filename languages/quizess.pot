@@ -11,7 +11,6 @@ msgstr ""
 #: skin/assets/app/components/modal/hall-of-fame/index.js:30
 #: skin/assets/blocks/question-block/components/answer-input/index.js:57
 #: skin/assets/dashboard/sections/Details.js:124
-#: skin/assets/dashboard/sections/Details.js:122
 #: skin/assets/dashboard/sections/Scores.js:31
 msgid "Correct"
 msgstr ""
@@ -40,7 +39,6 @@ msgstr ""
 #: skin/assets/app/components/modal/hall-of-fame/index.js:57
 #: skin/assets/app/parts/QuestionHeader.js:35
 #: skin/assets/dashboard/sections/Details.js:111
-#: skin/assets/dashboard/sections/Details.js:109
 #: skin/assets/dashboard/sections/Scores.js:30
 msgid "Question"
 msgstr ""
@@ -432,13 +430,11 @@ msgid "Unrecorded"
 msgstr ""
 
 #: skin/assets/dashboard/sections/Details.js:55
-#: skin/assets/dashboard/sections/Details.js:53
 #: skin/assets/dashboard/sections/Scores.js:24
 msgid "Total"
 msgstr ""
 
 #: skin/assets/dashboard/sections/Details.js:56
-#: skin/assets/dashboard/sections/Details.js:54
 #: skin/assets/dashboard/sections/Scores.js:25
 msgid "Success"
 msgstr ""
@@ -449,6 +445,10 @@ msgstr ""
 
 #: skin/assets/dashboard/sections/Details.js:80
 msgid "Delete"
+msgstr ""
+
+#: skin/assets/dashboard/sections/GeneralOptions.js:23
+msgid "Use custom styles"
 msgstr ""
 
 #: skin/assets/dashboard/sections/Scores.js:21

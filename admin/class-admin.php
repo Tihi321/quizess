@@ -114,6 +114,7 @@ class Admin extends Config {
         'quizessDashboard',
         array(
             'root' => esc_url_raw( rest_url() ),
+            'optionsApi' => Rest_Routes::QUIZESS_OPTIONS_SLUG,
             'scoresApi' => Rest_Routes::QUIZESS_SCORES_SLUG,
             'dashboardNonce' => wp_create_nonce( 'quizess_dashboard_nonce' ),
             'nonce' => wp_create_nonce( 'wp_rest' ),

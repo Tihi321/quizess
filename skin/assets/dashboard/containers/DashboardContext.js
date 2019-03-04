@@ -35,6 +35,7 @@ class DashboardProvider extends PureComponent {
       },
       showDetails: false,
       showRemove: false,
+      useCustomStyle: false,
       statsPage: 0,
       answerStatsPage: 0,
       scorePage: 0,
@@ -306,6 +307,13 @@ class DashboardProvider extends PureComponent {
         };
       });
     },
+    handleUseCustomChange: (value) => {
+      this.setState(() => {
+        return {
+          useCustomStyle: value,
+        };
+      });
+    },
 
   };
 
@@ -325,6 +333,7 @@ class DashboardProvider extends PureComponent {
       showRemove,
       selectedPlayerDetails,
       optionsPage,
+      useCustomStyle,
     } = this.state;
 
     return (
@@ -344,6 +353,7 @@ class DashboardProvider extends PureComponent {
             showRemove,
             selectedPlayerDetails,
             optionsPage,
+            useCustomStyle,
           },
           dataStore: this.dataStore,
         }}>
