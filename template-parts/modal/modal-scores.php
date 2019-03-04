@@ -6,7 +6,13 @@
  * @since 1.0.0
  */
 
+use Quizess\Helpers;
+
+$general_helper = new Helpers\General_Helper();
+
 $user_id = get_current_user_id();
+$correct = $general_helper->get_array_value( 'correct', $player_scores[ $user_id ]['last'] );
+$total   = $general_helper->get_array_value( 'total', $player_scores[ $user_id ]['last'] );
 
 ?>
 
@@ -21,7 +27,7 @@ $user_id = get_current_user_id();
         <?php echo esc_html__( 'Scores', 'quizess' ); ?>
       </h1>
     <?php if ( ! empty( $player_scores ) ) { ?>
-      <?php if ( ! empty( $user_id ) ) { ?>
+      <?php if ( ! empty( $user_id ) && ! empty( $correct ) && ! empty( $total ) ) { ?>
         <div class="modal_last-score last-score">
           <div class="last-score__title">
             <?php echo esc_html__( 'Last score', 'quizess' ); ?>

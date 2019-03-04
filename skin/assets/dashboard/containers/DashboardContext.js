@@ -110,6 +110,26 @@ class DashboardProvider extends PureComponent {
 
     }
 
+    removeLastScore = (quizId, playerIndex) => {
+      const {scoresData} = this.state;
+
+      const newScoresData = scoresData.map((quiz) => {
+        if (quiz.value === quizId) {
+          quiz.stats[playerIndex].last = null;
+        }
+        return quiz;
+      });
+
+      this.setState(() => {
+        return {
+          scoresData: newScoresData,
+          showRemove: false,
+          showDetails: false,
+        };
+      });
+
+    }
+
     setMessageCallback = (message, elementClass) => {
       const {
         messageElement,
@@ -140,7 +160,7 @@ class DashboardProvider extends PureComponent {
       messageElement.classList.remove(IS_SHOWN_CLASS);
     }
 
-    removeScoreData = (playerId, quizId, playerIndex) => {
+    removeScoreData = (playerId, quizId, playerIndex, last = true) => {
 
       const {
         root,
@@ -152,6 +172,7 @@ class DashboardProvider extends PureComponent {
       const bodyData = JSON.stringify({
         playerId,
         quizId,
+        last: (last) ? 1 : 0,
       });
 
       // Test to send data to registered quiz payer.
@@ -175,7 +196,12 @@ class DashboardProvider extends PureComponent {
           const {IS_SUCCESS_CLASS} = this;
 
           this.setMessageCallback(response, IS_SUCCESS_CLASS);
-          this.removeQuizScore(quizId, playerIndex);
+
+          if (last) {
+            this.removeLastScore(quizId, playerIndex);
+          } else {
+            this.removeQuizScore(quizId, playerIndex);
+          }
 
         })
         .catch((error) => {
@@ -183,10 +209,6 @@ class DashboardProvider extends PureComponent {
 
           this.setMessageCallback(error, IS_ERROR_CLASS);
         });
-
-    }
-
-    removeLastScoreData = (playerId, quizId, playerIndex) => {
 
     }
 
@@ -218,7 +240,10 @@ class DashboardProvider extends PureComponent {
       });
     },
     handleOnRemove: (playerId, quizId, index) => {
-      this.removeScoreData(playerId, quizId, index);
+      this.removeScoreData(playerId, quizId, index, false);
+    },
+    handleOnRemoveLastScore: (playerId, quizId, index) => {
+      this.removeScoreData(playerId, quizId, index, true);
     },
     handleOnShowRemove: () => {
       this.setState(() => {
@@ -233,9 +258,6 @@ class DashboardProvider extends PureComponent {
           showRemove: false,
         };
       });
-    },
-    handleOnRemoveLastScore: (playerId, quizId, index) => {
-      this.removeLastScoreData(playerId, quizId, index);
     },
     handleOnStatsPageChange: (pageNumber) => {
       this.setState(() => {

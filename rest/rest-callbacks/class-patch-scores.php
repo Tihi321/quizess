@@ -36,18 +36,26 @@ class Patch_Scores extends Rest_Routes implements Rest_Callback {
 
     $body = \json_decode( $request->get_body(), true );
 
-    $player_id = $body['playerId'];
-    $quiz_id   = $body['quizId'];
+    $player_id  = $body['playerId'];
+    $quiz_id    = $body['quizId'];
+    $last_score = $body['last'];
+
+    $message = ( $last_score === 1 ) ? __( 'Player last score removed', 'quizess' ) : __( 'Player scores removed', 'quizess' );
 
     $scores = get_post_meta( $quiz_id, Config::SCORES_META_KEY, true );
 
-    // Remove player id from scores.
-    unset( $scores['players'][ $player_id ] );
+    if ( $last_score === 1 ) {
+      // Set players last score to null.
+      $scores['players'][ $player_id ]['last'] = null;
+    } else {
+      // Remove player id from scores.
+      unset( $scores['players'][ $player_id ] );
+    }
 
-    // Save new scores without player id score.
+    // Save new scores.
     update_post_meta( $quiz_id, Config::SCORES_META_KEY, $scores );
 
-    return new \WP_REST_Response( __( 'Player scores removed', 'quizess' ), 200 );
+    return new \WP_REST_Response( $message, 200 );
   }
 
 }
