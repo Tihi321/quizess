@@ -49,12 +49,12 @@ class Rest_Register extends Rest_Routes {
     $this->general_helper = $general_helper;
 
     // Callbacks.
-    $this->get_quizess  = new Rest_Callbacks\Get_Quizess( $this->blocks_helper );
-    $this->get_scores   = new Rest_Callbacks\Get_Scores();
-    $this->post_score   = new Rest_Callbacks\Post_Score( $this->general_helper );
-    $this->patch_scores = new Rest_Callbacks\Patch_Scores();
-    $this->get_options  = new Rest_Callbacks\Get_General_Options( $this->general_helper );
-    $this->post_options = new Rest_Callbacks\Post_General_Options( $this->general_helper );
+    $this->get_quizess   = new Rest_Callbacks\Get_Quizess( $this->blocks_helper );
+    $this->get_scores    = new Rest_Callbacks\Get_Scores();
+    $this->post_score    = new Rest_Callbacks\Post_Score( $this->general_helper );
+    $this->patch_scores  = new Rest_Callbacks\Patch_Scores();
+    $this->get_options   = new Rest_Callbacks\Get_General_Options( $this->general_helper );
+    $this->patch_options = new Rest_Callbacks\Patch_General_Options( $this->general_helper );
 
     // Security.
     $this->rest_security = new Rest_Security( $this->general_helper );
@@ -135,7 +135,7 @@ class Rest_Register extends Rest_Routes {
           ),
           array(
               'methods'  => 'PATCH',
-              'callback' => [ $this->post_options, static::REST_CALLBACK ],
+              'callback' => [ $this->patch_options, static::REST_CALLBACK ],
               'permission_callback' => [ $this->rest_security, self::USER_BASIC_AUTHENTIFICATION ],
           ),
       )

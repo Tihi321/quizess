@@ -57,9 +57,11 @@ class Get_General_Options extends Rest_Routes implements Rest_Callback {
    */
   public function rest_callback( \WP_REST_Request $request ) {
 
-    $body = \json_decode( $request->get_body(), true );
+    $custom_style = get_option( Config::CUSTOM_STYLE_TOGGLE );
 
-    return new \WP_REST_Response( __( 'Options get', 'quizess' ), 200 );
+    $output = ( $custom_style ) ? $custom_style : false;
+
+    return new \WP_REST_Response( $output, 200 );
   }
 
 }

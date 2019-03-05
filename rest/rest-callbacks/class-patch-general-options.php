@@ -13,9 +13,9 @@ use Quizess\Includes\Config;
 use Quizess\Helpers\General_Helper;
 
 /**
- * Class Post_General_Options
+ * Class Patch_General_Options
  */
-class Post_General_Options extends Rest_Routes implements Rest_Callback {
+class Patch_General_Options extends Rest_Routes implements Rest_Callback {
 
   /**
    * General Helper class
@@ -59,7 +59,20 @@ class Post_General_Options extends Rest_Routes implements Rest_Callback {
 
     $body = \json_decode( $request->get_body(), true );
 
-    return new \WP_REST_Response( __( 'Options post', 'quizess' ), 200 );
+    $custom_style = $this->general_helper->get_array_value( 'customStyle', $body );
+
+    $old_custom_style = get_option( Config::CUSTOM_STYLE_TOGGLE );
+
+    if ( empty( $old_custom_style ) ) {
+
+      delete_option( Config::CUSTOM_STYLE_TOGGLE );
+      add_option( Config::CUSTOM_STYLE_TOGGLE, $custom_style );
+
+    } else if ( $custom_style !== $old_custom_style ) {
+      update_option( Config::SCORES_META_KEY, $custom_style );
+    }
+
+    return new \WP_REST_Response( __( 'Options posted with success', 'quizess' ), 200 );
   }
 
 }

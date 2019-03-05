@@ -67,24 +67,6 @@ abstract class Config {
   const QUIZESS_CATEGORY_SLUG = 'quiz-topic';
 
   /**
-   * The custom post meta field for quizess
-   *
-   * @var string
-   *
-   * @since 1.0.0
-   */
-  const SCORES_META_KEY = '_quizess_scores';
-
-  /**
-   * The custom post meta field for quizess
-   *
-   * @var string
-   *
-   * @since 1.0.0
-   */
-  const TRACK_SCORES_META_KEY = '_track_scores';
-
-  /**
    * The custom post type slug for question
    *
    * @var string
@@ -104,20 +86,42 @@ abstract class Config {
   const QUESTION_CATEGORY_SLUG = 'question-topic';
 
   // -------------------------------------------------------
-  // NONCE
+  // META FIELDS
   // -------------------------------------------------------
 
   /**
-   * The custom post type slug
+   * The custom post meta field for quizess
    *
    * @var string
    *
    * @since 1.0.0
    */
-  const NONCE_NAME = 'quizess_nonce';
+  const SCORES_META_KEY = '_quizess_scores';
+
+  /**
+   * The custom post meta field for quizess
+   *
+   * @var string
+   *
+   * @since 1.0.0
+   */
+  const TRACK_SCORES_META_KEY = '_track_scores';
 
   // -------------------------------------------------------
-  // USERS
+  // OPTIONS
+  // -------------------------------------------------------
+
+  /**
+   * Toggle to check if user wants remove header & footer custom styling on quiz cpt
+   *
+   * @var string
+   *
+   * @since 1.0.0
+   */
+  const CUSTOM_STYLE_TOGGLE = 'custom_style_quizess';
+
+  // -------------------------------------------------------
+  // USERS OPTIONS
   // -------------------------------------------------------
 
   /**
@@ -137,5 +141,18 @@ abstract class Config {
    * @since 1.0.0
    */
   const USER_SINGLE_TOGGLE = 'user_single_quizess';
+
+  // -------------------------------------------------------
+  // NONCE
+  // -------------------------------------------------------
+
+  /**
+   * The custom post type slug
+   *
+   * @var string
+   *
+   * @since 1.0.0
+   */
+  const NONCE_NAME = 'quizess_nonce';
 
 }

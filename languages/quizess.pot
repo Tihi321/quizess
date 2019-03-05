@@ -10,13 +10,13 @@ msgstr ""
 
 #: skin/assets/app/components/modal/hall-of-fame/index.js:30
 #: skin/assets/blocks/question-block/components/answer-input/index.js:57
-#: skin/assets/dashboard/sections/Details.js:119
+#: skin/assets/dashboard/sections/Details.js:120
 #: skin/assets/dashboard/sections/Scores.js:32
 msgid "Correct"
 msgstr ""
 
 #: skin/assets/app/components/modal/hall-of-fame/index.js:30
-#: skin/assets/dashboard/sections/Details.js:119
+#: skin/assets/dashboard/sections/Details.js:120
 msgid "Incorrect"
 msgstr ""
 
@@ -38,13 +38,13 @@ msgstr ""
 
 #: skin/assets/app/components/modal/hall-of-fame/index.js:57
 #: skin/assets/app/parts/QuestionHeader.js:35
-#: skin/assets/dashboard/sections/Details.js:106
+#: skin/assets/dashboard/sections/Details.js:107
 #: skin/assets/dashboard/sections/Scores.js:31
 msgid "Question"
 msgstr ""
 
 #: skin/assets/app/components/modal/hall-of-fame/index.js:60
-#: skin/assets/dashboard/sections/Details.js:107
+#: skin/assets/dashboard/sections/Details.js:108
 msgid "Answer"
 msgstr ""
 
@@ -65,7 +65,7 @@ msgid "Leaving already"
 msgstr ""
 
 #: skin/assets/app/sections/Modal.js:50
-#: skin/assets/dashboard/components/dialog/index.js:26
+#: skin/assets/dashboard/components/dialog/index.js:30
 msgid "Cancel"
 msgstr ""
 
@@ -105,7 +105,7 @@ msgstr ""
 #: skin/assets/blocks/question-block/sections/BlockOptions.js:65
 #: skin/assets/blocks/questions-category-block/sections/BlockOptions.js:83
 #: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:47
-#: skin/assets/dashboard/sections/QuizOptions.js:29
+#: skin/assets/dashboard/sections/QuizOptions.js:28
 msgid "Select"
 msgstr ""
 
@@ -409,51 +409,54 @@ msgstr ""
 msgid "Success message"
 msgstr ""
 
-#: skin/assets/dashboard/components/button/toggle-switch/index.js:7
 #: skin/assets/dashboard/components/buttons/toggle-switch/index.js:7
 msgid "Use toggle"
 msgstr ""
 
-#: skin/assets/dashboard/components/dialog/index.js:17
+#: skin/assets/dashboard/components/dialog/index.js:20
 msgid "Confirm"
 msgstr ""
 
-#: skin/assets/dashboard/components/dialog/index.js:6
+#: skin/assets/dashboard/components/dialog/index.js:7
 msgid "Are you sure"
 msgstr ""
 
-#: skin/assets/dashboard/sections/Details.js:153
+#: skin/assets/dashboard/sections/Details.js:154
 msgid "Back"
 msgstr ""
 
-#: skin/assets/dashboard/sections/Details.js:32
+#: skin/assets/dashboard/sections/Details.js:33
 msgid "It will delete all records from player"
 msgstr ""
 
-#: skin/assets/dashboard/sections/Details.js:41
+#: skin/assets/dashboard/sections/Details.js:42
 msgid "Unrecorded"
 msgstr ""
 
-#: skin/assets/dashboard/sections/Details.js:56
+#: skin/assets/dashboard/sections/Details.js:57
 #: skin/assets/dashboard/sections/Scores.js:25
 msgid "Total"
 msgstr ""
 
-#: skin/assets/dashboard/sections/Details.js:57
+#: skin/assets/dashboard/sections/Details.js:58
 #: skin/assets/dashboard/sections/Scores.js:26
 msgid "Success"
 msgstr ""
 
-#: skin/assets/dashboard/sections/Details.js:69
+#: skin/assets/dashboard/sections/Details.js:70
 msgid "Remove"
 msgstr ""
 
-#: skin/assets/dashboard/sections/Details.js:78
+#: skin/assets/dashboard/sections/Details.js:79
 msgid "Delete"
 msgstr ""
 
-#: skin/assets/dashboard/sections/GeneralOptions.js:20
+#: skin/assets/dashboard/sections/GeneralOptions.js:22
 msgid "Use custom styles"
+msgstr ""
+
+#: skin/assets/dashboard/sections/GeneralOptions.js:35
+msgid "Save"
 msgstr ""
 
 #: skin/assets/dashboard/sections/Scores.js:22

@@ -213,6 +213,52 @@ class DashboardProvider extends PureComponent {
 
     }
 
+    saveOptions = () => {
+      const {
+        root,
+        optionsApi,
+        dashboardNonce,
+        nonce,
+      } = quizessDashboard;
+
+      const {useCustomStyle} = this.state;
+
+      const bodyData = JSON.stringify({
+        customStyle: useCustomStyle,
+      });
+
+      // Test to send data to registered quiz payer.
+      fetch(`${root}${optionsApi}`, {
+        method: 'PATCH', // *GET, POST, PUT, DELETE, etc.
+        mode: 'same-origin', // no-cors, cors, *same-origin
+        credentials: 'same-origin', // include, *same-origin, omit
+        headers: {
+          Accept: 'application/json',
+          'X-WP-Nonce': nonce,
+          'dashboard-nonce': dashboardNonce,
+        },
+        redirect: 'follow', // manual, *follow, error
+        referrer: 'no-referrer', // no-referrer, *client
+        body: bodyData,
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((response) => {
+          const {IS_SUCCESS_CLASS} = this;
+
+          console.log(response);
+
+          this.setMessageCallback(response, IS_SUCCESS_CLASS);
+
+        })
+        .catch((error) => {
+          const {IS_ERROR_CLASS} = this;
+
+          this.setMessageCallback(error, IS_ERROR_CLASS);
+        });
+    };
+
 
   // data Store
   dataStore = {
@@ -313,6 +359,9 @@ class DashboardProvider extends PureComponent {
           useCustomStyle: value,
         };
       });
+    },
+    handleOnSave: () => {
+      this.saveOptions();
     },
 
   };
