@@ -22,10 +22,12 @@
 @import '../dashboard/components/dialog/style';
 @import '../dashboard/components/table/table-parent/style';
 @import '../dashboard/components/table/table-items/style';
+@import '../dashboard/components/buttons/toggle-switch/style';
+@import '../dashboard/components/buttons/table-button/style';
+@import '../dashboard/components/ui/input-row/style';
 @import '../app/components/pagination/style';
 
 // Pages
 @import './admin/pages/dashboard/dashboard';
-@import './admin/pages/dashboard/tables';
 @import './admin/pages/dashboard/details';
 @import './admin/pages/dashboard/dialog';

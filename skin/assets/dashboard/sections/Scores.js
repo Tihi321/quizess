@@ -3,6 +3,7 @@ import {DashboardConsumer} from '../containers/DashboardContext';
 import {
   TableParent,
   TableItems,
+  TableButton,
 } from '../components';
 import generalHelper from '../../helpers/general-helper';
 
@@ -57,21 +58,17 @@ const ScoresConsumer = (props) => {
     ];
 
     const detailsButton = (
-      <div className="dashboard__table__inner">
-        <button
-          className="dashboard__table__button dashboard__table__button--primary"
-          onClick={() => {
-            handleOnShowDetails(id, index, selectedQuiz.value, last);
-          }}
-        >
-          {__('View Details', 'quizess')}
-        </button>
-      </div>
+      <TableButton
+        onClick={() => {
+          handleOnShowDetails(id, index, selectedQuiz.value, last);
+        }}
+      >
+        {__('View Details', 'quizess')}
+      </TableButton>
     );
 
     return (
       <TableItems
-        className="dashboard__table"
         key={index}
         items={items}
       >
@@ -87,7 +84,6 @@ const ScoresConsumer = (props) => {
     ];
     return (
       <TableItems
-        className="dashboard__table"
         key={index}
         items={items}
       >
@@ -104,7 +100,6 @@ const ScoresConsumer = (props) => {
         className="dashboard__scores"
       >
         <TableParent
-          className="dashboard__table"
           pagination={true}
           items={10}
           page={scorePage}
@@ -118,7 +113,6 @@ const ScoresConsumer = (props) => {
         className="dashboard__stats"
       >
         <TableParent
-          className="dashboard__table"
           pagination={true}
           titles={statsTitles}
           description={statsDescriptions}

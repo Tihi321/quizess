@@ -1,9 +1,21 @@
+import {Children} from 'react';
+
 const TableItems = (props) => {
   const {
-    className = 'stats',
+    className = 'table',
     items = [],
     children,
   } = props;
+
+  const childrenElements = (children) ? Children.map(children, (child) => {
+    return (
+      <div
+        className={`${className}__inner`}
+      >
+        {child}
+      </div>
+    );
+  }) : '';
 
   const itemElements = items.map((item, index) => {
     return (
@@ -20,7 +32,7 @@ const TableItems = (props) => {
     <li
       className={`${className}__item`}>
       {itemElements}
-      {children}
+      {childrenElements}
     </li>
   );
 };

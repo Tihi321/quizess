@@ -4,6 +4,7 @@ import {
   TableParent,
   TableItems,
   Dialog,
+  TableButton,
 } from '../components';
 import generalHelper from '../../helpers/general-helper';
 
@@ -59,32 +60,27 @@ const DetailsConsumer = (props) => {
   ];
 
   const removeLastButton = (
-    <div className="dashboard__table__inner">
-      <button
-        className="dashboard__table__button dashboard__table__button--warning"
-        onClick={() => {
-          handleOnRemoveLastScore(playerId, quizId, playerIndex);
-        }}
-      >
-        {__('Remove', 'quizess')}
-      </button>
-    </div>
+    <TableButton
+      onClick={() => {
+        handleOnRemoveLastScore(playerId, quizId, playerIndex);
+      }}
+      warning={true}
+    >
+      {__('Remove', 'quizess')}
+    </TableButton>
   );
 
   const showRemoveButton = (
-    <div className="dashboard__table__inner">
-      <button
-        className="dashboard__table__button dashboard__table__button--warning"
-        onClick={handleOnShowRemove}
-      >
-        {__('Delete', 'quizess')}
-      </button>
-    </div>
+    <TableButton
+      onClick={handleOnShowRemove}
+      warning={true}
+    >
+      {__('Delete', 'quizess')}
+    </TableButton>
   );
 
   const lastScoresElement = (
     <TableItems
-      className="dashboard__table"
       items={lastScoreItems}
     >
       {removeLastButton}
@@ -97,7 +93,6 @@ const DetailsConsumer = (props) => {
       className="dashboard__scores"
     >
       <TableParent
-        className="dashboard__table"
         titles={lastScoreTitles}
       >
         {lastScoresElement}
@@ -125,7 +120,6 @@ const DetailsConsumer = (props) => {
     ];
     return (
       <TableItems
-        className="dashboard__table"
         key={index}
         items={items}
       >
@@ -139,7 +133,6 @@ const DetailsConsumer = (props) => {
       className="dashboard__stats"
     >
       <TableParent
-        className="dashboard__table"
         pagination={true}
         titles={answerStatsTitles}
         items={10}
@@ -154,7 +147,7 @@ const DetailsConsumer = (props) => {
   const backButton = (
     <div className="dashboard__back-outer">
       <button
-        className="dashboard__back-button dashboard__table__button--primary"
+        className="dashboard__back-button table__button--primary"
         onClick={handleOnCloseDetails}
       >
         {__('Back', 'quizess')}

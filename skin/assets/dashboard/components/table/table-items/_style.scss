@@ -1,13 +1,7 @@
-.stats {
+.table {
   &__item {
     display: flex;
-  }
-  &__inner {
-    flex: 1;
-    padding: 10px;
-  }
-
-  &__title {
-    font-weight: bold;
+    flex-wrap: wrap;
+    margin: 0;
   }
 }

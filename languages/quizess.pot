@@ -10,13 +10,13 @@ msgstr ""
 
 #: skin/assets/app/components/modal/hall-of-fame/index.js:30
 #: skin/assets/blocks/question-block/components/answer-input/index.js:57
-#: skin/assets/dashboard/sections/Details.js:124
-#: skin/assets/dashboard/sections/Scores.js:31
+#: skin/assets/dashboard/sections/Details.js:119
+#: skin/assets/dashboard/sections/Scores.js:32
 msgid "Correct"
 msgstr ""
 
 #: skin/assets/app/components/modal/hall-of-fame/index.js:30
-#: skin/assets/dashboard/sections/Details.js:124
+#: skin/assets/dashboard/sections/Details.js:119
 msgid "Incorrect"
 msgstr ""
 
@@ -38,13 +38,13 @@ msgstr ""
 
 #: skin/assets/app/components/modal/hall-of-fame/index.js:57
 #: skin/assets/app/parts/QuestionHeader.js:35
-#: skin/assets/dashboard/sections/Details.js:111
-#: skin/assets/dashboard/sections/Scores.js:30
+#: skin/assets/dashboard/sections/Details.js:106
+#: skin/assets/dashboard/sections/Scores.js:31
 msgid "Question"
 msgstr ""
 
 #: skin/assets/app/components/modal/hall-of-fame/index.js:60
-#: skin/assets/dashboard/sections/Details.js:112
+#: skin/assets/dashboard/sections/Details.js:107
 msgid "Answer"
 msgstr ""
 
@@ -409,6 +409,11 @@ msgstr ""
 msgid "Success message"
 msgstr ""
 
+#: skin/assets/dashboard/components/button/toggle-switch/index.js:7
+#: skin/assets/dashboard/components/buttons/toggle-switch/index.js:7
+msgid "Use toggle"
+msgstr ""
+
 #: skin/assets/dashboard/components/dialog/index.js:17
 msgid "Confirm"
 msgstr ""
@@ -417,25 +422,25 @@ msgstr ""
 msgid "Are you sure"
 msgstr ""
 
-#: skin/assets/dashboard/sections/Details.js:160
+#: skin/assets/dashboard/sections/Details.js:153
 msgid "Back"
 msgstr ""
 
-#: skin/assets/dashboard/sections/Details.js:31
+#: skin/assets/dashboard/sections/Details.js:32
 msgid "It will delete all records from player"
 msgstr ""
 
-#: skin/assets/dashboard/sections/Details.js:40
+#: skin/assets/dashboard/sections/Details.js:41
 msgid "Unrecorded"
-msgstr ""
-
-#: skin/assets/dashboard/sections/Details.js:55
-#: skin/assets/dashboard/sections/Scores.js:24
-msgid "Total"
 msgstr ""
 
 #: skin/assets/dashboard/sections/Details.js:56
 #: skin/assets/dashboard/sections/Scores.js:25
+msgid "Total"
+msgstr ""
+
+#: skin/assets/dashboard/sections/Details.js:57
+#: skin/assets/dashboard/sections/Scores.js:26
 msgid "Success"
 msgstr ""
 
@@ -443,31 +448,31 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: skin/assets/dashboard/sections/Details.js:80
+#: skin/assets/dashboard/sections/Details.js:78
 msgid "Delete"
 msgstr ""
 
-#: skin/assets/dashboard/sections/GeneralOptions.js:23
+#: skin/assets/dashboard/sections/GeneralOptions.js:20
 msgid "Use custom styles"
 msgstr ""
 
-#: skin/assets/dashboard/sections/Scores.js:21
+#: skin/assets/dashboard/sections/Scores.js:22
 msgid "Name"
 msgstr ""
 
-#: skin/assets/dashboard/sections/Scores.js:22
+#: skin/assets/dashboard/sections/Scores.js:23
 msgid "Attempts"
 msgstr ""
 
-#: skin/assets/dashboard/sections/Scores.js:35
+#: skin/assets/dashboard/sections/Scores.js:36
 msgid "Question success rate"
 msgstr ""
 
-#: skin/assets/dashboard/sections/Scores.js:36
+#: skin/assets/dashboard/sections/Scores.js:37
 msgid "Number of successful attempts"
 msgstr ""
 
-#: skin/assets/dashboard/sections/Scores.js:67
+#: skin/assets/dashboard/sections/Scores.js:66
 msgid "View Details"
 msgstr ""
 
