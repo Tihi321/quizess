@@ -1,7 +1,6 @@
 $dialog-colors: (
   cancel-bg: $base-primary-blue,
   background: $base-grey-color,
-  warning-color: $base-punch-color,
 );
 
 .dialog {
@@ -13,17 +12,12 @@ $dialog-colors: (
     color: map-get($dialog-colors, 'cancel-bg');
   }
   &__button {
-    padding: 10px;
     background: transparent;
   }
   &__confirm {
     margin-left: 10px;
-    color: map-get($dialog-colors, 'warning-color');
-    border: 1px solid map-get($dialog-colors, 'warning-color');
   }
   &__cancel {
     margin-right: 10px;
-    color: map-get($dialog-colors, 'cancel-bg');
-    border: 1px solid map-get($dialog-colors, 'cancel-bg');
   }
 }

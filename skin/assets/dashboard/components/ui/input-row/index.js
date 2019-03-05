@@ -1,21 +1,16 @@
 const InputRow = (props) => {
   const {
-    className = 'custom-class',
+    className = '',
     children,
   } = props;
 
-
-  const toggleElement = (
+  return (
     <div
       className={`qzui__input-row ${className}`}
     >
       {children}
     </div>
   );
-
-
-
-  return toggleElement;
 };
 
 export default InputRow;

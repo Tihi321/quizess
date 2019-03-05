@@ -1,0 +1,31 @@
+$dashboard-button: (
+  warning-color: $base-punch-color,
+  title-bg-hover: $base-grey-color,
+  title-color-hover: $base-blue-color,
+);
+
+.dashboard {
+
+  &__button {
+    cursor: pointer;
+    background: map-get($dashboard-button, 'title-bg-hover');
+
+    &--small {
+      padding: 4px 8px;
+    }
+
+    &--big {
+      padding: 10px;
+    }
+
+    &--primary {
+      color: map-get($dashboard-button, 'title-color-hover');
+      border: 1px solid map-get($dashboard-button, 'title-color-hover');
+    }
+
+    &--warning {
+      color: map-get($dashboard-button, 'warning-color');
+      border: 1px solid map-get($dashboard-button, 'warning-color');
+    }
+  }
+}

@@ -3,7 +3,7 @@ import {DashboardConsumer} from '../containers/DashboardContext';
 import {
   TableParent,
   TableItems,
-  TableButton,
+  DashboardButton,
 } from '../components';
 import generalHelper from '../../helpers/general-helper';
 
@@ -58,13 +58,13 @@ const ScoresConsumer = (props) => {
     ];
 
     const detailsButton = (
-      <TableButton
+      <DashboardButton
         onClick={() => {
           handleOnShowDetails(id, index, selectedQuiz.value, last);
         }}
       >
         {__('View Details', 'quizess')}
-      </TableButton>
+      </DashboardButton>
     );
 
     return (
@@ -94,10 +94,10 @@ const ScoresConsumer = (props) => {
 
   return (
     <div
-      className="dashboard__tables"
+      className="quiz__options-tables"
     >
       <div
-        className="dashboard__scores"
+        className="quiz__options-scores"
       >
         <TableParent
           pagination={true}
@@ -110,7 +110,7 @@ const ScoresConsumer = (props) => {
         </TableParent>
       </div>
       <div
-        className="dashboard__stats"
+        className="quiz__options-stats"
       >
         <TableParent
           pagination={true}

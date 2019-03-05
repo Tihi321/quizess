@@ -23,11 +23,15 @@
 @import '../dashboard/components/table/table-parent/style';
 @import '../dashboard/components/table/table-items/style';
 @import '../dashboard/components/buttons/toggle-switch/style';
-@import '../dashboard/components/buttons/table-button/style';
+@import '../dashboard/components/buttons/dashboard-button/style';
 @import '../dashboard/components/ui/input-row/style';
+@import '../dashboard/components/ui/row-container/style';
 @import '../app/components/pagination/style';
 
 // Pages
 @import './admin/pages/dashboard/dashboard';
+@import './admin/pages/dashboard/menu';
+@import './admin/pages/dashboard/general-options';
+@import './admin/pages/dashboard/quiz-options';
 @import './admin/pages/dashboard/details';
 @import './admin/pages/dashboard/dialog';

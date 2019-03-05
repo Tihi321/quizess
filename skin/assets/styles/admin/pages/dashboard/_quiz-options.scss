@@ -1,0 +1,19 @@
+.quiz__options {
+  display: flex;
+  flex-direction: column;
+
+  &-tables {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-scores {
+    flex: 1;
+    margin-right: 20px;
+  }
+
+  &-stats {
+    max-width: 250px;
+    width: 100%;
+  }
+}

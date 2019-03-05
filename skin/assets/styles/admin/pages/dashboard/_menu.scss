@@ -1,0 +1,49 @@
+$dashboard-colors: (
+  menu-item-color: $base-white-color,
+  menu-item-bg: $base-light-blue-color,
+  menu-item-bg-active: $base-primary-blue,
+  menu-item-bg-hover: $base-primary-blue,
+);
+
+.dashboard {
+
+  &__menu {
+    width: 20%;
+    margin: 0;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+
+    &-item {
+      margin: 0;
+    }
+
+    &-button {
+      @include text-size(default);
+      border: none;
+      padding: 20px 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
+      width: 100%;
+      font-weight: bold;
+      cursor: pointer;
+      color: map-get($dashboard-colors, 'menu-item-color');
+      background: map-get($dashboard-colors, 'menu-item-bg');
+
+      &.active {
+        background: map-get($dashboard-colors, 'menu-item-bg-active');
+      }
+
+      &:hover {
+        background: map-get($dashboard-colors, 'menu-item-bg-hover');
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}

@@ -1,4 +1,3 @@
-import {Fragment} from 'react';
 import Select from 'react-select';
 import {__} from '@wordpress/i18n';
 import {DashboardConsumer} from '../containers/DashboardContext';
@@ -31,10 +30,12 @@ const QuizOptionsConsumer = (props) => {
   );
 
   return (
-    <Fragment>
+    <div
+      className="quiz__options"
+    >
       {(dataLoaded) && quizSelectElement}
       <Scores />
-    </Fragment>
+    </div>
   );
 };
 

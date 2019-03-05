@@ -1,10 +1,11 @@
+import {Fragment} from 'react';
 import {__} from '@wordpress/i18n';
 import {DashboardConsumer} from '../containers/DashboardContext';
 import {
   TableParent,
   TableItems,
   Dialog,
-  TableButton,
+  DashboardButton,
 } from '../components';
 import generalHelper from '../../helpers/general-helper';
 
@@ -60,23 +61,23 @@ const DetailsConsumer = (props) => {
   ];
 
   const removeLastButton = (
-    <TableButton
+    <DashboardButton
       onClick={() => {
         handleOnRemoveLastScore(playerId, quizId, playerIndex);
       }}
       warning={true}
     >
       {__('Remove', 'quizess')}
-    </TableButton>
+    </DashboardButton>
   );
 
   const showRemoveButton = (
-    <TableButton
+    <DashboardButton
       onClick={handleOnShowRemove}
       warning={true}
     >
       {__('Delete', 'quizess')}
-    </TableButton>
+    </DashboardButton>
   );
 
   const lastScoresElement = (
@@ -90,7 +91,7 @@ const DetailsConsumer = (props) => {
 
   const lastScoreParentElement = (
     <div
-      className="dashboard__scores"
+      className="quiz__options-scores"
     >
       <TableParent
         titles={lastScoreTitles}
@@ -130,7 +131,7 @@ const DetailsConsumer = (props) => {
 
   const answersParentElement = (
     <div
-      className="dashboard__stats"
+      className="quiz__options-stats"
     >
       <TableParent
         pagination={true}
@@ -145,9 +146,9 @@ const DetailsConsumer = (props) => {
   );
 
   const backButton = (
-    <div className="dashboard__back-outer">
+    <div className="details__back-outer">
       <button
-        className="dashboard__back-button table__button--primary"
+        className="details__back-button dashboard__button--primary"
         onClick={handleOnCloseDetails}
       >
         {__('Back', 'quizess')}
@@ -156,13 +157,13 @@ const DetailsConsumer = (props) => {
   );
 
   return (
-    <div className="dashboard__details">
+    <Fragment>
       <div className="details__content">
         {backButton}
         {lastScoreParentElement}
         {answersParentElement}
       </div>
-    </div>
+    </Fragment>
   );
 };
 

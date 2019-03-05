@@ -1,4 +1,5 @@
 import {__} from '@wordpress/i18n';
+import {DashboardButton} from '../index';
 
 const Dialog = (props) => {
   const {
@@ -10,21 +11,24 @@ const Dialog = (props) => {
 
 
   const confirmButton = (
-    <button
+    <DashboardButton
       className={`${className}__button ${className}__confirm`}
+      warning={true}
       onClick={onConfirm}
+      size="big"
     >
       {__('Confirm', 'quizess')}
-    </button>
+    </DashboardButton>
   );
 
   const cancelButton = (
-    <button
+    <DashboardButton
       className={`${className}__button ${className}__cancel`}
       onClick={onCancel}
+      size="big"
     >
       {__('Cancel', 'quizess')}
-    </button>
+    </DashboardButton>
   );
 
   const titleElement = (

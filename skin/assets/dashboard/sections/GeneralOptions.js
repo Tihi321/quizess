@@ -1,9 +1,10 @@
-import {Fragment} from 'react';
 import {__} from '@wordpress/i18n';
 import {DashboardConsumer} from '../containers/DashboardContext';
 import {
   ToggleSwitch,
   InputRow,
+  DashboardButton,
+  RowContainer,
 } from '../components';
 
 const GeneralOptionsConsumer = (props) => {
@@ -11,6 +12,7 @@ const GeneralOptionsConsumer = (props) => {
     dataLoaded,
     useCustomStyle,
     handleUseCustomChange,
+    handleOnSave,
   } = props;
 
   const useCustomElement = (
@@ -24,10 +26,32 @@ const GeneralOptionsConsumer = (props) => {
     </InputRow>
   );
 
+  const saveButtonElement = (
+    <RowContainer>
+      <DashboardButton
+        onClick={handleOnSave}
+        size="big"
+      >
+        {__('Save', 'quizess')}
+      </DashboardButton>
+    </RowContainer>
+  );
+
   return (
-    <Fragment>
-      {useCustomElement}
-    </Fragment>
+    <div
+      className="general__options"
+    >
+      <div
+        className="general__options--top"
+      >
+        {useCustomElement}
+      </div>
+      <div
+        className="general__options--bottom"
+      >
+        {saveButtonElement}
+      </div>
+    </div>
   );
 };
 
@@ -41,6 +65,7 @@ const GeneralOptions = () => (
         },
         dataStore: {
           handleUseCustomChange,
+          handleOnSave,
         },
       } = value;
       return (
@@ -48,6 +73,7 @@ const GeneralOptions = () => (
           dataLoaded={dataLoaded}
           useCustomStyle={useCustomStyle}
           handleUseCustomChange={handleUseCustomChange}
+          handleOnSave={handleOnSave}
         />
       );
     }}
