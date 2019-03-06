@@ -68,8 +68,9 @@ class Patch_General_Options extends Rest_Routes implements Rest_Callback {
       delete_option( Config::CUSTOM_STYLE_TOGGLE );
       add_option( Config::CUSTOM_STYLE_TOGGLE, $custom_style );
 
-    } else if ( $custom_style !== $old_custom_style ) {
-      update_option( Config::SCORES_META_KEY, $custom_style );
+    }
+    if ( $custom_style !== $old_custom_style ) {
+      update_option( Config::CUSTOM_STYLE_TOGGLE, $custom_style );
     }
 
     return new \WP_REST_Response( __( 'Options posted with success', 'quizess' ), 200 );

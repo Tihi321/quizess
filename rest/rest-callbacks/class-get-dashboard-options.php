@@ -1,6 +1,6 @@
 <?php
 /**
- * The class file that returns scores of all posts
+ * The class file that returns all data for dashboard
  *
  * @since   1.0.0
  * @package Quizess\Rest\Rest_Callbacks
@@ -12,9 +12,9 @@ use Quizess\Rest\Rest_Routes;
 use Quizess\Includes\Config;
 
 /**
- * Class Get_Scores
+ * Class Get_Dashboard
  */
-class Get_Scores extends Rest_Routes implements Rest_Callback {
+class Get_Dashboard_Options extends Rest_Routes implements Rest_Callback {
 
   /**
    * Update quiz data rest route callback
@@ -33,8 +33,10 @@ class Get_Scores extends Rest_Routes implements Rest_Callback {
    * @since 1.0.0
    */
   public function rest_callback( \WP_REST_Request $request ) {
-
     $quiz_scores = [];
+
+    $custom_style_option = get_option( Config::CUSTOM_STYLE_TOGGLE );
+    $custom_style        = $custom_style_option ?: '0';
 
     $quizess_posts = get_posts(
       [
@@ -53,7 +55,17 @@ class Get_Scores extends Rest_Routes implements Rest_Callback {
       }
     }
 
-    return new \WP_REST_Response( $quiz_scores, 200 );
+    return new \WP_REST_Response(
+      [
+          'generalOptions' => [
+              'customStyle' => $custom_style,
+          ],
+          'quizOptions' => [
+              'scores' => $quiz_scores,
+          ],
+      ],
+      200
+    );
   }
 
 }

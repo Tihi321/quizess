@@ -50,10 +50,9 @@ class Rest_Register extends Rest_Routes {
 
     // Callbacks.
     $this->get_quizess   = new Rest_Callbacks\Get_Quizess( $this->blocks_helper );
-    $this->get_scores    = new Rest_Callbacks\Get_Scores();
+    $this->get_dashboard = new Rest_Callbacks\Get_Dashboard_Options();
     $this->post_score    = new Rest_Callbacks\Post_Score( $this->general_helper );
     $this->patch_scores  = new Rest_Callbacks\Patch_Scores();
-    $this->get_options   = new Rest_Callbacks\Get_General_Options( $this->general_helper );
     $this->patch_options = new Rest_Callbacks\Patch_General_Options( $this->general_helper );
 
     // Security.
@@ -111,16 +110,9 @@ class Rest_Register extends Rest_Routes {
       static::REST_API_BASE . static::REST_API_VERSION,
       static::QUIZESS_SCORES,
       array(
-          array(
-              'methods'  => 'GET',
-              'callback' => [ $this->get_scores, static::REST_CALLBACK ],
-
-          ),
-          array(
-              'methods'  => 'PATCH',
-              'callback' => [ $this->patch_scores, static::REST_CALLBACK ],
-              'permission_callback' => [ $this->rest_security, self::USER_BASIC_AUTHENTIFICATION ],
-          ),
+          'methods'  => 'PATCH',
+          'callback' => [ $this->patch_scores, static::REST_CALLBACK ],
+          'permission_callback' => [ $this->rest_security, self::USER_BASIC_AUTHENTIFICATION ],
       )
     );
 
@@ -128,15 +120,20 @@ class Rest_Register extends Rest_Routes {
       static::REST_API_BASE . static::REST_API_VERSION,
       static::QUIZESS_OPTIONS,
       array(
+          'methods'  => 'PATCH',
+          'callback' => [ $this->patch_options, static::REST_CALLBACK ],
+          'permission_callback' => [ $this->rest_security, self::USER_BASIC_AUTHENTIFICATION ],
+      )
+    );
+
+    register_rest_route(
+      static::REST_API_BASE . static::REST_API_VERSION,
+      static::QUIZESS_DASHBOARD,
+      array(
           array(
               'methods'  => 'GET',
-              'callback' => [ $this->get_options, static::REST_CALLBACK ],
+              'callback' => [ $this->get_dashboard, static::REST_CALLBACK ],
 
-          ),
-          array(
-              'methods'  => 'PATCH',
-              'callback' => [ $this->patch_options, static::REST_CALLBACK ],
-              'permission_callback' => [ $this->rest_security, self::USER_BASIC_AUTHENTIFICATION ],
           ),
       )
     );

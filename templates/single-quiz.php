@@ -6,9 +6,21 @@
  */
 
 use Quizess\Helpers\General_Helper;
+use Quizess\Includes\Config;
 
+$custom_style = get_option( Config::CUSTOM_STYLE_TOGGLE );
 
-get_header();
+// use custom header instead theme default.
+if ( $custom_style ) {
+
+  $header = General_Helper::get_base_path() . 'template-parts/header/header.php';
+
+  if ( ! empty( $header ) ) {
+    include $header;
+  }
+} else {
+  get_header();
+}
 
 if ( have_posts() ) {
   while ( have_posts() ) {
@@ -21,4 +33,14 @@ if ( have_posts() ) {
   }
 }
 
-get_footer();
+// use custom footer instead theme default.
+if ( $custom_style ) {
+
+  $footer = General_Helper::get_base_path() . 'template-parts/footer/footer.php';
+
+  if ( ! empty( $footer ) ) {
+    include $footer;
+  }
+} else {
+  get_footer();
+}

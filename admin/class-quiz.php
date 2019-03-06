@@ -123,10 +123,10 @@ class Quiz {
    *
    * @return void
    */
-  public function track_scores_metabox() : void {
+  public function quiz_options_metaboxes() : void {
     add_meta_box(
-      Config::TRACK_SCORES_META_KEY,
-      esc_html__( 'Hall of fame', 'developer-portal' ),
+      Config::QUIZESS_OPTIONS_META_ID,
+      esc_html__( 'Quiz Options', 'developer-portal' ),
       [ $this, 'track_scores_metabox_view' ],
       Config::QUIZESS_POST_SLUG,
       'side'
@@ -141,31 +141,43 @@ class Quiz {
    */
   public function track_scores_metabox_view( \WP_Post $post ) : void {
     $track_scores = \get_post_meta( $post->ID, Config::TRACK_SCORES_META_KEY, true );
-    $checked      = ( $track_scores === 'on' ) ? 'checked' : '';
+    $quiz_locked  = \get_post_meta( $post->ID, Config::QUIZ_LOCKED_META_KEY, true );
+
+    $checked             = ( $track_scores === 'on' ) ? 'checked' : '';
+    $quiz_locked_checked = ( $quiz_locked === 'on' ) ? 'checked' : '';
     ?>
     <div class="qz-panel-group">
       <div class="components-panel__row">
-        <label for="track-scores-checkbox-id"><?php esc_html_e( 'Track scores', 'developer-portal' ); ?></label>
+        <label for="track-scores-checkbox-id"><?php esc_html_e( 'Track scores for logged in users', 'developer-portal' ); ?></label>
         <label class="toggle-switch">
           <input class="toggle-switch__input" name="<?php echo esc_attr( Config::TRACK_SCORES_META_KEY ); ?>" id="track-scores-checkbox-id" type="checkbox" <?php echo esc_attr( $checked ); ?>>
           <span class="toggle-switch__slider"></span>
         </label>
       </div>
     </div>
+    <div class="qz-panel-group">
+      <div class="components-panel__row">
+        <label for="registered-quiz-checkbox-id"><?php esc_html_e( 'Lock quiz for logged in users', 'developer-portal' ); ?></label>
+        <label class="toggle-switch">
+          <input class="toggle-switch__input" name="<?php echo esc_attr( Config::QUIZ_LOCKED_META_KEY ); ?>" id="registered-quiz-checkbox-id" type="checkbox" <?php echo esc_attr( $quiz_locked_checked ); ?>>
+          <span class="toggle-switch__slider"></span>
+        </label>
+      </div>
+    </div>
     <?php
-    \wp_nonce_field( 'track_scores_action', 'track_scores_nonce' );
+    \wp_nonce_field( 'quiz_options_action', 'quiz_options_nonce' );
   }
 
   /**
-   * Save method for the track scores metabox
+   * Save method for the quiz options metaboxes
    *
    * @param int $post_id Post ID.
    * @return void
    */
-  public function track_scores_metabox_save( int $post_id ) : void {
+  public function quiz_options_metabox_save( int $post_id ) : void {
 
     // Check if nonce is set.
-    if ( ! isset( $_POST['track_scores_nonce'] ) || ! \wp_verify_nonce( \sanitize_key( $_POST['track_scores_nonce'] ), 'track_scores_action' ) ) {
+    if ( ! isset( $_POST['quiz_options_nonce'] ) || ! \wp_verify_nonce( \sanitize_key( $_POST['quiz_options_nonce'] ), 'quiz_options_action' ) ) {
       return;
     }
 
@@ -176,7 +188,10 @@ class Quiz {
 
     $track_scores = ! empty( $_POST[ Config::TRACK_SCORES_META_KEY ] ) ? \sanitize_text_field( \wp_unslash( $_POST[ Config::TRACK_SCORES_META_KEY ] ) ) : '';
 
+    $quiz_locked = ! empty( $_POST[ Config::QUIZ_LOCKED_META_KEY ] ) ? \sanitize_text_field( \wp_unslash( $_POST[ Config::QUIZ_LOCKED_META_KEY ] ) ) : '';
+
     \update_post_meta( $post_id, Config::TRACK_SCORES_META_KEY, $track_scores );
+    \update_post_meta( $post_id, Config::QUIZ_LOCKED_META_KEY, $quiz_locked );
 
   }
 

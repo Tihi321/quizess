@@ -23,6 +23,7 @@ $bg_image_url    = $general_helper->get_array_value( 'bgUrl', $quiz_options['bgO
 $player_scores   = $general_helper->get_array_value( 'players', $quiz_scores );
 $about_modal_id  = 'modal--about-' . $post->ID;
 $scores_modal_id = 'modal--scores-' . $post->ID;
+$quiz_locked     = \get_post_meta( $post->ID, Config::QUIZ_LOCKED_META_KEY, true );
 $base_path       = Helpers\General_Helper::get_base_path();
 
 // check if user can submit scores.
@@ -48,10 +49,18 @@ if ( is_user_logged_in() ) {
     }
     ?>
     <?php
-    $content_template = $base_path . 'template-parts/sections/bottom-section.php';
+    if ( $quiz_locked === 'on' && ! is_user_logged_in() ) {
+      $locked_content_message = $base_path . 'template-parts/parts/quiz-locked.php';
 
-    if ( ! empty( $content_template ) ) {
-      include $content_template;
+      if ( ! empty( $locked_content_message ) ) {
+        include $locked_content_message;
+      }
+    } else {
+      $content_template = $base_path . 'template-parts/sections/bottom-section.php';
+
+      if ( ! empty( $content_template ) ) {
+        include $content_template;
+      }
     }
     ?>
   </div>

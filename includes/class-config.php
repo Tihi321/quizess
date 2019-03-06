@@ -105,7 +105,25 @@ abstract class Config {
    *
    * @since 1.0.0
    */
+  const QUIZESS_OPTIONS_META_ID = '_quizess_options_meta_id';
+
+  /**
+   * The custom post meta field for quizess
+   *
+   * @var string
+   *
+   * @since 1.0.0
+   */
   const TRACK_SCORES_META_KEY = '_track_scores';
+
+  /**
+   * The custom post meta field for quizess
+   *
+   * @var string
+   *
+   * @since 1.0.0
+   */
+  const QUIZ_LOCKED_META_KEY = '_quiz_locked_toggle';
 
   // -------------------------------------------------------
   // OPTIONS

@@ -69,23 +69,58 @@ class DashboardProvider extends PureComponent {
     return quizArray;
   }
 
+  getDashboardOptions = (data) => {
+
+    const {
+      generalOptions: {
+        customStyle,
+      },
+      quizOptions: {
+        scores,
+      },
+    } = data;
+
+    const customStyleValue = (customStyle === '1') || false;
+    const scoresArr = this.parseScoresData(scores);
+
+    return {
+      generalOptions: {
+        customstyles: customStyleValue,
+      },
+      quizOptions: {
+        scores: scoresArr,
+      },
+    };
+  }
+
   fetchScores = () => {
 
     const {
       root,
-      scoresApi,
+      dashboardApi,
     } = quizessDashboard;
 
-    fetch(root + scoresApi)
+    fetch(root + dashboardApi)
       .then((response) => {
         return response.json();
       })
       .then((myJson) => {
-        const data = this.parseScoresData(myJson);
+        const data = this.getDashboardOptions(myJson);
+
+        const {
+          generalOptions: {
+            customstyles,
+          },
+          quizOptions: {
+            scores,
+          },
+        } = data;
+
         this.setState(() => {
           return {
             dataLoaded: true,
-            scoresData: data,
+            scoresData: scores,
+            useCustomStyle: customstyles,
           };
         });
       });
