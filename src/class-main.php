@@ -34,6 +34,21 @@ class Main implements Registrable {
    * @var Service[]
    */
   private $services = [];
+
+  /**
+   * Initialize class
+   * Load hooks and define some global variables.
+   *
+   * @since 1.0.0
+   */
+  public function __construct() {
+
+    // If global variable is not defined exit.
+    if ( ! defined( 'QIZ_ENV' ) ) {
+      return false;
+    }
+  }
+
   /**
    * Register the plugin with the WordPress system.
    *
