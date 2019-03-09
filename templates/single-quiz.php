@@ -13,7 +13,7 @@ $custom_style = get_option( Config::CUSTOM_STYLE_TOGGLE );
 // use custom header instead theme default.
 if ( $custom_style ) {
 
-  $header = General_Helper::get_base_path() . 'template-parts/header/header.php';
+  $header = General_Helper::get_base_path() . 'views/header/header.php';
 
   if ( ! empty( $header ) ) {
     include $header;
@@ -25,7 +25,7 @@ if ( $custom_style ) {
 if ( have_posts() ) {
   while ( have_posts() ) {
     the_post();
-    $single_path = General_Helper::get_base_path() . 'template-parts/single/quiz.php';
+    $single_path = General_Helper::get_base_path() . 'views/single/quiz.php';
 
     if ( ! empty( $single_path ) ) {
       include $single_path;
@@ -36,7 +36,7 @@ if ( have_posts() ) {
 // use custom footer instead theme default.
 if ( $custom_style ) {
 
-  $footer = General_Helper::get_base_path() . 'template-parts/footer/footer.php';
+  $footer = General_Helper::get_base_path() . 'views/footer/footer.php';
 
   if ( ! empty( $footer ) ) {
     include $footer;

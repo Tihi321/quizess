@@ -5,12 +5,12 @@
   },
   "autoload": {
     "classmap": [
-      "admin",
-      "front",
-      "helpers",
-      "includes",
-      "languages",
-      "rest"
+      "src",
+      "src/admin",
+      "src/front",
+      "src/helpers",
+      "src/includes",
+      "src/rest"
     ]
   },
   "scripts": {
