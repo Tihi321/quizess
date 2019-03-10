@@ -1,6 +1,8 @@
 import {Fragment} from '@wordpress/element';
 import {__} from '@wordpress/i18n';
-import MediaElement from '../../../../elements/MediaElement';
+import {
+  MediaElement,
+} from '../../../../elements';
 
 function BlockElements(props) {
   const {

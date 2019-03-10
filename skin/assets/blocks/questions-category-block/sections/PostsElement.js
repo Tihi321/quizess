@@ -1,4 +1,4 @@
-import helpers from './../../../elements/Helper/Helper';
+import {helpers} from './../../../elements';
 import QuizElement from './QuizElement';
 import {BlockConsumer} from '../containers/BlockContext';
 
