@@ -118,4 +118,25 @@ final class Rest_Security extends Config {
     return true;
   }
 
+  /**
+   * Ensure that menu exist and is selected to be shown
+   *
+   * @api
+   *
+   * @param \WP_REST_Request $request Full data about the request.
+   * @return bool|error               True if user authentication passes, error otherwise.
+   *
+   * @since 1.0.0
+   */
+  public function menu_authentification_check( \WP_REST_Request $request ) {
+
+    $custom_style_option = get_option( self::CUSTOM_STYLE_TOGGLE );
+
+    if ( empty( $custom_style_option ) ) {
+      return $this->error_handler( 'custom_not_enabled' );
+    }
+
+    return true;
+  }
+
 }

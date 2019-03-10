@@ -8,6 +8,7 @@
 
 namespace Quizess\Admin;
 
+use Quizess\Core\Config;
 use Quizess\Core\Service;
 use Quizess\Helpers\Loader;
 use Quizess\Helpers\Object_Helper;
@@ -15,7 +16,7 @@ use Quizess\Helpers\Object_Helper;
 /**
  * Class Menu
  */
-class Menu implements Service {
+class Menu extends Config implements Service {
 
   /**
    * Use trait Object_Helper inside class.
@@ -46,7 +47,7 @@ class Menu implements Service {
    */
   private function get_menu_positions() : array {
     return array(
-        'quiz_menu' => esc_html__( 'Quiz menu', 'quizess' ),
+        self::MENU_NAME => esc_html__( 'Quiz menu', 'quizess' ),
     );
   }
 
@@ -74,13 +75,10 @@ class Menu implements Service {
     $menu_output = array();
     foreach ( $menu_positions as $menu_position_key => $menu_position_value ) {
 
-      $key = explode( '___', $menu_position_key );
-
       $menu_output[] = array(
           'name'          => $this->get_assigned_menu_items( $menu_position_key, true ),
           'position_name' => $menu_position_value,
-          'position'      => $key[0],
-          'theme'         => ( isset( $key[1] ) ? $key[1] : 'general' ),
+          'position'      => $menu_position_key,
           'items'         => $this->get_assigned_menu_items( $menu_position_key ),
       );
     }

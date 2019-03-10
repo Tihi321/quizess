@@ -48,6 +48,13 @@ abstract class Rest_Routes {
   const USER_BASIC_AUTHENTIFICATION = 'user_basic_authentication_check';
 
   /**
+   * Rest callback name
+   *
+   * @since 1.0.0
+   */
+  const MENU_AUTHENTIFICATION = 'menu_authentification_check';
+
+  /**
    * Quizess custom post type route name
    *
    * @since 1.0.0

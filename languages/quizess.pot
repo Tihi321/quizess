@@ -451,11 +451,11 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: skin/assets/dashboard/sections/GeneralOptions.js:22
+#: skin/assets/dashboard/sections/GeneralOptions.js:24
 msgid "Use custom styles"
 msgstr ""
 
-#: skin/assets/dashboard/sections/GeneralOptions.js:35
+#: skin/assets/dashboard/sections/GeneralOptions.js:37
 msgid "Save"
 msgstr ""
 

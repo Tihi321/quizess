@@ -54,6 +54,21 @@ trait Error_Logger {
           $code          = 403;
             break;
 
+      case 'custom_not_enabled':
+          $error_message = esc_html__( 'Custom styles not enabled', 'quizess' );
+          $code          = 403;
+            break;
+
+      case 'menu_not_selected':
+          $error_message = esc_html__( 'Menu is not selected', 'quizess' );
+          $code          = 403;
+            break;
+
+      case 'no_menu_items':
+          $error_message = esc_html__( 'Menu has no items', 'quizess' );
+          $code          = 403;
+            break;
+
       default:
           $error_message = esc_html__( 'Not all quiz values present', 'quizess' );
           $code          = 400;

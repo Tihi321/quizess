@@ -139,7 +139,6 @@ class Rest_Register extends Rest_Routes implements Service {
           array(
               'methods'  => 'GET',
               'callback' => [ $this->get_dashboard, static::REST_CALLBACK ],
-
           ),
       )
     );
@@ -151,7 +150,7 @@ class Rest_Register extends Rest_Routes implements Service {
           array(
               'methods'  => 'GET',
               'callback' => [ $this->get_menus, static::REST_CALLBACK ],
-
+              'permission_callback' => [ $this->rest_security, self::MENU_AUTHENTIFICATION ],
           ),
       )
     );

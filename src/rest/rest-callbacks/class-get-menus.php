@@ -9,11 +9,14 @@
 namespace Quizess\Rest\Rest_Callbacks;
 
 use Quizess\Admin\Menu;
+use Quizess\Core\Config;
+use Quizess\Helpers\Error_Logger;
 
 /**
  * Class Get_Dashboard
  */
-class Get_Menus implements Rest_Callback {
+class Get_Menus extends Config implements Rest_Callback {
+  use Error_Logger;
 
   /**
    * Update quiz data rest route callback
@@ -33,9 +36,21 @@ class Get_Menus implements Rest_Callback {
    */
   public function rest_callback( \WP_REST_Request $request ) {
 
-    $menu = new Menu();
-
+    $menu       = new Menu();
     $menu_items = $menu->get_menus();
+
+    foreach ( $menu_items as $index => $item ) {
+      if ( $item['position'] === self::MENU_NAME ) {
+
+        if ( empty( $item['name'] ) ) {
+          return $this->error_handler( 'menu_not_selected' );
+        }
+
+        if ( empty( $item['items'] ) ) {
+          return $this->error_handler( 'no_menu_items' );
+        }
+      }
+    }
 
     return new \WP_REST_Response( $menu_items, 200 );
   }
