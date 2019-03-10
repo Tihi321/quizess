@@ -5,7 +5,7 @@ import {
   MainQuestion,
   AnswersParent,
   Answer,
-} from '../components';
+} from '../../components';
 
 const QuestionConsumer = (props) => {
   const {

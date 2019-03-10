@@ -1,5 +1,5 @@
 import {chunk} from 'lodash';
-import Pagination from '../../../../app/components/pagination';
+import {Pagination} from '../../index';
 
 const TableParent = (props) => {
   const {

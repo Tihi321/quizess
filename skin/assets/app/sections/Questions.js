@@ -2,7 +2,7 @@ import {Fragment} from 'react';
 import {__} from '@wordpress/i18n';
 import {AppConsumer} from '../containers/AppContext';
 import Router from './Router';
-import {HallOfFame, Placeholder} from './../components';
+import {HallOfFame, Placeholder} from './../../components';
 
 const QuestionsConsumer = (props) => {
   const {

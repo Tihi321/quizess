@@ -1,5 +1,5 @@
 import {__} from '@wordpress/i18n';
-import {Timer} from '../components';
+import {Timer} from '../../components';
 import {AppConsumer} from '../containers/AppContext';
 
 const QuestionHeaderConsumer = (props) => {

@@ -1,6 +1,6 @@
 import {__} from '@wordpress/i18n';
 import ResponsiveEmbed from 'react-responsive-embed';
-import LottieControl from '../../../../blocks/elements/LottieElement/LottieControl';
+import LottieControl from '../../../elements/LottieElement/LottieControl';
 
 
 const ExplanationPreview = (props) => {

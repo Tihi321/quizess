@@ -5,58 +5,70 @@ msgstr ""
 
 #: skin/assets/app/components/explanation/preview/index.js:26
 #: skin/assets/blocks/elements/VideoElement/index.js:45
+#: skin/assets/components/explanation/preview/index.js:26
 msgid "Your browser does not support the video tag."
 msgstr ""
 
 #: skin/assets/app/components/modal/hall-of-fame/index.js:30
 #: skin/assets/blocks/question-block/components/answer-input/index.js:57
+#: skin/assets/components/modal/hall-of-fame/index.js:30
 #: skin/assets/dashboard/sections/Details.js:120
 #: skin/assets/dashboard/sections/Scores.js:32
 msgid "Correct"
 msgstr ""
 
 #: skin/assets/app/components/modal/hall-of-fame/index.js:30
+#: skin/assets/components/modal/hall-of-fame/index.js:30
 #: skin/assets/dashboard/sections/Details.js:120
 msgid "Incorrect"
 msgstr ""
 
 #: skin/assets/app/components/modal/hall-of-fame/index.js:39
+#: skin/assets/components/modal/hall-of-fame/index.js:39
 msgid "Congratulation, you have successfuly completed quiz."
 msgstr ""
 
 #: skin/assets/app/components/modal/hall-of-fame/index.js:45
+#: skin/assets/components/modal/hall-of-fame/index.js:45
 msgid "Try again"
 msgstr ""
 
 #: skin/assets/app/components/modal/hall-of-fame/index.js:49
+#: skin/assets/components/modal/hall-of-fame/index.js:49
 msgid "Score"
 msgstr ""
 
 #: skin/assets/app/components/modal/hall-of-fame/index.js:52
+#: skin/assets/components/modal/hall-of-fame/index.js:52
 msgid "Percent"
 msgstr ""
 
 #: skin/assets/app/components/modal/hall-of-fame/index.js:57
 #: skin/assets/app/parts/QuestionHeader.js:35
+#: skin/assets/components/modal/hall-of-fame/index.js:57
 #: skin/assets/dashboard/sections/Details.js:107
 #: skin/assets/dashboard/sections/Scores.js:31
 msgid "Question"
 msgstr ""
 
 #: skin/assets/app/components/modal/hall-of-fame/index.js:60
+#: skin/assets/components/modal/hall-of-fame/index.js:60
 #: skin/assets/dashboard/sections/Details.js:108
 msgid "Answer"
 msgstr ""
 
 #: skin/assets/app/components/modal/hall-of-fame/index.js:63
+#: skin/assets/components/modal/hall-of-fame/index.js:63
 msgid "Correct/Incorrect"
 msgstr ""
 
 #: skin/assets/app/components/pagination/index.js:68
+#: skin/assets/components/pagination/index.js:68
 msgid "Next"
 msgstr ""
 
 #: skin/assets/app/components/pagination/index.js:68
+#: skin/assets/components/pagination/index.js:68
 msgid "Prev"
 msgstr ""
 
@@ -65,6 +77,7 @@ msgid "Leaving already"
 msgstr ""
 
 #: skin/assets/app/sections/Modal.js:50
+#: skin/assets/components/dialog/index.js:30
 #: skin/assets/dashboard/components/dialog/index.js:30
 msgid "Cancel"
 msgstr ""
@@ -131,18 +144,22 @@ msgid "Theme color for answers"
 msgstr ""
 
 #: skin/assets/blocks/elements/Helper/Helper.js:20
+#: skin/assets/elements/Helper/Helper.js:20
 msgid "This field is required"
 msgstr ""
 
 #: skin/assets/blocks/elements/Helper/Helper.js:29
+#: skin/assets/elements/Helper/Helper.js:29
 msgid "Limit reached:"
 msgstr ""
 
 #: skin/assets/blocks/elements/Helper/Helper.js:32
+#: skin/assets/elements/Helper/Helper.js:32
 msgid "characters"
 msgstr ""
 
 #: skin/assets/blocks/elements/Helper/Helper.js:38
+#: skin/assets/elements/Helper/Helper.js:38
 msgid "rows"
 msgstr ""
 
@@ -409,14 +426,17 @@ msgstr ""
 msgid "Success message"
 msgstr ""
 
+#: skin/assets/components/buttons/toggle-switch/index.js:7
 #: skin/assets/dashboard/components/buttons/toggle-switch/index.js:7
 msgid "Use toggle"
 msgstr ""
 
+#: skin/assets/components/dialog/index.js:20
 #: skin/assets/dashboard/components/dialog/index.js:20
 msgid "Confirm"
 msgstr ""
 
+#: skin/assets/components/dialog/index.js:7
 #: skin/assets/dashboard/components/dialog/index.js:7
 msgid "Are you sure"
 msgstr ""

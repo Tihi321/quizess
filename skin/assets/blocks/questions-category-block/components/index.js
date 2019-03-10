@@ -3,7 +3,7 @@ import {
   Answer,
   MainQuestion,
   ExplanationPreview,
-} from '../../../app/components';
+} from '../../../components';
 import QuestionHeader from './question-header';
 
 export {QuestionHeader};

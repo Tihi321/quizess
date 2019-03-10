@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import {Fragment} from '@wordpress/element';
 import {__} from '@wordpress/i18n';
-import TextElement from '../../../elements/TextElement';
+import TextElement from '../../../../elements/TextElement';
 
 const AnswerInput = (props) => {
   const {

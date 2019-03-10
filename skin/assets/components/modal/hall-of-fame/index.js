@@ -1,6 +1,6 @@
 import {__} from '@wordpress/i18n';
 import {NextButton} from '../../index';
-import generalHelper from '../../../../helpers/general-helper';
+import generalHelper from '../../../helpers/general-helper';
 
 const HallOfFame = (props) => {
   const {
