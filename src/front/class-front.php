@@ -92,6 +92,7 @@ class Front extends Config implements Service {
       array(
           'root' => esc_url_raw( rest_url() ),
           'quizApi' => Rest_Routes::QUIZESS_SLUG . '/',
+          'menusApi' => Rest_Routes::QUIZESS_MENUS_SLUG,
       )
     );
 

@@ -2,7 +2,7 @@
 /**
  * Index file for security
  *
- * @package Quizess\Includes
+ * @package Quizess\Languages
  */
 
 ?>

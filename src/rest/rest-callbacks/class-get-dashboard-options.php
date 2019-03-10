@@ -9,7 +9,6 @@
 namespace Quizess\Rest\Rest_Callbacks;
 
 use Quizess\Core\Config;
-use Quizess\Admin\Menu;
 
 /**
  * Class Get_Dashboard
@@ -55,10 +54,6 @@ class Get_Dashboard_Options extends Config implements Rest_Callback {
       }
     }
 
-    $menu = new Menu();
-
-    $menu_items = $menu->get_menus();
-
     return new \WP_REST_Response(
       [
           'generalOptions' => [
@@ -66,9 +61,6 @@ class Get_Dashboard_Options extends Config implements Rest_Callback {
           ],
           'quizOptions' => [
               'scores' => $quiz_scores,
-          ],
-          'menu' => [
-              'menu' => $menu_items,
           ],
       ],
       200

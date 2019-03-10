@@ -45,6 +45,7 @@ class Rest_Register extends Rest_Routes implements Service {
     // Callbacks.
     $this->get_quizess   = new Rest_Callbacks\Get_Quizess( $this->blocks_helper );
     $this->get_dashboard = new Rest_Callbacks\Get_Dashboard_Options();
+    $this->get_menus     = new Rest_Callbacks\Get_Menus();
     $this->post_scores   = new Rest_Callbacks\Post_Scores();
     $this->patch_scores  = new Rest_Callbacks\Patch_Scores();
     $this->patch_options = new Rest_Callbacks\Patch_General_Options();
@@ -138,6 +139,18 @@ class Rest_Register extends Rest_Routes implements Service {
           array(
               'methods'  => 'GET',
               'callback' => [ $this->get_dashboard, static::REST_CALLBACK ],
+
+          ),
+      )
+    );
+
+    register_rest_route(
+      static::REST_API_BASE . static::REST_API_VERSION,
+      static::QUIZESS_MENUS,
+      array(
+          array(
+              'methods'  => 'GET',
+              'callback' => [ $this->get_menus, static::REST_CALLBACK ],
 
           ),
       )

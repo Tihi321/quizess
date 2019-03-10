@@ -76,6 +76,13 @@ abstract class Rest_Routes {
   const QUIZESS_DASHBOARD = '/dashboard-options';
 
   /**
+   * Quizess custom post type submit a score route
+   *
+   * @since 1.0.0
+   */
+  const QUIZESS_MENUS = '/menus';
+
+  /**
    * Quizess custom route slug
    *
    * @since 1.0.0
@@ -102,5 +109,12 @@ abstract class Rest_Routes {
    * @since 1.0.0
    */
   const QUIZESS_DASHBOARD_SLUG = self::REST_API_BASE . self::REST_API_VERSION . self::QUIZESS_DASHBOARD;
+
+  /**
+   * Quizess custom route slug
+   *
+   * @since 1.0.0
+   */
+  const QUIZESS_MENUS_SLUG = self::REST_API_BASE . self::REST_API_VERSION . self::QUIZESS_MENUS;
 
 }
