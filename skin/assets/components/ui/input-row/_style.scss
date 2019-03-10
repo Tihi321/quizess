@@ -1,13 +1,5 @@
-$input-row-colors: (
-  input-bg: $base-grey-color,
-  border-color: $base-light-blue-color,
-);
-
-.qzui__input-row {
-  margin-bottom: 20px;
+.quiz__input-row {
   padding: 10px 10px;
-  border: 1px solid map-get($input-row-colors, 'border-color');
   display: flex;
   align-items: center;
-  background: map-get($input-row-colors, 'input-bg');
 }

@@ -33,6 +33,16 @@ class DashboardProvider extends PureComponent {
         quizId: -1,
         lastScoreStats: {},
       },
+      logo: {
+        id: -1,
+        url: '',
+        title: '',
+      },
+      copyright: '',
+      facebook: '',
+      twitter: '',
+      linkedIn: '',
+      instagram: '',
       showDetails: false,
       showRemove: false,
       useCustomStyle: false,
@@ -74,6 +84,12 @@ class DashboardProvider extends PureComponent {
     const {
       generalOptions: {
         customStyle,
+        logo,
+        copyright,
+        facebook,
+        twitter,
+        linkedIn,
+        instagram,
       },
       quizOptions: {
         scores,
@@ -86,6 +102,12 @@ class DashboardProvider extends PureComponent {
     return {
       generalOptions: {
         customstyles: customStyleValue,
+        copyright,
+        facebook,
+        twitter,
+        linkedIn,
+        instagram,
+        logo: JSON.parse(logo),
       },
       quizOptions: {
         scores: scoresArr,
@@ -110,6 +132,12 @@ class DashboardProvider extends PureComponent {
         const {
           generalOptions: {
             customstyles,
+            copyright,
+            facebook,
+            twitter,
+            linkedIn,
+            instagram,
+            logo,
           },
           quizOptions: {
             scores,
@@ -121,6 +149,12 @@ class DashboardProvider extends PureComponent {
             dataLoaded: true,
             scoresData: scores,
             useCustomStyle: customstyles,
+            copyright,
+            facebook,
+            twitter,
+            linkedIn,
+            instagram,
+            logo,
           };
         });
       });
@@ -256,10 +290,24 @@ class DashboardProvider extends PureComponent {
         nonce,
       } = quizessDashboard;
 
-      const {useCustomStyle} = this.state;
+      const {
+        useCustomStyle,
+        logo,
+        copyright,
+        facebook,
+        twitter,
+        linkedIn,
+        instagram,
+      } = this.state;
 
       const bodyData = JSON.stringify({
         customStyle: useCustomStyle,
+        copyright,
+        logo,
+        facebook,
+        twitter,
+        linkedIn,
+        instagram,
       });
 
       // Test to send data to registered quiz payer.
@@ -398,6 +446,53 @@ class DashboardProvider extends PureComponent {
     handleOnSave: () => {
       this.saveOptions();
     },
+    handleOnSelectMedia: (image) => {
+      const url = (!image.sizes.thumbnail) ? image.url : image.sizes.thumbnail.url;
+      this.setState(() => {
+        return {
+          logo: {
+            id: image.id,
+            url,
+            title: image.title,
+          },
+        };
+      });
+    },
+    handleCopyrightChange: (text) => {
+      this.setState(() => {
+        return {
+          copyright: text,
+        };
+      });
+    },
+    handleFacebookChange: (text) => {
+      this.setState(() => {
+        return {
+          facebook: text,
+        };
+      });
+    },
+    handleTwitterChange: (text) => {
+      this.setState(() => {
+        return {
+          twitter: text,
+        };
+      });
+    },
+    handleLinkedInChange: (text) => {
+      this.setState(() => {
+        return {
+          linkedIn: text,
+        };
+      });
+    },
+    handleInstagramChange: (text) => {
+      this.setState(() => {
+        return {
+          instagram: text,
+        };
+      });
+    },
 
   };
 
@@ -418,6 +513,12 @@ class DashboardProvider extends PureComponent {
       selectedPlayerDetails,
       optionsPage,
       useCustomStyle,
+      logo,
+      copyright,
+      facebook,
+      twitter,
+      linkedIn,
+      instagram,
     } = this.state;
 
     return (
@@ -438,6 +539,12 @@ class DashboardProvider extends PureComponent {
             selectedPlayerDetails,
             optionsPage,
             useCustomStyle,
+            logo,
+            copyright,
+            facebook,
+            twitter,
+            linkedIn,
+            instagram,
           },
           dataStore: this.dataStore,
         }}>

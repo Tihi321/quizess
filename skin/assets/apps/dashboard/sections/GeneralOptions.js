@@ -8,6 +8,10 @@ import {
   DashboardButton,
   RowContainer,
 } from '../components';
+import {
+  MediaElement,
+  TextElement,
+} from '../../../elements';
 
 const GeneralOptionsConsumer = (props) => {
   const {
@@ -15,11 +19,30 @@ const GeneralOptionsConsumer = (props) => {
     useCustomStyle,
     handleUseCustomChange,
     handleOnSave,
+    logo: {
+      id,
+      title,
+      url,
+    },
+    handleOnSelectMedia,
+    copyright,
+    facebook,
+    twitter,
+    linkedIn,
+    instagram,
+    handleCopyrightChange,
+    handleFacebookChange,
+    handleTwitterChange,
+    handleLinkedInChange,
+    handleInstagramChange,
   } = props;
 
   const useCustomElement = (
-    <InputRow>
+    <InputRow
+      className="options__row"
+    >
       <ToggleSwitch
+        labelClass="options__label"
         idName="custom-slides"
         label={__('Use custom styles', 'quizess')}
         checked={useCustomStyle}
@@ -39,15 +62,178 @@ const GeneralOptionsConsumer = (props) => {
     </RowContainer>
   );
 
+  const logoElement = (
+    <InputRow
+      className="options__row"
+    >
+      <div
+        className="options__label"
+      >
+        {__('Logo', 'quizess')}
+      </div>
+      <div
+        className="options__logo-wrap"
+      >
+        <MediaElement
+          className="options__logo-element"
+          mediaTitle={title}
+          toolbarOnTop={false}
+          mediaId={id}
+          mediaUrl={url}
+          onSelectMedia={handleOnSelectMedia}
+        />
+      </div>
+    </InputRow>
+  );
+
+  /* eslint-disable */
+    const footerCopyrightElement = (
+      <InputRow
+        className="options__row"
+        >
+        <div className="options__label">
+          {__('Copyright', 'quizess')}
+        </div>
+        <div className="options__input-wrap">
+          <TextElement
+              styleReset={true}
+              outputType='text'
+              className="qz-input-mce-class"
+              value={copyright}
+              onChange={(text) => handleCopyrightChange(text)}
+              maxChars={50}
+              maxRows={1}
+              warning={false}
+              single={true}
+              init={{
+                selection_toolbar:false,
+                insert_toolbar: false,
+              }}
+            />
+        </div>
+      </InputRow>
+    );
+    const facebookElement = (
+      <InputRow
+        className="options__row"
+        >
+        <div className="options__label">
+          {__('Facebook', 'quizess')}
+        </div>
+        <div className="options__input-wrap">
+          <TextElement
+              styleReset={true}
+              outputType='text'
+              className="qz-input-mce-class"
+              value={facebook}
+              onChange={(text) => handleFacebookChange(text)}
+              maxChars={50}
+              maxRows={1}
+              warning={false}
+              single={true}
+              init={{
+                selection_toolbar:false,
+                insert_toolbar: false,
+              }}
+            />
+        </div>
+      </InputRow>
+    );
+    const twitterElement = (
+      <InputRow
+        className="options__row"
+        >
+        <div className="options__label">
+          {__('Twitter', 'quizess')}
+        </div>
+        <div className="options__input-wrap">
+          <TextElement
+              styleReset={true}
+              outputType='text'
+              className="qz-input-mce-class"
+              value={twitter}
+              onChange={(text) => handleTwitterChange(text)}
+              maxChars={50}
+              maxRows={1}
+              warning={false}
+              single={true}
+              init={{
+                selection_toolbar:false,
+                insert_toolbar: false,
+              }}
+            />
+        </div>
+      </InputRow>
+    );
+    const linkedInElement = (
+      <InputRow
+        className="options__row"
+        >
+        <div className="options__label">
+          {__('LinkedIn', 'quizess')}
+        </div>
+        <div className="options__input-wrap">
+          <TextElement
+              styleReset={true}
+              outputType='text'
+              className="qz-input-mce-class"
+              value={linkedIn}
+              onChange={(text) => handleLinkedInChange(text)}
+              maxChars={50}
+              maxRows={1}
+              warning={false}
+              single={true}
+              init={{
+                selection_toolbar:false,
+                insert_toolbar: false,
+              }}
+            />
+        </div>
+      </InputRow>
+    );
+    const instagramElement = (
+      <InputRow
+        className="options__row"
+        >
+        <div className="options__label">
+          {__('Instagram', 'quizess')}
+        </div>
+        <div className="options__input-wrap">
+          <TextElement
+              styleReset={true}
+              outputType='text'
+              className="qz-input-mce-class"
+              value={instagram}
+              onChange={(text) => handleInstagramChange(text)}
+              maxChars={50}
+              maxRows={1}
+              warning={false}
+              single={true}
+              init={{
+                selection_toolbar:false,
+                insert_toolbar: false,
+              }}
+            />
+        </div>
+      </InputRow>
+    );
+  /* eslint-enable */
+
   const optionsElements = (
     <Fragment>
       <div
-        className="general__options--top"
+        className="options__general--top"
       >
         {useCustomElement}
+        {logoElement}
+        {footerCopyrightElement}
+        {facebookElement}
+        {twitterElement}
+        {linkedInElement}
+        {instagramElement}
       </div>
       <div
-        className="general__options--bottom"
+        className="options__general--bottom"
       >
         {saveButtonElement}
       </div>
@@ -56,7 +242,7 @@ const GeneralOptionsConsumer = (props) => {
 
   return (
     <div
-      className="general__options"
+      className="options"
     >
       {(!dataLoaded) ? <Spinner /> : optionsElements}
     </div>
@@ -70,18 +256,42 @@ const GeneralOptions = () => (
         values: {
           dataLoaded,
           useCustomStyle,
+          logo,
+          copyright,
+          facebook,
+          twitter,
+          linkedIn,
+          instagram,
         },
         dataStore: {
           handleUseCustomChange,
           handleOnSave,
+          handleOnSelectMedia,
+          handleCopyrightChange,
+          handleFacebookChange,
+          handleTwitterChange,
+          handleLinkedInChange,
+          handleInstagramChange,
         },
       } = value;
       return (
         <GeneralOptionsConsumer
           dataLoaded={dataLoaded}
+          logo={logo}
+          facebook={facebook}
+          twitter={twitter}
+          linkedIn={linkedIn}
+          instagram={instagram}
+          copyright={copyright}
           useCustomStyle={useCustomStyle}
           handleUseCustomChange={handleUseCustomChange}
           handleOnSave={handleOnSave}
+          handleOnSelectMedia={handleOnSelectMedia}
+          handleCopyrightChange={handleCopyrightChange}
+          handleFacebookChange={handleFacebookChange}
+          handleTwitterChange={handleTwitterChange}
+          handleLinkedInChange={handleLinkedInChange}
+          handleInstagramChange={handleInstagramChange}
         />
       );
     }}

@@ -79,6 +79,7 @@ class Admin extends Config implements Service {
     if ( $hook === 'toplevel_page_quizess_dashboard' ) {
 
       $this->enqueue_react_developemnt();
+      wp_enqueue_media();
 
       $main_admin_script = General_Helper::get_manifest_assets_data( 'adminQuizess.js' );
       wp_register_script(

@@ -136,7 +136,61 @@ abstract class Config {
    *
    * @since 1.0.0
    */
-  const CUSTOM_STYLE_TOGGLE = 'custom_style_quizess';
+  const CUSTOM_STYLE_TOGGLE = 'quizess_custom_style';
+
+  /**
+   * Custom logo.
+   *
+   * @var string
+   *
+   * @since 1.0.0
+   */
+  const CUSTOM_LOGO = 'quizess_custom_logo';
+
+  /**
+   * Custom copyright text.
+   *
+   * @var string
+   *
+   * @since 1.0.0
+   */
+  const COPYRIGHT_TEXT = 'quizess_copyright_text';
+
+  /**
+   * Facebook url.
+   *
+   * @var string
+   *
+   * @since 1.0.0
+   */
+  const FACEBOOK_URL = 'quizess_facebook_url';
+
+  /**
+   * Twitter url.
+   *
+   * @var string
+   *
+   * @since 1.0.0
+   */
+  const TWITTER_URL = 'quizess_twitter_url';
+
+  /**
+   * LinkedIn url.
+   *
+   * @var string
+   *
+   * @since 1.0.0
+   */
+  const LINKEDIN_URL = 'quizess_linkedin_url';
+
+  /**
+   * Instagram url.
+   *
+   * @var string
+   *
+   * @since 1.0.0
+   */
+  const INSTAGRAM_URL = 'quizess_instagram_url';
 
   // -------------------------------------------------------
   // USERS OPTIONS

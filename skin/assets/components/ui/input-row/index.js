@@ -6,7 +6,7 @@ const InputRow = (props) => {
 
   return (
     <div
-      className={`qzui__input-row ${className}`}
+      className={`quiz__input-row ${className}`}
     >
       {children}
     </div>

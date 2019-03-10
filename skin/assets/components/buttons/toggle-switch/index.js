@@ -5,6 +5,7 @@ const ToggleSwitch = (props) => {
   const {
     idName = 'toggle-switch',
     label = __('Use toggle', 'quizess'),
+    labelClass = '',
     checked,
     onChange,
   } = props;
@@ -14,7 +15,7 @@ const ToggleSwitch = (props) => {
     <Fragment>
       <label
         htmlFor={`${idName}-id`}
-        className="toggle-switch__label"
+        className={`toggle-switch__label ${labelClass}`}
       >
         {label}
       </label>

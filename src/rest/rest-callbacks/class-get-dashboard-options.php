@@ -34,6 +34,12 @@ class Get_Dashboard_Options extends Config implements Rest_Callback {
   public function rest_callback( \WP_REST_Request $request ) {
     $quiz_scores = [];
 
+    $logo                = get_option( self::CUSTOM_LOGO );
+    $copyright           = get_option( self::COPYRIGHT_TEXT );
+    $facebook            = get_option( self::FACEBOOK_URL );
+    $twitter             = get_option( self::TWITTER_URL );
+    $linked_in           = get_option( self::LINKEDIN_URL );
+    $instagram           = get_option( self::INSTAGRAM_URL );
     $custom_style_option = get_option( self::CUSTOM_STYLE_TOGGLE );
     $custom_style        = $custom_style_option ?: '0';
 
@@ -58,6 +64,12 @@ class Get_Dashboard_Options extends Config implements Rest_Callback {
       [
           'generalOptions' => [
               'customStyle' => $custom_style,
+              'logo'        => $logo,
+              'copyright'   => $copyright,
+              'facebook'    => $facebook,
+              'twitter'     => $twitter,
+              'linkedIn'    => $linked_in,
+              'instagram'   => $instagram,
           ],
           'quizOptions' => [
               'scores' => $quiz_scores,
