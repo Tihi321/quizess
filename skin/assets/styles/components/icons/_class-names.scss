@@ -1,0 +1,25 @@
+.icon--qz-linkedin {
+  &::before {
+    content: $icon--qz-linkedin;
+  }
+}
+.icon--qz-facebook {
+  &::before {
+    content: $icon--qz-facebook;
+  }
+}
+.icon--qz-github {
+  &::before {
+    content: $icon--qz-github;
+  }
+}
+.icon--qz-instagram {
+  &::before {
+    content: $icon--qz-instagram;
+  }
+}
+.icon--qz-twitter {
+  &::before {
+    content: $icon--qz-twitter;
+  }
+}

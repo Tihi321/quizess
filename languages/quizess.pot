@@ -57,42 +57,45 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:121
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:111
+msgid "Copyright"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:137
 msgid "Facebook"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:147
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:163
 msgid "Twitter"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:173
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:189
 msgid "LinkedIn"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:199
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:215
 msgid "Instagram"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:47
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:49
 msgid "Use custom styles"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:60
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:63
+msgid "Show github"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:76
 msgid "Save"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:72
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:88
 msgid "Logo"
-msgstr ""
-
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:95
-msgid "Copyright"
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/QuizOptions.js:28
 #: skin/assets/blocks/components/toolbars/style-options.js:36
 #: skin/assets/blocks/question-block/sections/BlockOptions.js:67
-#: skin/assets/blocks/question-block/sections/BlockOptions.js:65
 #: skin/assets/blocks/questions-category-block/sections/BlockOptions.js:83
 #: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:49
 msgid "Select"
@@ -203,7 +206,6 @@ msgstr ""
 
 #: skin/assets/blocks/question-block/index.js:31
 #: skin/assets/blocks/question-block/sections/BlockOptions.js:96
-#: skin/assets/blocks/question-block/sections/BlockOptions.js:94
 #: skin/assets/blocks/questions-category-block/components/question-header/index.js:14
 #: skin/assets/blocks/questions-category-block/index.js:31
 #: skin/assets/blocks/section-block/index.js:31
@@ -241,7 +243,6 @@ msgid "Add answer"
 msgstr ""
 
 #: skin/assets/blocks/question-block/sections/BlockElements.js:69
-#: skin/assets/blocks/question-block/sections/BlockElements.js:67
 #: skin/assets/blocks/questions-category-block/sections/ExplanationHeader.js:11
 msgid "Explanation"
 msgstr ""
@@ -267,25 +268,21 @@ msgid "Choose explanation media type."
 msgstr ""
 
 #: skin/assets/blocks/question-block/sections/BlockOptions.js:144
-#: skin/assets/blocks/question-block/sections/BlockOptions.js:142
 #: skin/assets/blocks/questions-category-block/sections/BlockOptions.js:119
 msgid "Font Settings"
 msgstr ""
 
 #: skin/assets/blocks/question-block/sections/BlockOptions.js:150
-#: skin/assets/blocks/question-block/sections/BlockOptions.js:148
 #: skin/assets/blocks/questions-category-block/sections/BlockOptions.js:125
 msgid "Font Color"
 msgstr ""
 
 #: skin/assets/blocks/question-block/sections/BlockOptions.js:155
-#: skin/assets/blocks/question-block/sections/BlockOptions.js:153
 #: skin/assets/blocks/questions-category-block/sections/BlockOptions.js:130
 msgid "Background Settings"
 msgstr ""
 
 #: skin/assets/blocks/question-block/sections/BlockOptions.js:161
-#: skin/assets/blocks/question-block/sections/BlockOptions.js:159
 #: skin/assets/blocks/questions-category-block/sections/BlockOptions.js:136
 #: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/sections/BlockOptions.js:30
 msgid "Background Color"
@@ -377,15 +374,6 @@ msgstr ""
 msgid "These are quiz options"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:106
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:102
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:100
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:99
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:98
-#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:79
-msgid "Choose welcome message for quiz"
-msgstr ""
-
 #: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:104
 msgid "Choose success message for question"
 msgstr ""
@@ -428,6 +416,10 @@ msgstr ""
 
 #: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:61
 msgid "Welcome message"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:79
+msgid "Choose welcome message for quiz"
 msgstr ""
 
 #: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:86

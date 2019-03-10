@@ -39,6 +39,19 @@ const plugins = [
           },
         },
       },
+      quizess: {
+        variants: {
+          normal: {
+            400: {
+              url: {
+                ttf: `${publicFontsPath}/quizess.ttf`,
+                eot: `${publicFontsPath}/quizess.svg`,
+                woff: `${publicFontsPath}/quizess.woff`,
+              },
+            },
+          },
+        },
+      },
     },
     foundries: ['custom'],
   }),
