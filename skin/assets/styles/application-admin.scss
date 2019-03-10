@@ -19,14 +19,14 @@
 @import 'admin-core';
 
 // Componenets
-@import '../dashboard/components/dialog/style';
-@import '../dashboard/components/table/table-parent/style';
-@import '../dashboard/components/table/table-items/style';
-@import '../dashboard/components/buttons/toggle-switch/style';
-@import '../dashboard/components/buttons/dashboard-button/style';
-@import '../dashboard/components/ui/input-row/style';
-@import '../dashboard/components/ui/row-container/style';
-@import '../app/components/pagination/style';
+@import '../components/dialog/style';
+@import '../components/table/table-parent/style';
+@import '../components/table/table-items/style';
+@import '../components/buttons/toggle-switch/style';
+@import '../components/buttons/dashboard-button/style';
+@import '../components/ui/input-row/style';
+@import '../components/ui/row-container/style';
+@import '../components/pagination/style';
 
 // Pages
 @import './admin/pages/dashboard/dashboard';

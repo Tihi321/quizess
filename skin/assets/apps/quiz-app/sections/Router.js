@@ -3,7 +3,7 @@ import {__} from '@wordpress/i18n';
 import Question from './Question';
 import Explanation from './Explanation';
 import {AppConsumer} from '../containers/AppContext';
-import {NextButton, Placeholder} from '../../components';
+import {NextButton, Placeholder} from '../../../components';
 
 const RouterConsumer = (props) => {
   const {

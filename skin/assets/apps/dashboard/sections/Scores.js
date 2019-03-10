@@ -5,7 +5,7 @@ import {
   TableItems,
   DashboardButton,
 } from '../components';
-import generalHelper from '../../helpers/general-helper';
+import generalHelper from '../../../helpers/general-helper';
 
 const ScoresConsumer = (props) => {
   const {

@@ -1,7 +1,7 @@
 import {Fragment} from 'react';
 import {RawHTML} from '@wordpress/element';
 import {AppConsumer} from '../containers/AppContext';
-import {ExplanationPreview} from '../../components';
+import {ExplanationPreview} from '../../../components';
 
 const ExplanationConsumer = (props) => {
   const {

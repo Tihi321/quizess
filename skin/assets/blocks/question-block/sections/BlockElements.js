@@ -1,12 +1,12 @@
 import {Fragment} from '@wordpress/element';
 import {__} from '@wordpress/i18n';
-import TextElement from '../../elements/TextElement';
+import TextElement from '../../../elements/TextElement';
 import AnswersElement from './AnswersElement';
-import MediaElement from '../../elements/MediaElement';
-import VideoElement from '../../elements/VideoElement';
-import YoutubeElement from '../../elements/YoutubeElement';
-import LottieElement from '../../elements/LottieElement';
-import helpers from './../../elements/Helper/Helper';
+import MediaElement from '../../../elements/MediaElement';
+import VideoElement from '../../../elements/VideoElement';
+import YoutubeElement from '../../../elements/YoutubeElement';
+import LottieElement from '../../../elements/LottieElement';
+import helpers from './../../../elements/Helper/Helper';
 import {BlockConsumer} from '../containers/BlockContext';
 
 function BlockElementsConsumer(props) {

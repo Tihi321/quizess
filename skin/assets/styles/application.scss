@@ -25,16 +25,16 @@
 @import 'components/buttons/buttons';
 
 // Componenets
-@import '../app/components/buttons/button/style';
-@import '../app/components/buttons/next-button/style';
-@import '../app/components/modal/top-bar/style';
-@import '../app/components/answers/answer/style';
-@import '../app/components/answers/answers-parent/style';
-@import '../app/components/explanation/preview/style';
-@import '../app/components/question/text/style';
-@import '../app/components/question/timer/style';
-@import '../app/components/question/placeholder/style';
-@import '../app/components/modal/hall-of-fame/style';
+@import '../components/buttons/button/style';
+@import '../components/buttons/next-button/style';
+@import '../components/modal/top-bar/style';
+@import '../components/answers/answer/style';
+@import '../components/answers/answers-parent/style';
+@import '../components/explanation/preview/style';
+@import '../components/question/text/style';
+@import '../components/question/timer/style';
+@import '../components/question/placeholder/style';
+@import '../components/modal/hall-of-fame/style';
 
 // Template parts
 @import 'components/parts/modal';

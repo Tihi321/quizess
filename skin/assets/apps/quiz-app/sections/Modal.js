@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import {__} from '@wordpress/i18n';
 import {AppConsumer} from '../containers/AppContext';
-import {TopBar, Button} from '../../components';
+import {TopBar, Button} from '../../../components';
 
 const ModalConsumer = (props) => {
   const {

@@ -6,7 +6,7 @@ import {
   RowContainer,
   TableParent,
   TableItems,
-} from '../../components';
+} from '../../../components';
 
 export {Dialog};
 export {ToggleSwitch};

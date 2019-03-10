@@ -6,7 +6,7 @@ import {
   FormToggle,
 } from '@wordpress/components';
 import {__} from '@wordpress/i18n';
-import TextElement from '../../../elements/TextElement';
+import TextElement from '../../../../elements/TextElement';
 
 function BlockElements(props) {
   const {

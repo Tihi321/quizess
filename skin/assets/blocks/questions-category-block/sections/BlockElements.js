@@ -1,7 +1,7 @@
 import {Fragment} from '@wordpress/element';
 import {__} from '@wordpress/i18n';
 import PostsElement from './PostsElement';
-import PlaceholderElement from '../../elements/PlaceholderElement';
+import PlaceholderElement from '../../../elements/PlaceholderElement';
 import {BlockConsumer} from '../containers/BlockContext';
 
 const BlockElementsConsumer = (props) => {

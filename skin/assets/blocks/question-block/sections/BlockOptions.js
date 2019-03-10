@@ -10,7 +10,7 @@ import {
 } from '@wordpress/components';
 import {__} from '@wordpress/i18n';
 import Select from 'react-select';
-import TextElement from '../../elements/TextElement';
+import TextElement from '../../../elements/TextElement';
 import {BlockConsumer} from '../containers/BlockContext';
 import StyleOptions from '../../components/toolbars/style-options';
 

@@ -1,6 +1,6 @@
 /* global pluginOptions */
 import generalHelper from '../helpers/general-helper';
-import App from '../app';
+import App from '../apps/quiz-app';
 import Modal from './components/modal';
 
 generalHelper.domReady(function() {

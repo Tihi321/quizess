@@ -7,7 +7,7 @@ import {
   Dialog,
   DashboardButton,
 } from '../components';
-import generalHelper from '../../helpers/general-helper';
+import generalHelper from '../../../helpers/general-helper';
 
 const DetailsConsumer = (props) => {
   const {

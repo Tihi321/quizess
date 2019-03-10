@@ -1,9 +1,9 @@
 /* global quizessOptions, userLogged */
 import React, {PureComponent} from 'react';
-import devices from '../../helpers/devices';
-import generalHelper from '../../helpers/general-helper';
-import quizHelper from '../../helpers/quiz-helper';
-import selectors from '../../helpers/selectors';
+import devices from '../../../helpers/devices';
+import generalHelper from '../../../helpers/general-helper';
+import quizHelper from '../../../helpers/quiz-helper';
+import selectors from '../../../helpers/selectors';
 
 // Set Up The Initial Context
 const AppContext = React.createContext();

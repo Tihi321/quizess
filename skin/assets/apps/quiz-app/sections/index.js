@@ -3,7 +3,7 @@ import {__} from '@wordpress/i18n';
 import {AppConsumer} from '../containers/AppContext';
 import Modal from './Modal';
 import Questions from './Questions';
-import {Button} from '../../components';
+import {Button} from '../../../components';
 
 const MainConsumer = (props) => {
   const {
