@@ -37,7 +37,7 @@ class Post_Fields {
   }
 
   /**
-   * Create new Rest fields for gutenberg blocks on posts.
+   * Create new Rest fields for gutenberg blocks on question posts.
    *
    * @api
    *
@@ -46,7 +46,7 @@ class Post_Fields {
   public function register_block_fields() {
 
     register_rest_field(
-      'post',
+      'question',
       'blocks',
       array(
           'get_callback' => array( $this, 'add_parse_gutenberg_blocks' ),
@@ -66,13 +66,4 @@ class Post_Fields {
     return $this->blocks_helper->parse_gutenberg_blocks( $post['content']['raw'] );
   }
 
-  /**
-   * Add custom acf fields for author post
-   *
-   * @param array $post Post object array.
-   * @return array      Custom acf fields to show in the rest response of author posts json.
-   */
-  public function add_parse_acf_fields( array $post ) {
-    return $this->blocks_helper->parse_acf_fields( $post['id'] );
-  }
 }

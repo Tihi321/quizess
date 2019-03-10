@@ -1,4 +1,3 @@
-import {parse} from '@wordpress/blockSerializationDefaultParser';
 import helpers from './../../elements/Helper/Helper';
 import QuizElement from './QuizElement';
 import {BlockConsumer} from '../containers/BlockContext';
@@ -25,7 +24,7 @@ function PostsElementConsumer(props) {
     parsedBlocks = selectedPostsData.map((value) => {
       return {
         title: value.title.rendered,
-        data: parse(value.content.raw),
+        data: value.blocks,
       };
     });
   }
