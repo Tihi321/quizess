@@ -36,6 +36,7 @@ class Get_Menus extends Config implements Rest_Callback {
    */
   public function rest_callback( \WP_REST_Request $request ) {
 
+    $logo       = get_option( Config::CUSTOM_LOGO, null );
     $menu       = new Menu();
     $menu_items = $menu->get_menus();
 
@@ -52,7 +53,13 @@ class Get_Menus extends Config implements Rest_Callback {
       }
     }
 
-    return new \WP_REST_Response( $menu_items, 200 );
+    return new \WP_REST_Response(
+      [
+          'logo' => $logo,
+          'menu' => $menu_items,
+      ],
+      200
+    );
   }
 
 }
