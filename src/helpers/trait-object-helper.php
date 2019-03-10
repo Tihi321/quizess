@@ -71,4 +71,26 @@ trait Object_Helper {
     return ( gettype( $array ) === 'array' && array_key_exists( $key, $array ) ) ? $array[ $key ] : '';
   }
 
+  /**
+   * Saves value to the options table
+   *
+   * @param string $new_value to be saved to options table.
+   * @param string $option_name options table name.
+   */
+  public static function save_options( string $new_value, string $option_name ) : void {
+
+    $old_value = get_option( $option_name );
+
+    if ( empty( $old_value ) ) {
+
+      delete_option( $option_name );
+      add_option( $option_name, $new_value );
+
+    }
+    if ( $new_value !== $old_value ) {
+      update_option( $option_name, $new_value );
+    }
+
+  }
+
 }
