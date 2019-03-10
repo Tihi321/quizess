@@ -8,13 +8,33 @@
 
 namespace Quizess\Admin;
 
+use Quizess\Core\Service;
+use Quizess\Core\Config;
+use Quizess\Helpers\Loader;
 use Quizess\Helpers\General_Helper;
-use Quizess\Includes\Config;
 
 /**
  * Class Users
  */
-class Users {
+class Users extends Config implements Service {
+
+
+  /**
+   * Use trait inside class.
+   */
+  use Loader;
+
+  /**
+   * Register all the hooks
+   *
+   * @since 1.0.0
+   */
+  public function register() : void {
+    $this->add_action( 'show_user_profile', $this, 'show_extra_user_meta_fields', 10, 1 );
+    $this->add_action( 'edit_user_profile', $this, 'show_extra_user_meta_fields', 10, 1 );
+    $this->add_action( 'personal_options_update', $this, 'save_extra_user_meta_fields' );
+    $this->add_action( 'edit_user_profile_update', $this, 'save_extra_user_meta_fields' );
+  }
 
   /**
    * Shows extra user's meta fields for users.
@@ -50,14 +70,14 @@ class Users {
       return false;
     }
 
-    $user_player = ! empty( $_POST[ Config::USER_PLAYER_TOGGLE ] ) ? \sanitize_text_field( \wp_unslash( $_POST[ Config::USER_PLAYER_TOGGLE ] ) ) : '';
-    $user_single = ! empty( $_POST[ Config::USER_SINGLE_TOGGLE ] ) ? \sanitize_text_field( \wp_unslash( $_POST[ Config::USER_SINGLE_TOGGLE ] ) ) : '';
+    $user_player = ! empty( $_POST[ self::USER_PLAYER_TOGGLE ] ) ? \sanitize_text_field( \wp_unslash( $_POST[ self::USER_PLAYER_TOGGLE ] ) ) : '';
+    $user_single = ! empty( $_POST[ self::USER_SINGLE_TOGGLE ] ) ? \sanitize_text_field( \wp_unslash( $_POST[ self::USER_SINGLE_TOGGLE ] ) ) : '';
 
     $user_output   = ( $user_player === 'on' ) ? 'yes' : 'no';
     $single_output = ( $user_single === 'on' ) ? 'yes' : 'no';
 
-    \update_user_meta( $user_id, Config::USER_PLAYER_TOGGLE, $user_output );
-    \update_user_meta( $user_id, Config::USER_SINGLE_TOGGLE, $single_output );
+    \update_user_meta( $user_id, self::USER_PLAYER_TOGGLE, $user_output );
+    \update_user_meta( $user_id, self::USER_SINGLE_TOGGLE, $single_output );
   }
 
 }

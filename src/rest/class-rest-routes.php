@@ -8,12 +8,10 @@
 
 namespace Quizess\Rest;
 
-use Quizess\Includes\Config;
-
 /**
  * Class Register
  */
-class Rest_Routes extends Config {
+abstract class Rest_Routes {
    /**
    * Namespace version
    *

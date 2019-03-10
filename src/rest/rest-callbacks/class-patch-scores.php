@@ -8,13 +8,13 @@
 
 namespace Quizess\Rest\Rest_Callbacks;
 
+use Quizess\Core\Config;
 use Quizess\Rest\Rest_Routes;
-use Quizess\Includes\Config;
 
 /**
  * Class Patch_Scores
  */
-class Patch_Scores extends Rest_Routes implements Rest_Callback {
+class Patch_Scores extends Config implements Rest_Callback {
 
   /**
    * Update quiz data rest route callback
@@ -42,7 +42,7 @@ class Patch_Scores extends Rest_Routes implements Rest_Callback {
 
     $message = ( $last_score === 1 ) ? __( 'Player last score removed', 'quizess' ) : __( 'Player scores removed', 'quizess' );
 
-    $scores = get_post_meta( $quiz_id, Config::SCORES_META_KEY, true );
+    $scores = get_post_meta( $quiz_id, self::SCORES_META_KEY, true );
 
     if ( $last_score === 1 ) {
       // Set players last score to null.
@@ -53,7 +53,7 @@ class Patch_Scores extends Rest_Routes implements Rest_Callback {
     }
 
     // Save new scores.
-    update_post_meta( $quiz_id, Config::SCORES_META_KEY, $scores );
+    update_post_meta( $quiz_id, self::SCORES_META_KEY, $scores );
 
     return new \WP_REST_Response( $message, 200 );
   }

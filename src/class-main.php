@@ -10,12 +10,13 @@ declare( strict_types=1 );
 
 namespace Quizess\Core;
 
+use Quizess\Helpers\General_Helper;
+use Quizess\Helpers\Loader;
 use Quizess\Admin;
-use Quizess\Theme;
-use Quizess\Plugins;
 use Quizess\Blocks;
-use Quizess\Routes;
-
+use Quizess\Front;
+use Quizess\Languages;
+use Quizess\Rest;
 use Quizess\Exception;
 
 /**
@@ -28,6 +29,12 @@ use Quizess\Exception;
  * version of the theme.
  */
 class Main implements Registrable {
+
+  /**
+   * Use trait inside class.
+   */
+  use Loader;
+
   /**
    * Array of instantiated services.
    *
@@ -47,6 +54,9 @@ class Main implements Registrable {
     if ( ! defined( 'QIZ_ENV' ) ) {
       return false;
     }
+
+    // checkc if gutenberg is available, if not exit.
+    $this->add_action( 'allowed_block_types', $this, 'no_gutenberg_deactivation' );
   }
 
   /**
@@ -132,34 +142,65 @@ class Main implements Registrable {
     return [
 
         // Admin.
-        Admin\Admin_Bar::class,
         Admin\Admin::class,
-        Admin\Editor::class,
-        Admin\Login::class,
+        Admin\Menu::class,
+        Admin\Menu_Page::class,
         Admin\Media::class,
-        Admin\Pages::class,
-        Admin\Sidebar::class,
-        Admin\Testimonials::class,
+        Admin\Quiz::class,
+        Admin\Questions::class,
         Admin\Users::class,
-        Admin\Menu\Menu::class,
 
-        // Theme.
-        Theme\General::class,
-        Theme\Theme::class,
+        // Rest.
+        Rest\Rest_Register::class,
 
-        // Plugins.
-        Plugins\Acf\Theme_Options::class,
-        Plugins\Acf\Testimonials_Option::class,
-        Plugins\Cf7\Cf7::class,
-        Plugins\Yoast_Seo\Yoast_Seo::class,
-        Plugins\Redirect\Redirect::class,
+        // Front.
+        Front\Front::class,
+
+        // Languages.
+        Languages\Internationalization::class,
 
         // Blocks.
         Blocks\Blocks::class,
-
-        // Register fileds.
-        Routes\Fields\Field_Author::class,
-        Routes\Fields\Field_Rating::class,
     ];
+  }
+
+  /**
+   * Deactivate if gutenberg not detected
+   */
+  public function no_gutenberg_deactivation() {
+
+    // checks if gutenberg is activated.
+    if ( ! $this->check_compatibility() ) {
+      deactivate_plugins( General_Helper::get_basename() );
+      $this->add_action( 'admin_notices', $this, 'compatibility_notice' );
+    }
+
+  }
+
+
+  /**
+   * Quizess needs WP 5.0+ or Gutenberg Plugin to work
+   */
+  public function check_compatibility() {
+
+    if ( ! function_exists( 'is_gutenberg_page' ) ) {
+      return false;
+    }
+
+    return true;
+  }
+
+  /**
+   * Cmpatibility notice
+   *
+   * @return void
+   */
+  public function compatibility_notice() {
+    ?>
+    <div class="error notice is-dismissible">
+        <p><?php esc_html_e( 'All Gutenberg Blocks requires WordPress 5.0 or Gutenberg plugin to be activated', 'quizess' ); ?></p>
+    </div>
+    <?php
+
   }
 }

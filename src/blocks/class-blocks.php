@@ -6,7 +6,7 @@
  * @package Quizess\Blocks
  */
 
-namespace Quizess\Admin;
+namespace Quizess\Blocks;
 
 use Quizess\Core\Service;
 use Quizess\Helpers\Loader;

@@ -8,13 +8,33 @@
 
 namespace Quizess\Admin;
 
-use Quizess\Includes\Config;
+use Quizess\Core\Config;
+use Quizess\Core\Service;
+use Quizess\Helpers\Loader;
 use Quizess\Helpers\General_Helper;
 
 /**
  * [Quiz description]
  */
-class Quiz {
+class Quiz extends Config implements Service {
+
+  /**
+   * Use trait inside class.
+   */
+  use Loader;
+
+  /**
+   * Register all the hooks
+   *
+   * @since 1.0.0
+   */
+  public function register() : void {
+    $this->add_action( 'init', $this, 'register_post_type' );
+    $this->add_action( 'init', $this, 'register_categories' );
+    $this->add_action( 'add_meta_boxes', $this, 'quiz_options_metaboxes' );
+    $this->add_action( 'save_post', $this, 'quiz_options_metabox_save', 10, 3 );
+    $this->add_filter( 'template_include', $this, 'quiz_single_template', 10, 4 );
+  }
 
   /**
    * Register custom post type
@@ -61,9 +81,9 @@ class Quiz {
         'can_export'          => true,
         'template'            => $template,
         'template_lock'       => 'all',
-        'taxonomies'          => array( Config::QUIZESS_CATEGORY_SLUG ),
+        'taxonomies'          => array( self::QUIZESS_CATEGORY_SLUG ),
     );
-    register_post_type( Config::QUIZESS_POST_SLUG, $args );
+    register_post_type( self::QUIZESS_POST_SLUG, $args );
   }
 
   /**
@@ -94,7 +114,7 @@ class Quiz {
         'show_in_rest'        => true,
     );
 
-    register_taxonomy( Config::QUIZESS_CATEGORY_SLUG, Config::QUIZESS_POST_SLUG, $args );
+    register_taxonomy( self::QUIZESS_CATEGORY_SLUG, self::QUIZESS_POST_SLUG, $args );
   }
 
 
@@ -106,7 +126,7 @@ class Quiz {
    * @since 1.2.0
    */
   public function quiz_single_template( $template_path ) {
-    if ( get_post_type() === Config::QUIZESS_POST_SLUG ) {
+    if ( get_post_type() === self::QUIZESS_POST_SLUG ) {
       if ( is_single() ) {
 
         $template_path = General_Helper::get_base_path() . 'templates/single-quiz.php';
@@ -122,10 +142,10 @@ class Quiz {
    */
   public function quiz_options_metaboxes() : void {
     add_meta_box(
-      Config::QUIZESS_OPTIONS_META_ID,
+      self::QUIZESS_OPTIONS_META_ID,
       esc_html__( 'Quiz Options', 'developer-portal' ),
       [ $this, 'track_scores_metabox_view' ],
-      Config::QUIZESS_POST_SLUG,
+      self::QUIZESS_POST_SLUG,
       'side'
     );
   }
@@ -137,8 +157,8 @@ class Quiz {
    * @return void
    */
   public function track_scores_metabox_view( \WP_Post $post ) : void {
-    $track_scores = \get_post_meta( $post->ID, Config::TRACK_SCORES_META_KEY, true );
-    $quiz_locked  = \get_post_meta( $post->ID, Config::QUIZ_LOCKED_META_KEY, true );
+    $track_scores = \get_post_meta( $post->ID, self::TRACK_SCORES_META_KEY, true );
+    $quiz_locked  = \get_post_meta( $post->ID, self::QUIZ_LOCKED_META_KEY, true );
 
     $checked             = ( $track_scores === 'on' ) ? 'checked' : '';
     $quiz_locked_checked = ( $quiz_locked === 'on' ) ? 'checked' : '';
@@ -147,7 +167,7 @@ class Quiz {
       <div class="components-panel__row">
         <label for="track-scores-checkbox-id"><?php esc_html_e( 'Track scores for logged in users', 'developer-portal' ); ?></label>
         <label class="toggle-switch">
-          <input class="toggle-switch__input" name="<?php echo esc_attr( Config::TRACK_SCORES_META_KEY ); ?>" id="track-scores-checkbox-id" type="checkbox" <?php echo esc_attr( $checked ); ?>>
+          <input class="toggle-switch__input" name="<?php echo esc_attr( self::TRACK_SCORES_META_KEY ); ?>" id="track-scores-checkbox-id" type="checkbox" <?php echo esc_attr( $checked ); ?>>
           <span class="toggle-switch__slider"></span>
         </label>
       </div>
@@ -156,7 +176,7 @@ class Quiz {
       <div class="components-panel__row">
         <label for="registered-quiz-checkbox-id"><?php esc_html_e( 'Lock quiz for logged in users', 'developer-portal' ); ?></label>
         <label class="toggle-switch">
-          <input class="toggle-switch__input" name="<?php echo esc_attr( Config::QUIZ_LOCKED_META_KEY ); ?>" id="registered-quiz-checkbox-id" type="checkbox" <?php echo esc_attr( $quiz_locked_checked ); ?>>
+          <input class="toggle-switch__input" name="<?php echo esc_attr( self::QUIZ_LOCKED_META_KEY ); ?>" id="registered-quiz-checkbox-id" type="checkbox" <?php echo esc_attr( $quiz_locked_checked ); ?>>
           <span class="toggle-switch__slider"></span>
         </label>
       </div>
@@ -183,12 +203,12 @@ class Quiz {
       return;
     }
 
-    $track_scores = ! empty( $_POST[ Config::TRACK_SCORES_META_KEY ] ) ? \sanitize_text_field( \wp_unslash( $_POST[ Config::TRACK_SCORES_META_KEY ] ) ) : '';
+    $track_scores = ! empty( $_POST[ self::TRACK_SCORES_META_KEY ] ) ? \sanitize_text_field( \wp_unslash( $_POST[ self::TRACK_SCORES_META_KEY ] ) ) : '';
 
-    $quiz_locked = ! empty( $_POST[ Config::QUIZ_LOCKED_META_KEY ] ) ? \sanitize_text_field( \wp_unslash( $_POST[ Config::QUIZ_LOCKED_META_KEY ] ) ) : '';
+    $quiz_locked = ! empty( $_POST[ self::QUIZ_LOCKED_META_KEY ] ) ? \sanitize_text_field( \wp_unslash( $_POST[ self::QUIZ_LOCKED_META_KEY ] ) ) : '';
 
-    \update_post_meta( $post_id, Config::TRACK_SCORES_META_KEY, $track_scores );
-    \update_post_meta( $post_id, Config::QUIZ_LOCKED_META_KEY, $quiz_locked );
+    \update_post_meta( $post_id, self::TRACK_SCORES_META_KEY, $track_scores );
+    \update_post_meta( $post_id, self::QUIZ_LOCKED_META_KEY, $quiz_locked );
 
   }
 

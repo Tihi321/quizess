@@ -7,7 +7,7 @@
 
 use Quizess\Helpers\Blocks_Helper;
 use Quizess\Helpers\General_Helper;
-use Quizess\Includes\Config;
+use Quizess\Core\Config;
 
 $blocks_helper = new Blocks_Helper();
 

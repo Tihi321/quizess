@@ -6,10 +6,12 @@
   "autoload": {
     "classmap": [
       "src",
+      "src/exception",
       "src/admin",
+      "src/blocks",
       "src/front",
       "src/helpers",
-      "src/includes",
+      "src/languages",
       "src/rest"
     ]
   },

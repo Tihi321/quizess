@@ -9,13 +9,13 @@
 namespace Quizess\Rest\Rest_Callbacks;
 
 use Quizess\Rest\Rest_Routes;
-use Quizess\Includes\Config;
+use Quizess\Core\Config;
 use Quizess\Helpers\General_Helper;
 
 /**
  * Class Post_Score
  */
-class Post_Scores extends Rest_Routes implements Rest_Callback {
+class Post_Scores extends Config implements Rest_Callback {
 
 
   /**
@@ -76,12 +76,12 @@ class Post_Scores extends Rest_Routes implements Rest_Callback {
         'stats' => $question_stats,
     ];
 
-    $scores = get_post_meta( $quiz_id, Config::SCORES_META_KEY, true );
+    $scores = get_post_meta( $quiz_id, self::SCORES_META_KEY, true );
 
     if ( empty( $scores ) ) {
 
-        delete_post_meta( $quiz_id, Config::SCORES_META_KEY );
-        add_post_meta( $quiz_id, Config::SCORES_META_KEY, $quiz_stats );
+        delete_post_meta( $quiz_id, self::SCORES_META_KEY );
+        add_post_meta( $quiz_id, self::SCORES_META_KEY, $quiz_stats );
 
     } else {
         $user_scores        = [];
@@ -110,7 +110,7 @@ class Post_Scores extends Rest_Routes implements Rest_Callback {
         $scores['players'][ $current_user_id ] = $user_scores;
         $scores['stats']                       = $updated_stats;
 
-        update_post_meta( $quiz_id, Config::SCORES_META_KEY, $scores );
+        update_post_meta( $quiz_id, self::SCORES_META_KEY, $scores );
 
     }
 

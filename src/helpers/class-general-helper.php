@@ -8,12 +8,12 @@
 
 namespace Quizess\Helpers;
 
-use Quizess\Includes\Config;
+use Quizess\Core\Config;
 
 /**
  * Class General Helper
  */
-class General_Helper extends Config {
+abstract class General_Helper extends Config {
 
   /**
    * Check if array has key and return its value if true.
@@ -111,31 +111,6 @@ class General_Helper extends Config {
   }
 
   /**
-   * Quizess needs WP 5.0+ or Gutenberg Plugin to work
-   */
-  public static function check_compatibility() {
-
-    if ( ! function_exists( 'is_gutenberg_page' ) ) {
-      return false;
-    }
-
-    return true;
-  }
-
-  /**
-   * Deactivate if gutenberg not detected
-   */
-  public function no_gutenberg_deactivation() {
-
-    // checks if gutenberg is activated.
-    if ( ! self::check_compatibility() ) {
-      deactivate_plugins( self::get_basename() );
-      add_action( 'admin_notices', array( $this, 'compatibility_notice' ) );
-    }
-
-  }
-
-  /**
    * Calculates percentage of 2 numbers
    *
    * @param int $value number for which we calculate percent.
@@ -157,11 +132,11 @@ class General_Helper extends Config {
    */
   public static function can_user_submit( int $posts_id, int $users_id ) : bool {
 
-    $scores = get_post_meta( $posts_id, Config::SCORES_META_KEY, true );
+    $scores = get_post_meta( $posts_id, self::SCORES_META_KEY, true );
 
     if ( isset( $scores ) ) {
       $player_scores = self::get_array_value( $users_id, $scores['players'] );
-      $user_single   = get_user_meta( $users_id, Config::USER_SINGLE_TOGGLE, true );
+      $user_single   = get_user_meta( $users_id, self::USER_SINGLE_TOGGLE, true );
 
       if ( ! empty( $player_scores['last'] ) && $user_single === 'yes' ) {
         return false;
@@ -171,17 +146,4 @@ class General_Helper extends Config {
 
   }
 
-  /**
-   * Cmpatibility notice
-   *
-   * @return void
-   */
-  public static function compatibility_notice() {
-    ?>
-    <div class="error notice is-dismissible">
-        <p><?php esc_html_e( 'All Gutenberg Blocks requires WordPress 5.0 or Gutenberg plugin to be activated', 'quizess' ); ?></p>
-    </div>
-    <?php
-
-  }
 }

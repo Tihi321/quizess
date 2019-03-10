@@ -6,19 +6,19 @@
  * so that it is ready for translation.
  *
  * @since   1.0.0
- * @package Quizess\Includes
+ * @package Quizess\Languages
  */
 
-namespace Quizess\Includes;
+namespace Quizess\Languages;
 
-use Quizess\Includes\Config;
+use Quizess\Core\Service;
 use Quizess\Helpers\General_Helper;
 use Quizess\Helpers\Loader;
 
 /**
  * Class Internationalization
  */
-class Internationalization extends Config {
+class Internationalization implements Service {
 
   /**
    * Use trait inside class.

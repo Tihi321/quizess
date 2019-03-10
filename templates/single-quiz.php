@@ -6,7 +6,7 @@
  */
 
 use Quizess\Helpers\General_Helper;
-use Quizess\Includes\Config;
+use Quizess\Core\Config;
 
 $custom_style = get_option( Config::CUSTOM_STYLE_TOGGLE );
 

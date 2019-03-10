@@ -10,14 +10,13 @@ declare( strict_types=1 );
 
 namespace Quizess\Rest\Rest_Callbacks;
 
-use Quizess\Rest\Rest_Routes;
+use Quizess\Core\Config;
 use Quizess\Helpers\Blocks_Helper;
-use Quizess\Includes\Config;
 
 /**
  * Class Get_Quizess
  */
-class Get_Quizess extends Rest_Routes implements Rest_Callback {
+class Get_Quizess extends Config implements Rest_Callback {
   /**
    * Blocks_Helper reference
    *
@@ -60,7 +59,7 @@ class Get_Quizess extends Rest_Routes implements Rest_Callback {
     $quiz_post_type = get_post_type( $quiz_id );
     $quiz           = get_post( $quiz_id );
 
-    if ( $quiz_post_type !== Config::QUIZESS_POST_SLUG || empty( $quiz ) ) {
+    if ( $quiz_post_type !== self::QUIZESS_POST_SLUG || empty( $quiz ) ) {
       return new \WP_Error( 'awesome_no_quiz', 'No quiz found', array( 'status' => 404 ) );
     }
 

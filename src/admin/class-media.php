@@ -8,19 +8,39 @@
 
 namespace Quizess\Admin;
 
-use Quizess\Helpers\General_Helper;
+use Quizess\Core\Service;
 use Quizess\Helpers\Object_Helper;
+use Quizess\Helpers\Loader;
 
 
 /**
  * Class Media
  */
-class Media {
+class Media implements Service {
 
   /**
    * Use trait inside class.
    */
   use Object_Helper;
+
+  /**
+   * Use trait inside class.
+   */
+  use Loader;
+
+  /**
+   * Register all the hooks
+   *
+   * @since 1.0.0
+   */
+  public function register() : void {
+    $this->add_filter( 'upload_mimes', $this, 'enable_mime_types' );
+    $this->add_filter( 'wp_prepare_attachment_for_js', $this, 'enable_svg_library_preview', 10, 3 );
+    $this->add_filter( 'wp_handle_upload_prefilter', $this, 'check_svg_on_media_upload' );
+    $this->add_filter( 'after_setup_theme', $this, 'enable_full_width' );
+    $this->add_filter( 'wp_check_filetype_and_ext', $this, 'disable_mime_check', 10, 4 );
+  }
+
 
   /**
    * Enable SVG uplod in media

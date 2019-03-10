@@ -3,10 +3,10 @@
  * The abstract class that will be used to extend for all config files.
  *
  * @since   1.0.0
- * @package Quizess\Includes
+ * @package Quizess\Core
  */
 
-namespace Quizess\Includes;
+namespace Quizess\Core;
 
 /**
  * Abstract Class Config

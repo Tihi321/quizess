@@ -8,15 +8,16 @@
 
 namespace Quizess\Admin;
 
+use Quizess\Core\Service;
+use Quizess\Core\Config;
 use Quizess\Rest\Rest_Routes;
-use Quizess\Includes\Config;
 use Quizess\Helpers\General_Helper;
 use Quizess\Helpers\Loader;
 
 /**
  * Class Admin
  */
-class Admin extends Config {
+class Admin extends Config implements Service {
 
   /**
    * Use trait inside class.

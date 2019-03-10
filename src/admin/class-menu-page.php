@@ -8,13 +8,20 @@
 
 namespace Quizess\Admin;
 
-use Quizess\Includes\Config;
+use Quizess\Core\Service;
+use Quizess\Core\Config;
 use Quizess\Helpers\General_Helper;
+use Quizess\Helpers\Loader;
 
 /**
  * Class Menu_Page
  */
-class Menu_Page {
+class Menu_Page extends Config implements Service {
+
+  /**
+   * Use trait inside class.
+   */
+  use Loader;
 
   /**
    * Parent menu page slug.
@@ -29,6 +36,19 @@ class Menu_Page {
    * @since 1.0.0
    */
   const USER_CAPABILITY = 'edit_posts';
+
+
+  /**
+   * Register all the hooks
+   *
+   * @since 1.0.0
+   */
+  public function register() : void {
+    $this->add_action( 'admin_menu', $this, 'register_menu_page' );
+    $this->add_action( 'admin_menu', $this, 'register_submenu_pages' );
+    $this->add_filter( 'parent_file', $this, 'parent_menu_focus' );
+  }
+
 
   /**
    * Registers new menu page.
@@ -72,7 +92,7 @@ class Menu_Page {
             'page_title'  => esc_html__( 'Quizess', 'quizess' ),
             'menu_title'  => esc_html__( 'All Quizess', 'quizess' ),
             'capability'  => self::USER_CAPABILITY,
-            'menu_slug'   => 'edit.php?post_type=' . Config::QUIZESS_POST_SLUG,
+            'menu_slug'   => 'edit.php?post_type=' . self::QUIZESS_POST_SLUG,
             'function'    => null,
         ),
 
@@ -82,7 +102,7 @@ class Menu_Page {
             'page_title'  => esc_html__( 'New Quiz', 'quizess' ),
             'menu_title'  => esc_html__( 'Add New Quiz', 'quizess' ),
             'capability'  => self::USER_CAPABILITY,
-            'menu_slug'   => 'post-new.php?post_type=' . Config::QUIZESS_POST_SLUG,
+            'menu_slug'   => 'post-new.php?post_type=' . self::QUIZESS_POST_SLUG,
             'function'    => null,
         ),
 
@@ -92,7 +112,7 @@ class Menu_Page {
             'page_title'  => esc_html__( 'Quiz Topics', 'quizess' ),
             'menu_title'  => esc_html__( 'Quiz Topics', 'quizess' ),
             'capability'  => self::USER_CAPABILITY,
-            'menu_slug'   => 'edit-tags.php?taxonomy=' . Config::QUIZESS_CATEGORY_SLUG . '&post_type=' . Config::QUIZESS_POST_SLUG,
+            'menu_slug'   => 'edit-tags.php?taxonomy=' . self::QUIZESS_CATEGORY_SLUG . '&post_type=' . self::QUIZESS_POST_SLUG,
             'function'    => null,
         ),
 
@@ -102,7 +122,7 @@ class Menu_Page {
             'page_title'  => esc_html__( 'Questions', 'quizess' ),
             'menu_title'  => esc_html__( 'All Questions', 'quizess' ),
             'capability'  => self::USER_CAPABILITY,
-            'menu_slug'   => 'edit.php?post_type=' . Config::QUESTION_POST_SLUG,
+            'menu_slug'   => 'edit.php?post_type=' . self::QUESTION_POST_SLUG,
             'function'    => null,
         ),
 
@@ -112,7 +132,7 @@ class Menu_Page {
             'page_title'  => esc_html__( 'New Question', 'quizess' ),
             'menu_title'  => esc_html__( 'Add New Question', 'quizess' ),
             'capability'  => self::USER_CAPABILITY,
-            'menu_slug'   => 'post-new.php?post_type=' . Config::QUESTION_POST_SLUG,
+            'menu_slug'   => 'post-new.php?post_type=' . self::QUESTION_POST_SLUG,
             'function'    => null,
         ),
 
@@ -122,7 +142,7 @@ class Menu_Page {
             'page_title'  => esc_html__( 'Question Topics', 'quizess' ),
             'menu_title'  => esc_html__( 'Question Topics', 'quizess' ),
             'capability'  => self::USER_CAPABILITY,
-            'menu_slug'   => 'edit-tags.php?taxonomy=' . Config::QUESTION_CATEGORY_SLUG . '&post_type=' . Config::QUESTION_POST_SLUG,
+            'menu_slug'   => 'edit-tags.php?taxonomy=' . self::QUESTION_CATEGORY_SLUG . '&post_type=' . self::QUESTION_POST_SLUG,
             'function'    => null,
         ),
 
@@ -155,19 +175,19 @@ class Menu_Page {
     global $submenu_file, $current_screen, $pagenow;
 
     // Set the submenu as active/current while anywhere in your Custom Post Type.
-    if ( $current_screen->post_type === Config::QUIZESS_POST_SLUG || $current_screen->post_type === Config::QUESTION_POST_SLUG ) {
+    if ( $current_screen->post_type === self::QUIZESS_POST_SLUG || $current_screen->post_type === self::QUESTION_POST_SLUG ) {
 
       $post_type     = '';
       $taxonomy_type = '';
 
       switch ( $current_screen->post_type ) {
-        case Config::QUIZESS_POST_SLUG:
-          $post_type     = Config::QUIZESS_POST_SLUG;
-          $taxonomy_type = Config::QUIZESS_CATEGORY_SLUG;
+        case self::QUIZESS_POST_SLUG:
+          $post_type     = self::QUIZESS_POST_SLUG;
+          $taxonomy_type = self::QUIZESS_CATEGORY_SLUG;
               break;
         default:
-          $post_type     = Config::QUESTION_POST_SLUG;
-          $taxonomy_type = Config::QUESTION_CATEGORY_SLUG;
+          $post_type     = self::QUESTION_POST_SLUG;
+          $taxonomy_type = self::QUESTION_CATEGORY_SLUG;
               break;
       }
 

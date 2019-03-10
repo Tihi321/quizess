@@ -8,15 +8,32 @@
 
 namespace Quizess\Front;
 
-use Quizess\Includes\Config;
+use Quizess\Core\Service;
+use Quizess\Core\Config;
+use Quizess\Helpers\Loader;
 use Quizess\Helpers\General_Helper;
 use Quizess\Rest\Rest_Routes;
 
 /**
  * Class Front
  */
-class Front extends Config {
+class Front extends Config implements Service {
 
+  /**
+   * Use trait inside class.
+   */
+  use Loader;
+
+  /**
+   * Register all the hooks
+   *
+   * @since 1.0.0
+   */
+  public function register() : void {
+    $this->add_action( 'wp_enqueue_scripts', $this, 'enqueue_frontend_scripts', 50 );
+    $this->add_action( 'wp_enqueue_scripts', $this, 'enqueue_localized_frontend_scripts', 50 );
+    $this->add_action( 'wp_enqueue_scripts', $this, 'enqueue_frontend_styles', 50 );
+  }
 
   /**
    * Register the Stylesheets for frontend.

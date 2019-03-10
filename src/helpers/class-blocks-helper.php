@@ -10,8 +10,8 @@ declare( strict_types=1 );
 
 namespace Quizess\Helpers;
 
+use Quizess\Core\Config;
 use Quizess\Helpers\General_Helper;
-use Quizess\Includes\Config;
 
 /**
  * Class that holds all the necessary functionality parsing
@@ -19,7 +19,7 @@ use Quizess\Includes\Config;
  *
  * @since 1.0.0
  */
-final class Blocks_Helper {
+final class Blocks_Helper extends Config {
 
   /**
    * Parses blocks out of a content string.
@@ -55,7 +55,7 @@ final class Blocks_Helper {
     $output    = array();
     $questions = array();
 
-    $prefix_name = Config::PLUGIN_NAME;
+    $prefix_name = self::PLUGIN_NAME;
     $block_names = [
         'options'    => $prefix_name . '/cpt-quizess-options-block',
         'bg-options' => $prefix_name . '/cpt-quizess-background-options-block',
@@ -152,7 +152,7 @@ final class Blocks_Helper {
     $players_data  = [];
     $scores_output = null;
 
-    $scores = get_post_meta( $quiz_id, Config::SCORES_META_KEY, true );
+    $scores = get_post_meta( $quiz_id, self::SCORES_META_KEY, true );
 
     if ( $with_id ) {
       return $scores;
@@ -274,35 +274,6 @@ final class Blocks_Helper {
   private function filter_empty_answers( $array ) {
 
     return ( $array['text'] !== '' );
-  }
-
-
-
-  /**
-   * Get Acf data.
-   *
-   * @param int $post_id     Post id.
-   * @return string         JSON with acf data.
-   *
-   * @since 1.0.0
-   */
-  public function parse_acf_fields( int $post_id ) {
-
-    // Check if acf plugin exist.
-    if ( class_exists( 'ACF' ) ) {
-      $image        = get_field( 'author_image', $post_id );
-      $image_fields = ( $image ) ? array(
-          'id'        => $image['id'],
-          'name'      => $image['title'],
-          'url'       => $image['url'],
-          'thumbnail' => $image['sizes']['thumbnail'],
-      ) : false;
-      $acf_values   = array(
-          'image' => $image_fields,
-      );
-      return $acf_values;
-    }
-    return false;
   }
 
 }

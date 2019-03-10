@@ -8,14 +8,14 @@
 
 namespace Quizess\Rest;
 
-use Quizess\Includes\Config;
+use Quizess\Core\Config;
 use Quizess\Helpers\Error_Logger;
 use Quizess\Helpers\General_Helper;
 
 /**
  * Class containing registered rest routes
  */
-final class Rest_Security {
+final class Rest_Security extends Config {
   use Error_Logger;
 
   /**
@@ -58,7 +58,7 @@ final class Rest_Security {
     if ( $request->get_method() === 'POST' ) {
 
       $current_user_id = get_current_user_id();
-      $user_player     = get_user_meta( $current_user_id, Config::USER_PLAYER_TOGGLE, true );
+      $user_player     = get_user_meta( $current_user_id, self::USER_PLAYER_TOGGLE, true );
 
       if ( $user_player !== 'yes' ) {
         return $this->error_handler( 'user_not_player' );

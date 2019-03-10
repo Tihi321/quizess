@@ -8,17 +8,34 @@
 
 namespace Quizess\Admin;
 
+use Quizess\Core\Service;
+use Quizess\Helpers\Loader;
 use Quizess\Helpers\Object_Helper;
 
 /**
  * Class Menu
  */
-class Menu {
+class Menu implements Service {
 
   /**
    * Use trait Object_Helper inside class.
    */
   use Object_Helper;
+
+  /**
+   * Use trait inside class.
+   */
+  use Loader;
+
+  /**
+   * Register all the hooks
+   *
+   * @since 1.0.0
+   */
+  public function register() : void {
+    $this->add_action( 'after_setup_theme', $this, 'register_menu_positions', 99 );
+  }
+
 
   /**
    * Return all menu poistions

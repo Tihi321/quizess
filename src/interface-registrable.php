@@ -3,12 +3,12 @@
  * File that holds the registrable interface.
  *
  * @since 1.0.0
- * @package Infinum\Core
+ * @package Quizess\Core
  */
 
 declare( strict_types=1 );
 
-namespace Infinum\Core;
+namespace Quizess\Core;
 
 /**
  * Interface Registrable.

@@ -5,7 +5,7 @@
  * @package Quizess\Template_Parts\Admin
  */
 
-use Quizess\Includes\Config;
+use Quizess\Core\Config;
 
 $label_yes = __( 'Yes', 'quizess' );
 $label_no  = __( 'No', 'quizess' );

@@ -57,8 +57,8 @@ define( 'QIZ_ENV', 'develop' );
  * @since 1.0.0
  */
 function init_plugin() {
-  ( new Includes\Main() )->run();
-  // ( new Quizess\Core\Main() )->register();
+  // ( new Includes\Main() )->run();
+  ( new Core\Main() )->register();
 }
 
 init_plugin();

@@ -3,11 +3,13 @@
  * Register all Rest_Routes.
  *
  * @since   1.0.0
- * @package Quizess\Rest_Routes
+ * @package Quizess\Rest_Register
  */
 
 namespace Quizess\Rest;
 
+use Quizess\Core\Service;
+use Quizess\Helpers\Loader;
 use Quizess\Rest\Rest_Callbacks;
 use Quizess\Rest\Rest_Fields;
 use Quizess\Helpers\Blocks_Helper;
@@ -16,7 +18,12 @@ use Quizess\Helpers\General_Helper;
 /**
  * Class Register
  */
-class Rest_Register extends Rest_Routes {
+class Rest_Register extends Rest_Routes implements Service {
+
+  /**
+   * Use trait inside class.
+   */
+  use Loader;
 
   /**
    * Blocks_Helper reference
@@ -44,6 +51,20 @@ class Rest_Register extends Rest_Routes {
 
     // Security.
     $this->rest_security = new Rest_Security();
+  }
+
+  /**
+   * Register all the hooks
+   *
+   * @since 1.0.0
+   */
+  public function register() : void {
+
+    // Register New Fields For block atributes on posts.
+    $this->add_action( 'rest_api_init', $this, 'register_fields' );
+
+    // Register Rest routes.
+    $this->add_action( 'rest_api_init', $this, 'register_routes' );
   }
 
 

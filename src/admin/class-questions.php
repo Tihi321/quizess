@@ -8,12 +8,29 @@
 
 namespace Quizess\Admin;
 
-use Quizess\Includes\Config;
+use Quizess\Core\Service;
+use Quizess\Core\Config;
+use Quizess\Helpers\Loader;
 
 /**
  * [Questions description]
  */
-class Questions {
+class Questions extends Config implements Service {
+
+  /**
+   * Use trait inside class.
+   */
+  use Loader;
+
+  /**
+   * Register all the hooks
+   *
+   * @since 1.0.0
+   */
+  public function register() : void {
+    $this->add_action( 'init', $this, 'register_post_type' );
+    $this->add_action( 'init', $this, 'register_categories' );
+  }
 
   /**
    * Register custom post type
@@ -53,7 +70,7 @@ class Questions {
         ),
         'template_lock' => 'all',
     );
-    register_post_type( Config::QUESTION_POST_SLUG, $args );
+    register_post_type( self::QUESTION_POST_SLUG, $args );
   }
 
   /**
@@ -84,7 +101,7 @@ class Questions {
         'query_vars'          => true,
     );
 
-    register_taxonomy( Config::QUESTION_CATEGORY_SLUG, Config::QUESTION_POST_SLUG, $args );
+    register_taxonomy( self::QUESTION_CATEGORY_SLUG, self::QUESTION_POST_SLUG, $args );
   }
 
 }

@@ -8,14 +8,13 @@
 
 namespace Quizess\Rest\Rest_Callbacks;
 
-use Quizess\Rest\Rest_Routes;
-use Quizess\Includes\Config;
+use Quizess\Core\Config;
 use Quizess\Admin\Menu;
 
 /**
  * Class Get_Dashboard
  */
-class Get_Dashboard_Options extends Rest_Routes implements Rest_Callback {
+class Get_Dashboard_Options extends Config implements Rest_Callback {
 
   /**
    * Update quiz data rest route callback
@@ -36,12 +35,12 @@ class Get_Dashboard_Options extends Rest_Routes implements Rest_Callback {
   public function rest_callback( \WP_REST_Request $request ) {
     $quiz_scores = [];
 
-    $custom_style_option = get_option( Config::CUSTOM_STYLE_TOGGLE );
+    $custom_style_option = get_option( self::CUSTOM_STYLE_TOGGLE );
     $custom_style        = $custom_style_option ?: '0';
 
     $quizess_posts = get_posts(
       [
-          'post_type' => Config::QUIZESS_POST_SLUG,
+          'post_type' => self::QUIZESS_POST_SLUG,
           'post_status' => 'publish',
           'numberposts' => 100,
           'order'    => 'ASC',
@@ -49,7 +48,7 @@ class Get_Dashboard_Options extends Rest_Routes implements Rest_Callback {
     );
 
     foreach ( $quizess_posts as $key => $quiz_post ) {
-      $quiz_score = get_post_meta( $quiz_post->ID, Config::SCORES_META_KEY, true );
+      $quiz_score = get_post_meta( $quiz_post->ID, self::SCORES_META_KEY, true );
       if ( ! empty( $quiz_score ) ) {
         $quiz_score['title']           = $quiz_post->post_title;
         $quiz_scores[ $quiz_post->ID ] = $quiz_score;
