@@ -16,5 +16,8 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="site">
+<div id="post" class="quizess-post">
+  <header>
+  This is custom header menu
+  </header>
   <div id="content" class="site-content">

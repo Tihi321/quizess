@@ -1,4 +1,6 @@
 import {__} from '@wordpress/i18n';
+import {Fragment} from 'react';
+import {Spinner} from '@wordpress/components';
 import {DashboardConsumer} from '../containers/DashboardContext';
 import {
   ToggleSwitch,
@@ -37,10 +39,8 @@ const GeneralOptionsConsumer = (props) => {
     </RowContainer>
   );
 
-  return (
-    <div
-      className="general__options"
-    >
+  const optionsElements = (
+    <Fragment>
       <div
         className="general__options--top"
       >
@@ -51,6 +51,14 @@ const GeneralOptionsConsumer = (props) => {
       >
         {saveButtonElement}
       </div>
+    </Fragment>
+  );
+
+  return (
+    <div
+      className="general__options"
+    >
+      {(!dataLoaded) ? <Spinner /> : optionsElements}
     </div>
   );
 };

@@ -58,22 +58,7 @@ class Admin extends Config implements Service {
    */
   public function enqueue_block_styles() {
 
-    // If script debug is not enabled import react development.
-    if ( defined( 'SCRIPT_DEBUG' ) && ! SCRIPT_DEBUG ) {
-
-        // If in development add development not minified react libraries.
-      if ( QIZ_ENV === 'develop' ) {
-        wp_deregister_script( 'react' );
-        wp_deregister_script( 'react-dom' );
-
-        wp_register_script( 'react', General_Helper::get_base_url() . 'skin/public/scripts/vendors/react.development.js', array(), '16.6.3', false );
-
-        wp_register_script( 'react-dom', General_Helper::get_base_url() . 'skin/public/scripts/vendors/react-dom.development.js', array(), '16.6.3', false );
-
-        wp_enqueue_script( 'react' );
-        wp_enqueue_script( 'react-dom' );
-      }
-    }
+    $this->enqueue_react_developemnt();
 
     $main_block_style = General_Helper::get_manifest_assets_data( 'blocksQuizess.css' );
     wp_register_style( static::PLUGIN_NAME . '-editor--style', $main_block_style, '', static::PLUGIN_VERSION, false );
@@ -93,6 +78,8 @@ class Admin extends Config implements Service {
     // load scripts only on dasboard page.
     if ( $hook === 'toplevel_page_quizess_dashboard' ) {
 
+      $this->enqueue_react_developemnt();
+
       $main_admin_script = General_Helper::get_manifest_assets_data( 'adminQuizess.js' );
       wp_register_script(
         static::PLUGIN_NAME . '-admin-scripts',
@@ -101,6 +88,8 @@ class Admin extends Config implements Service {
             'wp-plugins',
             'wp-edit-post',
             'wp-element',
+            'wp-components',
+            'wp-editor',
         ),
         static::PLUGIN_VERSION,
         true
@@ -152,6 +141,33 @@ class Admin extends Config implements Service {
       true
     );
     wp_enqueue_script( static::PLUGIN_NAME . '-editor-scripts' );
+
+  }
+
+  /**
+   * Register react for development if debug mode enabled.
+   *
+   * @since 1.0.0
+   */
+  public function enqueue_react_developemnt() {
+
+    // If script debug is not enabled import react development.
+    if ( defined( 'SCRIPT_DEBUG' ) && ! SCRIPT_DEBUG ) {
+
+        // If in development add development not minified react libraries.
+      if ( QIZ_ENV === 'develop' ) {
+        wp_deregister_script( 'react' );
+        wp_deregister_script( 'react-dom' );
+
+        wp_register_script( 'react', General_Helper::get_base_url() . 'skin/public/scripts/vendors/react.development.js', array(), '16.6.3', false );
+
+        wp_register_script( 'react-dom', General_Helper::get_base_url() . 'skin/public/scripts/vendors/react-dom.development.js', array(), '16.6.3', false );
+
+      }
+    }
+
+    wp_enqueue_script( 'react' );
+    wp_enqueue_script( 'react-dom' );
 
   }
 
