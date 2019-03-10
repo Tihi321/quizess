@@ -40,7 +40,7 @@ abstract class Config {
    *
    * @since 1.0.0
    */
-  const PLUGIN_PREFIX = 'di_';
+  const PLUGIN_PREFIX = 'qz_';
 
 
   // -------------------------------------------------------
@@ -137,6 +137,15 @@ abstract class Config {
    * @since 1.0.0
    */
   const CUSTOM_STYLE_TOGGLE = 'quizess_custom_style';
+
+  /**
+   * Toggle to check if user wants display github of quizess in footer
+   *
+   * @var string
+   *
+   * @since 1.0.0
+   */
+  const SHOW_GITHUB_TOGGLE = 'quizess_show_github';
 
   /**
    * Custom logo.
@@ -239,5 +248,18 @@ abstract class Config {
    * @since 1.0.0
    */
   const NONCE_NAME = 'quizess_nonce';
+
+  // -------------------------------------------------------
+  // GITHUB
+  // -------------------------------------------------------
+
+  /**
+   * The custom post type slug
+   *
+   * @var string
+   *
+   * @since 1.0.0
+   */
+  const GITHUB_URL = 'https://github.com/Tihi321/quizess';
 
 }

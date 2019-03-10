@@ -43,6 +43,7 @@ class Patch_General_Options extends Config implements Rest_Callback {
     $body = \json_decode( $request->get_body(), true );
 
     $custom_style = sanitize_text_field( General_Helper::get_array_value( 'customStyle', $body ) );
+    $show_github  = sanitize_text_field( General_Helper::get_array_value( 'showGithub', $body ) );
     $copyright    = sanitize_text_field( General_Helper::get_array_value( 'copyright', $body ) );
     $facebook     = sanitize_text_field( General_Helper::get_array_value( 'facebook', $body ) );
     $twitter      = sanitize_text_field( General_Helper::get_array_value( 'twitter', $body ) );
@@ -66,6 +67,7 @@ class Patch_General_Options extends Config implements Rest_Callback {
     $sanitized_logo_string = wp_json_encode( $sanitized_logo );
 
     $this->save_options( $custom_style, self::CUSTOM_STYLE_TOGGLE );
+    $this->save_options( $show_github, self::SHOW_GITHUB_TOGGLE );
     $this->save_options( $sanitized_logo_string, self::CUSTOM_LOGO );
     $this->save_options( $copyright, self::COPYRIGHT_TEXT );
     $this->save_options( $facebook, self::FACEBOOK_URL );

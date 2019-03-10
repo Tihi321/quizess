@@ -9,3 +9,7 @@ import './Graphik-Regular-Web.woff2';
 // Graphik Normal
 import './Graphik-Semibold-Web.woff';
 import './Graphik-Semibold-Web.woff2';
+
+// Quizess
+import './quizess.ttf';
+import './quizess.woff';

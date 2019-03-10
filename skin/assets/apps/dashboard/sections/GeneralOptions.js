@@ -30,11 +30,13 @@ const GeneralOptionsConsumer = (props) => {
     twitter,
     linkedIn,
     instagram,
+    showGithub,
     handleCopyrightChange,
     handleFacebookChange,
     handleTwitterChange,
     handleLinkedInChange,
     handleInstagramChange,
+    handleShowGithubChange,
   } = props;
 
   const useCustomElement = (
@@ -47,6 +49,20 @@ const GeneralOptionsConsumer = (props) => {
         label={__('Use custom styles', 'quizess')}
         checked={useCustomStyle}
         onChange={handleUseCustomChange}
+      />
+    </InputRow>
+  );
+
+  const showGithubElement = (
+    <InputRow
+      className="options__row"
+    >
+      <ToggleSwitch
+        labelClass="options__label"
+        idName="custom-slides"
+        label={__('Show github', 'quizess')}
+        checked={showGithub}
+        onChange={handleShowGithubChange}
       />
     </InputRow>
   );
@@ -225,6 +241,7 @@ const GeneralOptionsConsumer = (props) => {
         className="options__general--top"
       >
         {useCustomElement}
+        {showGithubElement}
         {logoElement}
         {footerCopyrightElement}
         {facebookElement}
@@ -256,6 +273,7 @@ const GeneralOptions = () => (
         values: {
           dataLoaded,
           useCustomStyle,
+          showGithub,
           logo,
           copyright,
           facebook,
@@ -272,6 +290,7 @@ const GeneralOptions = () => (
           handleTwitterChange,
           handleLinkedInChange,
           handleInstagramChange,
+          handleShowGithubChange,
         },
       } = value;
       return (
@@ -284,6 +303,7 @@ const GeneralOptions = () => (
           instagram={instagram}
           copyright={copyright}
           useCustomStyle={useCustomStyle}
+          showGithub={showGithub}
           handleUseCustomChange={handleUseCustomChange}
           handleOnSave={handleOnSave}
           handleOnSelectMedia={handleOnSelectMedia}
@@ -292,6 +312,7 @@ const GeneralOptions = () => (
           handleTwitterChange={handleTwitterChange}
           handleLinkedInChange={handleLinkedInChange}
           handleInstagramChange={handleInstagramChange}
+          handleShowGithubChange={handleShowGithubChange}
         />
       );
     }}

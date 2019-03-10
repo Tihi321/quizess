@@ -46,6 +46,7 @@ class DashboardProvider extends PureComponent {
       showDetails: false,
       showRemove: false,
       useCustomStyle: false,
+      showGithub: false,
       statsPage: 0,
       answerStatsPage: 0,
       scorePage: 0,
@@ -84,6 +85,7 @@ class DashboardProvider extends PureComponent {
     const {
       generalOptions: {
         customStyle,
+        showGithub,
         logo,
         copyright,
         facebook,
@@ -97,11 +99,13 @@ class DashboardProvider extends PureComponent {
     } = data;
 
     const customStyleValue = (customStyle === '1') || false;
+    const showGithubValue = (showGithub === '1') || false;
     const scoresArr = this.parseScoresData(scores);
 
     return {
       generalOptions: {
-        customstyles: customStyleValue,
+        customStyle: customStyleValue,
+        showGithub: showGithubValue,
         copyright,
         facebook,
         twitter,
@@ -115,7 +119,7 @@ class DashboardProvider extends PureComponent {
     };
   }
 
-  fetchScores = () => {
+  fetchData = () => {
 
     const {
       root,
@@ -131,7 +135,8 @@ class DashboardProvider extends PureComponent {
 
         const {
           generalOptions: {
-            customstyles,
+            customStyle,
+            showGithub,
             copyright,
             facebook,
             twitter,
@@ -148,7 +153,8 @@ class DashboardProvider extends PureComponent {
           return {
             dataLoaded: true,
             scoresData: scores,
-            useCustomStyle: customstyles,
+            useCustomStyle: customStyle,
+            showGithub,
             copyright,
             facebook,
             twitter,
@@ -292,6 +298,7 @@ class DashboardProvider extends PureComponent {
 
       const {
         useCustomStyle,
+        showGithub,
         logo,
         copyright,
         facebook,
@@ -302,6 +309,7 @@ class DashboardProvider extends PureComponent {
 
       const bodyData = JSON.stringify({
         customStyle: useCustomStyle,
+        showGithub,
         copyright,
         logo,
         facebook,
@@ -443,6 +451,13 @@ class DashboardProvider extends PureComponent {
         };
       });
     },
+    handleShowGithubChange: (value) => {
+      this.setState(() => {
+        return {
+          showGithub: value,
+        };
+      });
+    },
     handleOnSave: () => {
       this.saveOptions();
     },
@@ -497,7 +512,7 @@ class DashboardProvider extends PureComponent {
   };
 
   componentDidMount() {
-    this.fetchScores();
+    this.fetchData();
   }
 
   render() {
@@ -513,6 +528,7 @@ class DashboardProvider extends PureComponent {
       selectedPlayerDetails,
       optionsPage,
       useCustomStyle,
+      showGithub,
       logo,
       copyright,
       facebook,
@@ -545,6 +561,7 @@ class DashboardProvider extends PureComponent {
             twitter,
             linkedIn,
             instagram,
+            showGithub,
           },
           dataStore: this.dataStore,
         }}>

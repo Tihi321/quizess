@@ -42,6 +42,8 @@ class Get_Dashboard_Options extends Config implements Rest_Callback {
     $instagram           = get_option( self::INSTAGRAM_URL );
     $custom_style_option = get_option( self::CUSTOM_STYLE_TOGGLE );
     $custom_style        = $custom_style_option ?: '0';
+    $show_github_option  = get_option( self::SHOW_GITHUB_TOGGLE );
+    $show_github         = $show_github_option ?: '0';
 
     $quizess_posts = get_posts(
       [
@@ -64,6 +66,7 @@ class Get_Dashboard_Options extends Config implements Rest_Callback {
       [
           'generalOptions' => [
               'customStyle' => $custom_style,
+              'showGithub'  => $show_github,
               'logo'        => $logo,
               'copyright'   => $copyright,
               'facebook'    => $facebook,
