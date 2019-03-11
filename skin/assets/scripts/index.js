@@ -1,11 +1,13 @@
 /* global pluginOptions */
 import generalHelper from '../helpers/general-helper';
 import App from '../apps/quiz-app';
+import Menu from '../apps/menu-app';
 import Modal from './components/modal';
 
 generalHelper.domReady(function() {
   const modal = new Modal();
   const app = new App();
+  const menu = new Menu();
 
   // -------------------------------------------------------------
   // modal
@@ -26,5 +28,6 @@ generalHelper.domReady(function() {
 
   // -------------------------------------------------------------
   // app
+  menu.init();
   app.init();
 });

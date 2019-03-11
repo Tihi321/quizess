@@ -157,9 +157,6 @@ class Menu extends Config implements Service {
           'url'         => $url,
           'parent'      => (int) $menu_item->menu_item_parent,
           'target'      => $menu_item->target === '_blank',
-          'attr_title'  => $menu_item->attr_title,
-          'xfn'         => $menu_item->xfn,
-          'description' => $menu_item->description,
           'classes'     => implode( ' ', $menu_item->classes ),
       );
 
