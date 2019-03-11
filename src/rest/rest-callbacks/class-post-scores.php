@@ -114,7 +114,7 @@ class Post_Scores extends Config implements Rest_Callback {
 
     }
 
-    return new \WP_REST_Response( __( 'Scores successfully submitted', 'quizess' ), 200 );
+    return \rest_ensure_response( __( 'Scores successfully submitted', 'quizess' ) );
   }
 
 }

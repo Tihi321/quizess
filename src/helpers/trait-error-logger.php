@@ -14,14 +14,20 @@ namespace Quizess\Helpers;
  * Error logger trait.
  */
 trait Error_Logger {
+
   /**
    * Error handler helper
    *
    * Returns array with the error code and reason of the error.
    *
    * @param string $status      Status description.
+   * @param string $message     Optional error message.
+   *
+   * @return \WP_Error          \WP_Error instance with error message and status.
+   *
+   * @since  1.0.0
    */
-  public function error_handler( string $status = '' ) {
+  public function error_handler( string $status, string $message = null ) {
 
     switch ( $status ) {
       case 'empty_body':
@@ -69,12 +75,37 @@ trait Error_Logger {
           $code          = 403;
             break;
 
+      case 'awesome_no_quiz':
+          $error_message = esc_html__( 'No quiz found', 'quizess' );
+          $code          = 404;
+            break;
+
+      case 'awesome_no_blocks':
+          $error_message = esc_html__( 'No blocks found', 'quizess' );
+          $code          = 404;
+            break;
+
       default:
           $error_message = esc_html__( 'Not all quiz values present', 'quizess' );
           $code          = 400;
             break;
     }
 
-    \wp_send_json_error( $error_message, (int) $code );
+    return new \WP_Error( esc_html( $status ), $message, [ 'status' => (int) $code ] );
+  }
+
+
+  /**
+   * Ensure correct error response for rest using error handler function.
+   *
+   * @param string $status  Status description.
+   * @param string $message Optional error message.
+   *
+   * @return \WP_Error \WP_Error instance with error message and status.
+   *
+   * @since 1.0.0
+   */
+  public function rest_error_handler( string $status = '', string $message = null ) {
+    return \rest_ensure_response( $this->error_handler( $status, $message ) );
   }
 }

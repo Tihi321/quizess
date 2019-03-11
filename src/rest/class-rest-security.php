@@ -72,13 +72,13 @@ final class Rest_Security extends Config {
       $stats   = General_Helper::get_array_value( 'stats', $body );
 
       if ( ! isset( $quiz_id ) || ! isset( $correct ) || ! isset( $total ) || ! isset( $stats ) ) {
-        return $this->error_handler();
+        return $this->rest_error_handler();
       }
 
       $can_user_submit = General_Helper::can_user_submit( $quiz_id, $current_user_id );
 
       if ( ! $can_user_submit ) {
-        return $this->error_handler( 'user_submit_limit' );
+        return $this->rest_error_handler( 'user_submit_limit' );
       }
     }
 
@@ -100,19 +100,19 @@ final class Rest_Security extends Config {
     $headers = $request->get_headers();
 
     if ( empty( $headers ) ) {
-      return $this->error_handler( 'empty_header' );
+      return $this->rest_error_handler( 'empty_header' );
     }
 
     if ( ! is_user_logged_in() ) {
-      return $this->error_handler( 'user_not_authenticated' );
+      return $this->rest_error_handler( 'user_not_authenticated' );
     }
 
     if ( ! isset( $headers['dashboard_nonce'] ) && ! wp_verify_nonce( sanitize_key( $headers['dashboard_nonce'] ), 'quizess_dashboard_nonce' ) ) {
-      return $this->error_handler( 'user_not_authenticated' );
+      return $this->rest_error_handler( 'user_not_authenticated' );
     }
 
     if ( empty( $request->get_body() ) ) {
-      return $this->error_handler( 'empty_body' );
+      return $this->rest_error_handler( 'empty_body' );
     }
 
     return true;
@@ -133,7 +133,7 @@ final class Rest_Security extends Config {
     $custom_style_option = get_option( self::CUSTOM_STYLE_TOGGLE );
 
     if ( empty( $custom_style_option ) ) {
-      return $this->error_handler( 'custom_not_enabled' );
+      return $this->rest_error_handler( 'custom_not_enabled' );
     }
 
     return true;

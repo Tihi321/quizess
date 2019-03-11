@@ -55,7 +55,7 @@ class Patch_Scores extends Config implements Rest_Callback {
     // Save new scores.
     update_post_meta( $quiz_id, self::SCORES_META_KEY, $scores );
 
-    return new \WP_REST_Response( $message, 200 );
+    return \rest_ensure_response( $message );
   }
 
 }

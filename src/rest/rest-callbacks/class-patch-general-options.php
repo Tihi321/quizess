@@ -75,7 +75,7 @@ class Patch_General_Options extends Config implements Rest_Callback {
     $this->save_options( $linked_in, self::LINKEDIN_URL );
     $this->save_options( $instagram, self::INSTAGRAM_URL );
 
-    return new \WP_REST_Response( __( 'Options posted with success', 'quizess' ), 200 );
+    return \rest_ensure_response( __( 'Options posted with success', 'quizess' ) );
   }
 
 }

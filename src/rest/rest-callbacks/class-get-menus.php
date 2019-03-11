@@ -53,13 +53,13 @@ class Get_Menus extends Config implements Rest_Callback {
       }
     }
 
-    return new \WP_REST_Response(
-      [
-          'logo' => $logo,
-          'menu' => $menu_items,
-      ],
-      200
-    );
+    $output =
+    [
+        'logo' => $logo,
+        'menu' => $menu_items,
+    ];
+
+    return \rest_ensure_response( $output );
   }
 
 }

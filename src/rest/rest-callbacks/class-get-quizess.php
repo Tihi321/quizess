@@ -60,13 +60,13 @@ class Get_Quizess extends Config implements Rest_Callback {
     $quiz           = get_post( $quiz_id );
 
     if ( $quiz_post_type !== self::QUIZESS_POST_SLUG || empty( $quiz ) ) {
-      return new \WP_Error( 'awesome_no_quiz', 'No quiz found', array( 'status' => 404 ) );
+      return $this->rest_error_handler( 'awesome_no_quiz' );
     }
 
     $parsed_quiz_array = $this->blocks_helper->parse_gutenberg_blocks( $quiz->post_content );
 
     if ( empty( $parsed_quiz_array ) ) {
-      return new \WP_Error( 'awesome_no_blocks', 'No blocks found', array( 'status' => 404 ) );
+      return $this->rest_error_handler( 'awesome_no_blocks' );
     }
 
     $output = $this->blocks_helper->get_decoded_quiz_values( $parsed_quiz_array );
@@ -74,7 +74,7 @@ class Get_Quizess extends Config implements Rest_Callback {
 
     $output['scores'] = $scores;
 
-    return new \WP_REST_Response( $output, 200 );
+    return \rest_ensure_response( $output );
   }
 
 }

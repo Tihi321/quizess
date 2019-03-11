@@ -62,24 +62,24 @@ class Get_Dashboard_Options extends Config implements Rest_Callback {
       }
     }
 
-    return new \WP_REST_Response(
-      [
-          'generalOptions' => [
-              'customStyle' => $custom_style,
-              'showGithub'  => $show_github,
-              'logo'        => $logo,
-              'copyright'   => $copyright,
-              'facebook'    => $facebook,
-              'twitter'     => $twitter,
-              'linkedIn'    => $linked_in,
-              'instagram'   => $instagram,
-          ],
-          'quizOptions' => [
-              'scores' => $quiz_scores,
-          ],
-      ],
-      200
-    );
+    $output =
+    [
+        'generalOptions' => [
+            'customStyle' => $custom_style,
+            'showGithub'  => $show_github,
+            'logo'        => $logo,
+            'copyright'   => $copyright,
+            'facebook'    => $facebook,
+            'twitter'     => $twitter,
+            'linkedIn'    => $linked_in,
+            'instagram'   => $instagram,
+        ],
+        'quizOptions' => [
+            'scores' => $quiz_scores,
+        ],
+    ];
+
+    return \rest_ensure_response( $output );
   }
 
 }
