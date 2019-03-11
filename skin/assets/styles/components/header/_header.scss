@@ -1,0 +1,15 @@
+$header-colors: (
+  color: $base-white-color,
+);
+
+.quizess-header {
+  padding: 10px 20px;
+  color: map-get($header-colors, 'color');
+
+  &--light {
+    background-color: map-deep-get($theme-colors, light, 'primary-color');
+  }
+  &--dark {
+    background-color: map-deep-get($theme-colors, dark, 'primary-color');
+  }
+}

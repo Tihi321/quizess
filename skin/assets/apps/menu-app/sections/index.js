@@ -5,14 +5,15 @@ import {MenuConsumer} from '../containers/MenuContext';
 const MainConsumer = (props) => {
   const {
     inProgress,
-    data,
+    items,
+    theme,
     handleStart,
   } = props;
 
   return (
     <Fragment>
       <div>
-        koma
+        Menu
       </div>
     </Fragment>
   );
@@ -23,8 +24,9 @@ const App = () => (
     {(value) => {
       const {
         values: {
-          data,
+          items,
           inProgress,
+          theme,
         },
         dataStore: {
           handleStart,
@@ -32,7 +34,8 @@ const App = () => (
       } = value;
       return (
         <MainConsumer
-          data={data}
+          items={items}
+          theme={theme}
           handleStart={handleStart}
           inProgress={inProgress}
         />

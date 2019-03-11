@@ -2,9 +2,14 @@ import App from '../sections';
 import MenuProvider from './MenuContext';
 
 const MenuStore = (props) => {
+  const {
+    theme,
+  } = props;
 
   return (
-    <MenuProvider>
+    <MenuProvider
+      theme={theme}
+    >
       <App />
     </MenuProvider>
   );

@@ -46,11 +46,13 @@
 @import 'components/parts/question-header';
 
 // Footer
+@import 'components/header/header';
 @import 'components/footer/footer';
 
 // Sections
 @import 'components/sections/question';
 @import 'components/sections/hall-fame';
+@import 'components/sections/custom';
 
 // Single
 @import 'components/single/quiz';

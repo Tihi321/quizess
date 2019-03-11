@@ -5,17 +5,12 @@
  * @package Quizess\Template_Parts\Single
  */
 
-use Quizess\Helpers\Blocks_Helper;
 use Quizess\Helpers\General_Helper;
 use Quizess\Core\Config;
 
-$blocks_helper = new Blocks_Helper();
 
-$user_submit  = '1';
-$quiz_options = $blocks_helper->get_quiz_options( $post->post_content );
-
+$user_submit     = '1';
 $welcome_message = General_Helper::get_array_value( 'welcomeMessage', $quiz_options['options'] );
-$theme           = General_Helper::get_array_value( 'theme', $quiz_options['options'] );
 $about_field     = General_Helper::get_array_value( 'aboutField', $quiz_options['options'] );
 $bg_color        = General_Helper::get_array_value( 'bgColor', $quiz_options['bgOptions'] );
 $bg_image_url    = General_Helper::get_array_value( 'bgUrl', $quiz_options['bgOptions'] );
@@ -37,7 +32,6 @@ if ( is_user_logged_in() ) {
 
 <!-- Single Content Section -->
 <section class="quiz" id="<?php echo esc_attr( $post->ID ); ?>">
-
   <div class="quiz__content quiz__content--<?php echo esc_attr( $theme ); ?>" style="background-color:<?php echo esc_attr( $bg_color ); ?>;background-image:url('<?php echo esc_attr( $bg_image_url ); ?>');">
     <?php
     $title_template = $base_path . 'views/sections/title-section.php';

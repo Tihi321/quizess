@@ -17,8 +17,4 @@
 
 <body <?php body_class(); ?>>
 <div id="post" class="quizess-post">
-  <header class="quizess-header">
-    <div class="quizess-header__menu js-header-menu">
-    </div>
-  </header>
   <div id="content" class="site-content">

@@ -12,21 +12,27 @@ class MenuProvider extends PureComponent {
   constructor(props) {
     super(props);
 
+    const {theme} = props;
+
     this.state = {
-      inProgress: false,
-      data: {},
+      theme,
+      inProgress: true,
+      items: [],
+      logo: null,
     };
   }
 
   parseMenuData = (data) => {
     const {
       logo,
-      menu,
+      menu: {
+        items,
+      },
     } = data;
 
     const outout = {
       logo: JSON.parse(logo),
-      menu,
+      items,
     };
     return outout;
   }
@@ -34,18 +40,19 @@ class MenuProvider extends PureComponent {
   fetchData = () => {
     const {root} = quizessOptions;
     const {menusApi} = quizessOptions;
-    this.setState(() => {
-      return {
-        inProgress: true,
-      };
-    });
     fetch(root + menusApi)
       .then((response) => {
         return response.json();
       })
       .then((myJson) => {
-        const menu = this.parseMenuData(myJson);
-
+        const data = this.parseMenuData(myJson);
+        this.setState(() => {
+          return {
+            logo: data.logo,
+            items: data.items,
+            inProgress: false,
+          };
+        });
       });
   }
 
@@ -62,7 +69,8 @@ class MenuProvider extends PureComponent {
   render() {
     const {
       inProgress,
-      data,
+      items,
+      theme,
     } = this.state;
 
     return (
@@ -73,7 +81,8 @@ class MenuProvider extends PureComponent {
         value={{
           values: {
             inProgress,
-            data,
+            items,
+            theme,
           },
           dataStore: this.dataStore,
         }}>

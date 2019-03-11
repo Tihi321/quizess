@@ -1,0 +1,13 @@
+.quizess-custom {
+  display: flex;
+  flex-wrap: wrap;
+
+  .quizess-header {
+    width: 20%;
+    min-width: 250px;
+  }
+
+  &__main {
+    flex: 1;
+  }
+}

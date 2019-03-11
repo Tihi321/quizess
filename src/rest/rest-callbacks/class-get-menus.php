@@ -56,7 +56,7 @@ class Get_Menus extends Config implements Rest_Callback {
     $output =
     [
         'logo' => $logo,
-        'menu' => $menu_items,
+        'menu' => $menu_items[0],
     ];
 
     return \rest_ensure_response( $output );
