@@ -148,9 +148,6 @@ class Menu extends Config implements Service {
         continue;
       }
 
-      // Fetch post ID.
-      $post_id = get_post_meta( $menu_item->ID, '_menu_item_object_id', true );
-
       $output[] = array(
           'title'       => $menu_item->title,
           'id'          => $menu_item->ID,
@@ -162,6 +159,8 @@ class Menu extends Config implements Service {
 
     }
 
-    return $output;
+    $temp_items = $this->build_tree_menu( $output );
+
+    return $temp_items['children'];
   }
 }

@@ -93,4 +93,31 @@ trait Object_Helper {
 
   }
 
+  /**
+   * Saves value to the options table
+   *
+   * @param array $items menu items.
+   * @param array $tree object tree.
+   */
+  public function build_tree_menu( array $items, array $tree = null ) : array {
+
+    if ( ! isset( $tree ) ) {
+      $tree = [ 'children' => [] ];
+    } elseif ( ! isset( $tree['children'] ) ) {
+      $tree['children'] = [];
+    }
+
+    foreach ( $items as $index => $item ) {
+      if ( isset( $tree['id'] ) === false && $item['parent'] === 0 || isset( $tree['id'] ) && $item['parent'] === $tree['id'] ) {
+
+        array_splice( $items, $index, 1 );
+        $output = $this->build_tree_menu( $items, $item );
+        array_push( $tree['children'], $output );
+      }
+    }
+
+    return $tree;
+
+  }
+
 }
