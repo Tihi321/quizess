@@ -90,6 +90,11 @@ body.admin-bar {
     flex-direction: column;
   }
 
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+
   &.is-active {
     animation-name: reveal;
     animation-duration: 0.3s;

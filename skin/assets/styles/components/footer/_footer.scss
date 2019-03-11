@@ -1,6 +1,51 @@
-.modal {
-  &__footer {
+$footer-colors: (
+  color: $base-white-color,
+);
+
+.quizess-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  color: map-get($footer-colors, 'color');
+
+  &--light {
+    background-color: map-deep-get($theme-colors, light, 'primary-color');
+  }
+  &--dark {
+    background-color: map-deep-get($theme-colors, dark, 'primary-color');
+  }
+
+  &__brand {
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+  }
+
+  &__logo {
+    display: flex;
+    margin-right: 10px;
+    max-width: 100px;
+    max-height: 50px;
+  }
+
+  &__copyright {
+    @include text-size(medium);
+  }
+
+  &__social {
+    display: flex;
+    margin: 0;
+    padding-left: 0;
+
+    &-item {
+      list-style: none;
+      margin: 0 5px;
+    }
+    .icon {
+      @include text-size(large);
+      color: map-get($footer-colors, 'color');
+    }
+    .icon:hover {
+      color: map-get($footer-colors, 'color');
+    }
   }
 }
