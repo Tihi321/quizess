@@ -1,5 +1,7 @@
-import MenuItem from './menu/menu-item';
-import MenuItemTitle from './menu/menu-title';
+import {
+  MenuItem,
+  MenuItemTitle,
+} from '../../../components';
 
 export {MenuItem};
 export {MenuItemTitle};

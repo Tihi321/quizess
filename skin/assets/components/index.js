@@ -16,6 +16,8 @@ import MainQuestion from './question/text';
 import Placeholder from './question/placeholder';
 import ExplanationPreview from './explanation/preview';
 import HallOfFame from './modal/hall-of-fame';
+import MenuItem from './menu/menu-item';
+import MenuItemTitle from './menu/menu-title';
 
 export {Answer};
 export {AnswersParent};
@@ -35,3 +37,5 @@ export {MainQuestion};
 export {Placeholder};
 export {ExplanationPreview};
 export {HallOfFame};
+export {MenuItem};
+export {MenuItemTitle};
