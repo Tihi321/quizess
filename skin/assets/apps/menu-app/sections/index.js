@@ -1,20 +1,29 @@
 import {Fragment} from 'react';
 import {__} from '@wordpress/i18n';
 import {MenuConsumer} from '../containers/MenuContext';
+import Menu from './MenuApp';
 
 const MainConsumer = (props) => {
   const {
     inProgress,
     items,
+    logo,
     theme,
-    handleStart,
   } = props;
+
+  const menuItems = items.map((value) => {
+    return {
+      title: value.title,
+      url: value.url,
+      children: value.children,
+    };
+  });
 
   return (
     <Fragment>
-      <div>
-        Menu
-      </div>
+      {
+        (!inProgress) && <Menu items={menuItems} theme={theme} logo={logo} />
+      }
     </Fragment>
   );
 };
@@ -25,18 +34,16 @@ const App = () => (
       const {
         values: {
           items,
+          logo,
           inProgress,
           theme,
-        },
-        dataStore: {
-          handleStart,
         },
       } = value;
       return (
         <MainConsumer
           items={items}
+          logo={logo}
           theme={theme}
-          handleStart={handleStart}
           inProgress={inProgress}
         />
       );

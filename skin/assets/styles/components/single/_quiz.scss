@@ -7,8 +7,7 @@ $quiz-colors: (
   &__content {
     background-color: map-get($quiz-colors, 'bg-color');
     position: relative;
-    height: 50vh;
-    min-height: 800px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     background-position: center;
@@ -44,6 +43,8 @@ $quiz-colors: (
     &--outer {
       @extend %centered-content;
       flex: 1;
+      padding: 20px;
+      flex-wrap: wrap;
       z-index: map-get($zindex, 'quiz-outer');
     }
   }

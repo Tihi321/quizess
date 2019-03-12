@@ -32,7 +32,7 @@ if ( have_posts() ) {
 
     if ( $custom_style ) {
       ?>
-      <div class="quizess-custom">
+      <div class="quizess-custom default-typography">
       <?php
       $header_content = General_Helper::get_base_path() . 'views/header/header-content.php';
 

@@ -3,7 +3,6 @@ $header-colors: (
 );
 
 .quizess-header {
-  padding: 10px 20px;
   color: map-get($header-colors, 'color');
 
   &--light {

@@ -61,6 +61,15 @@
   }
 }
 
+%heading-reset {
+  margin: 0;
+  padding: 0;
+
+  &::before {
+    display: none;
+  }
+}
+
 %centered-content {
   display: flex;
   justify-content: center;

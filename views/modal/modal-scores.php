@@ -10,8 +10,8 @@ use Quizess\Helpers\General_Helper;
 
 $user_id = get_current_user_id();
 
-$correct = General_Helper::get_array_value( 'correct', $player_scores[ $user_id ]['last'] );
-$total   = General_Helper::get_array_value( 'total', $player_scores[ $user_id ]['last'] );
+$correct = ( $user_id ) ?? General_Helper::get_array_value( 'correct', $player_scores[ $user_id ]['last'] );
+$total   = ( $user_id ) ?? General_Helper::get_array_value( 'total', $player_scores[ $user_id ]['last'] );
 
 ?>
 

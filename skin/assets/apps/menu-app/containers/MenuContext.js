@@ -56,11 +56,7 @@ class MenuProvider extends PureComponent {
       });
   }
 
-  dataStore = {
-    handleStart: () => {
-
-    },
-  };
+  dataStore = {};
 
   componentDidMount() {
     this.fetchData();
@@ -71,6 +67,7 @@ class MenuProvider extends PureComponent {
       inProgress,
       items,
       theme,
+      logo,
     } = this.state;
 
     return (
@@ -83,6 +80,7 @@ class MenuProvider extends PureComponent {
             inProgress,
             items,
             theme,
+            logo,
           },
           dataStore: this.dataStore,
         }}>

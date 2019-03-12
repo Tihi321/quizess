@@ -1,13 +1,43 @@
+.admin-bar {
+  .quizess-custom {
+    margin-top: -$wp-admin-bar-mobile;
+    padding-top: $wp-admin-bar-mobile;
+
+    @include media(tablet up) {
+      margin-top: -$wp-admin-bar-desktop;
+      padding-top: $wp-admin-bar-desktop;
+    }
+  }
+}
 .quizess-custom {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
+  height: 100vh;
+
+  @include media(tablet up) {
+    flex-direction: row;
+  }
 
   .quizess-header {
-    width: 20%;
+    width: 100%;
     min-width: 250px;
+
+    @include media(tablet up) {
+      width: 20%;
+    }
   }
 
   &__main {
+    display: flex;
+    flex-direction: column;
     flex: 1;
+  }
+  .quiz {
+    flex: 1;
+
+    &__content {
+      height: 100%;
+    }
   }
 }

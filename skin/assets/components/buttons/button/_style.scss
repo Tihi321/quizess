@@ -13,6 +13,7 @@ $button-colors: (
   color: map-get($button-colors, 'color');
   padding: map-get($button-variables, 'padding');
   transition: background-color 150ms ease-in-out;
+  margin: 10px;
   &--light {
     background-color: map-deep-get($theme-colors, light, 'primary-color');
     &:hover {

@@ -21,6 +21,10 @@ class GeneralHelper {
     return (value * 100) / outOff;
   }
 
+  isValidURL = (str) => {
+    return (/^(?:\w+:)?\/\/([^\s.]+\.\S{2}|localhost[:?\d]*)\S*$/).test(str);
+  }
+
 }
 
 const generalHelper = new GeneralHelper();

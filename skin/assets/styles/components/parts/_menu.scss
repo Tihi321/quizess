@@ -1,0 +1,117 @@
+$menu-colors: (
+  color: $base-white-color,
+  submenu-bg: rgba($base-dark-grey-color, 0.3),
+);
+
+.menu {
+
+  &--light {
+    background-color: map-deep-get($theme-colors, light, 'primary-color');
+  }
+  &--dark {
+    background-color: map-deep-get($theme-colors, dark, 'primary-color');
+  }
+
+  .menu__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .menu__item {
+    padding: 0;
+    color: map-get($menu-colors, 'color');
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+      display: block;
+      padding: 0 20px;
+    }
+  }
+
+  .menu__submenu {
+    list-style: none;
+    padding: 0;
+    background-color: map-get($menu-colors, 'submenu-bg');
+
+    .menu__item__link {
+      @include text-size(medium);
+      opacity: 1;
+      height: 50px;
+    }
+  }
+
+  .menu__item__link {
+    @include text-size(medium);
+    text-decoration: none;
+    letter-spacing: 1px;
+    color: map-get($menu-colors, 'color');
+    transition: opacity 0.3s ease, height 0.3s ease;
+    height: 50px;
+    display: flex;
+    align-items: center;
+  }
+
+  .menu__submenu-enter {
+    opacity: 0.01;
+
+    .menu__item__link {
+      opacity: 0;
+      height: 0;
+    }
+  }
+  .menu__submenu-enter-active {
+    opacity: 1;
+    transition: all 0.2s ease-in-out;
+
+    .menu__item__link {
+      opacity: 1;
+      height: 50px;
+    }
+  }
+  .menu__submenu-exit {
+    opacity: 1;
+
+    .menu__item__link {
+      opacity: 1;
+      height: 50px;
+    }
+  }
+  .menu__submenu-exit-active {
+    opacity: 0.01;
+    transition: height 0.2s ease-in-out, opacity 0.2s ease-in-out;
+
+    .menu__item__link {
+      opacity: 0;
+      height: 0;
+    }
+  }
+
+  .menu__header {
+    $this: &;
+    background: map-get($menu-colors, 'submenu-bg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50px;
+
+    &__logo {
+      min-height: 100px;
+      min-width: 100px;
+      display: flex;
+    }
+
+    &__img {
+      width: 100%;
+    }
+
+    @include media(tablet up) {
+      min-height: 150px;
+      #{$this}__logo {
+        min-height: 50px;
+        min-width: 50px;
+      }
+    }
+  }
+
+}
