@@ -10,29 +10,11 @@
   }
 }
 .quizess-custom {
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
   height: 100vh;
 
-  @include media(tablet up) {
-    flex-direction: row;
-  }
-
-  .quizess-header {
-    width: 100%;
-    min-width: 250px;
-
-    @include media(tablet up) {
-      width: 20%;
-    }
-  }
-
-  &__main {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
   .quiz {
     flex: 1;
 

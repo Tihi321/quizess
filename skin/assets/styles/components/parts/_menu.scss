@@ -4,7 +4,7 @@ $menu-colors: (
 );
 
 .menu {
-
+  height: 100%;
   &--light {
     background-color: map-deep-get($theme-colors, light, 'primary-color');
   }

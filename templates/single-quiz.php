@@ -40,7 +40,6 @@ if ( have_posts() ) {
         include $header_content;
       }
       ?>
-        <div class="quizess-custom__main">
       <?php
     }
     $single_path = General_Helper::get_base_path() . 'views/single/quiz.php';
@@ -57,7 +56,6 @@ if ( have_posts() ) {
         include $footer_content;
       }
       ?>
-        </div>
       </div>
       <?php
     }

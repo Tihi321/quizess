@@ -1,0 +1,83 @@
+@mixin animation (
+  $animation,
+  $duration: 035s,
+  $easing: ease-in-out,
+  $delay: 0,
+  $direction: forward,
+  $fillmode: fowards) {
+
+  animation-delay: $delay;
+  animation-duration: $duration;
+  animation-name: $animation;
+  animation-fill-mode: $fillmode;
+  animation-direction: $direction;
+  animation-timing-function: $easing;
+
+}
+
+// -- Animations -- //
+
+@keyframes scale-in {
+  0% {
+    transform: scale(0.98);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes scale-out {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.98);
+  }
+}
+@keyframes reveal {
+  0% {
+    left: 150vw;
+    transform: translateZ(0);
+  }
+  1% {
+    left: 0;
+    opacity: 0;
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+    transform: translateZ(0);
+  }
+}
+@keyframes hide {
+  0% {
+    left: 0;
+    opacity: 1;
+    transform: translateZ(0);
+  }
+  99% {
+    left: 0;
+    opacity: 0;
+  }
+  100% {
+    left: 150vw;
+    transform: translateZ(0);
+  }
+}
+@keyframes slide-in-left {
+  0% {
+    transform: translate(-100%, 0);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+@keyframes slide-out-left {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(-100%, 0);
+  }
+}

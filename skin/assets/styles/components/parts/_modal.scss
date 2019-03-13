@@ -96,72 +96,18 @@ body.admin-bar {
   }
 
   &.is-active {
-    animation-name: reveal;
-    animation-duration: 0.3s;
+    @include animation(reveal, 0.3s);
 
     .modal__inner {
-      animation-name: scale-in;
-      animation-duration: 0.35s;
-      animation-timing-function: ease-in-out;
+      @include animation(scale-in, 0.35s);
     }
   }
 
   &.is-inactive {
-    animation-name: hide;
-    animation-duration: 0.3s;
-    animation-timing-function: ease-in-out;
+    @include animation(hide, 0.3s);
 
     .modal__inner {
-      animation-name: scale-out;
-      animation-duration: 0.25s;
-      animation-timing-function: ease-in-out;
-    }
-  }
-
-  @keyframes scale-in {
-    0% {
-      transform: scale(0.98);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-  @keyframes scale-out {
-    0% {
-      transform: scale(1);
-    }
-    100% {
-      transform: scale(0.98);
-    }
-  }
-  @keyframes reveal {
-    0% {
-      left: 150vw;
-      transform: translateZ(0);
-    }
-    1% {
-      left: 0;
-      opacity: 0;
-    }
-    100% {
-      left: 0;
-      opacity: 1;
-      transform: translateZ(0);
-    }
-  }
-  @keyframes hide {
-    0% {
-      left: 0;
-      opacity: 1;
-      transform: translateZ(0);
-    }
-    99% {
-      left: 0;
-      opacity: 0;
-    }
-    100% {
-      left: 150vw;
-      transform: translateZ(0);
+      @include animation(scale-out, 0.25s);
     }
   }
 
