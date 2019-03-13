@@ -25,6 +25,21 @@ class GeneralHelper {
     return (/^(?:\w+:)?\/\/([^\s.]+\.\S{2}|localhost[:?\d]*)\S*$/).test(str);
   }
 
+  classList = (elt) => {
+    return {
+      toggle(c) {
+        elt.classList.toggle(c); return this;
+      },
+      add(c) {
+        elt.classList.add(c); return this;
+      },
+      remove(c) {
+        elt.classList.remove(c); return this;
+      },
+    };
+
+  }
+
 }
 
 const generalHelper = new GeneralHelper();
