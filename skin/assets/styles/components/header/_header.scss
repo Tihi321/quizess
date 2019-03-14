@@ -24,6 +24,10 @@ $header-colors: (
   $this: &;
   color: map-get($header-colors, 'color');
 
+  &.is-hidden {
+    z-index: map-get($zindex, 'header-hidden');
+  }
+
   &__menu-outer {
     display: flex;
     top: 0;

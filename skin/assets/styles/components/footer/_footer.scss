@@ -4,9 +4,16 @@ $footer-colors: (
 
 .quizess-footer {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 10px 20px;
   color: map-get($footer-colors, 'color');
+
+  @include media(tablet up) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 
   &--light {
     background-color: map-deep-get($theme-colors, light, 'primary-color');
@@ -33,6 +40,7 @@ $footer-colors: (
 
   &__social {
     display: flex;
+    align-items: center;
     margin: 0;
     padding-left: 0;
 

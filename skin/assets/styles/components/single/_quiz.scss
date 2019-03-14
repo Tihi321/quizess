@@ -37,15 +37,39 @@ $quiz-colors: (
       flex: 1;
       z-index: map-get($zindex, 'quiz-outer');
     }
+    &--message {
+      @include text-size(big);
+      text-align: center;
+      line-height: 1.1;
+      letter-spacing: 1px;
+      padding: 0 40px;
+    }
   }
 
-  &__button {
-    &--outer {
-      @extend %centered-content;
-      flex: 1;
-      padding: 20px;
+  &__buttons {
+    @extend %centered-content;
+    $that: &;
+    flex: 1;
+    padding: 20px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    z-index: map-get($zindex, 'quiz-outer');
+
+    &--inner {
+      display: flex;
       flex-wrap: wrap;
-      z-index: map-get($zindex, 'quiz-outer');
+      justify-content: center;
+    }
+
+    @include media(mobile down) {
+      #{$that}--inner,
+      #{$that}--start {
+        width: 100%;
+      }
+      .btn {
+        width: 100%;
+        margin: 5px 0;
+      }
     }
   }
 

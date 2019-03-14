@@ -1,5 +1,5 @@
 $close-button-variables: (
-  close-size: 35px,
+  close-size: 20px,
   close-size-tablet: 24px,
   close-icon-size: 20px,
 );
@@ -10,6 +10,7 @@ $close-button-colors: (
 .modal {
   &__top-bar {
     position: absolute;
+    overflow: hidden;
     left: 0;
     top: 0;
     width: 100%;
@@ -17,11 +18,16 @@ $close-button-colors: (
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    border-radius: 20px 20px 0 0;
+
+    @include media(tablet up) {
+      padding: 10px;
+    }
     &--light {
-      background: map-deep-get($theme-colors, light, 'primary-color');
+      background-color: map-deep-get($theme-colors, light, 'primary-color');
     }
     &--dark {
-      background: map-deep-get($theme-colors, dark, 'primary-color');
+      background-color: map-deep-get($theme-colors, dark, 'primary-color');
     }
 
     .btn-close {

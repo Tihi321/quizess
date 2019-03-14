@@ -7,7 +7,7 @@
  */
 
 ?>
-<header class="quizess-header quizess-header--<?php echo esc_attr( $theme ); ?>">
+<header class="quizess-header quizess-header--<?php echo esc_attr( $theme ); ?> js-header">
   <div class="quizess-header__overlay js-header-overlay">
   </div>
   <div class="quizess-header__menu-outer">

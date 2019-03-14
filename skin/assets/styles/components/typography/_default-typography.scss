@@ -6,10 +6,44 @@
   h5,
   h6 {
     @extend %heading-reset;
-    font-weight: bold;
-    line-height: 1.7;
-    text-transform: uppercase;
-    padding: 20px 0 25px;
   }
+
+  h1 {
+    @extend %text-heading-1;
+  }
+
+  h2 {
+    @extend %text-heading-2;
+  }
+
+  h3 {
+    @extend %text-heading-3;
+  }
+
+  h4 {
+    @extend %text-heading-4;
+  }
+
+  h5,
+  h6 {
+    @extend %text-heading-4;
+  }
+
+  p {
+    @extend %paragraph-reset;
+    @extend %text-body;
+  }
+
+  ul {
+    padding-left: 0;
+    li {
+      list-style: none;;
+    }
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
 }
 

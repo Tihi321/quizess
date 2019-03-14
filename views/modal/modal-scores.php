@@ -28,7 +28,7 @@ $total   = ( $user_id ) ?? General_Helper::get_array_value( 'total', $player_sco
     <?php if ( ! empty( $player_scores ) ) { ?>
       <?php if ( ! empty( $user_id ) && ! empty( $correct ) && ! empty( $total ) ) { ?>
         <div class="modal_last-score last-score">
-          <div class="last-score__title">
+          <div class="last-score__header last-score__title">
             <?php echo esc_html__( 'Last score', 'quizess' ); ?>
           </div>
           <ul class="last-score__parent">
@@ -53,7 +53,6 @@ $total   = ( $user_id ) ?? General_Helper::get_array_value( 'total', $player_sco
           </ul>
         </div>
       <?php } ?>
-      <div class="modal__scores scores">
         <ul class="scores__parent">
           <li class="scores__item scores__item--title">
             <?php
@@ -77,7 +76,6 @@ $total   = ( $user_id ) ?? General_Helper::get_array_value( 'total', $player_sco
             ?>
           </li>
         </ul>
-      </div>
     <?php } ?>
     </div>
   </div>

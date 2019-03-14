@@ -40,7 +40,6 @@ body.admin-bar {
   left: 150vw;
   top: 0;
   padding-top: 50px;
-  overflow: hidden;
   z-index: map-get($zindex, 'modal');
   opacity: 0;
   animation-fill-mode: both;
@@ -58,7 +57,6 @@ body.admin-bar {
   &__inner {
     z-index: map-get($zindex, 'modal');
     -webkit-overflow-scrolling: touch;
-    overflow: hidden;
     position: relative;
     height: 90%;
     width: 100%;
@@ -67,20 +65,30 @@ body.admin-bar {
     flex-direction: column;
     justify-content: center;
     background-color: map-get($modal, 'inner-bg-color');
-    padding: 50px;
+    padding: 40px 10px 10px;
     border-radius: 20px;
     border-width: 1px;
     border-style: solid;
     animation-fill-mode: both;
     animation-timing-function: map-get($modal, 'cubic-ease');
 
+    @include media(tablet up) {
+      padding: 50px;
+    }
+
     &--light {
       color: map-deep-get($theme-colors, light, 'color');
       border-color: map-deep-get($theme-colors, light, 'color');
+      .last-score__header {
+        background-color: map-deep-get($theme-colors, light, 'primary-color');
+      }
     }
     &--dark {
       color: map-deep-get($theme-colors, dark, 'color');
       border-color: map-deep-get($theme-colors, dark, 'color');
+      .last-score__header {
+        background-color: map-deep-get($theme-colors, dark, 'primary-color');
+      }
     }
   }
 
@@ -88,6 +96,13 @@ body.admin-bar {
     flex: 1;
     display: flex;
     flex-direction: column;
+    overflow: auto;
+  }
+
+  &__about {
+    @include media(tablet up) {
+      padding-top: 50px;
+    }
   }
 
   &__footer {
