@@ -69,7 +69,7 @@ function BlockElementsConsumer(props) {
       <div className="explanation__title">{__('Explanation', 'quizess')}</div>
       <TextElement
         value={explanation}
-        outputType="text"
+        outputType=""
         onChange={(explanation) => handleExplanationChange(explanation)}
         maxChars={350}
         single={false}

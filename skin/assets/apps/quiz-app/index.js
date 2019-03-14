@@ -13,6 +13,7 @@ export default class App {
       this.quizId = this.$appElement.dataset.quizId;
       this.userSubmit = this.$appElement.dataset.userSubmit;
       this.theme = this.$appElement.dataset.theme;
+      this.headerElement = document.querySelector('.js-header');
     }
 
   }
@@ -20,7 +21,7 @@ export default class App {
   init() {
     if (this.$appElement) {
       render(
-        <AppStore theme={this.theme} quizId={this.quizId} userSubmit={this.userSubmit} />,
+        <AppStore theme={this.theme} quizId={this.quizId} userSubmit={this.userSubmit} headerElement={this.headerElement} />,
         this.$appElement
       );
     }

@@ -6,6 +6,7 @@ const AppStore = (props) => {
     theme,
     quizId,
     userSubmit,
+    headerElement,
   } = props;
 
   return (
@@ -13,6 +14,7 @@ const AppStore = (props) => {
       theme={theme}
       quizId={quizId}
       userSubmit={userSubmit}
+      headerElement={headerElement}
     >
       <App />
     </AppProvider>

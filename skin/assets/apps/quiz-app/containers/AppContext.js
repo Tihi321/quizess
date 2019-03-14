@@ -18,6 +18,8 @@ class AppProvider extends PureComponent {
     this.$body = selectors.getBody();
     this.isIphone = devices.iPhone();
 
+    this.headerElement = props.headerElement;
+
     const {theme, userSubmit} = props;
     const {userPlayer} = userLogged;
 
@@ -46,6 +48,7 @@ class AppProvider extends PureComponent {
   }
 
   setBody = () => {
+    this.headerElement.classList.add('is-hidden');
     if (this.isIphone) {
       this.scrollPosition = window.pageYOffset;
     }
@@ -60,6 +63,7 @@ class AppProvider extends PureComponent {
     }
     setTimeout(() => {
       this.$body.classList.remove(generalHelper.getBodyActiveClass(this.isIphone));
+      this.headerElement.classList.remove('is-hidden');
     }, 300);
   }
 

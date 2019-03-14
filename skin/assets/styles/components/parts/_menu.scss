@@ -7,10 +7,10 @@ $menu-colors: (
 .menu {
   height: 100%;
   &--light {
-    background-color: map-deep-get($theme-colors, light, 'primary-color');
+    background-color: desaturate(map-deep-get($theme-colors, light, 'primary-color'), 20%);
   }
   &--dark {
-    background-color: map-deep-get($theme-colors, dark, 'primary-color');
+    background-color: desaturate(map-deep-get($theme-colors, dark, 'primary-color'), 20%);
   }
 
   .menu__list {
@@ -136,6 +136,7 @@ $menu-colors: (
       justify-content: center;
       align-items: center;
       width: 100%;
+      padding: 50px;
     }
 
     &__img {
