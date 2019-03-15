@@ -1,4 +1,22 @@
 .preview-media {
-  @extend %preview-media-wrap;
+  max-width: 700px;
+  margin: 20px auto;
+  border: 2px solid;
+
+  &__lottie,
+  &__image,
+  &__video {
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .media-video-class {
+    width: 100%;
+  }
+
+  @include media(tablet up) {
+    margin: 50px auto;
+  }
 
 }

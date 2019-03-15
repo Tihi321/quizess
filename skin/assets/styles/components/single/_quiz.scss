@@ -1,5 +1,7 @@
 $quiz-colors: (
   bg-color: $base-primary-blue,
+  success-message: $base-persian-color,
+  fail-message: $base-punch-color,
 );
 
 .quiz {
@@ -70,6 +72,20 @@ $quiz-colors: (
         width: 100%;
         margin: 5px 0;
       }
+    }
+  }
+  &__message {
+    @extend %paragraph-reset;
+    @extend %text-body;
+    text-align: center;
+    margin: 10px;
+    font-weight: bold;
+
+    &--success {
+      color: map-get($quiz-colors, 'success-message');
+    }
+    &--fail {
+      color: map-get($quiz-colors, 'fail-message');
     }
   }
 

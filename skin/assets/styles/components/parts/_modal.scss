@@ -96,6 +96,7 @@ body.admin-bar {
     flex: 1;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     overflow: auto;
   }
 
@@ -107,7 +108,18 @@ body.admin-bar {
 
   &__footer {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+
+    @include media(tablet up) {
+      flex-direction: row;
+    }
+
+    .wide-btn--next {
+      justify-self: flex-end;
+    }
+    .wide-btn--explanation {
+      justify-self: flex-start;
+    }
   }
 
   &.is-active {

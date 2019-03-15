@@ -10,8 +10,12 @@
 
   &--columns {
     .answers-item {
-      width: 40%;
+      width: 100%;
       flex-grow: 1;
+
+      @include media(tablet up) {
+        width: 40%;
+      }
     }
   }
 }
