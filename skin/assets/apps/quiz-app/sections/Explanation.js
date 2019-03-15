@@ -15,6 +15,7 @@ const ExplanationConsumer = (props) => {
 
   const {correct} = selectedAnswer;
   const messageText = (correct) ? successMessage : failureMessage;
+  const messageClass = (correct) ? 'success' : 'fail';
 
   const textElement = (
     <RawHTML className="quiz__explanation">
@@ -31,7 +32,7 @@ const ExplanationConsumer = (props) => {
 
   return (
     <Fragment>
-      <RawHTML className="quiz__message" >
+      <RawHTML className={`quiz__message quiz__message--${messageClass}`} >
         {messageText}
       </RawHTML>
       {(text) && textElement}

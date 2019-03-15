@@ -2,7 +2,7 @@ import {Fragment} from 'react';
 import classnames from 'classnames';
 import icons from './icons';
 
-const NextButton = (props) => {
+const WideButton = (props) => {
   const {
     children,
     theme,
@@ -15,10 +15,10 @@ const NextButton = (props) => {
 
   const btnElements = (
     <Fragment>
-      <div className="next-btn__content">
+      <div className="wide-btn__content">
         {children}
       </div>
-      <div className="next-btn__graphic">
+      <div className="wide-btn__graphic">
         {icon}
       </div>
     </Fragment>
@@ -28,8 +28,9 @@ const NextButton = (props) => {
     return (
       <div
         className={classnames(
-          'next-btn',
-          'next-btn--disabled',
+          'wide-btn',
+          'wide-btn--disabled',
+          {'wide-btn--next': (!featured)},
         )}>
         {btnElements}
       </div>
@@ -37,8 +38,10 @@ const NextButton = (props) => {
   }
 
   const buttonClasses = classnames(
-    'next-btn',
-    `next-btn--${theme}`,
+    'wide-btn',
+    `wide-btn--${theme}`,
+    {'wide-btn--next': (!featured)},
+    {'wide-btn--explanation': (featured)},
   );
 
   const handleKeyPress = (event) => {
@@ -60,4 +63,4 @@ const NextButton = (props) => {
 
 };
 
-export default NextButton;
+export default WideButton;

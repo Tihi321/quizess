@@ -1,14 +1,10 @@
-$button-variables: (
-  padding: 15px 20px,
-);
-
-$button-colors: (
+$wide-colors: (
   color: $base-white-color,
   disabled-primary: $base-light-grey-color,
   disabled-secondary: $base-light-blue-color,
 );
 
-.next-btn {
+.wide-btn {
   $this: &;
   display: flex;
   min-width: 250px;
@@ -16,16 +12,22 @@ $button-colors: (
   cursor: pointer;
 
   @include text-size(default);
-  color: map-get($button-colors, 'color');
+  color: map-get($wide-colors, 'color');
+
+  &:focus,
+  &:active {
+    outline: none;
+    box-shadow: none;
+  }
 
   &--disabled {
     cursor: default;
     opacity: 0.7;
     #{$this}__content {
-      background-color: map-get($button-colors, 'disabled-primary');
+      background-color: map-get($wide-colors, 'disabled-primary');
     }
     #{$this}__graphic {
-      background-color: map-get($button-colors, 'disabled-secondary');
+      background-color: map-get($wide-colors, 'disabled-secondary');
     }
   }
 
@@ -53,14 +55,24 @@ $button-colors: (
   }
 
   &__content {
-    padding: map-get($button-variables, 'padding');
+    padding: 5px 10px;
+    margin: 5px 10px;
     transition: background-color 150ms ease-in-out;
     flex: 1;
+
+    @include media(tablet up) {
+      padding: 10px 15px;
+      margin: 0;
+    }
   }
 
   &__graphic {
-    padding: map-get($button-variables, 'padding');
-    display: flex;
+    padding: 10px 15px;
+    display: none;
     align-items: center;
+
+    @include media(tablet up) {
+      display: flex;
+    }
   }
 }

@@ -41,17 +41,4 @@ $wp-question-block-variables: (
   .explanation__header {
     @extend %explanation-header;
   }
-
-  .preview-media {
-    @extend %preview-media-wrap;
-
-    &__lottie,
-    &__image,
-    &__video {
-      margin: 0;
-    }
-    .media-video-class {
-      display: block;
-    }
-  }
 }

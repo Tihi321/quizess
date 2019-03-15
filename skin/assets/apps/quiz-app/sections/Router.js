@@ -3,7 +3,7 @@ import {__} from '@wordpress/i18n';
 import Question from './Question';
 import Explanation from './Explanation';
 import {AppConsumer} from '../containers/AppContext';
-import {NextButton, Placeholder} from '../../../components';
+import {WideButton, Placeholder} from '../../../components';
 
 const RouterConsumer = (props) => {
   const {
@@ -36,17 +36,17 @@ const RouterConsumer = (props) => {
   const explanationDataCheck = (!(explanationMedia || explanationText)) || true;
 
   const explanationButtonElement = (
-    <NextButton
+    <WideButton
       theme={theme}
       onClick={handleExplanationChange}
       disabled={false}
       featured={true}
     >
       {(!showExplanation) ? __('Show Expplanation', 'quizess') : __('Hide Expplanation', 'quizess')}
-    </NextButton>
+    </WideButton>
   );
 
-  const nextButtonText = (!submitedAnswer) ? __('Submit', 'quizess') : __('Next Question', 'quizess');
+  const wideButtonText = (!submitedAnswer) ? __('Submit', 'quizess') : __('Next Question', 'quizess');
 
   const questionElement = (
     <Question
@@ -69,14 +69,14 @@ const RouterConsumer = (props) => {
       {renderElement}
       <div className="modal__footer">
         {(submitedAnswer && explanationDataCheck) && explanationButtonElement}
-        <NextButton
+        <WideButton
           theme={theme}
           onClick={handleSubmitChange}
           disabled={(id === 0) || false}
           featured={false}
         >
-          {nextButtonText}
-        </NextButton>
+          {wideButtonText}
+        </WideButton>
       </div>
     </Fragment>
   );

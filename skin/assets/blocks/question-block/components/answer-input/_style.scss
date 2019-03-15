@@ -17,12 +17,10 @@ $answer-input-colors: (
 
     &--light {
       background-color: map-deep-get($theme-colors, light, 'bg-color');
-      border: 1px solid map-deep-get($theme-colors, light, 'border-color');
       color: map-deep-get($theme-colors, light, 'color');
     }
     &--dark {
       background-color: map-deep-get($theme-colors, dark, 'bg-color');
-      border: 1px solid map-deep-get($theme-colors, dark, 'border-color');
       color: map-deep-get($theme-colors, dark, 'color');
     }
   }

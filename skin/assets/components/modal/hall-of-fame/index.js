@@ -1,5 +1,5 @@
 import {__} from '@wordpress/i18n';
-import {NextButton} from '../../index';
+import {WideButton} from '../../index';
 import generalHelper from '../../../helpers/general-helper';
 
 const HallOfFame = (props) => {
@@ -38,12 +38,12 @@ const HallOfFame = (props) => {
       <div className="hall-fame__header">
         {__('Congratulation, you have successfuly completed quiz.', 'quizess')}
       </div>
-      <NextButton
+      <WideButton
         theme={theme}
         onClick={onClick}
       >
         {__('Try again', 'quizess')}
-      </NextButton>
+      </WideButton>
       <div className="hall-fame__footer">
         <div className="hall-fame__score">
           {__('Score', 'quizess')} {`${correctAnswers}/${questionsTotal}`}
