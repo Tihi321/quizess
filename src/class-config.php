@@ -139,6 +139,15 @@ abstract class Config {
   const CUSTOM_STYLE_TOGGLE = 'quizess_custom_style';
 
   /**
+   * Toggle to check if user wants remove admin top bar on frontend
+   *
+   * @var string
+   *
+   * @since 1.0.0
+   */
+  const REMOVE_ADMIN_TOGGLE = 'quizess_remove_admin_bar';
+
+  /**
    * Toggle to check if user wants display github of quizess in footer
    *
    * @var string

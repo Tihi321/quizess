@@ -18,6 +18,7 @@ const GeneralOptionsConsumer = (props) => {
     dataLoaded,
     useCustomStyle,
     handleUseCustomChange,
+    removeAdminBar,
     handleOnSave,
     logo: {
       id,
@@ -37,6 +38,7 @@ const GeneralOptionsConsumer = (props) => {
     handleLinkedInChange,
     handleInstagramChange,
     handleShowGithubChange,
+    handleURemoveAdminBarChange,
   } = props;
 
   const useCustomElement = (
@@ -49,6 +51,19 @@ const GeneralOptionsConsumer = (props) => {
         label={__('Use custom styles', 'quizess')}
         checked={useCustomStyle}
         onChange={handleUseCustomChange}
+      />
+    </InputRow>
+  );
+  const removeAdminBarElement = (
+    <InputRow
+      className="options__row"
+    >
+      <ToggleSwitch
+        labelClass="options__label"
+        idName="custom-slides"
+        label={__('Remove admin bar', 'quizess')}
+        checked={removeAdminBar}
+        onChange={handleURemoveAdminBarChange}
       />
     </InputRow>
   );
@@ -240,6 +255,7 @@ const GeneralOptionsConsumer = (props) => {
       <div
         className="options__general--top"
       >
+        {removeAdminBarElement}
         {useCustomElement}
         {showGithubElement}
         {logoElement}
@@ -280,6 +296,7 @@ const GeneralOptions = () => (
           twitter,
           linkedIn,
           instagram,
+          removeAdminBar,
         },
         dataStore: {
           handleUseCustomChange,
@@ -291,6 +308,7 @@ const GeneralOptions = () => (
           handleLinkedInChange,
           handleInstagramChange,
           handleShowGithubChange,
+          handleURemoveAdminBarChange,
         },
       } = value;
       return (
@@ -303,8 +321,10 @@ const GeneralOptions = () => (
           instagram={instagram}
           copyright={copyright}
           useCustomStyle={useCustomStyle}
+          removeAdminBar={removeAdminBar}
           showGithub={showGithub}
           handleUseCustomChange={handleUseCustomChange}
+          handleURemoveAdminBarChange={handleURemoveAdminBarChange}
           handleOnSave={handleOnSave}
           handleOnSelectMedia={handleOnSelectMedia}
           handleCopyrightChange={handleCopyrightChange}

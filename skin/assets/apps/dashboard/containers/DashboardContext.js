@@ -44,6 +44,7 @@ class DashboardProvider extends PureComponent {
       linkedIn: '',
       instagram: '',
       showDetails: false,
+      removeAdminBar: false,
       showRemove: false,
       useCustomStyle: false,
       showGithub: false,
@@ -85,6 +86,7 @@ class DashboardProvider extends PureComponent {
     const {
       generalOptions: {
         customStyle,
+        removeAdminBar,
         showGithub,
         logo,
         copyright,
@@ -100,12 +102,14 @@ class DashboardProvider extends PureComponent {
 
     const customStyleValue = (customStyle === '1') || false;
     const showGithubValue = (showGithub === '1') || false;
+    const removeAdminBarValue = (removeAdminBar === '1') || false;
     const scoresArr = this.parseScoresData(scores);
 
     return {
       generalOptions: {
         customStyle: customStyleValue,
         showGithub: showGithubValue,
+        removeAdminBar: removeAdminBarValue,
         copyright,
         facebook,
         twitter,
@@ -136,6 +140,7 @@ class DashboardProvider extends PureComponent {
         const {
           generalOptions: {
             customStyle,
+            removeAdminBar,
             showGithub,
             copyright,
             facebook,
@@ -154,6 +159,7 @@ class DashboardProvider extends PureComponent {
             dataLoaded: true,
             scoresData: scores,
             useCustomStyle: customStyle,
+            removeAdminBar,
             showGithub,
             copyright,
             facebook,
@@ -298,6 +304,7 @@ class DashboardProvider extends PureComponent {
 
       const {
         useCustomStyle,
+        removeAdminBar,
         showGithub,
         logo,
         copyright,
@@ -309,6 +316,7 @@ class DashboardProvider extends PureComponent {
 
       const bodyData = JSON.stringify({
         customStyle: useCustomStyle,
+        removeAdminBar,
         showGithub,
         copyright,
         logo,
@@ -451,6 +459,13 @@ class DashboardProvider extends PureComponent {
         };
       });
     },
+    handleURemoveAdminBarChange: (value) => {
+      this.setState(() => {
+        return {
+          removeAdminBar: value,
+        };
+      });
+    },
     handleShowGithubChange: (value) => {
       this.setState(() => {
         return {
@@ -535,6 +550,7 @@ class DashboardProvider extends PureComponent {
       twitter,
       linkedIn,
       instagram,
+      removeAdminBar,
     } = this.state;
 
     return (
@@ -562,6 +578,7 @@ class DashboardProvider extends PureComponent {
             linkedIn,
             instagram,
             showGithub,
+            removeAdminBar,
           },
           dataStore: this.dataStore,
         }}>

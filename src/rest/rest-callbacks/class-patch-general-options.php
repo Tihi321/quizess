@@ -42,13 +42,14 @@ class Patch_General_Options extends Config implements Rest_Callback {
 
     $body = \json_decode( $request->get_body(), true );
 
-    $custom_style = sanitize_text_field( General_Helper::get_array_value( 'customStyle', $body ) );
-    $show_github  = sanitize_text_field( General_Helper::get_array_value( 'showGithub', $body ) );
-    $copyright    = sanitize_text_field( General_Helper::get_array_value( 'copyright', $body ) );
-    $facebook     = sanitize_text_field( General_Helper::get_array_value( 'facebook', $body ) );
-    $twitter      = sanitize_text_field( General_Helper::get_array_value( 'twitter', $body ) );
-    $linked_in    = sanitize_text_field( General_Helper::get_array_value( 'linkedIn', $body ) );
-    $instagram    = sanitize_text_field( General_Helper::get_array_value( 'instagram', $body ) );
+    $custom_style     = sanitize_text_field( General_Helper::get_array_value( 'customStyle', $body ) );
+    $remove_admin_bar = sanitize_text_field( General_Helper::get_array_value( 'removeAdminBar', $body ) );
+    $show_github      = sanitize_text_field( General_Helper::get_array_value( 'showGithub', $body ) );
+    $copyright        = sanitize_text_field( General_Helper::get_array_value( 'copyright', $body ) );
+    $facebook         = sanitize_text_field( General_Helper::get_array_value( 'facebook', $body ) );
+    $twitter          = sanitize_text_field( General_Helper::get_array_value( 'twitter', $body ) );
+    $linked_in        = sanitize_text_field( General_Helper::get_array_value( 'linkedIn', $body ) );
+    $instagram        = sanitize_text_field( General_Helper::get_array_value( 'instagram', $body ) );
 
     $sanitized_logo = [];
     $logo           = General_Helper::get_array_value( 'logo', $body );
@@ -67,6 +68,7 @@ class Patch_General_Options extends Config implements Rest_Callback {
     $sanitized_logo_string = wp_json_encode( $sanitized_logo );
 
     $this->save_options( $custom_style, self::CUSTOM_STYLE_TOGGLE );
+    $this->save_options( $remove_admin_bar, self::REMOVE_ADMIN_TOGGLE );
     $this->save_options( $show_github, self::SHOW_GITHUB_TOGGLE );
     $this->save_options( $sanitized_logo_string, self::CUSTOM_LOGO );
     $this->save_options( $copyright, self::COPYRIGHT_TEXT );

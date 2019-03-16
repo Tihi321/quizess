@@ -6,32 +6,24 @@ msgstr ""
 #: skin/assets/apps/dashboard/sections/Details.js:107
 #: skin/assets/apps/dashboard/sections/Scores.js:31
 #: skin/assets/apps/quiz-app/parts/QuestionHeader.js:35
-#: skin/assets/components/modal/hall-of-fame/index.js:81
 #: skin/assets/components/modal/overview/index.js:85
-#: skin/assets/components/modal/stats/index.js:85
 msgid "Question"
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Details.js:108
-#: skin/assets/components/modal/hall-of-fame/index.js:84
 #: skin/assets/components/modal/overview/index.js:88
-#: skin/assets/components/modal/stats/index.js:88
 msgid "Answer"
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Details.js:120
 #: skin/assets/apps/dashboard/sections/Scores.js:32
 #: skin/assets/blocks/question-block/components/answer-input/index.js:57
-#: skin/assets/components/modal/hall-of-fame/index.js:55
 #: skin/assets/components/modal/overview/index.js:55
-#: skin/assets/components/modal/stats/index.js:55
 msgid "Correct"
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Details.js:120
-#: skin/assets/components/modal/hall-of-fame/index.js:30
 #: skin/assets/components/modal/overview/index.js:30
-#: skin/assets/components/modal/stats/index.js:30
 msgid "Incorrect"
 msgstr ""
 
@@ -49,17 +41,13 @@ msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Details.js:57
 #: skin/assets/apps/dashboard/sections/Scores.js:25
-#: skin/assets/components/modal/hall-of-fame/index.js:58
 #: skin/assets/components/modal/overview/index.js:58
-#: skin/assets/components/modal/stats/index.js:58
 msgid "Total"
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Details.js:58
 #: skin/assets/apps/dashboard/sections/Scores.js:26
-#: skin/assets/components/modal/hall-of-fame/index.js:87
 #: skin/assets/components/modal/overview/index.js:61
-#: skin/assets/components/modal/stats/index.js:61
 msgid "Success"
 msgstr ""
 
@@ -71,40 +59,44 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:111
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:103
+msgid "Logo"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:126
 msgid "Copyright"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:137
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:152
 msgid "Facebook"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:163
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:178
 msgid "Twitter"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:189
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:204
 msgid "LinkedIn"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:215
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:230
 msgid "Instagram"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:49
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:51
 msgid "Use custom styles"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:63
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:64
+msgid "Remove admin bar"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:78
 msgid "Show github"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:76
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:91
 msgid "Save"
-msgstr ""
-
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:88
-msgid "Logo"
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/QuizOptions.js:28
@@ -188,9 +180,6 @@ msgid "Dost thou wish to leave with such hasty abandon ?"
 msgstr ""
 
 #: skin/assets/apps/quiz-app/sections/Modal.js:66
-#: skin/assets/apps/quiz-app/sections/Modal.js:67
-#: skin/assets/apps/quiz-app/sections/Modal.js:60
-#: skin/assets/apps/quiz-app/sections/Modal.js:50
 #: skin/assets/components/dialog/index.js:30
 msgid "Cancel"
 msgstr ""
@@ -497,34 +486,23 @@ msgstr ""
 msgid "Your browser does not support the video tag."
 msgstr ""
 
-#: skin/assets/components/modal/hall-of-fame/index.js:39
-msgid "Kudos, you have successfuly completed quiz."
-msgstr ""
-
-#: skin/assets/components/modal/hall-of-fame/index.js:45
-#: skin/assets/components/modal/overview/index.js:45
-#: skin/assets/components/modal/stats/index.js:45
-msgid "Try again"
-msgstr ""
-
-#: skin/assets/components/modal/hall-of-fame/index.js:50
-#: skin/assets/components/modal/overview/index.js:50
-#: skin/assets/components/modal/stats/index.js:50
-msgid "Stats"
-msgstr ""
-
 #: skin/assets/components/modal/overview/index.js:39
-#: skin/assets/components/modal/stats/index.js:39
 msgid "Kudos !"
 msgstr ""
 
+#: skin/assets/components/modal/overview/index.js:45
+msgid "Try again"
+msgstr ""
+
+#: skin/assets/components/modal/overview/index.js:50
+msgid "Stats"
+msgstr ""
+
 #: skin/assets/components/modal/overview/index.js:80
-#: skin/assets/components/modal/stats/index.js:80
 msgid "Overview"
 msgstr ""
 
 #: skin/assets/components/modal/overview/index.js:91
-#: skin/assets/components/modal/stats/index.js:91
 msgid "Status"
 msgstr ""
 

@@ -34,16 +34,18 @@ class Get_Dashboard_Options extends Config implements Rest_Callback {
   public function rest_callback( \WP_REST_Request $request ) {
     $quiz_scores = [];
 
-    $logo                = get_option( self::CUSTOM_LOGO );
-    $copyright           = get_option( self::COPYRIGHT_TEXT );
-    $facebook            = get_option( self::FACEBOOK_URL );
-    $twitter             = get_option( self::TWITTER_URL );
-    $linked_in           = get_option( self::LINKEDIN_URL );
-    $instagram           = get_option( self::INSTAGRAM_URL );
-    $custom_style_option = get_option( self::CUSTOM_STYLE_TOGGLE );
-    $custom_style        = $custom_style_option ?: '0';
-    $show_github_option  = get_option( self::SHOW_GITHUB_TOGGLE );
-    $show_github         = $show_github_option ?: '0';
+    $logo                    = get_option( self::CUSTOM_LOGO );
+    $copyright               = get_option( self::COPYRIGHT_TEXT );
+    $facebook                = get_option( self::FACEBOOK_URL );
+    $twitter                 = get_option( self::TWITTER_URL );
+    $linked_in               = get_option( self::LINKEDIN_URL );
+    $instagram               = get_option( self::INSTAGRAM_URL );
+    $custom_style_option     = get_option( self::CUSTOM_STYLE_TOGGLE );
+    $custom_style            = $custom_style_option ?: '0';
+    $remove_admin_bar_option = get_option( self::REMOVE_ADMIN_TOGGLE );
+    $remove_admin_bar        = $remove_admin_bar_option ?: '0';
+    $show_github_option      = get_option( self::SHOW_GITHUB_TOGGLE );
+    $show_github             = $show_github_option ?: '0';
 
     $quizess_posts = get_posts(
       [
@@ -65,14 +67,15 @@ class Get_Dashboard_Options extends Config implements Rest_Callback {
     $output =
     [
         'generalOptions' => [
-            'customStyle' => $custom_style,
-            'showGithub'  => $show_github,
-            'logo'        => $logo,
-            'copyright'   => $copyright,
-            'facebook'    => $facebook,
-            'twitter'     => $twitter,
-            'linkedIn'    => $linked_in,
-            'instagram'   => $instagram,
+            'customStyle'    => $custom_style,
+            'removeAdminBar' => $remove_admin_bar,
+            'showGithub'     => $show_github,
+            'logo'           => $logo,
+            'copyright'      => $copyright,
+            'facebook'       => $facebook,
+            'twitter'        => $twitter,
+            'linkedIn'       => $linked_in,
+            'instagram'      => $instagram,
         ],
         'quizOptions' => [
             'scores' => $quiz_scores,

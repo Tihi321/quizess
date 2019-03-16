@@ -35,6 +35,10 @@ class Admin extends Config implements Service {
     $this->add_action( 'enqueue_block_editor_assets', $this, 'enqueue_block_styles', 50 );
     $this->add_action( 'admin_enqueue_scripts', $this, 'enqueue_admin_scripts' );
     $this->add_action( 'enqueue_block_editor_assets', $this, 'enqueue_block_scripts' );
+
+    if ( $this->remove_admin_bar_check() ) {
+      $this->add_action( 'show_admin_bar', $this, 'remove_admin_login_header' );
+    }
   }
 
   /**
@@ -170,6 +174,27 @@ class Admin extends Config implements Service {
     wp_enqueue_script( 'react' );
     wp_enqueue_script( 'react-dom' );
 
+  }
+
+  /**
+   * Check if user has opted to remove admin bar for login users on fron end
+   *
+   * @since 1.0.0
+   */
+  public function remove_admin_bar_check() : bool {
+    $remove_admin_bar_option = get_option( self::REMOVE_ADMIN_TOGGLE );
+    $remove_admin_bar        = $remove_admin_bar_option ?: '0';
+
+    return ( $remove_admin_bar === '1' );
+  }
+
+  /**
+   * Removes admin bar on frontend.
+   *
+   * @since 1.0.0
+   */
+  public function remove_admin_login_header() {
+    return false;
   }
 
 }
