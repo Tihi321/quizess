@@ -1,0 +1,32 @@
+.stats {
+  &__parent {
+    @include text-size(medium);
+    margin: 0;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  &__item {
+    display: flex;
+    &-title {
+      padding-bottom: 10px;
+      font-weight: bold;
+    }
+  }
+
+  &__inner {
+    width: 20%;
+    &--overview {
+      width: 33%;
+    }
+  }
+
+  &__table-title {
+    @include text-size(default);
+    text-align: center;
+  }
+
+  @include media(tablet up) {
+    padding: 10px;
+  }
+}

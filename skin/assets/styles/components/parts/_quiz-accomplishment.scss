@@ -1,0 +1,40 @@
+.quiz-accomplishment {
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid;
+
+  &__header {
+    padding: 5px 10px;
+  }
+
+  &__parent {
+    @include text-size(medium);
+    margin: 0;
+    padding: 10px 0;
+  }
+  &__item {
+    display: flex;
+    &-title {
+      font-weight: bold;
+      padding-bottom: 10px;
+    }
+  }
+
+  &__title {
+    &-helper {
+      @include text-size(tiny);
+      display: block;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.2;
+      text-transform: lowercase;
+    }
+  }
+
+  &__inner {
+    width: 33%;
+  }
+
+}
