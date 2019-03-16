@@ -9,7 +9,7 @@ use Quizess\Helpers\General_Helper;
 use Quizess\Core\Config;
 
 
-$user_submit     = '1';
+$user_submit     = '0';
 $welcome_message = General_Helper::get_array_value( 'welcomeMessage', $quiz_options['options'] );
 $about_field     = General_Helper::get_array_value( 'aboutField', $quiz_options['options'] );
 $bg_color        = General_Helper::get_array_value( 'bgColor', $quiz_options['bgOptions'] );
@@ -19,12 +19,20 @@ $scores_modal_id = 'modal--scores-' . $post->ID;
 $quiz_locked     = \get_post_meta( $post->ID, Config::QUIZ_LOCKED_META_KEY, true );
 $base_path       = General_Helper::get_base_path();
 
-// check if user can submit scores.
 if ( is_user_logged_in() ) {
-  $current_user_id = get_current_user_id();
-  $can_user_submit = General_Helper::can_user_submit( $post->ID, $current_user_id );
-  if ( ! $can_user_submit ) {
-    $user_submit = '0';
+
+  // check if quiz tracks scores.
+  $quiz_tracks_scores = \get_post_meta( $post->ID, Config::TRACK_SCORES_META_KEY, true );
+
+  if ( $quiz_tracks_scores === 'on' ) {
+
+    // check if user can submit scores.
+    $current_user_id = get_current_user_id();
+    $can_user_submit = General_Helper::can_user_submit( $post->ID, $current_user_id );
+
+    if ( $can_user_submit ) {
+      $user_submit = '1';
+    }
   }
 }
 
