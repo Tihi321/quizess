@@ -1,13 +1,10 @@
-$close-button-variables: (
-  close-size: 20px,
-  close-size-tablet: 24px,
-  close-icon-size: 20px,
-);
 $close-button-colors: (
   color: $base-white-color,
 );
 
 .modal {
+  $this: &;
+
   &__top-bar {
     position: absolute;
     overflow: hidden;
@@ -18,7 +15,7 @@ $close-button-colors: (
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    border-radius: 20px 20px 0 0;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 
     @include media(tablet up) {
       padding: 10px;
@@ -30,6 +27,15 @@ $close-button-colors: (
       background-color: map-deep-get($theme-colors, dark, 'primary-color');
     }
 
+    #{$this}__title {
+      @include text-size(large);
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      letter-spacing: 2px;
+    }
+
     .btn-close {
       @extend %button-reset;
       background: transparent;
@@ -38,12 +44,12 @@ $close-button-colors: (
       color: map-get($close-button-colors, 'color');
       transition: opacity 0.3s ease;
 
-      width: map-get($close-button-variables, 'close-size');
-      height: map-get($close-button-variables, 'close-size');
+      width: 20px;
+      height: 20px;
 
       @include media(tablet up) {
-        width: map-get($close-button-variables, 'close-size-tablet');
-        height: map-get($close-button-variables, 'close-size-tablet');
+        width: 24px;
+        height: 24px;
       }
       &:hover {
         background: transparent;
@@ -54,7 +60,7 @@ $close-button-colors: (
         content: 'X';
         display: block;
         font-weight: bold;
-        font-size: map-get($close-button-variables, 'close-icon-size');
+        font-size: 20px;
       }
 
     }
