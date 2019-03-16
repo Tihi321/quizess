@@ -81,3 +81,29 @@
     transform: translate(-100%, 0);
   }
 }
+@keyframes rotate-and-go {
+  0% {
+    transform: rotateZ(180deg);
+  }
+
+  70% {
+    transform: rotateZ(0deg) translateX(0);
+  }
+
+  100% {
+    transform: translateX(-10px);
+  }
+}
+@keyframes rotate-and-go-back {
+  0% {
+    transform: translateX(-10px);
+  }
+
+  20% {
+    transform: rotateZ(0deg) translateX(0);
+  }
+
+  100% {
+    transform: rotateZ(180deg);
+  }
+}

@@ -64,7 +64,7 @@ $header-colors: (
     top: 0;
     right: -60px;
     width: 60px;
-    height: 100px;
+    height: 60px;
     border-radius: 0 15px 15px 0;
     display: flex;
     justify-content: center;
@@ -72,13 +72,11 @@ $header-colors: (
     transform: translateX(-20px);
     transition: transform 0.4s ease;
 
-    &-text {
-      @include text-size(medium);
-      display: block;
-      transform: rotateZ(90deg);
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+    &-icon {
+      display: flex;
+      transform: rotateZ(180deg);
+      margin-left: 15px;
+      transition: transform 0.4s ease;
     }
   }
 
@@ -92,6 +90,9 @@ $header-colors: (
     #{$this-header}__toggle {
       transform: translateX(0);
     }
+    #{$this-header}__toggle-icon {
+      @include animation(rotate-and-go, 0.35s);
+    }
   }
 
   &.is-closed {
@@ -100,6 +101,9 @@ $header-colors: (
     }
     #{$this-header}__overlay {
       @include animation(hide, 0.3s);
+    }
+    #{$this-header}__toggle-icon {
+      @include animation(rotate-and-go-back, 0.3s);
     }
   }
 
