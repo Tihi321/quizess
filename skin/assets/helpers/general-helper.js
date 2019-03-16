@@ -1,4 +1,37 @@
 class GeneralHelper {
+  constructor() {
+
+    this.IS_SHOWN_CLASS = 'is-shown';
+    this.IS_SUCCESS_CLASS = 'is-success';
+    this.IS_ERROR_CLASS = 'is-error';
+  }
+
+  setMessageCallback = (messageElement, messageTextElement, message, elementClass) => {
+    const {
+      IS_SHOWN_CLASS,
+      IS_SUCCESS_CLASS,
+      IS_ERROR_CLASS,
+    } = this;
+
+    messageTextElement.innerHTML = message;
+
+    messageElement.classList.remove(IS_SUCCESS_CLASS);
+    messageElement.classList.remove(IS_ERROR_CLASS);
+
+    messageElement.classList.add(elementClass);
+    messageElement.classList.add(IS_SHOWN_CLASS);
+
+    setTimeout(() => this.removeElementCallback(messageElement), 5000);
+
+  }
+
+  removeElementCallback = (messageElement) => {
+    const {
+      IS_SHOWN_CLASS,
+    } = this;
+
+    messageElement.classList.remove(IS_SHOWN_CLASS);
+  }
 
   domReady = (callback) => {
     return document.readyState === 'interactive' || document.readyState === 'complete' ? callback() : document.addEventListener('DOMContentLoaded', callback);

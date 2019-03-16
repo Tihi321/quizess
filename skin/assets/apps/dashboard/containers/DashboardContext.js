@@ -1,5 +1,6 @@
 /* global quizessDashboard */
 import React, {PureComponent} from 'react';
+import generalHelpers from '../../../helpers/general-helper';
 
 // Set Up The Initial Context
 const DashboardContext = React.createContext();
@@ -53,9 +54,6 @@ class DashboardProvider extends PureComponent {
       scorePage: 0,
     };
 
-    this.IS_SHOWN_CLASS = 'is-shown';
-    this.IS_SUCCESS_CLASS = 'is-success';
-    this.IS_ERROR_CLASS = 'is-error';
   }
 
   parseScoresData = (data) => {
@@ -212,36 +210,6 @@ class DashboardProvider extends PureComponent {
 
     }
 
-    setMessageCallback = (message, elementClass) => {
-      const {
-        messageElement,
-        messageTextElement,
-        IS_SHOWN_CLASS,
-        IS_SUCCESS_CLASS,
-        IS_ERROR_CLASS,
-      } = this;
-
-      messageTextElement.innerHTML = message;
-
-      messageElement.classList.remove(IS_SUCCESS_CLASS);
-      messageElement.classList.remove(IS_ERROR_CLASS);
-
-      messageElement.classList.add(elementClass);
-      messageElement.classList.add(IS_SHOWN_CLASS);
-
-      setTimeout(this.removeElementCallback, 5000);
-
-    }
-
-    removeElementCallback = () => {
-      const {
-        messageElement,
-        IS_SHOWN_CLASS,
-      } = this;
-
-      messageElement.classList.remove(IS_SHOWN_CLASS);
-    }
-
     removeScoreData = (playerId, quizId, playerIndex, last = true) => {
 
       const {
@@ -275,9 +243,12 @@ class DashboardProvider extends PureComponent {
           return res.json();
         })
         .then((response) => {
-          const {IS_SUCCESS_CLASS} = this;
+          const {
+            messageElement,
+            messageTextElement,
+          } = this;
 
-          this.setMessageCallback(response, IS_SUCCESS_CLASS);
+          generalHelpers.setMessageCallback(messageElement, messageTextElement, response, generalHelpers.IS_SUCCESS_CLASS);
 
           if (last) {
             this.removeLastScore(quizId, playerIndex);
@@ -287,9 +258,12 @@ class DashboardProvider extends PureComponent {
 
         })
         .catch((error) => {
-          const {IS_ERROR_CLASS} = this;
+          const {
+            messageElement,
+            messageTextElement,
+          } = this;
 
-          this.setMessageCallback(error, IS_ERROR_CLASS);
+          generalHelpers.setMessageCallback(messageElement, messageTextElement, error, generalHelpers.IS_ERROR_CLASS);
         });
 
     }
@@ -344,17 +318,21 @@ class DashboardProvider extends PureComponent {
           return res.json();
         })
         .then((response) => {
-          const {IS_SUCCESS_CLASS} = this;
+          const {
+            messageElement,
+            messageTextElement,
+          } = this;
 
-          console.log(response);
-
-          this.setMessageCallback(response, IS_SUCCESS_CLASS);
+          generalHelpers.setMessageCallback(messageElement, messageTextElement, response, generalHelpers.IS_SUCCESS_CLASS);
 
         })
         .catch((error) => {
-          const {IS_ERROR_CLASS} = this;
+          const {
+            messageElement,
+            messageTextElement,
+          } = this;
 
-          this.setMessageCallback(error, IS_ERROR_CLASS);
+          generalHelpers.setMessageCallback(messageElement, messageTextElement, error, generalHelpers.IS_ERROR_CLASS);
         });
     };
 
