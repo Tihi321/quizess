@@ -44,6 +44,9 @@ class AppProvider extends PureComponent {
       stopTimer: false,
       playTimer: false,
       scoresSubmited: false,
+      showMessage: false,
+      successMessage: false,
+      message: '',
     };
   }
 
@@ -111,17 +114,24 @@ class AppProvider extends PureComponent {
       })
       .then((response) => {
 
-        console.log(response);
-
         this.setState(() => {
           return {
+            message: response,
+            successMessage: true,
+            showMessage: true,
             scoresSubmited: true,
           };
         });
 
       })
       .catch((error) => {
-        console.error('Error:', error);
+        this.setState(() => {
+          return {
+            message: error,
+            showMessage: true,
+            successMessage: false,
+          };
+        });
       });
 
   }
@@ -316,6 +326,13 @@ class AppProvider extends PureComponent {
         this.sendQuizData();
       }
     },
+    handleResetMessage: () => {
+      this.setState(() => {
+        return {
+          showMessage: false,
+        };
+      });
+    },
   };
 
   render() {
@@ -335,6 +352,9 @@ class AppProvider extends PureComponent {
       playTimer,
       showExit,
       scoresSubmited,
+      showMessage,
+      message,
+      successMessage,
     } = this.state;
 
     return (
@@ -359,6 +379,9 @@ class AppProvider extends PureComponent {
             playTimer,
             showExit,
             scoresSubmited,
+            showMessage,
+            message,
+            successMessage,
           },
           dataStore: this.dataStore,
         }}>

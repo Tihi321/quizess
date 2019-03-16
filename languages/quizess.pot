@@ -188,7 +188,7 @@ msgstr ""
 msgid "Exit"
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/Questions.js:23
+#: skin/assets/apps/quiz-app/sections/Questions.js:31
 msgid "Nothing to see here, this quiz has no questions !!!"
 msgstr ""
 

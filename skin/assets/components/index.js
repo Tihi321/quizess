@@ -18,6 +18,7 @@ import ExplanationPreview from './explanation/preview';
 import Overview from './modal/overview';
 import MenuItem from './menu/menu-item';
 import MenuItemTitle from './menu/menu-title';
+import SubmitMessage from './modal/submit-message';
 
 export {Answer};
 export {AnswersParent};
@@ -39,3 +40,4 @@ export {ExplanationPreview};
 export {Overview};
 export {MenuItem};
 export {MenuItemTitle};
+export {SubmitMessage};

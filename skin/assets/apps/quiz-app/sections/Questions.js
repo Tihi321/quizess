@@ -2,7 +2,11 @@ import {Fragment} from 'react';
 import {__} from '@wordpress/i18n';
 import {AppConsumer} from '../containers/AppContext';
 import Router from './Router';
-import {Overview, Placeholder} from './../../../components';
+import {
+  Overview,
+  Placeholder,
+  SubmitMessage,
+} from './../../../components';
 
 const QuestionsConsumer = (props) => {
   const {
@@ -12,9 +16,13 @@ const QuestionsConsumer = (props) => {
     questionStats,
     questions,
     theme,
+    showMessage,
+    message,
+    successMessage,
     scoresSubmited,
     handleTryAgain,
     handleSubmitScore,
+    handleResetMessage,
   } = props;
 
   if (!Array.isArray(questions) || !questions.length) {
@@ -30,13 +38,21 @@ const QuestionsConsumer = (props) => {
       handleSubmitScore();
     }
     return (
-      <Overview
-        theme={theme}
-        onClick={handleTryAgain}
-        questionsTotal={questionsTotal}
-        correctAnswers={correctAnswers}
-        questionStats={questionStats}
-      />
+      <Fragment>
+        <Overview
+          theme={theme}
+          onClick={handleTryAgain}
+          questionsTotal={questionsTotal}
+          correctAnswers={correctAnswers}
+          questionStats={questionStats}
+        />
+        <SubmitMessage
+          showMessage={showMessage}
+          message={message}
+          successMessage={successMessage}
+          handleResetMessage={handleResetMessage}
+        />
+      </Fragment>
     );
   }
 
@@ -61,6 +77,9 @@ const Questions = () => (
           questionStats,
           correctAnswers,
           scoresSubmited,
+          showMessage,
+          message,
+          successMessage,
           data: {
             questions,
             options: {
@@ -71,6 +90,7 @@ const Questions = () => (
         dataStore: {
           handleTryAgain,
           handleSubmitScore,
+          handleResetMessage,
         },
       } = value;
       return (
@@ -79,11 +99,15 @@ const Questions = () => (
           currentQuestion={currentQuestion}
           questions={questions}
           theme={theme}
+          showMessage={showMessage}
+          successMessage={successMessage}
+          message={message}
           scoresSubmited={scoresSubmited}
           questionStats={questionStats}
           correctAnswers={correctAnswers}
           handleTryAgain={handleTryAgain}
           handleSubmitScore={handleSubmitScore}
+          handleResetMessage={handleResetMessage}
         />
       );
     }}
