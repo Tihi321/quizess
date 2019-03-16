@@ -2,7 +2,7 @@ import {Fragment} from 'react';
 import {__} from '@wordpress/i18n';
 import {AppConsumer} from '../containers/AppContext';
 import Router from './Router';
-import {HallOfFame, Placeholder} from './../../../components';
+import {Overview, Placeholder} from './../../../components';
 
 const QuestionsConsumer = (props) => {
   const {
@@ -30,7 +30,7 @@ const QuestionsConsumer = (props) => {
       handleSubmitScore();
     }
     return (
-      <HallOfFame
+      <Overview
         theme={theme}
         onClick={handleTryAgain}
         questionsTotal={questionsTotal}

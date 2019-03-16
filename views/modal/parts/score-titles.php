@@ -17,7 +17,7 @@ $score_titles = [
 ?>
 
 <?php foreach ( $score_titles as $index => $title_item ) { ?>
-  <div class="scores__inner scores__title">
+  <div class="stats__inner stats__title">
     <?php echo esc_html( $title_item ); ?>
   </div>
 <?php } ?>

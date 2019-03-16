@@ -25,7 +25,7 @@ $player_info = [
 ?>
 
 <?php foreach ( $player_info as $index => $info ) { ?>
-  <div class="scores__inner">
+  <div class="stats__inner">
     <?php echo esc_html( $info ); ?>
   </div>
 <?php } ?>
