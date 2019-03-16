@@ -25,7 +25,10 @@ class MenuItem extends Component {
           hasSubmenuOpen: !hasSubmenuOpen,
         };
       });
+    } else {
+      window.location = event.currentTarget.href;
     }
+
 
   }
 
