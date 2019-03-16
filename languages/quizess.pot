@@ -227,6 +227,7 @@ msgstr ""
 #: skin/assets/blocks/section-block/index.js:33
 #: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/index.js:31
 #: skin/assets/blocks/template-blocks/cpt-quizess-options-block/index.js:31
+#: skin/assets/components/modal/top-bar/index.js:6
 msgid "Quizess"
 msgstr ""
 

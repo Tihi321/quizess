@@ -1,6 +1,7 @@
 $answer-colors: (
   success-color: $base-persian-color,
   fail-color: $base-punch-color,
+  color: $base-white-color,
 );
 
 .answer {
@@ -13,6 +14,7 @@ $answer-colors: (
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  color: map-get($answer-colors, 'color');
 
   &:focus,
   &:active {
@@ -25,19 +27,26 @@ $answer-colors: (
   }
 
   &__text {
-    display: block;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
     flex: 1;
+    line-height: 1;
   }
   &__number {
-    margin-right: 10px;
+    box-sizing: content-box;
+    margin: auto 0;
+    font-weight: bold;
+    border: 2px solid;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
   }
   &--light {
     &--normal {
       background-color: map-deep-get($theme-colors, light, 'bg-color');
-    }
-    &--normal,
-    &--correct,
-    &--incorrect {
       color: map-deep-get($theme-colors, light, 'color');
     }
 
@@ -57,10 +66,6 @@ $answer-colors: (
   &--dark {
     &--normal {
       background-color: map-deep-get($theme-colors, dark, 'bg-color');
-    }
-    &--normal,
-    &--correct,
-    &--incorrect {
       color: map-deep-get($theme-colors, dark, 'color');
     }
 
