@@ -5,7 +5,7 @@ $wide-colors: (
 );
 
 .wide-btn {
-  $this: &;
+  $this-wide-btn: &;
   display: flex;
   min-width: 250px;
   font-weight: bold;
@@ -23,33 +23,33 @@ $wide-colors: (
   &--disabled {
     cursor: default;
     opacity: 0.7;
-    #{$this}__content {
+    #{$this-wide-btn}__content {
       background-color: map-get($wide-colors, 'disabled-primary');
     }
-    #{$this}__graphic {
+    #{$this-wide-btn}__graphic {
       background-color: map-get($wide-colors, 'disabled-secondary');
     }
   }
 
   &--light {
-    #{$this}__content {
+    #{$this-wide-btn}__content {
       background-color: map-deep-get($theme-colors, light, 'primary-color');
       &:hover {
         background-color: map-deep-get($theme-colors, light, 'secondary-color');
       }
     }
-    #{$this}__graphic {
+    #{$this-wide-btn}__graphic {
       background-color: map-deep-get($theme-colors, light, 'secondary-color');
     }
   }
   &--dark {
-    #{$this}__content {
+    #{$this-wide-btn}__content {
       background-color: map-deep-get($theme-colors, dark, 'primary-color');
       &:hover {
         background-color: map-deep-get($theme-colors, dark, 'secondary-color');
       }
     }
-    #{$this}__graphic {
+    #{$this-wide-btn}__graphic {
       background-color: map-deep-get($theme-colors, dark, 'secondary-color');
     }
   }
@@ -59,10 +59,12 @@ $wide-colors: (
     margin: 5px 0;
     transition: background-color 150ms ease-in-out;
     flex: 1;
+    text-align: center;
 
     @include media(tablet up) {
       padding: 10px 15px;
       margin: 0;
+      text-align: left;
     }
   }
 

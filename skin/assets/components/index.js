@@ -15,7 +15,7 @@ import Timer from './question/timer';
 import MainQuestion from './question/text';
 import Placeholder from './question/placeholder';
 import ExplanationPreview from './explanation/preview';
-import HallOfFame from './modal/hall-of-fame';
+import Overview from './modal/overview';
 import MenuItem from './menu/menu-item';
 import MenuItemTitle from './menu/menu-title';
 
@@ -36,6 +36,6 @@ export {Timer};
 export {MainQuestion};
 export {Placeholder};
 export {ExplanationPreview};
-export {HallOfFame};
+export {Overview};
 export {MenuItem};
 export {MenuItemTitle};

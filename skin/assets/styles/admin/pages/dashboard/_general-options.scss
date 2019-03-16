@@ -3,14 +3,14 @@ $options-colors: (
 );
 
 .options {
-  $this: &;
+  $this-options: &;
   display: flex;
   height: 100%;
   flex-direction: column;
   justify-content: space-between;
 
   &__row {
-    #{$this}__label {
+    #{$this-options}__label {
       width: 100%;
       max-width: 150px;
       margin-right: 20px;

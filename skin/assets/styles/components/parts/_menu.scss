@@ -126,7 +126,7 @@ $menu-colors: (
   }
 
   .menu__header {
-    $this: &;
+    $this-menu-header: &;
     background: map-get($menu-colors, 'submenu-bg');
     display: flex;
     min-height: 50px;
@@ -147,7 +147,7 @@ $menu-colors: (
 
     @include media(tablet up) {
       min-height: 150px;
-      #{$this}__logo {
+      #{$this-menu-header}__logo {
         min-height: 50px;
         min-width: 50px;
       }

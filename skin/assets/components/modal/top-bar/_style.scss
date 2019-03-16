@@ -3,7 +3,7 @@ $close-button-colors: (
 );
 
 .modal {
-  $this: &;
+  $this-modal: &;
 
   &__top-bar {
     position: absolute;
@@ -27,7 +27,7 @@ $close-button-colors: (
       background-color: map-deep-get($theme-colors, dark, 'primary-color');
     }
 
-    #{$this}__title {
+    #{$this-modal}__title {
       @include text-size(large);
       position: absolute;
       left: 50%;

@@ -40,12 +40,10 @@
 @import '../components/question/text/style';
 @import '../components/question/timer/style';
 @import '../components/question/placeholder/style';
-@import '../components/modal/hall-of-fame/style';
 
 // Template parts
 @import 'components/parts/modal';
-@import 'components/parts/modal-scores';
-@import 'components/parts/modal-last-score';
+@import 'components/parts/quiz-accomplishment';
 @import 'components/parts/question-header';
 @import 'components/parts/menu';
 
@@ -55,7 +53,8 @@
 
 // Sections
 @import 'components/sections/question';
-@import 'components/sections/hall-fame';
+@import 'components/sections/overview';
+@import 'components/sections/stats';
 @import 'components/sections/custom';
 
 // Single

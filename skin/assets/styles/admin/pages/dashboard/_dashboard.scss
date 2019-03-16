@@ -3,7 +3,6 @@ $dashboard-colors: (
 );
 
 .dashboard {
-  $this: &;
 
   &__options {
     display: flex;
