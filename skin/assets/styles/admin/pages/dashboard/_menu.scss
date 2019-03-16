@@ -1,8 +1,8 @@
 $dashboard-colors: (
   menu-item-color: $base-white-color,
-  menu-item-bg: $base-light-blue-color,
+  menu-item-bg: darken($base-primary-blue, 10%),
   menu-item-bg-active: $base-primary-blue,
-  menu-item-bg-hover: $base-primary-blue,
+  menu-item-bg-hover: lighten($base-primary-blue, 10%),
 );
 
 .dashboard {
@@ -10,7 +10,7 @@ $dashboard-colors: (
   &__menu {
     width: 20%;
     margin: 0;
-    min-width: 200px;
+    min-width: 150px;
     display: flex;
     flex-direction: column;
     margin-right: 20px;
@@ -22,7 +22,7 @@ $dashboard-colors: (
     &-button {
       @include text-size(default);
       border: none;
-      padding: 20px 10px;
+      padding: 10px;
       display: flex;
       justify-content: center;
       align-items: center;

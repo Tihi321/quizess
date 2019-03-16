@@ -15,7 +15,8 @@ $cubic-ease: cubic-bezier(0.4, 0, 0.2, 1);
 $typography-map: (
   mobile: (
     big:            32px,
-    large:          24px,
+    larger:         24px,
+    large:          16px,
     default:        16px,
     medium:         14px,
     small:          14px,
@@ -23,8 +24,9 @@ $typography-map: (
   ),
   tablet: (
     big:            48px,
-    large:          26px,
-    default:        22px,
+    larger:         26px,
+    large:          22px,
+    default:        18px,
     medium:         16px,
     small:          14px,
     tiny:           11px

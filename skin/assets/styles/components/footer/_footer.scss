@@ -49,7 +49,7 @@ $footer-colors: (
       margin: 0 5px;
     }
     .icon {
-      @include text-size(large);
+      @include text-size(larger);
       color: map-get($footer-colors, 'color');
     }
     .icon:hover {

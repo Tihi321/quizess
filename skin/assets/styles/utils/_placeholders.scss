@@ -54,7 +54,7 @@
 }
 
 %text-heading-2 {
-  @include text-size(large);
+  @include text-size(larger);
   font-family: $base-font-family-header;
   font-weight: bold;
   line-height: 1.03;
@@ -62,7 +62,7 @@
 }
 
 %text-heading-3 {
-  @include text-size(default);
+  @include text-size(large);
   font-family: $base-font-family-header;
   font-weight: bold;
   line-height: 1.13;
@@ -70,7 +70,7 @@
 }
 
 %text-heading-4 {
-  @include text-size(default);
+  @include text-size(large);
   font-family: $base-font-family-header;
   font-weight: bold;
   line-height: 1.19;
@@ -84,7 +84,7 @@
 
 
 %text-body {
-  @include text-size(default);
+  @include text-size(large);
   font-family: $base-font-family;
   line-height: 1.5;
   font-weight: 500;

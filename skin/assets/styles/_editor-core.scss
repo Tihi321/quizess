@@ -13,7 +13,7 @@
   @extend %input-body-default;
   .mce-content-body {
     p {
-      @include text-size(default);
+      @include text-size(large);
 
       @extend %input-element-style;
       line-height: 1.5;

@@ -95,7 +95,7 @@ body.admin-bar {
   }
 
   &__table-title {
-    @include text-size(default);
+    @include text-size(large);
     font-weight: bold;
     line-height: 1.4;
     padding: 5px;
