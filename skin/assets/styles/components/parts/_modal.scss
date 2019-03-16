@@ -18,15 +18,20 @@ $modal: (
   }
 }
 
-
 body.admin-bar {
   .modal {
     padding-top: $wp-admin-bar-mobile;
     box-sizing: inherit;
+
+    @include media(tablet up) {
+      padding-top: $wp-admin-bar-desktop;
+    }
   }
 }
 
 .modal {
+  $t_modal: &;
+
   background-color: map-get($modal, 'bg-color');
   background-position: center;
   background-size: cover;
@@ -59,7 +64,6 @@ body.admin-bar {
     position: relative;
     height: 100%;
     width: 100%;
-    max-width: 1200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -72,18 +76,29 @@ body.admin-bar {
       padding-top: 45px;
     }
 
+    &--narrow {
+      max-width: 1200px;
+    }
+
     &--light {
       color: map-deep-get($theme-colors, light, 'color');
-      .last-score__header {
+      #{$t_modal}__table-title {
         background-color: map-deep-get($theme-colors, light, 'primary-color');
       }
     }
     &--dark {
       color: map-deep-get($theme-colors, dark, 'color');
-      .last-score__header {
+      #{$t_modal}__table-title {
         background-color: map-deep-get($theme-colors, dark, 'primary-color');
       }
     }
+  }
+
+  &__table-title {
+    @include text-size(default);
+    font-weight: bold;
+    line-height: 1.4;
+    padding: 5px;
   }
 
   &__content {
@@ -96,6 +111,35 @@ body.admin-bar {
     @include media(tablet up) {
       padding: 0 50px;
     }
+  }
+
+  &__exit {
+    &-outer {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      border: 1px solid;
+    }
+    &-title {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    &-btns {
+      display: flex;
+      justify-content: space-evenly;
+    }
+  }
+
+  &__hall-of-fame,
+  &__stats-overview,
+  &__quiz-accomplishment {
+    flex: 1;
+    margin-top: 20px;
+  }
+
+  &__quiz-accomplishment {
+    display: flex;
+    align-items: center;
   }
 
   &__footer {
