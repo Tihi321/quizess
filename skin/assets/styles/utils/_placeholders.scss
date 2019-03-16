@@ -45,11 +45,10 @@
   font-family: $base-font-family-header;
   font-weight: bold;
   line-height: 1.03;
-  letter-spacing: -2px;
+  letter-spacing: -1.5px;
 
   @include media(tablet up) {
     line-height: 1;
-    letter-spacing: -4px;
   }
 }
 

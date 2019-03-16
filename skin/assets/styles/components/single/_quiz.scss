@@ -40,10 +40,8 @@ $quiz-colors: (
       z-index: map-get($zindex, 'quiz-outer');
     }
     &--message {
-      @include text-size(big);
       text-align: center;
       line-height: 1.1;
-      letter-spacing: 1px;
       padding: 0 40px;
     }
   }
