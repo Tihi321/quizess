@@ -68,7 +68,7 @@ class Questions extends Config implements Service {
                 ),
             ),
         ),
-        'template_lock' => 'all',
+        'template_lock'       => array( 'all' ),
     );
     register_post_type( self::QUESTION_POST_SLUG, $args );
   }

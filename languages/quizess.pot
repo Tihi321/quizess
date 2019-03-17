@@ -389,7 +389,7 @@ msgid "Select Category for question posts."
 msgstr ""
 
 #: skin/assets/blocks/section-block/index.js:22
-msgid "Section Block"
+msgid "Section"
 msgstr ""
 
 #: skin/assets/blocks/section-block/index.js:23

@@ -51,7 +51,7 @@ class Quiz extends Config implements Service {
         array( 'quizess/cpt-quizess-options-block' ),
         array( 'quizess/cpt-quizess-background-options-block' ),
         array(
-            'quizess/section-block',
+            'quizess/section',
             array(
                 'wrapClass' => 'quizess-quiz-section',
                 'allowedBlocks' => $allowed_blocks,
@@ -80,7 +80,7 @@ class Quiz extends Config implements Service {
         'show_in_menu'        => false,
         'can_export'          => true,
         'template'            => $template,
-        'template_lock'       => 'all',
+        'template_lock'       => array( 'all' ),
         'taxonomies'          => array( self::QUIZESS_CATEGORY_SLUG ),
     );
     register_post_type( self::QUIZESS_POST_SLUG, $args );

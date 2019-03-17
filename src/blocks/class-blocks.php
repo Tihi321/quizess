@@ -10,6 +10,7 @@ namespace Quizess\Blocks;
 
 use Quizess\Core\Service;
 use Quizess\Helpers\Loader;
+use Quizess\Blocks\Interfaces\Block as Block;
 
 /**
  * Class Blocks
@@ -33,6 +34,12 @@ class Blocks implements Service {
 
     // Add custom block category.
     $this->add_filter( 'block_categories', $this, 'quizess_category', 10, 2 );
+
+    // Add dimamyc blocks to list.
+    $this->register_dynamic_blocks();
+
+    // Register dimamyc blocks.
+    $this->register_blocks();
   }
 
   /**
@@ -47,7 +54,7 @@ class Blocks implements Service {
     $quiz_allowed_blocks     = [
         'quizess/question-block',
         'quizess/questions-category-block',
-        'quizess/section-block',
+        'quizess/section',
         'quizess/cpt-quizess-background-options-block',
         'quizess/cpt-quizess-options-block',
     ];
@@ -62,8 +69,6 @@ class Blocks implements Service {
             return $quiz_allowed_blocks;
       case 'question':
             return $question_allowed_blocks;
-      case 'story':
-            return $allowed_block_types;
       default:
             return $allowed_block_types;
     }
@@ -87,6 +92,61 @@ class Blocks implements Service {
           ),
       )
     );
+  }
+
+  /**
+   * Initialize dynamic blocks
+   *
+   * @throws \Exception If there's a block in $this->list that doesn't extend "Block" class.
+   *
+   * @return void
+   *
+   * @since 1.3.0
+   */
+  public function register_dynamic_blocks() : void {
+    $this->list = array(
+        'section'   => new Section(),
+    );
+  }
+
+  /**
+   * Add a new action to the collection to be registered with WordPress.
+   *
+   * @throws \Exception If there's a block in $this->list that doesn't extend "Block" class.
+   *
+   * @return void
+   *
+   * @since 1.3.0
+   */
+  public function register_blocks() : void {
+
+    foreach ( $this->list as $block ) {
+      if ( ! ( $block instanceof Block ) ) {
+        throw new \Exception( 'Trying to register a block that doesn\'t extend "Block" class' );
+      }
+      $this->register_block( $block );
+    }
+  }
+
+  /**
+   * Registers a dynamic block with a corresponding render_callback defined in the block itself
+   *
+   * @param Block $block Block object.
+   *
+   * @return void
+   */
+  public function register_block( Block $block ) {
+
+    $block->add_default_attributes();
+
+    register_block_type(
+      $block::BLOCK_NAMESPACE . '/' . $block::NAME,
+      array(
+          'render_callback' => array( $block, 'render' ),
+          'attributes' => $block->attributes,
+      )
+    );
+
   }
 
 }
