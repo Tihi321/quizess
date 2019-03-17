@@ -2,6 +2,7 @@ $quiz-colors: (
   bg-color: $base-primary-blue,
   success-message: $base-persian-color,
   fail-message: $base-punch-color,
+  submit-color: $base-punch-color,
 );
 
 .quiz {
@@ -84,6 +85,24 @@ $quiz-colors: (
     }
     &--fail {
       color: map-get($quiz-colors, 'fail-message');
+    }
+  }
+
+  &__admin-submit {
+    &-outer {
+      pointer-events: none;
+      position: fixed;
+      z-index: map-get($zindex, 'quiz-submit');
+      top: 0;
+      left: 0;
+      padding-left: 10px;
+      opacity: 0.5;
+    }
+
+    &-message {
+      @include text-size(tiny);
+      color: map-get($quiz-colors, 'submit-color');
+      font-weight: bold;
     }
   }
 

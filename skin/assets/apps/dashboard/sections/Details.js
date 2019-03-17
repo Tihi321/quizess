@@ -56,8 +56,15 @@ const DetailsConsumer = (props) => {
     __('Correct', 'quizess'),
     __('Total', 'quizess'),
     __('Success', 'quizess'),
-    '',
-    '',
+    __('Last attempt', 'quizess'),
+    __('Player records', 'quizess'),
+  ];
+
+  const lastScoresTableDescriptions = [
+    __('Stats from the last attempt, last attempt can be removed without affecting player overall records, it can be used with single submit options under users to ensure player single submision as it will check last attempt before submiting. With delete button you will remove all records for this player on this quiz', 'quizess'),
+  ];
+  const lastScoresQuestionTableDescriptions = [
+    __('Stats from the last submit per quiestion', 'quizess'),
   ];
 
   const removeLastButton = (
@@ -95,6 +102,7 @@ const DetailsConsumer = (props) => {
     >
       <TableParent
         titles={lastScoreTitles}
+        description={lastScoresTableDescriptions}
       >
         {lastScoresElement}
       </TableParent>
@@ -139,6 +147,7 @@ const DetailsConsumer = (props) => {
         items={10}
         page={answerStatsPage}
         onPageChange={handleOnAnswerPageChange}
+        description={lastScoresQuestionTableDescriptions}
       >
         {answersElements}
       </TableParent>

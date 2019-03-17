@@ -59,7 +59,7 @@ final class Blocks_Helper extends Config {
     $block_names = [
         'options'    => $prefix_name . '/cpt-quizess-options-block',
         'bg-options' => $prefix_name . '/cpt-quizess-background-options-block',
-        'section'    => $prefix_name . '/section-block',
+        'section'    => $prefix_name . '/section',
         'question'   => $prefix_name . '/question-block',
         'category'   => $prefix_name . '/questions-category-block',
     ];
@@ -145,21 +145,24 @@ final class Blocks_Helper extends Config {
    * Return blocks scores data
    *
    * @param int  $quiz_id Quid id.
-   * @param bool $with_id With second param you can retun values with user id.
+   * @param bool $user_id With second param you can retun only users logged in data.
    * @since 1.0.0
    */
-  public function get_quiz_scores( $quiz_id, $with_id = false ) : array {
+  public function get_quiz_scores( $quiz_id, $user_id = false ) : array {
     $players_data  = [];
-    $scores_output = null;
+    $scores_output = [];
 
-    $scores = get_post_meta( $quiz_id, self::SCORES_META_KEY, true );
-
-    if ( $with_id ) {
-      return $scores;
-    }
+    $scores = \get_post_meta( $quiz_id, self::SCORES_META_KEY, true );
 
     if ( $scores ) {
+
       $players = $scores['players'];
+
+      if ( $user_id ) {
+
+        $player_scores = $this->get_player_scores( $players, $user_id );
+        return $player_scores;
+      }
 
       foreach ( $players as $key => $player ) {
         $players_data[] = $player;
@@ -169,6 +172,21 @@ final class Blocks_Helper extends Config {
     }
 
     return $scores_output;
+  }
+
+  /**
+   * Return blocks scores data from particular player.
+   *
+   * @param int  $players_data Quiz players scrores array data.
+   * @param bool $user_id users id to retrieve data from array.
+   * @since 1.0.0
+   */
+  public function get_player_scores( $players_data, $user_id ) : array {
+
+    // try to retrieve users data from array, if thee is no data return empty array.
+    $player_scores = General_Helper::get_array_value( $user_id, $players_data );
+    return ( ! empty( $player_scores ) ) ? $player_scores : [];
+
   }
 
   /**

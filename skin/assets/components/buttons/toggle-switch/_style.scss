@@ -18,6 +18,11 @@ $toggle-switch: (
 
   &__label {
     margin-right: 20px;
+    line-height: 1;
+
+    &-helper {
+      @extend %title-helper-message;
+    }
   }
 }
 

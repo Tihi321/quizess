@@ -6,6 +6,7 @@ const ToggleSwitch = (props) => {
     idName = 'toggle-switch',
     label = __('Use toggle', 'quizess'),
     labelClass = '',
+    helperMessage = '',
     checked,
     onChange,
   } = props;
@@ -18,6 +19,9 @@ const ToggleSwitch = (props) => {
         className={`toggle-switch__label ${labelClass}`}
       >
         {label}
+        {(helperMessage) && <span className="toggle-switch__label-helper">
+          {helperMessage}
+        </span>}
       </label>
       <label
         className="toggle-switch"

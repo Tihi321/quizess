@@ -9,6 +9,9 @@ const ModalConsumer = (props) => {
     bgColor,
     bgUrl,
     modal,
+    userPlayer,
+    userSubmit,
+    scoresSubmited,
     showExit,
     handleShowExit,
     handleCancelClose,
@@ -48,6 +51,8 @@ const ModalConsumer = (props) => {
     const rnd = Math.floor(Math.random() * Math.floor(10));
     const message = messages[rnd];
 
+    const submitNotification = (userPlayer && userSubmit && !scoresSubmited) ? __('If you cancel your scores will be submitted.', 'quizess') : '';
+
     return (
       <div
         className={modalClasses}
@@ -57,6 +62,9 @@ const ModalConsumer = (props) => {
           <div className="modal__exit-outer">
             <div className="modal__exit-title">
               {message}
+              {(submitNotification) && <span className="modal__title-helper">
+                {submitNotification}
+              </span>}
             </div>
             <div className="modal__exit-btns">
               <Button
@@ -103,6 +111,9 @@ const Modal = ({children}) => (
         values: {
           showExit,
           modal,
+          userPlayer,
+          userSubmit,
+          scoresSubmited,
           data: {
             options: {
               theme,
@@ -126,6 +137,9 @@ const Modal = ({children}) => (
           bgColor={bgColor}
           bgUrl={bgUrl}
           modal={modal}
+          userSubmit={userSubmit}
+          userPlayer={userPlayer}
+          scoresSubmited={scoresSubmited}
           handleShowExit={handleShowExit}
           handleCancelClose={handleCancelClose}
           handleClose={handleClose}

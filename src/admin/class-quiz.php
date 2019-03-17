@@ -143,7 +143,7 @@ class Quiz extends Config implements Service {
   public function quiz_options_metaboxes() : void {
     add_meta_box(
       self::QUIZESS_OPTIONS_META_ID,
-      esc_html__( 'Quiz Options', 'developer-portal' ),
+      esc_html__( 'Quiz Options', 'quizess' ),
       [ $this, 'track_scores_metabox_view' ],
       self::QUIZESS_POST_SLUG,
       'side'
@@ -157,31 +157,12 @@ class Quiz extends Config implements Service {
    * @return void
    */
   public function track_scores_metabox_view( \WP_Post $post ) : void {
-    $track_scores = \get_post_meta( $post->ID, self::TRACK_SCORES_META_KEY, true );
-    $quiz_locked  = \get_post_meta( $post->ID, self::QUIZ_LOCKED_META_KEY, true );
 
-    $checked             = ( $track_scores === 'on' ) ? 'checked' : '';
-    $quiz_locked_checked = ( $quiz_locked === 'on' ) ? 'checked' : '';
-    ?>
-    <div class="qz-panel-group">
-      <div class="components-panel__row">
-        <label for="track-scores-checkbox-id"><?php esc_html_e( 'Track scores for logged in users', 'developer-portal' ); ?></label>
-        <label class="toggle-switch">
-          <input class="toggle-switch__input" name="<?php echo esc_attr( self::TRACK_SCORES_META_KEY ); ?>" id="track-scores-checkbox-id" type="checkbox" <?php echo esc_attr( $checked ); ?>>
-          <span class="toggle-switch__slider"></span>
-        </label>
-      </div>
-    </div>
-    <div class="qz-panel-group">
-      <div class="components-panel__row">
-        <label for="registered-quiz-checkbox-id"><?php esc_html_e( 'Lock quiz for logged in users', 'developer-portal' ); ?></label>
-        <label class="toggle-switch">
-          <input class="toggle-switch__input" name="<?php echo esc_attr( self::QUIZ_LOCKED_META_KEY ); ?>" id="registered-quiz-checkbox-id" type="checkbox" <?php echo esc_attr( $quiz_locked_checked ); ?>>
-          <span class="toggle-switch__slider"></span>
-        </label>
-      </div>
-    </div>
-    <?php
+    $quiz_options_template = General_Helper::get_base_path() . 'views/admin/quiz-meta-options.php';
+    if ( ! empty( $quiz_options_template ) ) {
+      include $quiz_options_template;
+    }
+
     \wp_nonce_field( 'quiz_options_action', 'quiz_options_nonce' );
   }
 

@@ -45,9 +45,9 @@ class Users extends Config implements Service {
    */
   public function show_extra_user_meta_fields( $user ) {
 
-    $user_player_toggle = General_Helper::get_base_path() . 'views/admin/user-player-toggle.php';
-    if ( ! empty( $user_player_toggle ) ) {
-      include $user_player_toggle;
+    $user_options_template = General_Helper::get_base_path() . 'views/admin/user-meta-options.php';
+    if ( ! empty( $user_options_template ) ) {
+      include $user_options_template;
     }
   }
 
