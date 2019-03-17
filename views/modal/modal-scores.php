@@ -2,16 +2,19 @@
 /**
  * Scores modal
  *
- * @package Quizess\Template_Parts\Modal
+ * @package Quizess\Views\Modal
  * @since 1.0.0
  */
 
 use Quizess\Helpers\General_Helper;
 
-$user_id = get_current_user_id();
+$user_id       = get_current_user_id();
+$user_id_check = ( $user_id !== 0 ) ? $user_id : false;
 
-$correct = ( $user_id ) ?? General_Helper::get_array_value( 'correct', $player_scores[ $user_id ]['last'] );
-$total   = ( $user_id ) ?? General_Helper::get_array_value( 'total', $player_scores[ $user_id ]['last'] );
+$player_scores = $blocks_helper->get_quiz_scores( $post->ID, $user_id_check );
+
+$correct = General_Helper::get_array_value( 'correct', $player_scores['last'] ) ?: 0;
+$total   = General_Helper::get_array_value( 'total', $player_scores['last'] ) ?: 0;
 
 ?>
 
@@ -25,13 +28,13 @@ $total   = ( $user_id ) ?? General_Helper::get_array_value( 'total', $player_sco
       </button>
     </div>
     <div class="modal__content">
-    <?php if ( ! empty( $player_scores ) ) { ?>
-      <?php if ( ! empty( $user_id ) && ! empty( $correct ) && ! empty( $total ) ) { ?>
+    <?php if ( ! empty( $quiz_scores['players'] ) ) { ?>
+      <?php if ( ! empty( $player_scores['last'] ) && ! empty( $correct ) && ! empty( $total ) ) { ?>
         <div class="modal__quiz-accomplishment">
           <div class="quiz-accomplishment">
             <div class="modal__table-title quiz-accomplishment__title">
               <?php echo esc_html__( 'Stats', 'quizess' ); ?>
-              <span class="quiz-accomplishment__title-helper">
+              <span class="modal__title-helper">
                 <?php echo esc_html__( 'Last take on quiz', 'quizess' ); ?>
               </span>
             </div>
@@ -74,7 +77,7 @@ $total   = ( $user_id ) ?? General_Helper::get_array_value( 'total', $player_sco
             </li>
             <li class="stats__item">
               <?php
-              foreach ( $player_scores as $index => $player ) {
+              foreach ( $quiz_scores['players'] as $index => $player ) {
 
                 $score_item_template = $base_path . 'views/modal/parts/score-item.php';
 

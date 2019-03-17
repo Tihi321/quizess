@@ -2,14 +2,11 @@
 /**
  * Bottom content
  *
- * @package Quizess\Template_Parts\Sections
+ * @package Quizess\Views\Sections
  * @since 1.0.0
  */
 
-use Quizess\Helpers\General_Helper;
-
-$quiz_scores   = $blocks_helper->get_quiz_scores( $post->ID, true );
-$player_scores = General_Helper::get_array_value( 'players', $quiz_scores );
+$quiz_scores = $blocks_helper->get_quiz_scores( $post->ID );
 
 ?>
 
@@ -26,7 +23,7 @@ $player_scores = General_Helper::get_array_value( 'players', $quiz_scores );
     <?php } ?>
   </div>
   <?php
-  if ( ! empty( $player_scores ) ) {
+  if ( ! empty( $quiz_scores['players'] ) ) {
     ?>
     <button class="btn btn--<?php echo esc_attr( $theme ); ?> js-modal-trigger-open" data-modal="<?php echo esc_attr( $scores_modal_id ); ?>">
       <?php echo esc_html__( 'High scores', 'quizess' ); ?>
@@ -43,7 +40,7 @@ if ( ! empty( $about_modal_path ) ) {
 ?>
 
 <?php
-if ( ! empty( $player_scores ) ) {
+if ( ! empty( $quiz_scores['players'] ) ) {
   $scores_modal_path = $base_path . 'views/modal/modal-scores.php';
 
   if ( ! empty( $scores_modal_path ) ) {

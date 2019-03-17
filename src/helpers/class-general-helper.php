@@ -134,7 +134,8 @@ abstract class General_Helper extends Config {
 
     $scores = get_post_meta( $posts_id, self::SCORES_META_KEY, true );
 
-    if ( isset( $scores ) ) {
+    // check it this quiz has scores submited to it for that player, before last field was deleted and if user is selected so it can only submit one.
+    if ( ! empty( $scores ) ) {
       $player_scores = self::get_array_value( $users_id, $scores['players'] );
       $user_single   = get_user_meta( $users_id, self::USER_SINGLE_TOGGLE, true );
 

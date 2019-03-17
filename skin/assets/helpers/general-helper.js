@@ -51,7 +51,7 @@ class GeneralHelper {
   }
 
   getPercentage = (value, outOff) => {
-    return (value * 100) / outOff;
+    return Math.floor((value * 100) / outOff);
   }
 
   isValidURL = (str) => {
