@@ -33,7 +33,7 @@ const RouterConsumer = (props) => {
     );
   }
 
-  const explanationDataCheck = (!(!explanationMedia || !explanationText)) || false;
+  const explanationDataCheck = !!(explanationMedia || explanationText) || false;
 
   const explanationButtonElement = (
     <WideButton
