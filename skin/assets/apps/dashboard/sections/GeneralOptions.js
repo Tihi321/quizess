@@ -39,45 +39,49 @@ const GeneralOptionsConsumer = (props) => {
     handleInstagramChange,
     handleShowGithubChange,
     handleURemoveAdminBarChange,
+    handleOnRemoveMedia,
   } = props;
 
   const useCustomElement = (
     <InputRow
-      className="options__row"
+      className="options__row options__row--toggle"
     >
       <ToggleSwitch
         labelClass="options__label"
-        idName="custom-slides"
+        idName="custom-styles"
         label={__('Use custom styles', 'quizess')}
         checked={useCustomStyle}
         onChange={handleUseCustomChange}
+        helperMessage={__('Replace theme styles on quiz posts.', 'quizess')}
       />
     </InputRow>
   );
   const removeAdminBarElement = (
     <InputRow
-      className="options__row"
+      className="options__row options__row--toggle"
     >
       <ToggleSwitch
         labelClass="options__label"
-        idName="custom-slides"
+        idName="remove-admin-bar"
         label={__('Remove admin bar', 'quizess')}
         checked={removeAdminBar}
         onChange={handleURemoveAdminBarChange}
+        helperMessage={__('Remove default admin bar and add optional quiz submit message ', 'quizess')}
       />
     </InputRow>
   );
 
   const showGithubElement = (
     <InputRow
-      className="options__row"
+      className="options__row options__row--toggle"
     >
       <ToggleSwitch
         labelClass="options__label"
-        idName="custom-slides"
+        idName="show-github"
         label={__('Show github', 'quizess')}
         checked={showGithub}
         onChange={handleShowGithubChange}
+        helperMessage={__('Add github social icon to the footer linked to the quizess resository', 'quizess')}
       />
     </InputRow>
   );
@@ -101,6 +105,9 @@ const GeneralOptionsConsumer = (props) => {
         className="options__label"
       >
         {__('Logo', 'quizess')}
+        <span className="options__label-helper">
+          {__('Logo shown in the footer and menu', 'quizess')}
+        </span>
       </div>
       <div
         className="options__logo-wrap"
@@ -112,6 +119,7 @@ const GeneralOptionsConsumer = (props) => {
           mediaId={id}
           mediaUrl={url}
           onSelectMedia={handleOnSelectMedia}
+          onRemoveMedia={handleOnRemoveMedia}
         />
       </div>
     </InputRow>
@@ -124,6 +132,9 @@ const GeneralOptionsConsumer = (props) => {
         >
         <div className="options__label">
           {__('Copyright', 'quizess')}
+          <span className="options__label-helper">
+          {__('Message show in the footer', 'quizess')}
+        </span>
         </div>
         <div className="options__input-wrap">
           <TextElement
@@ -150,6 +161,9 @@ const GeneralOptionsConsumer = (props) => {
         >
         <div className="options__label">
           {__('Facebook', 'quizess')}
+          <span className="options__label-helper">
+          {__('Social footer item', 'quizess')}
+          </span>
         </div>
         <div className="options__input-wrap">
           <TextElement
@@ -176,6 +190,9 @@ const GeneralOptionsConsumer = (props) => {
         >
         <div className="options__label">
           {__('Twitter', 'quizess')}
+          <span className="options__label-helper">
+          {__('Social footer item', 'quizess')}
+          </span>
         </div>
         <div className="options__input-wrap">
           <TextElement
@@ -202,6 +219,9 @@ const GeneralOptionsConsumer = (props) => {
         >
         <div className="options__label">
           {__('LinkedIn', 'quizess')}
+          <span className="options__label-helper">
+          {__('Social footer item', 'quizess')}
+          </span>
         </div>
         <div className="options__input-wrap">
           <TextElement
@@ -228,6 +248,9 @@ const GeneralOptionsConsumer = (props) => {
         >
         <div className="options__label">
           {__('Instagram', 'quizess')}
+          <span className="options__label-helper">
+          {__('Social footer item', 'quizess')}
+          </span>
         </div>
         <div className="options__input-wrap">
           <TextElement
@@ -255,10 +278,10 @@ const GeneralOptionsConsumer = (props) => {
       <div
         className="options__general--top"
       >
+        {logoElement}
         {removeAdminBarElement}
         {useCustomElement}
         {showGithubElement}
-        {logoElement}
         {footerCopyrightElement}
         {facebookElement}
         {twitterElement}
@@ -309,6 +332,7 @@ const GeneralOptions = () => (
           handleInstagramChange,
           handleShowGithubChange,
           handleURemoveAdminBarChange,
+          handleOnRemoveMedia,
         },
       } = value;
       return (
@@ -333,6 +357,7 @@ const GeneralOptions = () => (
           handleLinkedInChange={handleLinkedInChange}
           handleInstagramChange={handleInstagramChange}
           handleShowGithubChange={handleShowGithubChange}
+          handleOnRemoveMedia={handleOnRemoveMedia}
         />
       );
     }}

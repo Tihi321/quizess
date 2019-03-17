@@ -3,6 +3,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "X-Generator: babel-plugin-makepot\n"
 
+#: skin/assets/apps/dashboard/sections/Details.js:115
+#: skin/assets/apps/dashboard/sections/Details.js:113
 #: skin/assets/apps/dashboard/sections/Details.js:107
 #: skin/assets/apps/dashboard/sections/Scores.js:31
 #: skin/assets/apps/quiz-app/parts/QuestionHeader.js:35
@@ -10,11 +12,15 @@ msgstr ""
 msgid "Question"
 msgstr ""
 
+#: skin/assets/apps/dashboard/sections/Details.js:116
+#: skin/assets/apps/dashboard/sections/Details.js:114
 #: skin/assets/apps/dashboard/sections/Details.js:108
 #: skin/assets/components/modal/overview/index.js:88
 msgid "Answer"
 msgstr ""
 
+#: skin/assets/apps/dashboard/sections/Details.js:128
+#: skin/assets/apps/dashboard/sections/Details.js:126
 #: skin/assets/apps/dashboard/sections/Details.js:120
 #: skin/assets/apps/dashboard/sections/Scores.js:32
 #: skin/assets/blocks/question-block/components/answer-input/index.js:57
@@ -22,12 +28,14 @@ msgstr ""
 msgid "Correct"
 msgstr ""
 
+#: skin/assets/apps/dashboard/sections/Details.js:128
+#: skin/assets/apps/dashboard/sections/Details.js:126
 #: skin/assets/apps/dashboard/sections/Details.js:120
 #: skin/assets/components/modal/overview/index.js:30
 msgid "Incorrect"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/Details.js:154
+#: skin/assets/apps/dashboard/sections/Details.js:163
 msgid "Back"
 msgstr ""
 
@@ -51,51 +59,96 @@ msgstr ""
 msgid "Success"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/Details.js:70
+#: skin/assets/apps/dashboard/sections/Details.js:59
+msgid "Last attempt"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/Details.js:60
+msgid "Player records"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/Details.js:64
+msgid ""
+"Stats from the last attempt, last attempt can be removed without affecting "
+"player overall records, it can be used with single submit options under "
+"users to ensure player single submision as it will check last attempt "
+"before submiting. With delete button you will remove all records for this "
+"player on this quiz"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/Details.js:67
+msgid "Stats from the last submit per quiestion"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/Details.js:77
 msgid "Remove"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/Details.js:79
+#: skin/assets/apps/dashboard/sections/Details.js:86
 msgid "Delete"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:103
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:107
 msgid "Logo"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:126
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:109
+msgid "Logo shown in the footer and menu"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:134
 msgid "Copyright"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:152
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:136
+msgid "Message show in the footer"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:163
 msgid "Facebook"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:178
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:192
 msgid "Twitter"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:204
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:221
 msgid "LinkedIn"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:230
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:250
 msgid "Instagram"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:51
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:252
+msgid "Social footer item"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:52
 msgid "Use custom styles"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:64
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:55
+msgid "Replace theme styles on quiz posts."
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:66
 msgid "Remove admin bar"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:78
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:69
+msgid "Remove default admin bar and add optional quiz submit message "
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:81
 msgid "Show github"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:91
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:84
+msgid "Add github social icon to the footer linked to the quizess resository"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:95
 msgid "Save"
 msgstr ""
 
@@ -107,20 +160,22 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
+#: skin/assets/apps/dashboard/sections/Details.js:64
+#: skin/assets/apps/dashboard/sections/Scores.js:36
+msgid "Question success rate"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/Details.js:65
+#: skin/assets/apps/dashboard/sections/Scores.js:37
+msgid "Number of successful attempts"
+msgstr ""
+
 #: skin/assets/apps/dashboard/sections/Scores.js:22
 msgid "Name"
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Scores.js:23
 msgid "Attempts"
-msgstr ""
-
-#: skin/assets/apps/dashboard/sections/Scores.js:36
-msgid "Question success rate"
-msgstr ""
-
-#: skin/assets/apps/dashboard/sections/Scores.js:37
-msgid "Number of successful attempts"
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Scores.js:66
@@ -139,52 +194,56 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/Modal.js:36
+#: skin/assets/apps/quiz-app/sections/Modal.js:39
 msgid "Get outta here and go back to your boring programs."
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/Modal.js:37
+#: skin/assets/apps/quiz-app/sections/Modal.js:40
 msgid "Just leave. When you come back, I'll be waiting with a bat."
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/Modal.js:38
+#: skin/assets/apps/quiz-app/sections/Modal.js:41
 msgid "Are you sure you want to quit this great quiz ?"
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/Modal.js:39
+#: skin/assets/apps/quiz-app/sections/Modal.js:42
 msgid "I wouldn't leave if I were you. Internet is much worse."
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/Modal.js:40
+#: skin/assets/apps/quiz-app/sections/Modal.js:43
 msgid "Go ahead and leave. See if I care."
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/Modal.js:41
+#: skin/assets/apps/quiz-app/sections/Modal.js:44
 msgid "Choose Cancel if you are brave, choose Exit to cover in shame. "
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/Modal.js:42
+#: skin/assets/apps/quiz-app/sections/Modal.js:45
 msgid "Chickening out... already ?"
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/Modal.js:43
+#: skin/assets/apps/quiz-app/sections/Modal.js:46
 msgid "Heroes choose Cancel, Wimps choose Exit."
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/Modal.js:44
+#: skin/assets/apps/quiz-app/sections/Modal.js:47
 msgid "So you think you can quit this easily, huh ?"
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/Modal.js:45
+#: skin/assets/apps/quiz-app/sections/Modal.js:48
 msgid "Dost thou wish to leave with such hasty abandon ?"
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/Modal.js:66
+#: skin/assets/apps/quiz-app/sections/Modal.js:54
+msgid "If you cancel your scores will be submitted."
+msgstr ""
+
+#: skin/assets/apps/quiz-app/sections/Modal.js:74
 #: skin/assets/components/dialog/index.js:30
 msgid "Cancel"
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/Modal.js:72
+#: skin/assets/apps/quiz-app/sections/Modal.js:80
 msgid "Exit"
 msgstr ""
 
@@ -397,7 +456,7 @@ msgid "This is section block"
 msgstr ""
 
 #: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/index.js:20
-#: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/sections/BlockElements.js:34
+#: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/sections/BlockElements.js:36
 msgid "Background Options"
 msgstr ""
 
@@ -405,7 +464,7 @@ msgstr ""
 msgid "Choose background image and color"
 msgstr ""
 
-#: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/sections/BlockElements.js:37
+#: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/sections/BlockElements.js:39
 msgid "Choose main background color & background image for this quiz"
 msgstr ""
 
@@ -524,6 +583,9 @@ msgstr ""
 
 #: skin/assets/elements/FileElement/index.js:32
 #: skin/assets/elements/LottieElement/index.js:32
+#: skin/assets/elements/MediaElement/index.js:32
+#: skin/assets/elements/MediaElement/index.js:31
+#: skin/assets/elements/MediaElement/index.js:30
 #: skin/assets/elements/MediaElement/index.js:29
 #: skin/assets/elements/VideoElement/index.js:27
 #: skin/assets/elements/YoutubeElement/index.js:31
@@ -531,6 +593,7 @@ msgid "Edit Media"
 msgstr ""
 
 #: skin/assets/elements/FileElement/index.js:63
+#: skin/assets/elements/MediaElement/index.js:9
 #: skin/assets/elements/MediaElement/index.js:8
 #: skin/assets/elements/VideoElement/index.js:57
 msgid "Media area"

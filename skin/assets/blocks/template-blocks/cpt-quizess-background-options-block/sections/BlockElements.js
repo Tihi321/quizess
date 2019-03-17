@@ -14,6 +14,7 @@ function BlockElements(props) {
     },
     dispatchAttributesStore: {
       handleOnSelectMedia,
+      handleOnRemoveMedia,
     },
   } = props;
 
@@ -24,6 +25,7 @@ function BlockElements(props) {
       mediaId={id}
       mediaUrl={url}
       onSelectMedia={handleOnSelectMedia}
+      onRemoveMedia={handleOnRemoveMedia}
     />
   );
 

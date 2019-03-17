@@ -12,6 +12,7 @@ class DashboardProvider extends PureComponent {
   constructor(props) {
     super(props);
 
+    // Elements for the submit message. Outside of react, ou in the real DOM.
     this.messageElement = document.querySelector(props.messageElementSelector);
     this.messageTextElement = document.querySelector(props.messageTextSelector);
 
@@ -56,6 +57,7 @@ class DashboardProvider extends PureComponent {
 
   }
 
+  // Parse scores data for quizess page in dashboard. Returns array appended with players id.
   parseScoresData = (data) => {
 
     const quizArray = Object.keys(data).map((key, index) => {
@@ -79,6 +81,7 @@ class DashboardProvider extends PureComponent {
     return quizArray;
   }
 
+  // Parse dashboard data.
   getDashboardOptions = (data) => {
 
     const {
@@ -121,6 +124,7 @@ class DashboardProvider extends PureComponent {
     };
   }
 
+  // fetch dashboard data from dashoard endpoint.
   fetchData = () => {
 
     const {
@@ -462,6 +466,17 @@ class DashboardProvider extends PureComponent {
             id: image.id,
             url,
             title: image.title,
+          },
+        };
+      });
+    },
+    handleOnRemoveMedia: () => {
+      this.setState(() => {
+        return {
+          logo: {
+            id: -1,
+            url: '',
+            title: '',
           },
         };
       });

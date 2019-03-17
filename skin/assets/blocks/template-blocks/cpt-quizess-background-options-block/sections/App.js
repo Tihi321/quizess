@@ -24,6 +24,16 @@ const App = (props) => {
         },
       });
     },
+    handleOnRemoveMedia: () => {
+      props.dispatchAtributes({
+        action: 'image',
+        payload: {
+          id: 0,
+          url: '',
+          title: '',
+        },
+      });
+    },
   };
 
   return (

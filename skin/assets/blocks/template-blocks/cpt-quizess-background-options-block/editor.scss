@@ -13,13 +13,22 @@ $background-options-block: (
     @extend %block-element-flex;
     padding: 10px;
     justify-content: space-between;
+    align-items: center;
   }
 
   .background-option {
+    position: relative;
     width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .remove__media-btn {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .background-color-element,
