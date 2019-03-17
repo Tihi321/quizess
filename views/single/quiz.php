@@ -2,22 +2,23 @@
 /**
  * Single Post
  *
- * @package Quizess\Template_Parts\Single
+ * @package Quizess\Views\Single
  */
 
 use Quizess\Helpers\General_Helper;
 use Quizess\Core\Config;
 
 
-$user_submit     = '0';
-$welcome_message = General_Helper::get_array_value( 'welcomeMessage', $quiz_options['options'] );
-$about_field     = General_Helper::get_array_value( 'aboutField', $quiz_options['options'] );
-$bg_color        = General_Helper::get_array_value( 'bgColor', $quiz_options['bgOptions'] );
-$bg_image_url    = General_Helper::get_array_value( 'bgUrl', $quiz_options['bgOptions'] );
-$about_modal_id  = 'modal--about-' . $post->ID;
-$scores_modal_id = 'modal--scores-' . $post->ID;
-$quiz_locked     = \get_post_meta( $post->ID, Config::QUIZ_LOCKED_META_KEY, true );
-$base_path       = General_Helper::get_base_path();
+$remove_admin_bar = get_option( Config::REMOVE_ADMIN_TOGGLE );
+$user_submit      = '0';
+$welcome_message  = General_Helper::get_array_value( 'welcomeMessage', $quiz_options['options'] );
+$about_field      = General_Helper::get_array_value( 'aboutField', $quiz_options['options'] );
+$bg_color         = General_Helper::get_array_value( 'bgColor', $quiz_options['bgOptions'] );
+$bg_image_url     = General_Helper::get_array_value( 'bgUrl', $quiz_options['bgOptions'] );
+$about_modal_id   = 'modal--about-' . $post->ID;
+$scores_modal_id  = 'modal--scores-' . $post->ID;
+$quiz_locked      = \get_post_meta( $post->ID, Config::QUIZ_LOCKED_META_KEY, true );
+$base_path        = General_Helper::get_base_path();
 
 if ( is_user_logged_in() ) {
 
@@ -60,6 +61,14 @@ if ( is_user_logged_in() ) {
 
       if ( ! empty( $content_template ) ) {
         include $content_template;
+      }
+
+      if ( $remove_admin_bar && $user_submit === '1' ) {
+        $submit_quiz_message = $base_path . 'views/parts/quiz-admin-submit-message.php';
+
+        if ( ! empty( $submit_quiz_message ) ) {
+          include $submit_quiz_message;
+        }
       }
     }
     ?>
