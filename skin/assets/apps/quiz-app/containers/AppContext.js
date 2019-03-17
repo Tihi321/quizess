@@ -260,9 +260,13 @@ class AppProvider extends PureComponent {
       }
     },
     handleClose: () => {
-      const {userPlayer, userSubmit} = this.state;
+      const {
+        userPlayer,
+        userSubmit,
+        scoresSubmited,
+      } = this.state;
 
-      if (userPlayer && userSubmit) {
+      if (userPlayer && userSubmit && !scoresSubmited) {
         this.sendQuizData(true);
       }
       this.resetQuiz(true);
@@ -355,6 +359,8 @@ class AppProvider extends PureComponent {
       showMessage,
       message,
       successMessage,
+      userPlayer,
+      userSubmit,
     } = this.state;
 
     return (
@@ -382,6 +388,8 @@ class AppProvider extends PureComponent {
             showMessage,
             message,
             successMessage,
+            userPlayer,
+            userSubmit,
           },
           dataStore: this.dataStore,
         }}>
