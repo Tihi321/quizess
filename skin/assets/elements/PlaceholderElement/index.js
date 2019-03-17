@@ -6,7 +6,7 @@ import styles from './styles';
 
 const PlaceholderElement = (props) => {
   const {
-    title = __('Placeholder text', 'design-islands'),
+    title = __('Placeholder text', 'quizess'),
     spinner = false,
   } = props;
 

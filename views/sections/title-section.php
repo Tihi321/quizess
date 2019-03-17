@@ -2,7 +2,7 @@
 /**
  * Title content
  *
- * @package Quizess\Template_Parts\Sections
+ * @package Quizess\Views\Sections
  * @since 1.0.0
  */
 

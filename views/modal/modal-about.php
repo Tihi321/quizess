@@ -2,7 +2,7 @@
 /**
  * About modal
  *
- * @package Quizess\Template_Parts\Modal
+ * @package Quizess\Views\Modal
  * @since 1.0.0
  */
 

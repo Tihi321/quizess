@@ -2,7 +2,7 @@
 /**
  * Last score titles
  *
- * @package Quizess\Template_Parts\Modal\Parts
+ * @package Quizess\Views\Modal\Parts
  * @since 1.0.0
  */
 

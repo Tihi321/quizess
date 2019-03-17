@@ -6,7 +6,7 @@ import icons from './icons';
 
 const MediaElement = (props) => {
   const {
-    placeholderTitle = __('Media area', 'design-islands'),
+    placeholderTitle = __('Media area', 'quizess'),
     showToolbar = true,
     toolbarOnTop = true,
     removeBtnStyle = true,
@@ -29,7 +29,7 @@ const MediaElement = (props) => {
       render={({open}) => (
         <IconButton
           className="components-toolbar__control"
-          label={__('Edit Media', 'design-islands')}
+          label={__('Edit Media', 'quizess')}
           icon="edit"
           onClick={open}
         />

@@ -2,7 +2,7 @@
 /**
  * Custom footer content
  *
- * @package Quizess\Template_Parts\Parts
+ * @package Quizess\Views\Parts
  * @since 1.0.0
  */
 

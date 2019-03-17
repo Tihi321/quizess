@@ -2,7 +2,7 @@
 /**
  * Dashboard template
  *
- * @package Quizess\Template_Parts\Admin
+ * @package Quizess\Views\Admin
  */
 
 ?>

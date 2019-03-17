@@ -119,7 +119,7 @@ function BlockOptionsConsumer(props) {
           {(!templateBlock) && customQuestionElements}
           <div className="qz-panel-group qz-panel-group--big">
             <div className="qz-option-title-class">
-              {__('Explanation Options', 'design-islands')}
+              {__('Explanation Options', 'quizess')}
             </div>
             {explanationCheckElement}
             <div className="qz-help-mce-class">

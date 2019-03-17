@@ -40,7 +40,7 @@ const StyleOptions = (props) => {
   return (
     <div className="qz-panel-group qz-panel-group--big">
       <div className="qz-option-title-class">
-        {__('Style Options', 'design-islands')}
+        {__('Style Options', 'quizess')}
       </div>
       <div className="qz-panel-group">
         <div className="qz-label-mce-class">

@@ -107,7 +107,6 @@
             "description": "Infinum WordPress Coding Standards",
             "homepage": "https://github.com/infinum/coding-standards-wp",
             "keywords": [
-                "Eightshift",
                 "Infinum",
                 "phpcs",
                 "standards",

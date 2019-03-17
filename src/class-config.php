@@ -90,7 +90,7 @@ abstract class Config {
   // -------------------------------------------------------
 
   /**
-   * The custom post meta field for quizess
+   * The custom post meta field that holds user scores for players
    *
    * @var string
    *
@@ -99,7 +99,7 @@ abstract class Config {
   const SCORES_META_KEY = '_quizess_scores';
 
   /**
-   * The custom post meta field for quizess
+   * The custom post meta field for quizess, options metabox id
    *
    * @var string
    *
@@ -108,7 +108,7 @@ abstract class Config {
   const QUIZESS_OPTIONS_META_ID = '_quizess_options_meta_id';
 
   /**
-   * The custom post meta field for quizess
+   * The custom post meta field for quizess check should this quiz track scores
    *
    * @var string
    *
@@ -117,7 +117,7 @@ abstract class Config {
   const TRACK_SCORES_META_KEY = '_track_scores';
 
   /**
-   * The custom post meta field for quizess
+   * The custom post meta field for quizess if only registered players should be able to play
    *
    * @var string
    *
@@ -263,7 +263,7 @@ abstract class Config {
   // -------------------------------------------------------
 
   /**
-   * The custom post type slug
+   * The custom post type slug, if github for quizess repository should be shown in the footer
    *
    * @var string
    *
