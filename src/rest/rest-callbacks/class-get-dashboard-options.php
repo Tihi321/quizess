@@ -16,10 +16,10 @@ use Quizess\Core\Config;
 class Get_Dashboard_Options extends Config implements Rest_Callback {
 
   /**
-   * Update quiz data rest route callback
+   * Get all dashboard options.
    *
    * This callback is triggered when a front end app
-   * goes to the @link https://API-URL/wp-json/quizess/v1/quiz
+   * goes to the @link https://API-URL/wp-json/quizess/v1/dasboard-options
    * endpoint.
    *
    * @api
@@ -34,6 +34,7 @@ class Get_Dashboard_Options extends Config implements Rest_Callback {
   public function rest_callback( \WP_REST_Request $request ) {
     $quiz_scores = [];
 
+    // get all general options.
     $logo                    = get_option( self::CUSTOM_LOGO );
     $copyright               = get_option( self::COPYRIGHT_TEXT );
     $facebook                = get_option( self::FACEBOOK_URL );
@@ -47,14 +48,19 @@ class Get_Dashboard_Options extends Config implements Rest_Callback {
     $show_github_option      = get_option( self::SHOW_GITHUB_TOGGLE );
     $show_github             = $show_github_option ?: '0';
 
-    $quizess_posts = get_posts(
-      [
-          'post_type' => self::QUIZESS_POST_SLUG,
-          'post_status' => 'publish',
-          'numberposts' => 100,
-          'order'    => 'ASC',
-      ]
+    // get all quiz posts.
+    $quizess_args = array(
+        'post_type' => self::QUIZESS_POST_SLUG,
+        'post_status' => 'publish',
+        'numberposts' => 100,
+        'order'    => 'ASC',
+        'update_post_meta_cache' => false,
+        'update_post_term_cache' => false,
+        'no_found_rows' => true,
     );
+
+    $quizess_query = new \WP_Query( $quizess_args );
+    $quizess_posts = $quizess_query->posts;
 
     foreach ( $quizess_posts as $key => $quiz_post ) {
       $quiz_score = get_post_meta( $quiz_post->ID, self::SCORES_META_KEY, true );
@@ -81,6 +87,8 @@ class Get_Dashboard_Options extends Config implements Rest_Callback {
             'scores' => $quiz_scores,
         ],
     ];
+
+    \wp_reset_postdata();
 
     return \rest_ensure_response( $output );
   }

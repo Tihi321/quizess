@@ -89,7 +89,7 @@ class Quiz extends Config implements Service {
   /**
    * Register custom categories
    *
-   * @since 1.2.0
+   * @since 1.0.0
    */
   public function register_categories() {
     $labels = array(
@@ -123,7 +123,7 @@ class Quiz extends Config implements Service {
    *
    * @param string $template_path     Template path variable.
    * @return string Return new or old template path variable
-   * @since 1.2.0
+   * @since 1.0.0
    */
   public function quiz_single_template( $template_path ) {
     if ( get_post_type() === self::QUIZESS_POST_SLUG ) {
@@ -136,7 +136,7 @@ class Quiz extends Config implements Service {
   }
 
   /**
-   * Track scores metabox
+   * Register quiz metabox fields
    *
    * @return void
    */
@@ -151,7 +151,7 @@ class Quiz extends Config implements Service {
   }
 
   /**
-   * View callback for the track scores metabox
+   * View callback for the metabox quiz options
    *
    * @param  \WP_Post $post Post object of the current page.
    * @return void

@@ -1,6 +1,6 @@
 <?php
 /**
- * Options on user page
+ * User meta options view
  *
  * @package Quizess\Views\Admin
  */

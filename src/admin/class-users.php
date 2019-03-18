@@ -37,11 +37,11 @@ class Users extends Config implements Service {
   }
 
   /**
-   * Shows extra user's meta fields for users.
+   * Shows extra user's meta fields.
    *
    * @param WP_User $user   WP_User object.
    *
-   * @since 1.4.0
+   * @since 1.0.0
    */
   public function show_extra_user_meta_fields( $user ) {
 
@@ -52,12 +52,12 @@ class Users extends Config implements Service {
   }
 
   /**
-   * Used for editing extra external_user meta fields from Profile page.
+   * Used for saving users metafields.
    *
    * @param int $user_id  WP's user_ID.
    * @return bool
    *
-   * @since 1.4.0
+   * @since 1.0.0
    */
   public function save_extra_user_meta_fields( $user_id ) {
 

@@ -13,7 +13,7 @@ use Quizess\Core\Config;
 use Quizess\Helpers\Loader;
 
 /**
- * [Questions description]
+ * Class Questions
  */
 class Questions extends Config implements Service {
 

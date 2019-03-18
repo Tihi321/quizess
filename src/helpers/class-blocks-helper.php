@@ -23,8 +23,9 @@ final class Blocks_Helper extends Config {
 
   /**
    * Parses blocks out of a content string.
+   * Usefull for providing atributes from blocks on backend, instead of using client side parser
    *
-   * @since 0.5.0
+   * @since 1.0.0
    *
    * @param  string $content Post content.
    * @return array  Array of parsed block objects.
@@ -33,7 +34,7 @@ final class Blocks_Helper extends Config {
     /**
      * Filter to allow plugins to replace the server-side block parser
      *
-     * @since 3.8.0
+     * @since 1.0.0
      *
      * @param string $parser_class Name of block parser class
      */
@@ -55,6 +56,7 @@ final class Blocks_Helper extends Config {
     $output    = array();
     $questions = array();
 
+    // All block name expected from post.
     $prefix_name = self::PLUGIN_NAME;
     $block_names = [
         'options'    => $prefix_name . '/cpt-quizess-options-block',

@@ -11,6 +11,7 @@ namespace Quizess\Admin;
 use Quizess\Core\Service;
 use Quizess\Helpers\Object_Helper;
 use Quizess\Helpers\Loader;
+use Quizess\Helpers\Error_Logger;
 
 
 /**
@@ -22,6 +23,7 @@ class Media implements Service {
    * Use trait inside class.
    */
   use Object_Helper;
+  use Error_Logger;
 
   /**
    * Use trait inside class.
@@ -43,7 +45,7 @@ class Media implements Service {
 
 
   /**
-   * Enable SVG uplod in media
+   * Enable SVG upload in media
    *
    * @param array $mimes Load all mimes types.
    * @return array       Return original and updated.
@@ -143,7 +145,6 @@ class Media implements Service {
    * @param array $response Response array.
    * @return array
    *
-   * @since 3.0.0 Replacing file_get_content with file.
    * @since 1.0.0
    */
   public function check_svg_on_media_upload( $response ) {

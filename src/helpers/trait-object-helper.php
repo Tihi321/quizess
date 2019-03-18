@@ -3,7 +3,7 @@
  * The object helper specific functionality inside classes.
  * Used in admin or theme side but only inside a class.
  *
- * @since   3.0.0
+ * @since   1.0.0
  * @package Quizess\Helpers
  */
 
@@ -20,7 +20,6 @@ trait Object_Helper {
    * @param xml $xml Full xml document.
    * @return boolean
    *
-   * @since 3.0.0 Moved to trait.
    * @since 1.0.0
    */
   public function is_valid_xml( $xml ) {
@@ -94,7 +93,7 @@ trait Object_Helper {
   }
 
   /**
-   * Saves value to the options table
+   * Return tree menu with children from flat menu that is returned by default.
    *
    * @param array $items menu items.
    * @param array $tree object tree.

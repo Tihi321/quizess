@@ -2,7 +2,7 @@
 /**
  * Base class for all blocks.
  *
- * @since 1.3.0
+ * @since 1.0.0
  * @package Quizess\Blocks
  */
 
@@ -21,7 +21,7 @@ abstract class Base_Block implements Block {
    *
    * @var string
    *
-   * @since 1.3.0
+   * @since 1.0.0
    */
   const NAME = 'abstract-block';
 
@@ -30,7 +30,7 @@ abstract class Base_Block implements Block {
    *
    * @var string
    *
-   * @since 1.3.0
+   * @since 1.0.0
    */
   const BLOCK_NAMESPACE = 'quizess';
 
@@ -39,7 +39,7 @@ abstract class Base_Block implements Block {
    *
    * @var array
    *
-   * @since 1.3.0
+   * @since 1.0.0
    */
   public $attributes = array();
 
@@ -89,7 +89,7 @@ abstract class Base_Block implements Block {
    * @throws \Exception On missing attributes OR missing template.
    * @echo string
    *
-   * @since 1.3.0
+   * @since 1.0.0
    */
   public function render( array $attributes, string $content ) : string {
 

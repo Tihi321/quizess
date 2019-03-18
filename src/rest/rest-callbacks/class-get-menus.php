@@ -1,6 +1,6 @@
 <?php
 /**
- * The class file that returns all data for dashboard
+ * The class file that returns all data for menu add on frontend
  *
  * @since   1.0.0
  * @package Quizess\Rest\Rest_Callbacks
@@ -13,16 +13,16 @@ use Quizess\Core\Config;
 use Quizess\Helpers\Error_Logger;
 
 /**
- * Class Get_Dashboard
+ * Class Get_Menus
  */
 class Get_Menus extends Config implements Rest_Callback {
   use Error_Logger;
 
   /**
-   * Update quiz data rest route callback
+   * Retrieves all emenu data
    *
    * This callback is triggered when a front end app
-   * goes to the @link https://API-URL/wp-json/quizess/v1/quiz
+   * goes to the @link https://API-URL/wp-json/quizess/v1/menus
    * endpoint.
    *
    * @api

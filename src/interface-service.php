@@ -6,8 +6,6 @@
  * @package Quizess\Core
  */
 
-declare( strict_types=1 );
-
 namespace Quizess\Core;
 
 /**

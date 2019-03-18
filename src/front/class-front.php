@@ -85,7 +85,7 @@ class Front extends Config implements Service {
    */
   public function enqueue_localized_frontend_scripts() {
 
-    // Glbal variables for ajax and translations.
+    // Global variables for ajax and translations.
     wp_localize_script(
       static::PLUGIN_NAME . '-frontend-scripts',
       'quizessOptions',

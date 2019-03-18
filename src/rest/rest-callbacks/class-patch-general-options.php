@@ -23,10 +23,10 @@ class Patch_General_Options extends Config implements Rest_Callback {
   use Object_Helper;
 
   /**
-   * Update quiz data rest route callback
+   * Update quiz general options data, updated through admin dashboard.
    *
-   * This callback is triggered when a front end app
-   * goes to the @link https://API-URL/wp-json/quizess/v1/quiz
+   * This callback is triggered when a admin dashboard
+   * goes to the @link https://API-URL/wp-json/quizess/v1/options
    * endpoint.
    *
    * @api
@@ -54,6 +54,7 @@ class Patch_General_Options extends Config implements Rest_Callback {
     $sanitized_logo = [];
     $logo           = General_Helper::get_array_value( 'logo', $body );
 
+    // sanitize all logo object values.
     foreach ( $logo as $key => $item ) {
       if ( $key !== 'id' && $key !== 'url' && $key !== 'title' ) {
         continue;

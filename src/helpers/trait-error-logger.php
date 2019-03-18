@@ -91,7 +91,9 @@ trait Error_Logger {
             break;
     }
 
-    return new \WP_Error( esc_html( $status ), $message, [ 'status' => (int) $code ] );
+    $output_message = ( $message ) ? $message : $error_message;
+
+    return new \WP_Error( esc_html( $status ), $output_message, [ 'status' => (int) $code ] );
   }
 
 

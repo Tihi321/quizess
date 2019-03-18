@@ -2,7 +2,7 @@
 /**
  * All info regarding the section block
  *
- * @since 1.3.0
+ * @since 1.0.0
  * @package Quizess\Includes
  */
 
@@ -18,7 +18,7 @@ class Section extends Base_Block {
   /**
    * Block's name.
    *
-   * @since 1.3.0
+   * @since 1.0.0
    */
   const NAME = 'section';
 

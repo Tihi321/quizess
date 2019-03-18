@@ -35,10 +35,10 @@ class Blocks implements Service {
     // Add custom block category.
     $this->add_filter( 'block_categories', $this, 'quizess_category', 10, 2 );
 
-    // Add dimamyc blocks to list.
+    // Add dynamic blocks to list.
     $this->register_dynamic_blocks();
 
-    // Register dimamyc blocks.
+    // Register dynamic blocks.
     $this->register_blocks();
   }
 

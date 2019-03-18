@@ -1,6 +1,6 @@
 <?php
 /**
- * The class for menu page.
+ * The class for admind dashboard menu page. Here we register dashboard option page.
  *
  * @since 1.0.0
  * @package Quizess\Admin
@@ -66,7 +66,7 @@ class Menu_Page extends Config implements Service {
   }
 
   /**
-   * Registers new menu page.
+   * Registers new menu page. And add all subpages.
    *
    * @since 1.4.0
    */
@@ -180,6 +180,7 @@ class Menu_Page extends Config implements Service {
       $post_type     = '';
       $taxonomy_type = '';
 
+      // switches between quiz and question post type and their custom taxonomies.
       switch ( $current_screen->post_type ) {
         case self::QUIZESS_POST_SLUG:
           $post_type     = self::QUIZESS_POST_SLUG;

@@ -224,7 +224,7 @@ abstract class Config {
   const USER_PLAYER_TOGGLE = 'user_player_quizess';
 
   /**
-   * This is set so user can submit only one quiz
+   * This is set so user can submit quiz record only one time
    *
    * @var string
    *

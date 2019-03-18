@@ -17,10 +17,11 @@ use Quizess\Rest\Rest_Routes;
 class Patch_Scores extends Config implements Rest_Callback {
 
   /**
-   * Update quiz data rest route callback
+   * Update quiz records data, updated through admin dashboard.
+   * It will eather remove players last score or delete all player records from quiz
    *
-   * This callback is triggered when a front end app
-   * goes to the @link https://API-URL/wp-json/quizess/v1/quiz
+   * This callback is triggered when a admin dashboard
+   * goes to the @link https://API-URL/wp-json/quizess/v1/scores
    * endpoint.
    *
    * @api

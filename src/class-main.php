@@ -6,8 +6,6 @@
  * @package Quizess\Core
  */
 
-declare( strict_types=1 );
-
 namespace Quizess\Core;
 
 use Quizess\Helpers\General_Helper;
@@ -22,11 +20,7 @@ use Quizess\Exception;
 /**
  * The main start class.
  *
- * This is used to define admin-specific hooks, and
- * theme-facing site hooks.
- *
- * Also maintains the unique identifier of this theme as well as the current
- * version of the theme.
+ * All classes are instantiated here that represent different functionality for plugin.
  */
 class Main implements Registrable {
 

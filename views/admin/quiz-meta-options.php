@@ -1,6 +1,6 @@
 <?php
 /**
- * User player toggle
+ * Quiz meta options view
  *
  * @package Quizess\Views\Admin
  */

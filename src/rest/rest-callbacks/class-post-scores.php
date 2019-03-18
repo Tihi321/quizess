@@ -19,10 +19,10 @@ class Post_Scores extends Config implements Rest_Callback {
 
 
   /**
-   * Update quiz data rest route callback
+   * Update quiz records upon quiz submit from frontend.
    *
    * This callback is triggered when a front end app
-   * goes to the @link https://API-URL/wp-json/quizess/v1/quiz
+   * goes to the @link https://API-URL/wp-json/quizess/v1/scores
    * endpoint.
    *
    * @api
@@ -46,6 +46,7 @@ class Post_Scores extends Config implements Rest_Callback {
     $question_stats = [];
     $answer_stats   = [];
 
+    // create question stats, eg. was answer corrent or incorrect.
     foreach ( $stats as $key => $stat ) {
       $cur_correct      = ( $stat['correct'] === true ) ? 1 : 0;
       $question_stats[] = $cur_correct;
@@ -59,6 +60,7 @@ class Post_Scores extends Config implements Rest_Callback {
     $user_data         = get_userdata( $current_user_id );
     $user_display_name = $user_data->data->display_name;
 
+    // create quiz stats, save player data under players id, which we remove from endpoint for frontend.
     $quiz_stats = [
         'players' => [
             $current_user_id => [

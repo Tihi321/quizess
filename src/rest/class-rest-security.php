@@ -35,22 +35,22 @@ final class Rest_Security extends Config {
     $headers = $request->get_headers();
 
     if ( empty( $headers ) ) {
-      return $this->error_handler( 'empty_header' );
+      return $this->rest_error_handler( 'empty_header' );
     }
 
     if ( empty( $request->get_body() ) ) {
-      return $this->error_handler( 'empty_body' );
+      return $this->rest_error_handler( 'empty_body' );
     }
 
     if ( ! is_user_logged_in() ) {
-      return $this->error_handler( 'user_not_authenticated' );
+      return $this->rest_error_handler( 'user_not_authenticated' );
     }
 
     // check if method is PATCH from dashboard.
     if ( $request->get_method() === 'PATCH' ) {
 
       if ( ! isset( $headers['dashboard_nonce'] ) && ! wp_verify_nonce( sanitize_key( $headers['dashboard_nonce'] ), 'quizess_dashboard_nonce' ) ) {
-        return $this->error_handler( 'user_not_authenticated' );
+        return $this->rest_error_handler( 'user_not_authenticated' );
       }
     }
 
@@ -61,7 +61,7 @@ final class Rest_Security extends Config {
       $user_player     = get_user_meta( $current_user_id, self::USER_PLAYER_TOGGLE, true );
 
       if ( $user_player !== 'yes' ) {
-        return $this->error_handler( 'user_not_player' );
+        return $this->rest_error_handler( 'user_not_player' );
       }
 
       $body = \json_decode( $request->get_body(), true );

@@ -38,10 +38,10 @@ class Get_Quizess extends Config implements Rest_Callback {
   }
 
   /**
-   * Update quiz data rest route callback
+   * Retrieve data needed for quizes endpoint.
    *
-   * This callback is triggered when a front end app
-   * goes to the @link https://API-URL/wp-json/quizess/v1/quiz
+   * This callback is triggered from frontend app
+   * goes to the @link https://API-URL/wp-json/quizess/v1/quizes
    * endpoint.
    *
    * @api
@@ -55,11 +55,24 @@ class Get_Quizess extends Config implements Rest_Callback {
    */
   public function rest_callback( \WP_REST_Request $request ) {
 
-    $quiz_id        = $request->get_param( 'id' );
-    $quiz_post_type = get_post_type( $quiz_id );
-    $quiz           = get_post( $quiz_id );
+    $quiz_id = $request->get_param( 'id' );
 
-    if ( $quiz_post_type !== self::QUIZESS_POST_SLUG || empty( $quiz ) ) {
+    // get quiz with id param.
+    $quiz_args = array(
+        'p' => $quiz_id,
+        'post_type' => self::QUIZESS_POST_SLUG,
+        'post_status' => 'publish',
+        'order'    => 'ASC',
+        'update_post_meta_cache' => false,
+        'update_post_term_cache' => false,
+        'no_found_rows' => true,
+    );
+
+    $quiz_query = new \WP_Query( $quiz_args );
+    $quiz_posts = $quiz_query->posts;
+    $quiz       = $quiz_posts[0];
+
+    if ( empty( $quiz ) ) {
       return $this->rest_error_handler( 'awesome_no_quiz' );
     }
 
@@ -73,6 +86,8 @@ class Get_Quizess extends Config implements Rest_Callback {
     $scores = $this->blocks_helper->get_quiz_scores( $quiz_id );
 
     $output['scores'] = $scores;
+
+    \wp_reset_postdata();
 
     return \rest_ensure_response( $output );
   }

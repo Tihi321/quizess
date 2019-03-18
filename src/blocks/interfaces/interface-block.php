@@ -2,7 +2,7 @@
 /**
  * Interface for blocks.
  *
- * @since 1.3.0
+ * @since 1.0.0
  * @package Quizess\Blocks
  */
 
@@ -35,7 +35,7 @@ interface Block {
    *
    * @echo string
    *
-   * @since 1.3.0
+   * @since 1.0.0
    */
   public function render( array $attributes, string $content ) : string;
 }
