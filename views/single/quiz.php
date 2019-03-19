@@ -43,13 +43,6 @@ if ( is_user_logged_in() ) {
 <section class="quiz" id="<?php echo esc_attr( $post->ID ); ?>">
   <div class="quiz__content quiz__content--<?php echo esc_attr( $theme ); ?>" style="background-color:<?php echo esc_attr( $bg_color ); ?>;background-image:url('<?php echo esc_attr( $bg_image_url ); ?>');">
     <?php
-    $title_template = $base_path . 'views/sections/title-section.php';
-
-    if ( ! empty( $title_template ) ) {
-      include $title_template;
-    }
-    ?>
-    <?php
     if ( $quiz_locked === 'on' && ! is_user_logged_in() ) {
       $locked_content_message = $base_path . 'views/parts/quiz-locked.php';
 
@@ -57,6 +50,14 @@ if ( is_user_logged_in() ) {
         include $locked_content_message;
       }
     } else {
+
+      $title_template = $base_path . 'views/sections/title-section.php';
+
+      if ( ! empty( $title_template ) ) {
+        include $title_template;
+      }
+
+
       $content_template = $base_path . 'views/sections/bottom-section.php';
 
       if ( ! empty( $content_template ) ) {

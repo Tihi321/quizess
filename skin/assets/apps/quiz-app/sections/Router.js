@@ -27,7 +27,7 @@ const RouterConsumer = (props) => {
 
   if (!answers || !question) {
     return (
-      <Placeholder>
+      <Placeholder type="warning">
         {__('This question is incomplete', 'quizess')}
       </Placeholder>
     );

@@ -13,7 +13,7 @@ import ToggleSwitch from './buttons/toggle-switch';
 import DashboardButton from './buttons/dashboard-button';
 import Timer from './question/timer';
 import MainQuestion from './question/text';
-import Placeholder from './question/placeholder';
+import Placeholder from './modal/placeholder';
 import ExplanationPreview from './explanation/preview';
 import Overview from './modal/overview';
 import MenuItem from './menu/menu-item';

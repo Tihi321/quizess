@@ -27,7 +27,7 @@ const QuestionsConsumer = (props) => {
 
   if (!Array.isArray(questions) || !questions.length) {
     return (
-      <Placeholder>
+      <Placeholder type="warning">
         {__('Nothing to see here, this quiz has no questions !!!', 'quizess')}
       </Placeholder>
     );
@@ -59,11 +59,9 @@ const QuestionsConsumer = (props) => {
 
 
   return (
-    <Fragment>
-      <Router
-        questionData={questions[currentQuestion]}
-      />
-    </Fragment>
+    <Router
+      questionData={questions[currentQuestion]}
+    />
   );
 };
 
