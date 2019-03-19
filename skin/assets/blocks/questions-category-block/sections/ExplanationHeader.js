@@ -8,7 +8,7 @@ const ExplanationHeader = (props) => {
 
   return (
     <div className="explanation__header">
-      <div className="explanation__title">{__('Explanation', 'quizess')}</div>
+      <h4 className="explanation__title">{__('Explanation', 'quizess')}</h4>
       {(children) && <RawHTML className="explanation__text">{children}</RawHTML>}
     </div>
   );

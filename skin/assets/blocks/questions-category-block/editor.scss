@@ -24,6 +24,7 @@ $question-category-block: (
   .explanation {
     &__title {
       @extend %question-top-title;
+      margin: 0;
     }
     &__header {
       @extend %explanation-header;
@@ -31,8 +32,10 @@ $question-category-block: (
 
     &__text {
       p {
-        @include text-size(medium);
-        text-align: center;
+        @include text-size(default);
+        line-height: 1.7;
+        padding: 10px;
+        margin: 0;
       }
     }
   }
