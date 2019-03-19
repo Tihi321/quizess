@@ -9,6 +9,13 @@ export default class App {
 
     this.$appElement = document.querySelector(appElement);
 
+    /**
+     * Get data variables:
+     * quizID - quiz id fot quiz endoiint
+     * userSubmit - variable is set to 1 if players record will be tracked
+     * theme - quiz theme for button colors
+     * headerElemeent - element of sidemenu, we change z index of sidemenu to fix overlap
+     */
     if (this.$appElement) {
       this.quizId = this.$appElement.dataset.quizId;
       this.userSubmit = this.$appElement.dataset.userSubmit;

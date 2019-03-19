@@ -16,6 +16,7 @@ const Menu = (props) => {
     </div>
   );
 
+  // this recursive function call itself to create elements for each child element.
   const createMenuItems = (menuChildren) => {
 
     return menuChildren.map((item, index) => {

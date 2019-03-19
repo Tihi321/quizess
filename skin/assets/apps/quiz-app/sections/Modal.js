@@ -48,6 +48,7 @@ const ModalConsumer = (props) => {
       __('Dost thou wish to leave with such hasty abandon ?', 'quizess'),
     ];
 
+    // export random message on each try.
     const rnd = Math.floor(Math.random() * Math.floor(10));
     const message = messages[rnd];
 

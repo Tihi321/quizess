@@ -12,7 +12,7 @@ class DashboardProvider extends PureComponent {
   constructor(props) {
     super(props);
 
-    // Elements for the submit message. Outside of react, ou in the real DOM.
+    // Elements for the submit message. Outside of react, out in the light DOM.
     this.messageElement = document.querySelector(props.messageElementSelector);
     this.messageTextElement = document.querySelector(props.messageTextSelector);
 
@@ -229,18 +229,17 @@ class DashboardProvider extends PureComponent {
         last: (last) ? 1 : 0,
       });
 
-      // Test to send data to registered quiz payer.
       fetch(`${root}${scoresApi}`, {
-        method: 'PATCH', // *GET, POST, PUT, DELETE, etc.
-        mode: 'same-origin', // no-cors, cors, *same-origin
-        credentials: 'same-origin', // include, *same-origin, omit
+        method: 'PATCH',
+        mode: 'same-origin',
+        credentials: 'same-origin',
         headers: {
           Accept: 'application/json',
           'X-WP-Nonce': nonce,
           'dashboard-nonce': dashboardNonce,
         },
-        redirect: 'follow', // manual, *follow, error
-        referrer: 'no-referrer', // no-referrer, *client
+        redirect: 'follow',
+        referrer: 'no-referrer',
         body: bodyData,
       })
         .then((res) => {
@@ -304,18 +303,18 @@ class DashboardProvider extends PureComponent {
         instagram,
       });
 
-      // Test to send data to registered quiz payer.
+
       fetch(`${root}${optionsApi}`, {
-        method: 'PATCH', // *GET, POST, PUT, DELETE, etc.
-        mode: 'same-origin', // no-cors, cors, *same-origin
-        credentials: 'same-origin', // include, *same-origin, omit
+        method: 'PATCH',
+        mode: 'same-origin',
+        credentials: 'same-origin',
         headers: {
           Accept: 'application/json',
           'X-WP-Nonce': nonce,
           'dashboard-nonce': dashboardNonce,
         },
-        redirect: 'follow', // manual, *follow, error
-        referrer: 'no-referrer', // no-referrer, *client
+        redirect: 'follow',
+        referrer: 'no-referrer',
         body: bodyData,
       })
         .then((res) => {
@@ -547,9 +546,6 @@ class DashboardProvider extends PureComponent {
     } = this.state;
 
     return (
-
-      // value prop is where we define what values
-      // that are accessible to consumer components
       <DashboardContext.Provider
         value={{
           values: {

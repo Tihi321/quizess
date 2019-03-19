@@ -1,6 +1,5 @@
-/* global quizessOptions, userLogged */
+/* global quizessOptions */
 import React, {PureComponent} from 'react';
-import generalHelper from '../../../helpers/general-helper';
 
 // Set Up The Initial Context
 const MenuContext = React.createContext();
@@ -37,6 +36,7 @@ class MenuProvider extends PureComponent {
     return outout;
   }
 
+  // fetch menu items from endpoint
   fetchData = () => {
     const {root} = quizessOptions;
     const {menusApi} = quizessOptions;
@@ -71,9 +71,6 @@ class MenuProvider extends PureComponent {
     } = this.state;
 
     return (
-
-      // value prop is where we define what values
-      // that are accessible to consumer components
       <MenuContext.Provider
         value={{
           values: {

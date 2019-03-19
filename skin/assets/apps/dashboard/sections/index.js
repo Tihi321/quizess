@@ -43,6 +43,7 @@ const MainConsumer = (props) => {
     );
   });
 
+  // Emulates tabs, switches content for particular tab.
   const getOptionsPage = () => {
     switch (optionsTitle) {
       case 'Settings':

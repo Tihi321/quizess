@@ -18,7 +18,7 @@ export default registerBlockType(
   `${pluginConfig.pluginName}/cpt-quizess-background-options-block`,
   {
     title: __('Background Options', 'quizess'),
-    description: __('Choose background image and color', 'quizess'),
+    description: __('Choose background image and color, default background color is blue', 'quizess'),
     category: 'quizess-blocks',
     icon: {
       foreground: '#0073A8',

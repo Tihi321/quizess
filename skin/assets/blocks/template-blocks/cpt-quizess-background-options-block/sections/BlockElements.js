@@ -18,6 +18,10 @@ function BlockElements(props) {
     },
   } = props;
 
+  const defaultColor = '#0073A8';
+
+  const backgroundColorVarriable = backgroundColor || defaultColor;
+
   const imageElement = (
     <MediaElement
       className="background-image-element"
@@ -43,7 +47,7 @@ function BlockElements(props) {
           <div
             className="background-color-element"
             style={{
-              backgroundColor,
+              backgroundColor: backgroundColorVarriable,
             }}
           >
           </div>

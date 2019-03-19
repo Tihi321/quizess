@@ -50,6 +50,10 @@ class AppProvider extends PureComponent {
     };
   }
 
+  /**
+   * sets class to body ( eg. to remove scrollbar ) when modal is shown.
+   * and adds lower z index to menu ( headerElement )
+   */
   setBody = () => {
     this.headerElement.classList.add('is-hidden');
     if (this.isIphone) {
@@ -70,6 +74,7 @@ class AppProvider extends PureComponent {
     }, 300);
   }
 
+  // sends quiz record of player score to endpoint, even if quiz is canceled it ads negative answers to skipped questions.
   sendQuizData = (canceled = false) => {
 
     const {root} = quizessOptions;
@@ -96,17 +101,16 @@ class AppProvider extends PureComponent {
       correct: correctAnswers,
     });
 
-    // Test to send data to registered quiz payer.
     fetch(`${root}${scoresApi}`, {
-      method: 'POST', // *GET, POST, PUT, DELETE, etc.
-      mode: 'same-origin', // no-cors, cors, *same-origin
-      credentials: 'same-origin', // include, *same-origin, omit
+      method: 'POST',
+      mode: 'same-origin',
+      credentials: 'same-origin',
       headers: {
         Accept: 'application/json',
         'X-WP-Nonce': nonce,
       },
-      redirect: 'follow', // manual, *follow, error
-      referrer: 'no-referrer', // no-referrer, *client
+      redirect: 'follow',
+      referrer: 'no-referrer',
       body: bodyData,
     })
       .then((res) => {
@@ -136,6 +140,7 @@ class AppProvider extends PureComponent {
 
   }
 
+  // gets data for quiz with param of quiz id.
   fetchApi = () => {
     const {root} = quizessOptions;
     const {quizApi} = quizessOptions;
@@ -163,6 +168,7 @@ class AppProvider extends PureComponent {
       });
   }
 
+  // reset state before next question starts.
   resetNextQuestion = () => {
 
     const {
@@ -184,6 +190,7 @@ class AppProvider extends PureComponent {
 
   }
 
+  // reset state of the quiz for try again button.
   resetQuiz = (exit) => {
 
     const output = {
@@ -365,8 +372,6 @@ class AppProvider extends PureComponent {
 
     return (
 
-      // value prop is where we define what values
-      // that are accessible to consumer components
       <AppContext.Provider
         value={{
           values: {

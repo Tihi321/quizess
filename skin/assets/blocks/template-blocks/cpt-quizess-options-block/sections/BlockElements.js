@@ -40,7 +40,7 @@ function BlockElements(props) {
       <Select
         className="columns-select"
         closeMenuOnSelect={true}
-        value={(theme) ? JSON.parse(theme) : {value: 'light', label: 'Light'}}
+        value={(theme) ? JSON.parse(theme) : {value: 'dark', label: 'Dark'}}
         onChange={handleThemeChange}
         options={[
           {value: 'light', label: 'Light'},
@@ -49,7 +49,7 @@ function BlockElements(props) {
         placeholder={__('Select', 'quizess')}
       />
       <div className="qz-help-mce-class">
-        {__('Default theme will affect buttons like submit, start ect', 'quizess')}
+        {__('Default theme will affect buttons ( eg. submit, start ) and text, light theme for light background color & dark theme for dark background color', 'quizess')}
       </div>
     </Fragment>
   );
