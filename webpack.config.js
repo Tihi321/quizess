@@ -53,7 +53,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const appPath = `${path.resolve(__dirname)}`;
 
 // Dev Server
-const proxyUrl = 'dev.gutenberg-blocks.test/'; // local dev url example: dev.wordpress.com
+const proxyUrl = 'dev.gutenberg-blocks.test/';
 
 // Plugin
 const pluginName = 'quizess';
@@ -100,7 +100,24 @@ const allModules = {
       exclude: /node_modules/,
       use: [
         MiniCssExtractPlugin.loader,
-        'css-loader', 'postcss-loader', 'sass-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            sourceMap: true,
+          },
+        },
+        {
+          loader: 'postcss-loader',
+          options: {
+            sourceMap: true,
+          },
+        },
+        {
+          loader: 'sass-loader',
+          options: {
+            sourceMap: true,
+          },
+        },
       ],
     },
   ],
@@ -134,7 +151,7 @@ if (!DEV) {
     new UglifyJsPlugin({
       cache: true,
       parallel: true,
-      sourceMap: true,
+      sourceMap: false,
       uglifyOptions: {
         output: {
           comments: false,
@@ -200,6 +217,6 @@ module.exports = [
 
     plugins: allPlugins,
 
-    devtool: DEV ? '' : '#inline-source-map',
+    devtool: DEV ? 'inline-cheap-module-source-map' : false,
   },
 ];
