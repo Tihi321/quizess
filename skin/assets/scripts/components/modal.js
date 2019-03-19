@@ -36,6 +36,7 @@ export default class Modal {
       this.scrollPosition = window.pageYOffset;
     }
     const {classList} = document.querySelector(`#${id}`);
+
     classList.add(this.OPEN_CLASS);
     classList.remove(this.CLOSED_CLASS);
 

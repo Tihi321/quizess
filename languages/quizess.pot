@@ -4,8 +4,6 @@ msgstr ""
 "X-Generator: babel-plugin-makepot\n"
 
 #: skin/assets/apps/dashboard/sections/Details.js:115
-#: skin/assets/apps/dashboard/sections/Details.js:113
-#: skin/assets/apps/dashboard/sections/Details.js:107
 #: skin/assets/apps/dashboard/sections/Scores.js:31
 #: skin/assets/apps/quiz-app/parts/QuestionHeader.js:35
 #: skin/assets/components/modal/overview/index.js:85
@@ -13,15 +11,11 @@ msgid "Question"
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Details.js:116
-#: skin/assets/apps/dashboard/sections/Details.js:114
-#: skin/assets/apps/dashboard/sections/Details.js:108
 #: skin/assets/components/modal/overview/index.js:88
 msgid "Answer"
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Details.js:128
-#: skin/assets/apps/dashboard/sections/Details.js:126
-#: skin/assets/apps/dashboard/sections/Details.js:120
 #: skin/assets/apps/dashboard/sections/Scores.js:32
 #: skin/assets/blocks/question-block/components/answer-input/index.js:57
 #: skin/assets/components/modal/overview/index.js:55
@@ -29,8 +23,6 @@ msgid "Correct"
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Details.js:128
-#: skin/assets/apps/dashboard/sections/Details.js:126
-#: skin/assets/apps/dashboard/sections/Details.js:120
 #: skin/assets/components/modal/overview/index.js:30
 msgid "Incorrect"
 msgstr ""
@@ -160,22 +152,20 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/Details.js:64
-#: skin/assets/apps/dashboard/sections/Scores.js:36
-msgid "Question success rate"
-msgstr ""
-
-#: skin/assets/apps/dashboard/sections/Details.js:65
-#: skin/assets/apps/dashboard/sections/Scores.js:37
-msgid "Number of successful attempts"
-msgstr ""
-
 #: skin/assets/apps/dashboard/sections/Scores.js:22
 msgid "Name"
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Scores.js:23
 msgid "Attempts"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/Scores.js:36
+msgid "Question success rate"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/Scores.js:37
+msgid "Number of successful attempts"
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Scores.js:66
@@ -190,7 +180,7 @@ msgstr ""
 msgid "Quizes"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/index.js:61
+#: skin/assets/apps/dashboard/sections/index.js:62
 msgid "Dashboard"
 msgstr ""
 
@@ -234,16 +224,16 @@ msgstr ""
 msgid "Dost thou wish to leave with such hasty abandon ?"
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/Modal.js:54
+#: skin/assets/apps/quiz-app/sections/Modal.js:55
 msgid "If you cancel your scores will be submitted."
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/Modal.js:74
+#: skin/assets/apps/quiz-app/sections/Modal.js:75
 #: skin/assets/components/dialog/index.js:30
 msgid "Cancel"
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/Modal.js:80
+#: skin/assets/apps/quiz-app/sections/Modal.js:81
 msgid "Exit"
 msgstr ""
 
@@ -456,15 +446,15 @@ msgid "This is section block"
 msgstr ""
 
 #: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/index.js:20
-#: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/sections/BlockElements.js:36
+#: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/sections/BlockElements.js:40
 msgid "Background Options"
 msgstr ""
 
 #: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/index.js:21
-msgid "Choose background image and color"
+msgid "Choose background image and color, default background color is blue"
 msgstr ""
 
-#: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/sections/BlockElements.js:39
+#: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/sections/BlockElements.js:43
 msgid "Choose main background color & background image for this quiz"
 msgstr ""
 
@@ -513,7 +503,9 @@ msgid "Default theme"
 msgstr ""
 
 #: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:52
-msgid "Default theme will affect buttons like submit, start ect"
+msgid ""
+"Default theme will affect buttons ( eg. submit, start ) and text, light "
+"theme for light background color & dark theme for dark background color"
 msgstr ""
 
 #: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:61
@@ -584,9 +576,6 @@ msgstr ""
 #: skin/assets/elements/FileElement/index.js:32
 #: skin/assets/elements/LottieElement/index.js:32
 #: skin/assets/elements/MediaElement/index.js:32
-#: skin/assets/elements/MediaElement/index.js:31
-#: skin/assets/elements/MediaElement/index.js:30
-#: skin/assets/elements/MediaElement/index.js:29
 #: skin/assets/elements/VideoElement/index.js:27
 #: skin/assets/elements/YoutubeElement/index.js:31
 msgid "Edit Media"
@@ -594,7 +583,6 @@ msgstr ""
 
 #: skin/assets/elements/FileElement/index.js:63
 #: skin/assets/elements/MediaElement/index.js:9
-#: skin/assets/elements/MediaElement/index.js:8
 #: skin/assets/elements/VideoElement/index.js:57
 msgid "Media area"
 msgstr ""

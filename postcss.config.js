@@ -1,14 +1,11 @@
-/* global process __dirname */
 const DEV = process.env.NODE_ENV !== 'production';
 
-const path = require('path');
 const autoPrefixer = require('autoprefixer');
 const cssMqpacker = require('css-mqpacker');
 const postcssFontMagician = require('postcss-font-magician');
 const cssNano = require('cssnano');
 
 const pluginName = 'quizess';
-const fontsPath = path.join(__dirname, 'skin/public/fonts');
 const publicFontsPath = `/wp-content/plugins/${pluginName}/skin/public/fonts`;
 
 const plugins = [

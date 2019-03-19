@@ -1,4 +1,3 @@
-/* global pluginOptions */
 import generalHelper from '../helpers/general-helper';
 import App from '../apps/quiz-app';
 import Menu from '../apps/menu-app';
