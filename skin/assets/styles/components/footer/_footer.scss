@@ -1,6 +1,4 @@
-$footer-colors: (
-  color: $base-white-color,
-);
+$footer-colors: ( color: $base-white-color, );
 
 .quizess-footer {
   display: flex;
@@ -18,6 +16,7 @@ $footer-colors: (
   &--light {
     background-color: map-deep-get($theme-colors, light, 'primary-color');
   }
+
   &--dark {
     background-color: map-deep-get($theme-colors, dark, 'primary-color');
   }
@@ -28,10 +27,13 @@ $footer-colors: (
   }
 
   &__logo {
-    display: flex;
+    width: 80px;
+    height: 50px;
     margin-right: 10px;
-    max-width: 100px;
-    max-height: 50px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-origin: content-box;
   }
 
   &__copyright {
@@ -48,10 +50,12 @@ $footer-colors: (
       list-style: none;
       margin: 0 5px;
     }
+
     .icon {
       @include text-size(larger);
       color: map-get($footer-colors, 'color');
     }
+
     .icon:hover {
       color: map-get($footer-colors, 'color');
     }

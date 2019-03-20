@@ -458,12 +458,11 @@ class DashboardProvider extends PureComponent {
       this.saveOptions();
     },
     handleOnSelectMedia: (image) => {
-      const url = (!image.sizes.thumbnail) ? image.url : image.sizes.thumbnail.url;
       this.setState(() => {
         return {
           logo: {
             id: image.id,
-            url,
+            url: image.url,
             title: image.title,
           },
         };

@@ -10,8 +10,13 @@ const Menu = (props) => {
 
   const menuHeader = (
     <div className="menu__header">
-      <a className="menu__header__logo" href="/" >
-        <img className="menu__header__img" src={logo.url} alt={logo.title} />
+      <a
+        className="menu__header__logo"
+        href="/"
+        style={{
+          backgroundImage: `url(${logo.url})`,
+        }}
+      >
       </a>
     </div>
   );

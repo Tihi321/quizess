@@ -116,6 +116,7 @@ const GeneralOptionsConsumer = (props) => {
           className="options__logo-element"
           mediaTitle={title}
           toolbarOnTop={false}
+          tagName="div"
           mediaId={id}
           mediaUrl={url}
           onSelectMedia={handleOnSelectMedia}

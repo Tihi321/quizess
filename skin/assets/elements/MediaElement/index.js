@@ -10,6 +10,7 @@ const MediaElement = (props) => {
     showToolbar = true,
     toolbarOnTop = true,
     removeBtnStyle = true,
+    tagName = 'img',
     mediaAlt,
     mediaTitle,
     mediaUrl,
@@ -75,6 +76,20 @@ const MediaElement = (props) => {
 
 
   const renderImage = () => {
+    if (tagName === 'div') {
+      return (
+        <Fragment>
+          {(showToolbar) && renderToolbarEditButton()}
+          <div
+            className={`media-image-class ${className}`}
+            style={{
+              backgroundImage: `url(${mediaUrl})`,
+            }}
+          >
+          </div>
+        </Fragment>
+      );
+    }
     const alt = (mediaAlt) || mediaTitle;
     return (
       <Fragment>
@@ -84,6 +99,7 @@ const MediaElement = (props) => {
         </figure>
       </Fragment>
     );
+
   };
 
   const renderPlaceholder = () => {

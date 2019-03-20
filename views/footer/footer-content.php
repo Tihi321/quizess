@@ -23,8 +23,7 @@
 <footer class="quizess-footer quizess-footer--<?php echo esc_attr( $theme ); ?>">
   <div class="quizess-footer__brand">
     <?php if ( ! empty( $logo_decoded ) ) { ?>
-    <div class="quizess-footer__logo">
-      <img src="<?php echo esc_url( $logo_decoded['url'] ); ?>" />
+    <div class="quizess-footer__logo" style="background-image: url(<?php echo esc_url( $logo_decoded['url'] ); ?>)">
     </div>
     <?php } ?>
     <?php if ( ! empty( $copyright ) ) { ?>
