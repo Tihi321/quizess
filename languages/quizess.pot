@@ -88,31 +88,31 @@ msgstr ""
 msgid "Logo shown in the footer and menu"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:134
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:135
 msgid "Copyright"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:136
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:137
 msgid "Message show in the footer"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:163
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:164
 msgid "Facebook"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:192
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:193
 msgid "Twitter"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:221
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:222
 msgid "LinkedIn"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:250
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:251
 msgid "Instagram"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:252
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:253
 msgid "Social footer item"
 msgstr ""
 
@@ -575,6 +575,7 @@ msgstr ""
 
 #: skin/assets/elements/FileElement/index.js:32
 #: skin/assets/elements/LottieElement/index.js:32
+#: skin/assets/elements/MediaElement/index.js:33
 #: skin/assets/elements/MediaElement/index.js:32
 #: skin/assets/elements/VideoElement/index.js:27
 #: skin/assets/elements/YoutubeElement/index.js:31
