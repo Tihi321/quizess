@@ -1,24 +1,45 @@
 <p align="center">
-  <img alt="Eightshift WordPress Boilerplate Creative" src="packages/assets/quizess_frontend_quiz.gif"/>
+  <img alt="Eightshift WordPress Boilerplate Creative" src="packages/assets/quizess_frontend_quiz_640.gif"/>
 </p>
 
 # Quizess
 
-Quizess is plugin for Wordpress, that allows you to create quizess, register players and keep records on player scores.
+This is plugin for **Wordpress**, that allows you to create quizess, register players and keep records on player scores.
+
+With block templates we can add custom options to posts.
+
+<p align="center">
+  <img alt="Eightshift WordPress Boilerplate Creative" src="packages/assets/quizess_backend_options.png"/>
+</p>
+
+
+Or add different required fields.
+
+<p align="center">
+  <img alt="Eightshift WordPress Boilerplate Creative" src="packages/assets/quizess_backend_question.gif"/>
+</p>
+
 
 ## Technologies
-OO PHP + React for blocks, dahboard, menu and frontend quiz
+**OO PHP** + **React** for *blocks*, *admin dahboard*, *menu* and *frontend quiz*. Plugin utilizes **REST Api** to decouple Wordpress backend and UI. That way we can use frontend libraries (like React, VUE, Angular) to create Web Apps and still use Wordpress for backend, we can also extend Wordpress admin.
 
-## Requirements for development
+<p align="center">
+  <img alt="Eightshift WordPress Boilerplate Creative" src="packages/assets/quizess_backend_dashboard.png"/>
+</p>
+
+
+## Requirements
 
 1. [Node.js](https://nodejs.org/en/)
 2. [Composer](https://getcomposer.org/)
-3. [PHP 7+](http://www.php.net/)
+3. Local server - [PHP 7+](http://www.php.net/)
+4. [Wordpress](https://hr.wordpress.org/)
 
-## Getting started
-Follow the instructions:
+## Instalation
 
-## Development Start
+Clone this repository into plugins folder
+
+## Development
 
 Builds assets in watch mode using Webpack.
 

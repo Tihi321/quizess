@@ -3,7 +3,6 @@ $dashboard-colors: (
 );
 
 .dashboard {
-
   &__options {
     display: flex;
     flex: 1;
@@ -33,6 +32,7 @@ $dashboard-colors: (
     margin: 0 0 20px;
     color: map-get($dashboard-colors, 'title-color');
     text-transform: uppercase;
+    font-weight: 800;
   }
 
   &__quiz-select {

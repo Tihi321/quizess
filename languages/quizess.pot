@@ -576,7 +576,6 @@ msgstr ""
 #: skin/assets/elements/FileElement/index.js:32
 #: skin/assets/elements/LottieElement/index.js:32
 #: skin/assets/elements/MediaElement/index.js:33
-#: skin/assets/elements/MediaElement/index.js:32
 #: skin/assets/elements/VideoElement/index.js:27
 #: skin/assets/elements/YoutubeElement/index.js:31
 msgid "Edit Media"

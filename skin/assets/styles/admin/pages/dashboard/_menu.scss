@@ -3,17 +3,17 @@ $dashboard-colors: (
   menu-item-bg: darken($base-primary-blue, 10%),
   menu-item-bg-active: $base-primary-blue,
   menu-item-bg-hover: lighten($base-primary-blue, 10%),
+  menu-bg: $base-light-blue-color,
 );
 
 .dashboard {
-
   &__menu {
     width: 20%;
     margin: 0;
     min-width: 150px;
     display: flex;
     flex-direction: column;
-    margin-right: 20px;
+    background-color: map-get($dashboard-colors, 'menu-bg');
 
     &-item {
       margin: 0;
