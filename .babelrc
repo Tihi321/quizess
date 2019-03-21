@@ -46,7 +46,7 @@
     [
       "@wordpress/babel-plugin-makepot",
       {
-        "output": "languages/quizess.pot"
+        "output": "languages/quizess_js.pot"
       }
     ],
     [

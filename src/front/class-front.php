@@ -76,6 +76,13 @@ class Front extends Config implements Service {
     wp_register_script( static::PLUGIN_NAME . '-frontend-scripts', $main_admin_script, array(), static::PLUGIN_VERSION, true );
     wp_enqueue_script( static::PLUGIN_NAME . '-frontend-scripts' );
 
+    // add localization to javascript.
+    if ( function_exists( 'gutenberg_get_jed_locale_data' ) ) {
+      $locale  = gutenberg_get_jed_locale_data( 'quizess' );
+      $content = 'wp.i18n.setLocaleData( ' . wp_json_encode( $locale ) . ', "quizess" );';
+      wp_script_add_data( static::PLUGIN_NAME . '-frontend-scripts', 'data', $content );
+    }
+
   }
 
   /**

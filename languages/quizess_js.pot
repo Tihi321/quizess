@@ -1,0 +1,624 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"X-Generator: babel-plugin-makepot\n"
+
+#: skin/assets/apps/dashboard/sections/Details.js:115
+#: skin/assets/apps/dashboard/sections/Scores.js:31
+#: skin/assets/apps/quiz-app/parts/QuestionHeader.js:35
+#: skin/assets/components/modal/overview/index.js:85
+msgid "Question"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/Details.js:116
+#: skin/assets/components/modal/overview/index.js:88
+msgid "Answer"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/Details.js:128
+#: skin/assets/apps/dashboard/sections/Scores.js:32
+#: skin/assets/blocks/question-block/components/answer-input/index.js:57
+#: skin/assets/components/modal/overview/index.js:55
+msgid "Correct"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/Details.js:128
+#: skin/assets/components/modal/overview/index.js:30
+msgid "Incorrect"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/Details.js:163
+msgid "Back"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/Details.js:33
+msgid "It will delete all records from player"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/Details.js:42
+msgid "Unrecorded"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/Details.js:57
+#: skin/assets/apps/dashboard/sections/Scores.js:25
+#: skin/assets/components/modal/overview/index.js:58
+msgid "Total"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/Details.js:58
+#: skin/assets/apps/dashboard/sections/Scores.js:26
+#: skin/assets/components/modal/overview/index.js:61
+msgid "Success"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/Details.js:59
+msgid "Last attempt"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/Details.js:60
+msgid "Player records"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/Details.js:64
+msgid ""
+"Stats from the last attempt, last attempt can be removed without affecting "
+"player overall records, it can be used with single submit options under "
+"users to ensure player single submision as it will check last attempt "
+"before submiting. With delete button you will remove all records for this "
+"player on this quiz"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/Details.js:67
+msgid "Stats from the last submit per quiestion"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/Details.js:77
+msgid "Remove"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/Details.js:86
+msgid "Delete"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:107
+msgid "Logo"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:109
+msgid "Logo shown in the footer and menu"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:135
+msgid "Copyright"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:137
+msgid "Message show in the footer"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:164
+msgid "Facebook"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:193
+msgid "Twitter"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:222
+msgid "LinkedIn"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:251
+msgid "Instagram"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:253
+msgid "Social footer item"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:52
+msgid "Use custom styles"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:55
+msgid "Replace theme styles on quiz posts."
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:66
+msgid "Remove admin bar"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:69
+msgid "Remove default admin bar and add optional quiz submit message "
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:81
+msgid "Show github"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:84
+msgid "Add github social icon to the footer linked to the quizess resository"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:95
+msgid "Save"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/QuizOptions.js:28
+#: skin/assets/blocks/components/toolbars/style-options.js:36
+#: skin/assets/blocks/question-block/sections/BlockOptions.js:67
+#: skin/assets/blocks/questions-category-block/sections/BlockOptions.js:83
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:49
+msgid "Select"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/Scores.js:22
+msgid "Name"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/Scores.js:23
+msgid "Attempts"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/Scores.js:36
+msgid "Question success rate"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/Scores.js:37
+msgid "Number of successful attempts"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/Scores.js:66
+msgid "View Details"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/index.js:17
+msgid "Settings"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/index.js:18
+msgid "Quizes"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/index.js:62
+msgid "Dashboard"
+msgstr ""
+
+#: skin/assets/apps/quiz-app/sections/Modal.js:39
+msgid "Get outta here and go back to your boring programs."
+msgstr ""
+
+#: skin/assets/apps/quiz-app/sections/Modal.js:40
+msgid "Just leave. When you come back, I'll be waiting with a bat."
+msgstr ""
+
+#: skin/assets/apps/quiz-app/sections/Modal.js:41
+msgid "Are you sure you want to quit this great quiz ?"
+msgstr ""
+
+#: skin/assets/apps/quiz-app/sections/Modal.js:42
+msgid "I wouldn't leave if I were you. Internet is much worse."
+msgstr ""
+
+#: skin/assets/apps/quiz-app/sections/Modal.js:43
+msgid "Go ahead and leave. See if I care."
+msgstr ""
+
+#: skin/assets/apps/quiz-app/sections/Modal.js:44
+msgid "Choose Cancel if you are brave, choose Exit to cover in shame. "
+msgstr ""
+
+#: skin/assets/apps/quiz-app/sections/Modal.js:45
+msgid "Chickening out... already ?"
+msgstr ""
+
+#: skin/assets/apps/quiz-app/sections/Modal.js:46
+msgid "Heroes choose Cancel, Wimps choose Exit."
+msgstr ""
+
+#: skin/assets/apps/quiz-app/sections/Modal.js:47
+msgid "So you think you can quit this easily, huh ?"
+msgstr ""
+
+#: skin/assets/apps/quiz-app/sections/Modal.js:48
+msgid "Dost thou wish to leave with such hasty abandon ?"
+msgstr ""
+
+#: skin/assets/apps/quiz-app/sections/Modal.js:55
+msgid "If you cancel your scores will be submitted."
+msgstr ""
+
+#: skin/assets/apps/quiz-app/sections/Modal.js:75
+#: skin/assets/components/dialog/index.js:30
+msgid "Cancel"
+msgstr ""
+
+#: skin/assets/apps/quiz-app/sections/Modal.js:81
+msgid "Exit"
+msgstr ""
+
+#: skin/assets/apps/quiz-app/sections/Questions.js:31
+msgid "Nothing to see here, this quiz has no questions !!!"
+msgstr ""
+
+#: skin/assets/apps/quiz-app/sections/Router.js:31
+msgid "This question is incomplete"
+msgstr ""
+
+#: skin/assets/apps/quiz-app/sections/Router.js:45
+msgid "Show Expplanation"
+msgstr ""
+
+#: skin/assets/apps/quiz-app/sections/Router.js:45
+msgid "Hide Expplanation"
+msgstr ""
+
+#: skin/assets/apps/quiz-app/sections/Router.js:49
+msgid "Submit"
+msgstr ""
+
+#: skin/assets/apps/quiz-app/sections/Router.js:49
+msgid "Next Question"
+msgstr ""
+
+#: skin/assets/apps/quiz-app/sections/index.js:21
+msgid "Start"
+msgstr ""
+
+#: skin/assets/blocks/components/toolbars/style-options.js:43
+msgid "Style Options"
+msgstr ""
+
+#: skin/assets/blocks/components/toolbars/style-options.js:47
+#: skin/assets/blocks/question-block/sections/BlockOptions.js:131
+msgid "Type"
+msgstr ""
+
+#: skin/assets/blocks/components/toolbars/style-options.js:51
+msgid "Choose weather place answers in row or 2 columns."
+msgstr ""
+
+#: skin/assets/blocks/components/toolbars/style-options.js:56
+msgid "Theme"
+msgstr ""
+
+#: skin/assets/blocks/components/toolbars/style-options.js:60
+msgid "Theme color for answers"
+msgstr ""
+
+#: skin/assets/blocks/question-block/index.js:22
+msgid "Question Block"
+msgstr ""
+
+#: skin/assets/blocks/question-block/index.js:23
+#: skin/assets/blocks/questions-category-block/index.js:23
+msgid "This is question block"
+msgstr ""
+
+#: skin/assets/blocks/question-block/index.js:31
+#: skin/assets/blocks/question-block/sections/BlockOptions.js:96
+#: skin/assets/blocks/questions-category-block/components/question-header/index.js:14
+#: skin/assets/blocks/questions-category-block/index.js:31
+#: skin/assets/blocks/section-block/index.js:31
+#: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/index.js:29
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/index.js:29
+msgid "Title"
+msgstr ""
+
+#: skin/assets/blocks/question-block/index.js:32
+#: skin/assets/blocks/questions-category-block/index.js:32
+#: skin/assets/blocks/section-block/index.js:32
+#: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/index.js:30
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/index.js:30
+msgid "Body"
+msgstr ""
+
+#: skin/assets/blocks/question-block/index.js:33
+#: skin/assets/blocks/questions-category-block/index.js:33
+#: skin/assets/blocks/section-block/index.js:33
+#: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/index.js:31
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/index.js:31
+#: skin/assets/components/modal/top-bar/index.js:6
+msgid "Quizess"
+msgstr ""
+
+#: skin/assets/blocks/question-block/sections/AnswersElement.js:47
+msgid "Answers"
+msgstr ""
+
+#: skin/assets/blocks/question-block/sections/AnswersElement.js:49
+msgid "Add a possible answer"
+msgstr ""
+
+#: skin/assets/blocks/question-block/sections/AnswersElement.js:63
+msgid "Add answer"
+msgstr ""
+
+#: skin/assets/blocks/question-block/sections/BlockElements.js:69
+#: skin/assets/blocks/questions-category-block/sections/ExplanationHeader.js:11
+msgid "Explanation"
+msgstr ""
+
+#: skin/assets/blocks/question-block/sections/BlockOptions.js:100
+msgid "Enter optional question title."
+msgstr ""
+
+#: skin/assets/blocks/question-block/sections/BlockOptions.js:117
+msgid "Block options"
+msgstr ""
+
+#: skin/assets/blocks/question-block/sections/BlockOptions.js:122
+msgid "Explanation Options"
+msgstr ""
+
+#: skin/assets/blocks/question-block/sections/BlockOptions.js:126
+msgid "Choose weather to show explanation slide after question"
+msgstr ""
+
+#: skin/assets/blocks/question-block/sections/BlockOptions.js:135
+msgid "Choose explanation media type."
+msgstr ""
+
+#: skin/assets/blocks/question-block/sections/BlockOptions.js:144
+#: skin/assets/blocks/questions-category-block/sections/BlockOptions.js:119
+msgid "Font Settings"
+msgstr ""
+
+#: skin/assets/blocks/question-block/sections/BlockOptions.js:150
+#: skin/assets/blocks/questions-category-block/sections/BlockOptions.js:125
+msgid "Font Color"
+msgstr ""
+
+#: skin/assets/blocks/question-block/sections/BlockOptions.js:155
+#: skin/assets/blocks/questions-category-block/sections/BlockOptions.js:130
+msgid "Background Settings"
+msgstr ""
+
+#: skin/assets/blocks/question-block/sections/BlockOptions.js:161
+#: skin/assets/blocks/questions-category-block/sections/BlockOptions.js:136
+#: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/sections/BlockOptions.js:30
+msgid "Background Color"
+msgstr ""
+
+#: skin/assets/blocks/question-block/sections/BlockOptions.js:45
+msgid "Show Explanation"
+msgstr ""
+
+#: skin/assets/blocks/question-block/sections/BlockOptions.js:61
+msgid "None"
+msgstr ""
+
+#: skin/assets/blocks/question-block/sections/BlockOptions.js:62
+msgid "Image"
+msgstr ""
+
+#: skin/assets/blocks/question-block/sections/BlockOptions.js:63
+msgid "Video"
+msgstr ""
+
+#: skin/assets/blocks/question-block/sections/BlockOptions.js:64
+msgid "Youtube"
+msgstr ""
+
+#: skin/assets/blocks/question-block/sections/BlockOptions.js:65
+msgid "Lottie"
+msgstr ""
+
+#: skin/assets/blocks/questions-category-block/components/question-header/index.js:17
+#: skin/assets/blocks/questions-category-block/sections/BlockOptions.js:95
+msgid "Category"
+msgstr ""
+
+#: skin/assets/blocks/questions-category-block/index.js:22
+msgid "Questions Category Block"
+msgstr ""
+
+#: skin/assets/blocks/questions-category-block/sections/BlockElements.js:28
+msgid "Please select category"
+msgstr ""
+
+#: skin/assets/blocks/questions-category-block/sections/BlockElements.js:32
+msgid "Please select posts"
+msgstr ""
+
+#: skin/assets/blocks/questions-category-block/sections/BlockElements.js:43
+msgid "Loading"
+msgstr ""
+
+#: skin/assets/blocks/questions-category-block/sections/BlockOptions.js:104
+msgid "Posts"
+msgstr ""
+
+#: skin/assets/blocks/questions-category-block/sections/BlockOptions.js:108
+msgid "Select Question posts from the category."
+msgstr ""
+
+#: skin/assets/blocks/questions-category-block/sections/BlockOptions.js:99
+msgid "Select Category for question posts."
+msgstr ""
+
+#: skin/assets/blocks/section-block/index.js:22
+msgid "Section"
+msgstr ""
+
+#: skin/assets/blocks/section-block/index.js:23
+msgid "This is section block"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/index.js:20
+#: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/sections/BlockElements.js:40
+msgid "Background Options"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/index.js:21
+msgid "Choose background image and color, default background color is blue"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/sections/BlockElements.js:43
+msgid "Choose main background color & background image for this quiz"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/index.js:20
+msgid "Quiz Options"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/index.js:21
+msgid "These are quiz options"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:104
+msgid "Choose success message for question"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:111
+msgid "Failure message"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:129
+msgid "Choose failure message for question"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:136
+msgid "About section"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:150
+msgid "Write something about this quiz"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:159
+msgid "Use timer"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:178
+msgid "Options"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:181
+msgid "Some of the global options for this quiz"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:38
+msgid "Default theme"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:52
+msgid ""
+"Default theme will affect buttons ( eg. submit, start ) and text, light "
+"theme for light background color & dark theme for dark background color"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:61
+msgid "Welcome message"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:79
+msgid "Choose welcome message for quiz"
+msgstr ""
+
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:86
+msgid "Success message"
+msgstr ""
+
+#: skin/assets/components/buttons/toggle-switch/index.js:7
+msgid "Use toggle"
+msgstr ""
+
+#: skin/assets/components/dialog/index.js:20
+msgid "Confirm"
+msgstr ""
+
+#: skin/assets/components/dialog/index.js:7
+msgid "Are you sure"
+msgstr ""
+
+#: skin/assets/components/explanation/preview/index.js:26
+#: skin/assets/elements/VideoElement/index.js:45
+msgid "Your browser does not support the video tag."
+msgstr ""
+
+#: skin/assets/components/modal/overview/index.js:39
+msgid "Kudos !"
+msgstr ""
+
+#: skin/assets/components/modal/overview/index.js:45
+msgid "Try again"
+msgstr ""
+
+#: skin/assets/components/modal/overview/index.js:50
+msgid "Stats"
+msgstr ""
+
+#: skin/assets/components/modal/overview/index.js:80
+msgid "Overview"
+msgstr ""
+
+#: skin/assets/components/modal/overview/index.js:91
+msgid "Status"
+msgstr ""
+
+#: skin/assets/components/pagination/index.js:68
+msgid "Next"
+msgstr ""
+
+#: skin/assets/components/pagination/index.js:68
+msgid "Prev"
+msgstr ""
+
+#: skin/assets/editor/editor-fields/post-title.js:21
+msgid "Maximum title characters is "
+msgstr ""
+
+#: skin/assets/elements/FileElement/index.js:11
+msgid "Download"
+msgstr ""
+
+#: skin/assets/elements/FileElement/index.js:32
+#: skin/assets/elements/LottieElement/index.js:32
+#: skin/assets/elements/MediaElement/index.js:33
+#: skin/assets/elements/VideoElement/index.js:27
+#: skin/assets/elements/YoutubeElement/index.js:31
+msgid "Edit Media"
+msgstr ""
+
+#: skin/assets/elements/FileElement/index.js:63
+#: skin/assets/elements/MediaElement/index.js:9
+#: skin/assets/elements/VideoElement/index.js:57
+msgid "Media area"
+msgstr ""
+
+#: skin/assets/elements/Helper/Helper.js:20
+msgid "This field is required"
+msgstr ""
+
+#: skin/assets/elements/Helper/Helper.js:29
+msgid "Limit reached:"
+msgstr ""
+
+#: skin/assets/elements/Helper/Helper.js:32
+msgid "characters"
+msgstr ""
+
+#: skin/assets/elements/Helper/Helper.js:38
+msgid "rows"
+msgstr ""
+
+#: skin/assets/elements/LottieElement/index.js:9
+msgid "Lottie area"
+msgstr ""
+
+#: skin/assets/elements/PlaceholderElement/index.js:9
+msgid "Placeholder text"
+msgstr ""
+
+#: skin/assets/elements/YoutubeElement/index.js:76
+msgid "Enter URL to embed here…"
+msgstr ""
+
+#: skin/assets/elements/YoutubeElement/index.js:82
+msgid "Embed"
+msgstr ""
+
+#: skin/assets/elements/YoutubeElement/index.js:85
+msgid "Sorry, we could not embed that content."
+msgstr ""

@@ -45,7 +45,7 @@ require __DIR__ . '/vendor/autoload.php';
  *
  * @since 1.0.0
  */
-define( 'QIZ_ENV', 'develop' );
+define( 'QIZ_ENV', 'production' );
 
 /**
  * Begins execution of the plugin.

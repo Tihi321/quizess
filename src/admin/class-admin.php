@@ -102,6 +102,13 @@ class Admin extends Config implements Service {
 
       wp_enqueue_script( static::PLUGIN_NAME . '-admin-scripts' );
 
+      // add localization to javascript.
+      if ( function_exists( 'gutenberg_get_jed_locale_data' ) ) {
+        $locale  = gutenberg_get_jed_locale_data( 'quizess' );
+        $content = 'wp.i18n.setLocaleData( ' . wp_json_encode( $locale ) . ', "quizess" );';
+        wp_script_add_data( static::PLUGIN_NAME . '-admin-scripts', 'data', $content );
+      }
+
       wp_localize_script(
         static::PLUGIN_NAME . '-admin-scripts',
         'quizessDashboard',
@@ -145,7 +152,15 @@ class Admin extends Config implements Service {
       static::PLUGIN_VERSION,
       true
     );
+
     wp_enqueue_script( static::PLUGIN_NAME . '-editor-scripts' );
+
+    // add localization to javascript.
+    if ( function_exists( 'gutenberg_get_jed_locale_data' ) ) {
+      $locale  = gutenberg_get_jed_locale_data( 'quizess' );
+      $content = 'wp.i18n.setLocaleData( ' . wp_json_encode( $locale ) . ', "quizess" );';
+      wp_script_add_data( static::PLUGIN_NAME . '-editor-scripts', 'data', $content );
+    }
 
   }
 

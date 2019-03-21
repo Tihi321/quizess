@@ -78,7 +78,8 @@
     "react-lottie": "^1.2.3",
     "react-responsive-embed": "^2.1.0",
     "react-select": "^2.1.2",
-    "react-transition-group": "^2.6.0"
+    "react-transition-group": "^2.6.0",
+    "wp-pot": "^1.7.0"
   },
   "browserslist": [
     "android >= 4.2",
