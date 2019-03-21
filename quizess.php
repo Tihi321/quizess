@@ -41,7 +41,7 @@ define( 'QZ_ASSETS_PUBLIC_PATH', __DIR__ . '/skin/public/' );
 require __DIR__ . '/vendor/autoload.php';
 
 /**
- * Define enviroment.
+ * Define enviroment production or develop.
  *
  * @since 1.0.0
  */
