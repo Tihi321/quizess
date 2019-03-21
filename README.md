@@ -4,9 +4,9 @@
 
 # Quizess
 
-This is plugin for **Wordpress**, that allows you to create quizess, register players and keep records on player scores.
+This is **Gutenberg** **Wordpress** plugin, that allows you to create quizess, register players and keep records on player scores.
 
-With block templates we can add custom options to posts.
+Gutenberg allows us use Wordpress in more versatile way. Using block templates we can add custom options to posts.
 
 <p align="center">
   <img alt="Eightshift WordPress Boilerplate Creative" src="packages/assets/quizess_backend_options.png"/>
