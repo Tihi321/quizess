@@ -33,6 +33,7 @@ $answer-colors: (
     flex: 1;
     line-height: 1;
   }
+
   &__number {
     box-sizing: content-box;
     margin: auto 0;
@@ -44,6 +45,7 @@ $answer-colors: (
     display: flex;
     justify-content: center;
   }
+
   &--light {
     &--normal {
       background-color: map-deep-get($theme-colors, light, 'bg-color');
@@ -63,6 +65,7 @@ $answer-colors: (
       color: map-deep-get($theme-colors, dark, 'color');
     }
   }
+
   &--dark {
     &--normal {
       background-color: map-deep-get($theme-colors, dark, 'bg-color');
@@ -76,6 +79,7 @@ $answer-colors: (
     &--incorrect {
       background-color: map-get($answer-colors, 'fail-color');
     }
+
     &--active {
       background-color: map-deep-get($theme-colors, light, 'bg-color');
       color: map-deep-get($theme-colors, light, 'color');

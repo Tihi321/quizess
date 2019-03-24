@@ -14,9 +14,12 @@ $wp-question-block-variables: (
 
   .answers-label {
     padding: 20px 0;
+
     &__title {
       margin: 0;
+      color: map-get($wp-question-block-variables, 'primary-text-color');
     }
+
     &__description {
       @include text-size(small);
       font-style: italic;

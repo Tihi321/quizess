@@ -17,4 +17,3 @@
 
 <body <?php body_class(); ?>>
 <div id="post" class="quizess-post">
-  <div id="content" class="site-content">

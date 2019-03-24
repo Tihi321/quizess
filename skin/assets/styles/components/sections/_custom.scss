@@ -9,11 +9,13 @@
     }
   }
 }
+
 .quizess-custom {
   position: relative;
   display: flex;
   flex-direction: column;
   height: 100vh;
+  z-index: map-get($zindex, 'quiz-custom');
 
   .quiz {
     flex: 1;
