@@ -6,24 +6,24 @@ msgstr ""
 #: skin/assets/apps/dashboard/sections/Details.js:115
 #: skin/assets/apps/dashboard/sections/Scores.js:31
 #: skin/assets/apps/quiz-app/parts/QuestionHeader.js:35
-#: skin/assets/components/modal/overview/index.js:85
+#: skin/assets/components/modal/overview/index.js:92
 msgid "Question"
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Details.js:116
-#: skin/assets/components/modal/overview/index.js:88
+#: skin/assets/components/modal/overview/index.js:95
 msgid "Answer"
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Details.js:128
 #: skin/assets/apps/dashboard/sections/Scores.js:32
 #: skin/assets/blocks/question-block/components/answer-input/index.js:57
-#: skin/assets/components/modal/overview/index.js:55
+#: skin/assets/components/modal/overview/index.js:62
 msgid "Correct"
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Details.js:128
-#: skin/assets/components/modal/overview/index.js:30
+#: skin/assets/components/modal/overview/index.js:31
 msgid "Incorrect"
 msgstr ""
 
@@ -41,13 +41,13 @@ msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Details.js:57
 #: skin/assets/apps/dashboard/sections/Scores.js:25
-#: skin/assets/components/modal/overview/index.js:58
+#: skin/assets/components/modal/overview/index.js:65
 msgid "Total"
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Details.js:58
 #: skin/assets/apps/dashboard/sections/Scores.js:26
-#: skin/assets/components/modal/overview/index.js:61
+#: skin/assets/components/modal/overview/index.js:68
 msgid "Success"
 msgstr ""
 
@@ -184,60 +184,13 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/Modal.js:39
-msgid "Get outta here and go back to your boring programs."
+#: skin/assets/apps/quiz-app/sections/Modal.js:49
+#: skin/assets/apps/quiz-app/sections/index.js:21
+#: skin/assets/components/modal/overview/index.js:39
+msgid "Your scores have been submitted, thank you for playing."
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/Modal.js:40
-msgid "Just leave. When you come back, I'll be waiting with a bat."
-msgstr ""
-
-#: skin/assets/apps/quiz-app/sections/Modal.js:41
-msgid "Are you sure you want to quit this great quiz ?"
-msgstr ""
-
-#: skin/assets/apps/quiz-app/sections/Modal.js:42
-msgid "I wouldn't leave if I were you. Internet is much worse."
-msgstr ""
-
-#: skin/assets/apps/quiz-app/sections/Modal.js:43
-msgid "Go ahead and leave. See if I care."
-msgstr ""
-
-#: skin/assets/apps/quiz-app/sections/Modal.js:44
-msgid "Choose Cancel if you are brave, choose Exit to cover in shame. "
-msgstr ""
-
-#: skin/assets/apps/quiz-app/sections/Modal.js:45
-msgid "Chickening out... already ?"
-msgstr ""
-
-#: skin/assets/apps/quiz-app/sections/Modal.js:46
-msgid "Heroes choose Cancel, Wimps choose Exit."
-msgstr ""
-
-#: skin/assets/apps/quiz-app/sections/Modal.js:47
-msgid "So you think you can quit this easily, huh ?"
-msgstr ""
-
-#: skin/assets/apps/quiz-app/sections/Modal.js:48
-msgid "Dost thou wish to leave with such hasty abandon ?"
-msgstr ""
-
-#: skin/assets/apps/quiz-app/sections/Modal.js:55
-msgid "If you cancel your scores will be submitted."
-msgstr ""
-
-#: skin/assets/apps/quiz-app/sections/Modal.js:75
-#: skin/assets/components/dialog/index.js:30
-msgid "Cancel"
-msgstr ""
-
-#: skin/assets/apps/quiz-app/sections/Modal.js:81
-msgid "Exit"
-msgstr ""
-
-#: skin/assets/apps/quiz-app/sections/Questions.js:31
+#: skin/assets/apps/quiz-app/sections/Questions.js:32
 msgid "Nothing to see here, this quiz has no questions !!!"
 msgstr ""
 
@@ -261,7 +214,7 @@ msgstr ""
 msgid "Next Question"
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/index.js:21
+#: skin/assets/apps/quiz-app/sections/index.js:37
 msgid "Start"
 msgstr ""
 
@@ -524,6 +477,13 @@ msgstr ""
 msgid "Use toggle"
 msgstr ""
 
+#: skin/assets/apps/quiz-app/sections/Modal.js:74
+#: skin/assets/apps/quiz-app/sections/Modal.js:75
+#: skin/assets/components/dialog/index.js:30
+#: skin/assets/components/modal/popup-elemenet/index.js:45
+msgid "Cancel"
+msgstr ""
+
 #: skin/assets/components/dialog/index.js:20
 msgid "Confirm"
 msgstr ""
@@ -537,24 +497,72 @@ msgstr ""
 msgid "Your browser does not support the video tag."
 msgstr ""
 
-#: skin/assets/components/modal/overview/index.js:39
+#: skin/assets/components/modal/overview/index.js:46
 msgid "Kudos !"
 msgstr ""
 
-#: skin/assets/components/modal/overview/index.js:45
+#: skin/assets/components/modal/overview/index.js:52
 msgid "Try again"
 msgstr ""
 
-#: skin/assets/components/modal/overview/index.js:50
+#: skin/assets/components/modal/overview/index.js:57
 msgid "Stats"
 msgstr ""
 
-#: skin/assets/components/modal/overview/index.js:80
+#: skin/assets/components/modal/overview/index.js:87
 msgid "Overview"
 msgstr ""
 
-#: skin/assets/components/modal/overview/index.js:91
+#: skin/assets/components/modal/overview/index.js:98
 msgid "Status"
+msgstr ""
+
+#: skin/assets/components/modal/popup-elemenet/index.js:14
+msgid "Get outta here and go back to your boring programs."
+msgstr ""
+
+#: skin/assets/components/modal/popup-elemenet/index.js:15
+msgid "Just leave. When you come back, I'll be waiting with a bat."
+msgstr ""
+
+#: skin/assets/components/modal/popup-elemenet/index.js:16
+msgid "Are you sure you want to quit this great quiz ?"
+msgstr ""
+
+#: skin/assets/components/modal/popup-elemenet/index.js:17
+msgid "I wouldn't leave if I were you. Internet is much worse."
+msgstr ""
+
+#: skin/assets/components/modal/popup-elemenet/index.js:18
+msgid "Go ahead and leave. See if I care."
+msgstr ""
+
+#: skin/assets/components/modal/popup-elemenet/index.js:19
+msgid "Choose Cancel if you are brave, choose Exit to cover in shame. "
+msgstr ""
+
+#: skin/assets/components/modal/popup-elemenet/index.js:20
+msgid "Chickening out... already ?"
+msgstr ""
+
+#: skin/assets/components/modal/popup-elemenet/index.js:21
+msgid "Heroes choose Cancel, Wimps choose Exit."
+msgstr ""
+
+#: skin/assets/components/modal/popup-elemenet/index.js:22
+msgid "So you think you can quit this easily, huh ?"
+msgstr ""
+
+#: skin/assets/components/modal/popup-elemenet/index.js:23
+msgid "Dost thou wish to leave with such hasty abandon ?"
+msgstr ""
+
+#: skin/assets/components/modal/popup-elemenet/index.js:30
+msgid "If you cancel your scores will be submitted."
+msgstr ""
+
+#: skin/assets/components/modal/popup-elemenet/index.js:51
+msgid "Exit"
 msgstr ""
 
 #: skin/assets/components/pagination/index.js:68

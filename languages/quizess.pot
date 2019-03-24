@@ -1,5 +1,6 @@
 # Copyright (C) 2019 Quizess
 # This file is distributed under the same license as the Quizess package.
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Quizess\n"
@@ -8,347 +9,375 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: *.js\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 2.2.1\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: ../src/class-main.php:104
-msgid "manifest.json is missing. Bundle the theme before using it."
+#: src/admin/class-media.php:113
+#, php-format
+msgid "Error: File invalid: %s"
 msgstr ""
 
-#: ../src/class-main.php:195
-msgid "All Gutenberg Blocks requires WordPress 5.0 or Gutenberg plugin to be activated"
+#: src/admin/class-media.php:135
+#, php-format
+msgid "Error: %s"
 msgstr ""
 
-#: ../src/admin/class-menu-page.php:60, ../src/admin/class-menu-page.php:61, ../src/admin/class-menu-page.php:92, ../src/admin/class-quiz.php:63, ../src/blocks/class-blocks.php:91, ../views/admin/user-meta-options.php:21
+#: src/admin/class-menu-page.php:60 src/admin/class-menu-page.php:61
+#: src/admin/class-menu-page.php:92 src/admin/class-quiz.php:63
+#: src/blocks/class-blocks.php:91 views/admin/user-meta-options.php:21
 msgid "Quizess"
 msgstr ""
 
-#: ../src/admin/class-menu-page.php:82, ../src/admin/class-menu-page.php:83
+#: src/admin/class-menu-page.php:82 src/admin/class-menu-page.php:83
 msgid "Dashboard"
 msgstr ""
 
-#: ../src/admin/class-menu-page.php:93
+#: src/admin/class-menu-page.php:93
 msgid "All Quizess"
 msgstr ""
 
-#: ../src/admin/class-menu-page.php:102
+#: src/admin/class-menu-page.php:102
 msgid "New Quiz"
 msgstr ""
 
-#: ../src/admin/class-menu-page.php:103, ../src/admin/class-quiz.php:68
+#: src/admin/class-menu-page.php:103 src/admin/class-quiz.php:68
 msgid "Add New Quiz"
 msgstr ""
 
-#: ../src/admin/class-menu-page.php:112, ../src/admin/class-menu-page.php:113, ../src/admin/class-quiz.php:96
+#: src/admin/class-menu-page.php:112 src/admin/class-menu-page.php:113
+#: src/admin/class-quiz.php:96
 msgid "Quiz Topics"
 msgstr ""
 
-#: ../src/admin/class-menu-page.php:122, ../src/admin/class-questions.php:43
+#: src/admin/class-menu-page.php:122 src/admin/class-questions.php:43
 msgid "Questions"
 msgstr ""
 
-#: ../src/admin/class-menu-page.php:123
+#: src/admin/class-menu-page.php:123
 msgid "All Questions"
 msgstr ""
 
-#: ../src/admin/class-menu-page.php:132
+#: src/admin/class-menu-page.php:132
 msgid "New Question"
 msgstr ""
 
-#: ../src/admin/class-menu-page.php:133, ../src/admin/class-questions.php:48
+#: src/admin/class-menu-page.php:133 src/admin/class-questions.php:48
 msgid "Add New Question"
 msgstr ""
 
-#: ../src/admin/class-menu-page.php:142, ../src/admin/class-menu-page.php:143, ../src/admin/class-questions.php:83
+#: src/admin/class-menu-page.php:142 src/admin/class-menu-page.php:143
+#: src/admin/class-questions.php:83
 msgid "Question Topics"
 msgstr ""
 
-#: ../src/admin/class-menu.php:50
+#: src/admin/class-menu.php:50
 msgid "Quiz menu"
 msgstr ""
 
-#: ../src/admin/class-questions.php:44
+#: src/admin/class-questions.php:44
 msgid "Question"
 msgstr ""
 
-#: ../src/admin/class-questions.php:45
+#: src/admin/class-questions.php:45
 msgid "View Questions"
 msgstr ""
 
-#: ../src/admin/class-questions.php:46
+#: src/admin/class-questions.php:46
 msgid "Edit Question"
 msgstr ""
 
-#: ../src/admin/class-questions.php:47
+#: src/admin/class-questions.php:47
 msgid "Update Question"
 msgstr ""
 
-#: ../src/admin/class-questions.php:84
+#: src/admin/class-questions.php:84
 msgid "Question Topic"
 msgstr ""
 
-#: ../src/admin/class-questions.php:85
+#: src/admin/class-questions.php:85
 msgid "Search Question Topics"
 msgstr ""
 
-#: ../src/admin/class-questions.php:86
+#: src/admin/class-questions.php:86
 msgid "All Question Topics"
 msgstr ""
 
-#: ../src/admin/class-questions.php:87, ../src/admin/class-questions.php:88
+#: src/admin/class-questions.php:87 src/admin/class-questions.php:88
 msgid "Parent Question Topic"
 msgstr ""
 
-#: ../src/admin/class-questions.php:89
+#: src/admin/class-questions.php:89
 msgid "Edit Question Topic"
 msgstr ""
 
-#: ../src/admin/class-questions.php:90
+#: src/admin/class-questions.php:90
 msgid "Update Question Topic"
 msgstr ""
 
-#: ../src/admin/class-questions.php:91
+#: src/admin/class-questions.php:91
 msgid "Add New Question Topic"
 msgstr ""
 
-#: ../src/admin/class-questions.php:92
+#: src/admin/class-questions.php:92
 msgid "New Question Topic Name"
 msgstr ""
 
-#: ../src/admin/class-quiz.php:64
+#: src/admin/class-quiz.php:64
 msgid "Quiz"
 msgstr ""
 
-#: ../src/admin/class-quiz.php:65
+#: src/admin/class-quiz.php:65
 msgid "View Quizzes"
 msgstr ""
 
-#: ../src/admin/class-quiz.php:66
+#: src/admin/class-quiz.php:66
 msgid "Edit Quiz"
 msgstr ""
 
-#: ../src/admin/class-quiz.php:67
+#: src/admin/class-quiz.php:67
 msgid "Update Quiz"
 msgstr ""
 
-#: ../src/admin/class-quiz.php:97
+#: src/admin/class-quiz.php:97
 msgid "Quiz Topic"
 msgstr ""
 
-#: ../src/admin/class-quiz.php:98
+#: src/admin/class-quiz.php:98
 msgid "Search Quiz Topics"
 msgstr ""
 
-#: ../src/admin/class-quiz.php:99
+#: src/admin/class-quiz.php:99
 msgid "All Quiz Topics"
 msgstr ""
 
-#: ../src/admin/class-quiz.php:100, ../src/admin/class-quiz.php:101
+#: src/admin/class-quiz.php:100 src/admin/class-quiz.php:101
 msgid "Parent Quiz Topic"
 msgstr ""
 
-#: ../src/admin/class-quiz.php:102
+#: src/admin/class-quiz.php:102
 msgid "Edit Quiz Topic"
 msgstr ""
 
-#: ../src/admin/class-quiz.php:103
+#: src/admin/class-quiz.php:103
 msgid "Update Quiz Topic"
 msgstr ""
 
-#: ../src/admin/class-quiz.php:104
+#: src/admin/class-quiz.php:104
 msgid "Add New Quiz Topic"
 msgstr ""
 
-#: ../src/admin/class-quiz.php:105
+#: src/admin/class-quiz.php:105
 msgid "New Topic Quiz Name"
 msgstr ""
 
-#: ../src/admin/class-quiz.php:146
+#: src/admin/class-quiz.php:146
 msgid "Quiz Options"
 msgstr ""
 
-#: ../src/helpers/trait-error-logger.php:34
-msgid "The request body is empty."
-msgstr ""
-
-#: ../src/helpers/trait-error-logger.php:39
-msgid "The request header is empty."
-msgstr ""
-
-#: ../src/helpers/trait-error-logger.php:44
-msgid "Scores not submitted."
-msgstr ""
-
-#: ../src/helpers/trait-error-logger.php:49
-msgid "User is not authenticated."
-msgstr ""
-
-#: ../src/helpers/trait-error-logger.php:54
-msgid "User is not registered player."
-msgstr ""
-
-#: ../src/helpers/trait-error-logger.php:59
-msgid "Uer submit limit reached."
-msgstr ""
-
-#: ../src/helpers/trait-error-logger.php:64
-msgid "Custom styles not enabled"
-msgstr ""
-
-#: ../src/helpers/trait-error-logger.php:69
-msgid "Menu is not selected"
-msgstr ""
-
-#: ../src/helpers/trait-error-logger.php:74
-msgid "Menu has no items"
-msgstr ""
-
-#: ../src/helpers/trait-error-logger.php:79
-msgid "No quiz found"
-msgstr ""
-
-#: ../src/helpers/trait-error-logger.php:84
-msgid "No blocks found"
-msgstr ""
-
-#: ../src/helpers/trait-error-logger.php:89
-msgid "Not all quiz values present"
-msgstr ""
-
-#: ../src/blocks/abstracts/class-base-block.php:61, ../src/blocks/abstracts/class-base-block.php:100
+#: src/blocks/abstracts/class-base-block.php:61
+#: src/blocks/abstracts/class-base-block.php:100
 msgid "Trying to add_default_attributes() for block that hasnt defined NAME"
 msgstr ""
 
-#: ../src/blocks/abstracts/class-base-block.php:107
+#: src/blocks/abstracts/class-base-block.php:107
+#, php-format
 msgid "Missing template for block called: %1$s | Expecting a template in path: %2$s"
 msgstr ""
 
-#: ../src/rest/rest-callbacks/class-patch-general-options.php:81
+#: src/class-main.php:104
+msgid "manifest.json is missing. Bundle the theme before using it."
+msgstr ""
+
+#: src/class-main.php:195
+msgid "All Gutenberg Blocks requires WordPress 5.0 or Gutenberg plugin to be activated"
+msgstr ""
+
+#: src/helpers/trait-error-logger.php:34
+msgid "The request body is empty."
+msgstr ""
+
+#: src/helpers/trait-error-logger.php:39
+msgid "The request header is empty."
+msgstr ""
+
+#: src/helpers/trait-error-logger.php:44
+msgid "Scores not submitted."
+msgstr ""
+
+#: src/helpers/trait-error-logger.php:49
+msgid "User is not authenticated."
+msgstr ""
+
+#: src/helpers/trait-error-logger.php:54
+msgid "User is not registered player."
+msgstr ""
+
+#: src/helpers/trait-error-logger.php:59
+msgid "Uer submit limit reached."
+msgstr ""
+
+#: src/helpers/trait-error-logger.php:64
+msgid "Custom styles not enabled"
+msgstr ""
+
+#: src/helpers/trait-error-logger.php:69
+msgid "Menu is not selected"
+msgstr ""
+
+#: src/helpers/trait-error-logger.php:74
+msgid "Menu has no items"
+msgstr ""
+
+#: src/helpers/trait-error-logger.php:79
+msgid "No quiz found"
+msgstr ""
+
+#: src/helpers/trait-error-logger.php:84
+msgid "No blocks found"
+msgstr ""
+
+#: src/helpers/trait-error-logger.php:89
+msgid "Not all quiz values present"
+msgstr ""
+
+#: src/rest/rest-callbacks/class-patch-general-options.php:81
 msgid "Options posted with success"
 msgstr ""
 
-#: ../src/rest/rest-callbacks/class-patch-scores.php:44
+#: src/rest/rest-callbacks/class-patch-scores.php:44
 msgid "Player last score removed"
 msgstr ""
 
-#: ../src/rest/rest-callbacks/class-patch-scores.php:44
+#: src/rest/rest-callbacks/class-patch-scores.php:44
 msgid "Player scores removed"
 msgstr ""
 
-#: ../src/rest/rest-callbacks/class-post-scores.php:119
+#: src/rest/rest-callbacks/class-post-scores.php:119
 msgid "Scores successfully submitted"
 msgstr ""
 
-#: ../views/admin/quiz-meta-options.php:19
+#: views/admin/quiz-meta-options.php:19
 msgid "Track records"
 msgstr ""
 
-#: ../views/admin/quiz-meta-options.php:21
+#: views/admin/quiz-meta-options.php:21
 msgid "Will keep records of scores for logged in players"
 msgstr ""
 
-#: ../views/admin/quiz-meta-options.php:32
+#: views/admin/quiz-meta-options.php:32
 msgid "Lock quiz"
 msgstr ""
 
-#: ../views/admin/quiz-meta-options.php:34
+#: views/admin/quiz-meta-options.php:34
 msgid "Will lock this quiz for all non players"
 msgstr ""
 
-#: ../views/admin/user-meta-options.php:10
+#: views/admin/user-meta-options.php:10
 msgid "Yes"
 msgstr ""
 
-#: ../views/admin/user-meta-options.php:11
+#: views/admin/user-meta-options.php:11
 msgid "No"
 msgstr ""
 
-#: ../views/admin/user-meta-options.php:25
+#: views/admin/user-meta-options.php:25
 msgid "Register player"
 msgstr ""
 
-#: ../views/admin/user-meta-options.php:27
+#: views/admin/user-meta-options.php:27
 msgid "Will register user as quiz player and keep records of quiz stats"
 msgstr ""
 
-#: ../views/admin/user-meta-options.php:40
+#: views/admin/user-meta-options.php:40
 msgid "Single submit"
 msgstr ""
 
-#: ../views/admin/user-meta-options.php:42
+#: views/admin/user-meta-options.php:42
 msgid "Will allow user to have only 1 attempt recorded per quiz, to reset remove last attempt record under dashboard"
 msgstr ""
 
-#: ../views/footer/footer-content.php:38
+#: views/footer/footer-content.php:38
 msgid "Facebook"
 msgstr ""
 
-#: ../views/footer/footer-content.php:45
+#: views/footer/footer-content.php:45
 msgid "Twitter"
 msgstr ""
 
-#: ../views/footer/footer-content.php:52
+#: views/footer/footer-content.php:52
 msgid "LinkedIn"
 msgstr ""
 
-#: ../views/footer/footer-content.php:59
+#: views/footer/footer-content.php:59
 msgid "Instagram"
 msgstr ""
 
-#: ../views/footer/footer-content.php:66
+#: views/footer/footer-content.php:66
 msgid "Github"
 msgstr ""
 
-#: ../views/modal/modal-about.php:15, ../views/sections/bottom-section.php:21
+#: views/modal/modal-about.php:15 views/sections/bottom-section.php:21
 msgid "About"
 msgstr ""
 
-#: ../views/modal/modal-scores.php:25, ../views/sections/bottom-section.php:29
+#: views/modal/modal-scores.php:25 views/sections/bottom-section.php:29
 msgid "High scores"
 msgstr ""
 
-#: ../views/modal/modal-scores.php:36
+#: views/modal/modal-scores.php:36
 msgid "Stats"
 msgstr ""
 
-#: ../views/modal/modal-scores.php:38
+#: views/modal/modal-scores.php:38
 msgid "Last take on quiz"
 msgstr ""
 
-#: ../views/modal/modal-scores.php:66
+#: views/modal/modal-scores.php:66
 msgid "Hall of fame"
 msgstr ""
 
-#: ../views/parts/quiz-admin-submit-message.php:13
-msgid "Player logged in."
-msgstr ""
-
-#: ../views/parts/quiz-locked.php:12
-msgid "Sorry only for registered users only"
-msgstr ""
-
-#: ../views/sections/title-section.php:18
-msgid "Welcome to our quiz"
-msgstr ""
-
-#: ../views/modal/parts/accomplishment-titles.php:10, ../views/modal/parts/score-titles.php:12
+#: views/modal/parts/accomplishment-titles.php:10
+#: views/modal/parts/score-titles.php:12
 msgid "Correct"
 msgstr ""
 
-#: ../views/modal/parts/accomplishment-titles.php:11, ../views/modal/parts/score-titles.php:13
+#: views/modal/parts/accomplishment-titles.php:11
+#: views/modal/parts/score-titles.php:13
 msgid "Total"
 msgstr ""
 
-#: ../views/modal/parts/accomplishment-titles.php:12, ../views/modal/parts/score-titles.php:14
+#: views/modal/parts/accomplishment-titles.php:12
+#: views/modal/parts/score-titles.php:14
 msgid "Success"
 msgstr ""
 
-#: ../views/modal/parts/score-titles.php:10
+#: views/modal/parts/score-titles.php:10
 msgid "Name"
 msgstr ""
 
-#: ../views/modal/parts/score-titles.php:11
+#: views/modal/parts/score-titles.php:11
 msgid "Attempts"
+msgstr ""
+
+#: views/parts/quiz-admin-submit-message.php:13
+msgid "Player logged in."
+msgstr ""
+
+#: views/parts/quiz-locked.php:12
+msgid "Sorry only for registered users only"
+msgstr ""
+
+#: views/parts/user-locked.php:12
+msgid "Your scores have been submitted, thank you for playing."
+msgstr ""
+
+#: views/sections/title-section.php:18
+msgid "Welcome to our quiz"
 msgstr ""

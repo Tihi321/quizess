@@ -329,6 +329,10 @@ msgstr ""
 msgid "Sorry only for registered users only"
 msgstr ""
 
+#: ../views/parts/user-locked.php:12
+msgid "Your scores have been submitted, thank you for playing."
+msgstr ""
+
 #: ../views/sections/title-section.php:18
 msgid "Welcome to our quiz"
 msgstr ""
