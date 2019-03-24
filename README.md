@@ -1,31 +1,45 @@
 <p align="center">
-  <img alt="Eightshift WordPress Boilerplate Creative" src="packages/assets/quizess_frontend_quiz_640.gif"/>
+  <img alt="Quizess banner image" src="packages/assets/banner-1544×500.png"/>
 </p>
 
 # Quizess
 
-This is **Gutenberg** **Wordpress** plugin, that allows you to create quizess, register players and keep records on player scores.
+This is **Gutenberg** **Wordpress** plugin, that allows you to *create* quizess, *register* players and keep records on player *scores*. It is an excellent solution for creating quiz games in Wordpress.
 
-Gutenberg allows us use Wordpress in more versatile way. Using block templates we can add custom options to posts.
+**Options:**
++ **Custom syle.** Use own theme header & footer, or use Quizess styling with custom logo, menu & social links. With option to remove login WordPress admin bar on Frontend.
++ **Track scores.** Option to track scores on per quiz basis. If registered player exits the the quiz before end, the scores will be sent, with all unanswered question as negative. Check records for quizes in admin dashboard.
++ **Lock quiz.** Option to show quiz only to registered players.
++ **Single submit.** Players can play quiz once. It allows admin to check player scores, as player will be locked out of the quiz until approved again, by disabling options or by removing last attempt scores from players records.
++ **Single quiz options.**  customize quiz messages text, add about text, add timer for questions, choose quiz background color, image and theme.
++ **Question topics.** Groups question by topic, eg. History, Astronomy, and import them as a group to quiz.
++ **Single question options.**  Add question text, answers and optional explanation text and media - image, video, youtube, lottie.
+
+## Preview
 
 <p align="center">
-  <img alt="Eightshift WordPress Boilerplate Creative" src="packages/assets/quizess_backend_options.png"/>
+  <img alt="Eightshift WordPress Boilerplate Creative" src="packages/images/quizess_frontend_quiz_640.gif"/>
 </p>
 
+### Quiz CPT
 
-Or add different required fields.
+With Gutenberg custom block and block templates we have more flexibility in expanding posts while saving all options as attributes.
 
 <p align="center">
-  <img alt="Eightshift WordPress Boilerplate Creative" src="packages/assets/quizess_backend_question.gif"/>
+  <img alt="Eightshift WordPress Boilerplate Creative" src="packages/images/quizess_backend_options.png"/>
+</p>
+
+### Dashboard
+
+By having React in Worfpress we can quickly create admin interfaces.
+
+<p align="center">
+  <img alt="Eightshift WordPress Boilerplate Creative" src="packages/images/quizess_backend_dashboard.png"/>
 </p>
 
 
 ## Technologies
 **OO PHP** + **React** for *blocks*, *admin dahboard*, *menu* and *frontend quiz*. Plugin utilizes **REST Api** to decouple Wordpress backend and UI. That way we can use frontend libraries (like React, VUE, Angular) to create Web Apps and still use Wordpress for backend, we can also extend Wordpress admin.
-
-<p align="center">
-  <img alt="Eightshift WordPress Boilerplate Creative" src="packages/assets/quizess_backend_dashboard.png"/>
-</p>
 
 
 ## Requirements
