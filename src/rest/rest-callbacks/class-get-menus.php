@@ -36,9 +36,9 @@ class Get_Menus extends Config implements Rest_Callback {
    */
   public function rest_callback( \WP_REST_Request $request ) {
 
-    $logo       = get_option( Config::CUSTOM_LOGO, null );
-    $menu       = new Menu();
-    $menu_items = $menu->get_menus();
+    $logo        = get_option( Config::CUSTOM_LOGO, null );
+    $custom_menu = new Menu();
+    $menu_items  = $custom_menu->get_menus();
 
     foreach ( $menu_items as $index => $item ) {
       if ( $item['position'] === self::MENU_NAME ) {

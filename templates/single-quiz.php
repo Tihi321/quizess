@@ -8,6 +8,8 @@
 use Quizess\Helpers\Blocks_Helper;
 use Quizess\Helpers\General_Helper;
 use Quizess\Core\Config;
+use Quizess\Admin\Menu;
+
 
 $blocks_helper = new Blocks_Helper();
 $custom_style  = get_option( Config::CUSTOM_STYLE_TOGGLE );
@@ -31,16 +33,18 @@ if ( have_posts() ) {
     the_post();
 
     if ( $custom_style ) {
+      $custom_menu = new Menu();
+      $menu_items  = $custom_menu->get_menu_by_position( Config::MENU_NAME );
       ?>
-      <div class="quizess-custom default-typography">
-      <?php
-      $header_content = General_Helper::get_base_path() . 'views/header/header-content.php';
+        <div class="quizess-custom default-typography">
+        <?php
+        if ( ! empty( $menu_items ) ) {
+          $header_content = General_Helper::get_base_path() . 'views/header/header-content.php';
 
-      if ( ! empty( $header_content ) ) {
-        include $header_content;
-      }
-      ?>
-      <?php
+          if ( ! empty( $header_content ) ) {
+            include $header_content;
+          }
+        }
     }
     $single_path = General_Helper::get_base_path() . 'views/single/quiz.php';
 

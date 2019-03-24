@@ -87,6 +87,36 @@ class Menu extends Config implements Service {
   }
 
   /**
+   * Return menu with given name.
+   *
+   * @param string $menu_position    Menu location configured in get_menu_positions() function.
+   * @return array Menu array styled for json-api.
+   *
+   * @since 1.0.0
+   */
+  public function get_menu_by_position( string $menu_position ) : array {
+
+    $output       = [];
+    $custom_menus = $this->get_menus();
+
+    foreach ( $custom_menus as $index => $item ) {
+      if ( $item['position'] === $menu_position ) {
+
+        if ( empty( $item['name'] ) ) {
+          break;
+        }
+
+        if ( empty( $item['items'] ) ) {
+          break;
+        }
+        $output = $item;
+      }
+    }
+
+    return $output;
+  }
+
+  /**
    * Return menu items assigned to menu locations
    * With changed url from absolute to relative path
    *
