@@ -58,7 +58,7 @@ A: You need to reset last record from player, under Quizess->dashboard->quizes c
 4. Admin dashboard options
 5. Quiz backend options
 6. Question category blocks
-6. Question templates
+7. Question templates
 
 == Changelog ==
 
