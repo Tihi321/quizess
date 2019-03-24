@@ -477,15 +477,13 @@ msgstr ""
 msgid "Use toggle"
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/Modal.js:74
-#: skin/assets/apps/quiz-app/sections/Modal.js:75
+#: skin/assets/components/dialog/index.js:20
+msgid "Confirm"
+msgstr ""
+
 #: skin/assets/components/dialog/index.js:30
 #: skin/assets/components/modal/popup-elemenet/index.js:45
 msgid "Cancel"
-msgstr ""
-
-#: skin/assets/components/dialog/index.js:20
-msgid "Confirm"
 msgstr ""
 
 #: skin/assets/components/dialog/index.js:7

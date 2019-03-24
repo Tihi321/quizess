@@ -5,24 +5,19 @@
  * @package Quizess\Views\Parts
  */
 
+use Quizess\Helpers\General_Helper;
 ?>
 
 <!-- Google Rich Snippets -->
 <script type="application/ld+json">
   {
     "@context": "http://schema.org",
-    "@type": "NewsArticle",
+    "@type": "Quiz",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://google.com/article"
     },
     "headline": "<?php the_title(); ?>",
-  "image": {
-    "@type": "ImageObject",
-    "url": "<?php echo esc_html( $image['image'] ); ?>",
-    "height": <?php echo esc_html( $image['height'] ); ?>,
-    "width": <?php echo esc_html( $image['width'] ); ?>
-  },
   "datePublished": "<?php echo esc_html( get_the_time( 'c' ) ); ?>",
   "dateModified": "<?php echo esc_html( date( 'c', strtotime( $post->post_modified ) ) ); ?>",
   "author": {
@@ -34,11 +29,10 @@
     "name": "<?php echo esc_html( get_bloginfo( 'name' ) ); ?>",
     "logo": {
     "@type": "ImageObject",
-    "url": "<?php echo esc_url( HWN_IMAGE_URL . 'meta-google.png' ); ?>",
+    "url": "<?php echo esc_url( General_Helper::get_base_path() . '/skin/public/images/meta-google.png' ); ?>",
     "width": 220,
     "height": 60
     }
   },
-  "description": "<?php echo esc_html( strip_tags( get_the_excerpt() ) ); ?>"
   }
 </script>

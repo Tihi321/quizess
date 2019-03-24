@@ -8,7 +8,7 @@
  * @wordpress-plugin
  * Plugin Name:       Quizess
  * Plugin URI:
- * Description:       Quizess plugin provides all functionality for Quizess theme.
+ * Description:       Quizess plugin provides all functionality for making quizes.
  * Version:           1.0.0
  * Author:            Tihomir Selak <tknox.dr@gmail.com>
  * Author URI:        https://tihomir-selak.form.hr/
@@ -57,7 +57,6 @@ define( 'QIZ_ENV', 'production' );
  * @since 1.0.0
  */
 function init_plugin() {
-  // ( new Includes\Main() )->run();
   ( new Core\Main() )->register();
 }
 
