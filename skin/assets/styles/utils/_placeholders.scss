@@ -112,13 +112,16 @@
     border: 1px solid $base-light-grey-color;
     transition: box-shadow 0.3s ease;
   }
+
   &.active .mce-content-body {
     box-shadow: $input-box-shadow;
   }
+
   &.inactive .mce-content-body {
     box-shadow: $input-box-shadow-hover;
   }
 }
+
 %input-body-default {
   .mce-content-body {
     padding: $input-base-padding;
@@ -179,12 +182,15 @@
   justify-content: center;
   transform: translateY(100%);
   transition: ease 300ms transform 200ms;
+
   &.is-shown {
     transform: translateY(0);
   }
+
   &.is-error {
     background-color: $base-punch-color;
   }
+
   &.is-success {
     background-color: $base-primary-blue;
   }

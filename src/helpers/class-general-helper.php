@@ -132,12 +132,12 @@ abstract class General_Helper extends Config {
    */
   public static function can_user_submit( int $posts_id, int $users_id ) : bool {
 
-    $scores = get_post_meta( $posts_id, self::SCORES_META_KEY, true );
+    $scores = \get_post_meta( $posts_id, self::SCORES_META_KEY, true );
 
     // check it this quiz has scores submited to it for that player, before last field was deleted and if user is selected so it can only submit one.
     if ( ! empty( $scores ) ) {
       $player_scores = self::get_array_value( $users_id, $scores['players'] );
-      $user_single   = get_user_meta( $users_id, self::USER_SINGLE_TOGGLE, true );
+      $user_single   = \get_user_meta( $users_id, self::USER_SINGLE_TOGGLE, true );
 
       if ( ! empty( $player_scores['last'] ) && $user_single === 'yes' ) {
         return false;

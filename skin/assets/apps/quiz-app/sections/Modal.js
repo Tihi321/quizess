@@ -1,7 +1,11 @@
 import classnames from 'classnames';
 import {__} from '@wordpress/i18n';
 import {AppConsumer} from '../containers/AppContext';
-import {TopBar, Button} from '../../../components';
+import {
+  TopBar,
+  PopUpElememnt,
+  Placeholder,
+} from '../../../components';
 
 const ModalConsumer = (props) => {
   const {
@@ -9,8 +13,8 @@ const ModalConsumer = (props) => {
     bgColor,
     bgUrl,
     modal,
-    userPlayer,
-    userSubmit,
+    shouldSubmit,
+    shoudNotPlay,
     scoresSubmited,
     showExit,
     handleShowExit,
@@ -34,54 +38,35 @@ const ModalConsumer = (props) => {
     (showExit) ? 'modal__inner--wide' : 'modal__inner--narrow',
   );
 
-  if (showExit) {
-    const messages = [
-      __('Get outta here and go back to your boring programs.', 'quizess'),
-      __('Just leave. When you come back, I\'ll be waiting with a bat.', 'quizess'),
-      __('Are you sure you want to quit this great quiz ?', 'quizess'),
-      __('I wouldn\'t leave if I were you. Internet is much worse.', 'quizess'),
-      __('Go ahead and leave. See if I care.', 'quizess'),
-      __('Choose Cancel if you are brave, choose Exit to cover in shame. ', 'quizess'),
-      __('Chickening out... already ?', 'quizess'),
-      __('Heroes choose Cancel, Wimps choose Exit.', 'quizess'),
-      __('So you think you can quit this easily, huh ?', 'quizess'),
-      __('Dost thou wish to leave with such hasty abandon ?', 'quizess'),
-    ];
-
-    // export random message on each try.
-    const rnd = Math.floor(Math.random() * Math.floor(10));
-    const message = messages[rnd];
-
-    const submitNotification = (userPlayer && userSubmit && !scoresSubmited) ? __('If you cancel your scores will be submitted.', 'quizess') : '';
-
+  if (shoudNotPlay) {
     return (
       <div
         className={modalClasses}
         style={modalStyle}
       >
         <div className={modalInnerClasses}>
-          <div className="modal__exit-outer">
-            <div className="modal__exit-title">
-              {message}
-              {(submitNotification) && <span className="modal__title-helper">
-                {submitNotification}
-              </span>}
-            </div>
-            <div className="modal__exit-btns">
-              <Button
-                theme={theme}
-                onClick={handleCancelClose}
-              >
-                {__('Cancel', 'quizess')}
-              </Button>
-              <Button
-                theme={theme}
-                onClick={handleClose}
-              >
-                {__('Exit', 'quizess')}
-              </Button>
-            </div>
-          </div>
+          <Placeholder type="info">
+            {__('Your scores have been submitted, thank you for playing.', 'quizess')}
+          </Placeholder>
+        </div>
+      </div>
+    );
+  }
+
+  if (showExit) {
+    return (
+      <div
+        className={modalClasses}
+        style={modalStyle}
+      >
+        <div className={modalInnerClasses}>
+          <PopUpElememnt
+            theme={theme}
+            shouldSubmit={shouldSubmit}
+            scoresSubmited={scoresSubmited}
+            handleCancelClose={handleCancelClose}
+            handleClose={handleClose}
+          />
         </div>
       </div>
     );
@@ -112,8 +97,8 @@ const Modal = ({children}) => (
         values: {
           showExit,
           modal,
-          userPlayer,
-          userSubmit,
+          shouldSubmit,
+          shoudNotPlay,
           scoresSubmited,
           data: {
             options: {
@@ -138,8 +123,8 @@ const Modal = ({children}) => (
           bgColor={bgColor}
           bgUrl={bgUrl}
           modal={modal}
-          userSubmit={userSubmit}
-          userPlayer={userPlayer}
+          shouldSubmit={shouldSubmit}
+          shoudNotPlay={shoudNotPlay}
           scoresSubmited={scoresSubmited}
           handleShowExit={handleShowExit}
           handleCancelClose={handleCancelClose}

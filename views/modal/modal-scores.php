@@ -3,7 +3,7 @@
  * Scores modal
  *
  * @package Quizess\Views\Modal
- * @since 1.0.0
+ * @since 1.0.2
  */
 
 use Quizess\Helpers\General_Helper;
@@ -13,8 +13,8 @@ $user_id_check = ( $user_id !== 0 ) ? $user_id : false;
 
 $player_scores = $blocks_helper->get_quiz_scores( $post->ID, $user_id_check );
 
-$correct = General_Helper::get_array_value( 'correct', $player_scores['last'] ) ?: 0;
-$total   = General_Helper::get_array_value( 'total', $player_scores['last'] ) ?: 0;
+$correct = ( ! empty( $player_scores['last'] ) ) ? General_Helper::get_array_value( 'correct', $player_scores['last'] ) : 0;
+$total   = ( ! empty( $player_scores['last'] ) ) ? General_Helper::get_array_value( 'total', $player_scores['last'] ) : 0;
 
 ?>
 
