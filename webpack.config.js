@@ -211,7 +211,7 @@ module.exports = [
 
     optimization: allOptimizations,
 
-    mode: 'development',
+    mode: (DEV) ? 'development' : 'production',
 
     module: allModules,
 
