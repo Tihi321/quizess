@@ -4,6 +4,7 @@ import generalHelper from '../../../helpers/general-helper';
 
 const Overview = (props) => {
   const {
+    playOnce = false,
     theme,
     onClick,
     questionsTotal,
@@ -33,17 +34,23 @@ const Overview = (props) => {
     );
   });
 
+  const thankYouElement = (
+    <div className="overview__thank-you">
+      {__('Your scores have been submitted, thank you for playing.', 'quizess')}
+    </div>
+  );
+
   return (
     <div className="overview">
       <div className="overview__header">
         {__('Kudos !', 'quizess')}
       </div>
-      <WideButton
+      {(playOnce) ? thankYouElement : <WideButton
         theme={theme}
         onClick={onClick}
       >
         {__('Try again', 'quizess')}
-      </WideButton>
+      </WideButton>}
       <div className="overview__footer">
         <div className="quiz-accomplishment">
           <div className="modal__table-title quiz-accomplishment__title">

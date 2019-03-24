@@ -20,6 +20,7 @@ const QuestionsConsumer = (props) => {
     message,
     successMessage,
     scoresSubmited,
+    singleSubmit,
     handleTryAgain,
     handleSubmitScore,
     handleResetMessage,
@@ -45,6 +46,7 @@ const QuestionsConsumer = (props) => {
           questionsTotal={questionsTotal}
           correctAnswers={correctAnswers}
           questionStats={questionStats}
+          playOnce={scoresSubmited && singleSubmit}
         />
         <SubmitMessage
           showMessage={showMessage}
@@ -75,6 +77,7 @@ const Questions = () => (
           questionStats,
           correctAnswers,
           scoresSubmited,
+          singleSubmit,
           showMessage,
           message,
           successMessage,
@@ -101,6 +104,7 @@ const Questions = () => (
           successMessage={successMessage}
           message={message}
           scoresSubmited={scoresSubmited}
+          singleSubmit={singleSubmit}
           questionStats={questionStats}
           correctAnswers={correctAnswers}
           handleTryAgain={handleTryAgain}

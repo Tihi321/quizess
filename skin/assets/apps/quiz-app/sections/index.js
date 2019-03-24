@@ -3,14 +3,30 @@ import {__} from '@wordpress/i18n';
 import {AppConsumer} from '../containers/AppContext';
 import Modal from './Modal';
 import Questions from './Questions';
-import {Button} from '../../../components';
+import {
+  Button,
+  Placeholder,
+} from '../../../components';
 
 const MainConsumer = (props) => {
   const {
     theme,
     data,
     handleStart,
+    shoudNotPlay,
   } = props;
+
+  const shouldNotPlayElement = (
+    <Placeholder type="info">
+      {__('Your scores have been submitted, thank you for playing.', 'quizess')}
+    </Placeholder>
+  );
+
+  const modalElement = (
+    <Modal>
+      {(shoudNotPlay) ? shouldNotPlayElement : <Questions />}
+    </Modal>
+  );
 
   return (
     <Fragment>
@@ -20,9 +36,7 @@ const MainConsumer = (props) => {
       >
         {__('Start', 'quizess')}
       </Button>
-      {(Object.entries(data).length > 0) && (<Modal>
-        <Questions />
-      </Modal>)}
+      {(Object.entries(data).length > 0) && modalElement}
     </Fragment>
   );
 };
@@ -34,6 +48,7 @@ const App = () => (
         values: {
           data,
           theme,
+          shoudNotPlay,
         },
         dataStore: {
           handleStart,
@@ -44,6 +59,7 @@ const App = () => (
           data={data}
           handleStart={handleStart}
           theme={theme}
+          shoudNotPlay={shoudNotPlay}
         />
       );
     }}

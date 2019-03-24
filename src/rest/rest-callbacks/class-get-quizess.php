@@ -12,6 +12,7 @@ namespace Quizess\Rest\Rest_Callbacks;
 
 use Quizess\Core\Config;
 use Quizess\Helpers\Blocks_Helper;
+use Quizess\Helpers\General_Helper;
 
 /**
  * Class Get_Quizess
@@ -51,7 +52,7 @@ class Get_Quizess extends Config implements Rest_Callback {
    * @param \WP_REST_Request $request Data got from enpoint url.
    * @return \WP_REST_Response|\WP_Error          Developer data array.
    *
-   * @since 1.0.0
+   * @since 1.0.2
    */
   public function rest_callback( \WP_REST_Request $request ) {
 
@@ -86,6 +87,20 @@ class Get_Quizess extends Config implements Rest_Callback {
     $scores = $this->blocks_helper->get_quiz_scores( $quiz_id );
 
     $output['scores'] = $scores;
+
+    /**
+     * Check if user logged in and can it play quiz.
+     * Case if user refreshes page before finishing the quiz.
+     * Save is delayed and user can play again so we need to check when fetching data.
+     */
+    $should_play = '0';
+    if ( is_user_logged_in() ) {
+      $current_user_id = get_current_user_id();
+      $can_user_submit = General_Helper::can_user_submit( (int) $quiz_id, $current_user_id );
+      $should_play     = ( $can_user_submit ) ? '1' : '2';
+    }
+
+    $output['shouldPlay'] = $should_play;
 
     \wp_reset_postdata();
 

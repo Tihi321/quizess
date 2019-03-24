@@ -11,6 +11,7 @@ use Quizess\Core\Config;
 
 $remove_admin_bar = get_option( Config::REMOVE_ADMIN_TOGGLE );
 $user_submit      = '0';
+$user_locked      = false;
 $welcome_message  = General_Helper::get_array_value( 'welcomeMessage', $quiz_options['options'] );
 $about_field      = General_Helper::get_array_value( 'aboutField', $quiz_options['options'] );
 $bg_color         = General_Helper::get_array_value( 'bgColor', $quiz_options['bgOptions'] );
@@ -33,6 +34,8 @@ if ( is_user_logged_in() ) {
 
     if ( $can_user_submit ) {
       $user_submit = '1';
+    } else {
+      $user_locked = true;
     }
   }
 }
@@ -48,6 +51,12 @@ if ( is_user_logged_in() ) {
 
       if ( ! empty( $locked_content_message ) ) {
         include $locked_content_message;
+      }
+    } elseif ( $user_locked ) {
+      $user_locked_message = $base_path . 'views/parts/user-locked.php';
+
+      if ( ! empty( $user_locked_message ) ) {
+        include $user_locked_message;
       }
     } else {
 

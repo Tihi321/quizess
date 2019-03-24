@@ -88,7 +88,7 @@ class Front extends Config implements Service {
   /**
    * Register the JavaScript for the frontend area.
    *
-   * @since 1.0.0
+   * @since 1.0.1
    */
   public function enqueue_localized_frontend_scripts() {
 
@@ -104,12 +104,16 @@ class Front extends Config implements Service {
     );
 
     if ( is_user_logged_in() ) {
-      // Glbal variables for ajax and translations.
+
+      $single_submit = get_user_meta( get_current_user_id(), static::USER_SINGLE_TOGGLE, true );
+      $single_value  = ( $single_submit === 'yes' ) ? '1' : '0';
+
       wp_localize_script(
         static::PLUGIN_NAME . '-frontend-scripts',
         'userLogged',
         array(
             'userPlayer' => 'yes',
+            'singleSubmit' => $single_value,
             'scoresApi' => Rest_Routes::QUIZESS_SCORES_SLUG,
             'nonce' => wp_create_nonce( 'wp_rest' ),
         )

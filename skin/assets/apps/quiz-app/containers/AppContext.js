@@ -20,12 +20,20 @@ class AppProvider extends PureComponent {
 
     this.headerElement = props.headerElement;
 
-    const {theme, userSubmit} = props;
-    const {userPlayer} = userLogged;
+    const {
+      theme,
+      userSubmit,
+    } = props;
+    const {
+      userPlayer,
+      singleSubmit,
+    } = userLogged;
 
     this.state = {
-      userSubmit: (userSubmit === '1') || false,
-      userPlayer: (userPlayer === 'yes') || false,
+      shouldSubmit: (userSubmit === '1' && userPlayer === 'yes') || false,
+      singleSubmit: (singleSubmit === '1') || false,
+      quizLoaded: false,
+      shoudNotPlay: true,
       theme,
       inProgress: false,
       data: {},
@@ -48,6 +56,27 @@ class AppProvider extends PureComponent {
       successMessage: false,
       message: '',
     };
+  }
+
+  /**
+   * If user refreshes page after starting the quiz
+   * sends quiz scores if player should send scores
+   * avoids reseting quiz befeore end.
+   */
+  onUnload = (e) => {
+    const {
+      quizLoaded,
+      shouldSubmit,
+      scoresSubmited,
+    } = this.state;
+
+    if (quizLoaded) {
+
+      if (shouldSubmit && !scoresSubmited) {
+        this.sendQuizData(true);
+      }
+    }
+
   }
 
   /**
@@ -142,15 +171,34 @@ class AppProvider extends PureComponent {
 
   // gets data for quiz with param of quiz id.
   fetchApi = () => {
+    const {nonce} = userLogged;
     const {root} = quizessOptions;
     const {quizApi} = quizessOptions;
     const {quizId} = this.props;
+
+    const body = {
+      method: 'GET',
+      mode: 'same-origin',
+      credentials: 'same-origin',
+      headers: {
+        Accept: 'application/json',
+      },
+      redirect: 'follow',
+      referrer: 'no-referrer',
+    };
+
+    if (nonce) {
+      body.headers['X-WP-Nonce'] = nonce;
+    }
+
+
+
     this.setState(() => {
       return {
         inProgress: true,
       };
     });
-    fetch(root + quizApi + quizId)
+    fetch(`${root}${quizApi}${quizId}`, body)
       .then((response) => {
         return response.json();
       })
@@ -163,6 +211,7 @@ class AppProvider extends PureComponent {
             inProgress: false,
             data,
             modal: true,
+            shoudNotPlay: (myJson.shouldPlay === '2'),
           };
         });
       });
@@ -205,7 +254,6 @@ class AppProvider extends PureComponent {
       correctAnswers: 0,
       stopTimer: false,
       playTimer: false,
-      scoresSubmited: false,
     };
 
     if (exit) {
@@ -257,6 +305,11 @@ class AppProvider extends PureComponent {
       if (Object.entries(this.state.data).length === 0 && this.state.data.constructor === Object) {
         this.fetchApi();
         this.setBody();
+        this.setState(() => {
+          return {
+            quizLoaded: true,
+          };
+        });
       } else {
         this.setState(() => {
           return {
@@ -268,12 +321,11 @@ class AppProvider extends PureComponent {
     },
     handleClose: () => {
       const {
-        userPlayer,
-        userSubmit,
+        shouldSubmit,
         scoresSubmited,
       } = this.state;
 
-      if (userPlayer && userSubmit && !scoresSubmited) {
+      if (shouldSubmit && !scoresSubmited) {
         this.sendQuizData(true);
       }
       this.resetQuiz(true);
@@ -331,9 +383,9 @@ class AppProvider extends PureComponent {
       this.resetQuiz();
     },
     handleSubmitScore: () => {
-      const {userPlayer, userSubmit} = this.state;
+      const {shouldSubmit} = this.state;
 
-      if (userPlayer && userSubmit) {
+      if (shouldSubmit) {
         this.sendQuizData();
       }
     },
@@ -345,6 +397,17 @@ class AppProvider extends PureComponent {
       });
     },
   };
+
+
+
+  componentDidMount() {
+    window.addEventListener('beforeunload', this.onUnload);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('beforeunload', this.onUnload);
+  }
+
 
   render() {
     const {
@@ -366,8 +429,9 @@ class AppProvider extends PureComponent {
       showMessage,
       message,
       successMessage,
-      userPlayer,
-      userSubmit,
+      shouldSubmit,
+      singleSubmit,
+      shoudNotPlay,
     } = this.state;
 
     return (
@@ -393,8 +457,9 @@ class AppProvider extends PureComponent {
             showMessage,
             message,
             successMessage,
-            userPlayer,
-            userSubmit,
+            shouldSubmit,
+            singleSubmit,
+            shoudNotPlay,
           },
           dataStore: this.dataStore,
         }}>
