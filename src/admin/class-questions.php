@@ -30,6 +30,7 @@ class Questions extends Config implements Service {
   public function register() : void {
     $this->add_action( 'init', $this, 'register_post_type' );
     $this->add_action( 'init', $this, 'register_categories' );
+    $this->add_filter( 'template_include', $this, 'question_single_template', 10, 4 );
   }
 
   /**
@@ -55,11 +56,15 @@ class Questions extends Config implements Service {
         'menu_icon'           => 'dashicons-welcome-learn-more',
         'supports'            => array( 'title', 'editor' ),
         'exclude_from_search' => true,
-        'publicly_queryable'  => true,
+        'publicly_queryable'  => false,
+        'show_in_admin_bar'   => false,
         'show_in_rest'        => true,
         'show_ui'             => true,
         'show_in_menu'        => false,
+        'show_in_nav_menus'   => false,
         'can_export'          => true,
+        'query_var'           => false,
+        'has_archive'         => false,
         'template' => array(
             array(
                 'quizess/question-block',
@@ -99,9 +104,24 @@ class Questions extends Config implements Service {
         'show_ui'             => true,
         'show_in_menu'        => false,
         'query_vars'          => true,
+        'show_in_nav_menus'   => false,
     );
 
     register_taxonomy( self::QUESTION_CATEGORY_SLUG, self::QUESTION_POST_SLUG, $args );
+  }
+
+  /**
+   * Redirect question single to homepage.
+   *
+   * @param string $template_path     Template path variable.
+   * @return string Return new or old template path variable
+   * @since 1.0.0
+   */
+  public function question_single_template( $template_path ) {
+    if ( get_post_type() === self::QUESTION_POST_SLUG ) {
+      wp_safe_redirect( home_url(), 302 );
+    }
+    return $template_path;
   }
 
 }
