@@ -7,6 +7,7 @@ $quiz-colors: (
 
 .quiz {
   $this-quiz: &;
+
   &__content {
     background-color: map-get($quiz-colors, 'bg-color');
     position: relative;
@@ -17,6 +18,7 @@ $quiz-colors: (
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
+
     &::after {
       @extend %blur-bg;
     }
@@ -40,6 +42,7 @@ $quiz-colors: (
       flex: 1;
       z-index: map-get($zindex, 'quiz-outer');
     }
+
     &--message {
       text-align: center;
       line-height: 1.1;
@@ -67,12 +70,14 @@ $quiz-colors: (
       #{$this-buttons}--start {
         width: 100%;
       }
+
       .btn {
         width: 100%;
         margin: 5px 0;
       }
     }
   }
+
   &__message {
     @extend %paragraph-reset;
     @extend %text-body;
@@ -83,6 +88,7 @@ $quiz-colors: (
     &--success {
       color: map-get($quiz-colors, 'success-message');
     }
+
     &--fail {
       color: map-get($quiz-colors, 'fail-message');
     }

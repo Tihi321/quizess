@@ -79,6 +79,7 @@ class Quiz extends Config implements Service {
         'show_ui'             => true,
         'show_in_menu'        => false,
         'can_export'          => true,
+        'has_archive'         => false,
         'template'            => $template,
         'template_lock'       => array( 'all' ),
         'taxonomies'          => array( self::QUIZESS_CATEGORY_SLUG ),

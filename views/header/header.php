@@ -15,5 +15,5 @@
   <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
-<div id="post" class="quizess-post">
+<body <?php body_class( 'quizess-custom default-typography' ); ?>>
+<div id="post" class="quizess-custom__post">

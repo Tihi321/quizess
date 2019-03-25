@@ -61,6 +61,7 @@ $menu-colors: (
   .menu__submenu {
     list-style: none;
     padding: 0;
+    margin: 0;
     background-color: map-get($menu-colors, 'submenu-bg');
 
     .menu__item__link {

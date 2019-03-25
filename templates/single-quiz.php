@@ -35,16 +35,14 @@ if ( have_posts() ) {
     if ( $custom_style ) {
       $custom_menu = new Menu();
       $menu_items  = $custom_menu->get_menu_by_position( Config::MENU_NAME );
-      ?>
-        <div class="quizess-custom default-typography">
-        <?php
-        if ( ! empty( $menu_items ) ) {
-          $header_content = General_Helper::get_base_path() . 'views/header/header-content.php';
 
-          if ( ! empty( $header_content ) ) {
-            include $header_content;
-          }
+      if ( ! empty( $menu_items ) ) {
+        $header_content = General_Helper::get_base_path() . 'views/header/header-content.php';
+
+        if ( ! empty( $header_content ) ) {
+          include $header_content;
         }
+      }
     }
     $single_path = General_Helper::get_base_path() . 'views/single/quiz.php';
 
@@ -59,9 +57,6 @@ if ( have_posts() ) {
       if ( ! empty( $footer_content ) ) {
         include $footer_content;
       }
-      ?>
-      </div>
-      <?php
     }
   }
 }
