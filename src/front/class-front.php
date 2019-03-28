@@ -42,9 +42,14 @@ class Front extends Config implements Service {
    */
   public function enqueue_frontend_styles() {
 
-    $main_admin_style = General_Helper::get_manifest_assets_data( 'applicationQuizess.css' );
-    wp_register_style( static::PLUGIN_NAME . '-frontend-style', $main_admin_style, '', static::PLUGIN_VERSION, false );
-    wp_enqueue_style( static::PLUGIN_NAME . '-frontend-style' );
+    // load only on quizess post types.
+    if ( static::QUIZESS_POST_SLUG === get_post_type() ) {
+
+      $main_admin_style = General_Helper::get_manifest_assets_data( 'applicationQuizess.css' );
+      wp_register_style( static::PLUGIN_NAME . '-frontend-style', $main_admin_style, '', static::PLUGIN_VERSION, false );
+      wp_enqueue_style( static::PLUGIN_NAME . '-frontend-style' );
+
+    }
 
   }
 
@@ -56,31 +61,35 @@ class Front extends Config implements Service {
    */
   public function enqueue_frontend_scripts() {
 
-    // If in development add development not minified react libraries.
-    if ( QIZ_ENV === 'develop' ) {
-      wp_deregister_script( 'react' );
-      wp_deregister_script( 'react-dom' );
+        // load only on quizess post types.
+    if ( static::QUIZESS_POST_SLUG === get_post_type() ) {
 
-      wp_register_script( 'react', General_Helper::get_base_url() . 'skin/public/scripts/vendors/react.development.js', array(), '16.6.3', false );
+      // If in development add development not minified react libraries.
+      if ( QIZ_ENV === 'develop' ) {
+        wp_deregister_script( 'react' );
+        wp_deregister_script( 'react-dom' );
 
-      wp_register_script( 'react-dom', General_Helper::get_base_url() . 'skin/public/scripts/vendors/react-dom.development.js', array(), '16.6.3', false );
-    }
+        wp_register_script( 'react', General_Helper::get_base_url() . 'skin/public/scripts/vendors/react.development.js', array(), '16.6.3', false );
 
-    wp_enqueue_script( 'wp-element' );
-    wp_enqueue_script( 'wp-components' );
-    wp_enqueue_script( 'wp-i18n' );
-    wp_enqueue_script( 'react' );
-    wp_enqueue_script( 'react-dom' );
+        wp_register_script( 'react-dom', General_Helper::get_base_url() . 'skin/public/scripts/vendors/react-dom.development.js', array(), '16.6.3', false );
+      }
 
-    $main_admin_script = General_Helper::get_manifest_assets_data( 'applicationQuizess.js' );
-    wp_register_script( static::PLUGIN_NAME . '-frontend-scripts', $main_admin_script, array(), static::PLUGIN_VERSION, true );
-    wp_enqueue_script( static::PLUGIN_NAME . '-frontend-scripts' );
+      wp_enqueue_script( 'wp-element' );
+      wp_enqueue_script( 'wp-components' );
+      wp_enqueue_script( 'wp-i18n' );
+      wp_enqueue_script( 'react' );
+      wp_enqueue_script( 'react-dom' );
 
-    // add localization to javascript.
-    if ( function_exists( 'gutenberg_get_jed_locale_data' ) ) {
-      $locale  = gutenberg_get_jed_locale_data( 'quizess' );
-      $content = 'wp.i18n.setLocaleData( ' . wp_json_encode( $locale ) . ', "quizess" );';
-      wp_script_add_data( static::PLUGIN_NAME . '-frontend-scripts', 'data', $content );
+      $main_admin_script = General_Helper::get_manifest_assets_data( 'applicationQuizess.js' );
+      wp_register_script( static::PLUGIN_NAME . '-frontend-scripts', $main_admin_script, array(), static::PLUGIN_VERSION, true );
+      wp_enqueue_script( static::PLUGIN_NAME . '-frontend-scripts' );
+
+      // add localization to javascript.
+      if ( function_exists( 'gutenberg_get_jed_locale_data' ) ) {
+        $locale  = gutenberg_get_jed_locale_data( 'quizess' );
+        $content = 'wp.i18n.setLocaleData( ' . wp_json_encode( $locale ) . ', "quizess" );';
+        wp_script_add_data( static::PLUGIN_NAME . '-frontend-scripts', 'data', $content );
+      }
     }
 
   }
@@ -92,41 +101,46 @@ class Front extends Config implements Service {
    */
   public function enqueue_localized_frontend_scripts() {
 
-    // Global variables for ajax and translations.
-    wp_localize_script(
-      static::PLUGIN_NAME . '-frontend-scripts',
-      'quizessOptions',
-      array(
-          'root' => esc_url_raw( rest_url() ),
-          'quizApi' => Rest_Routes::QUIZESS_SLUG . '/',
-          'menusApi' => Rest_Routes::QUIZESS_MENUS_SLUG,
-      )
-    );
+    // load only on quizess post types.
+    if ( static::QUIZESS_POST_SLUG === get_post_type() ) {
 
-    if ( is_user_logged_in() ) {
-
-      $single_submit = get_user_meta( get_current_user_id(), static::USER_SINGLE_TOGGLE, true );
-      $single_value  = ( $single_submit === 'yes' ) ? '1' : '0';
-
+      // Global variables for ajax and translations.
       wp_localize_script(
         static::PLUGIN_NAME . '-frontend-scripts',
-        'userLogged',
+        'quizessOptions',
         array(
-            'userPlayer' => 'yes',
-            'singleSubmit' => $single_value,
-            'scoresApi' => Rest_Routes::QUIZESS_SCORES_SLUG,
-            'nonce' => wp_create_nonce( 'wp_rest' ),
+            'root' => esc_url_raw( rest_url() ),
+            'quizApi' => Rest_Routes::QUIZESS_SLUG . '/',
+            'menusApi' => Rest_Routes::QUIZESS_MENUS_SLUG,
         )
       );
-    } else {
-      wp_localize_script(
-        static::PLUGIN_NAME . '-frontend-scripts',
-        'userLogged',
-        array(
-            'userPlayer' => 'no',
-        )
-      );
+
+      if ( is_user_logged_in() ) {
+
+        $single_submit = get_user_meta( get_current_user_id(), static::USER_SINGLE_TOGGLE, true );
+        $single_value  = ( $single_submit === 'yes' ) ? '1' : '0';
+
+        wp_localize_script(
+          static::PLUGIN_NAME . '-frontend-scripts',
+          'userLogged',
+          array(
+              'userPlayer' => 'yes',
+              'singleSubmit' => $single_value,
+              'scoresApi' => Rest_Routes::QUIZESS_SCORES_SLUG,
+              'nonce' => wp_create_nonce( 'wp_rest' ),
+          )
+        );
+      } else {
+        wp_localize_script(
+          static::PLUGIN_NAME . '-frontend-scripts',
+          'userLogged',
+          array(
+              'userPlayer' => 'no',
+          )
+        );
+      }
     }
+
   }
 
 
