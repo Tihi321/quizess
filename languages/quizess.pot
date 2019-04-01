@@ -1,6 +1,5 @@
 # Copyright (C) 2019 Quizess
 # This file is distributed under the same license as the Quizess package.
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Quizess\n"
@@ -9,375 +8,932 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"X-Generator: Poedit 2.2.1\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/admin/class-media.php:113
-#, php-format
-msgid "Error: File invalid: %s"
-msgstr ""
-
-#: src/admin/class-media.php:135
-#, php-format
-msgid "Error: %s"
-msgstr ""
-
-#: src/admin/class-menu-page.php:60 src/admin/class-menu-page.php:61
-#: src/admin/class-menu-page.php:92 src/admin/class-quiz.php:63
-#: src/blocks/class-blocks.php:91 views/admin/user-meta-options.php:21
-msgid "Quizess"
-msgstr ""
-
-#: src/admin/class-menu-page.php:82 src/admin/class-menu-page.php:83
-msgid "Dashboard"
-msgstr ""
-
-#: src/admin/class-menu-page.php:93
-msgid "All Quizess"
-msgstr ""
-
-#: src/admin/class-menu-page.php:102
-msgid "New Quiz"
-msgstr ""
-
-#: src/admin/class-menu-page.php:103 src/admin/class-quiz.php:68
-msgid "Add New Quiz"
-msgstr ""
-
-#: src/admin/class-menu-page.php:112 src/admin/class-menu-page.php:113
-#: src/admin/class-quiz.php:96
-msgid "Quiz Topics"
-msgstr ""
-
-#: src/admin/class-menu-page.php:122 src/admin/class-questions.php:43
-msgid "Questions"
-msgstr ""
-
-#: src/admin/class-menu-page.php:123
-msgid "All Questions"
-msgstr ""
-
-#: src/admin/class-menu-page.php:132
-msgid "New Question"
-msgstr ""
-
-#: src/admin/class-menu-page.php:133 src/admin/class-questions.php:48
-msgid "Add New Question"
-msgstr ""
-
-#: src/admin/class-menu-page.php:142 src/admin/class-menu-page.php:143
-#: src/admin/class-questions.php:83
-msgid "Question Topics"
-msgstr ""
-
-#: src/admin/class-menu.php:50
-msgid "Quiz menu"
-msgstr ""
-
-#: src/admin/class-questions.php:44
-msgid "Question"
-msgstr ""
-
-#: src/admin/class-questions.php:45
-msgid "View Questions"
-msgstr ""
-
-#: src/admin/class-questions.php:46
-msgid "Edit Question"
-msgstr ""
-
-#: src/admin/class-questions.php:47
-msgid "Update Question"
-msgstr ""
-
-#: src/admin/class-questions.php:84
-msgid "Question Topic"
-msgstr ""
-
-#: src/admin/class-questions.php:85
-msgid "Search Question Topics"
-msgstr ""
-
-#: src/admin/class-questions.php:86
-msgid "All Question Topics"
-msgstr ""
-
-#: src/admin/class-questions.php:87 src/admin/class-questions.php:88
-msgid "Parent Question Topic"
-msgstr ""
-
-#: src/admin/class-questions.php:89
-msgid "Edit Question Topic"
-msgstr ""
-
-#: src/admin/class-questions.php:90
-msgid "Update Question Topic"
-msgstr ""
-
-#: src/admin/class-questions.php:91
-msgid "Add New Question Topic"
-msgstr ""
-
-#: src/admin/class-questions.php:92
-msgid "New Question Topic Name"
-msgstr ""
-
-#: src/admin/class-quiz.php:64
-msgid "Quiz"
-msgstr ""
-
-#: src/admin/class-quiz.php:65
-msgid "View Quizzes"
-msgstr ""
-
-#: src/admin/class-quiz.php:66
-msgid "Edit Quiz"
-msgstr ""
-
-#: src/admin/class-quiz.php:67
-msgid "Update Quiz"
-msgstr ""
-
-#: src/admin/class-quiz.php:97
-msgid "Quiz Topic"
-msgstr ""
-
-#: src/admin/class-quiz.php:98
-msgid "Search Quiz Topics"
-msgstr ""
-
-#: src/admin/class-quiz.php:99
-msgid "All Quiz Topics"
-msgstr ""
-
-#: src/admin/class-quiz.php:100 src/admin/class-quiz.php:101
-msgid "Parent Quiz Topic"
-msgstr ""
-
-#: src/admin/class-quiz.php:102
-msgid "Edit Quiz Topic"
-msgstr ""
-
-#: src/admin/class-quiz.php:103
-msgid "Update Quiz Topic"
-msgstr ""
-
-#: src/admin/class-quiz.php:104
-msgid "Add New Quiz Topic"
-msgstr ""
-
-#: src/admin/class-quiz.php:105
-msgid "New Topic Quiz Name"
-msgstr ""
-
-#: src/admin/class-quiz.php:146
-msgid "Quiz Options"
-msgstr ""
-
-#: src/blocks/abstracts/class-base-block.php:61
-#: src/blocks/abstracts/class-base-block.php:100
-msgid "Trying to add_default_attributes() for block that hasnt defined NAME"
-msgstr ""
-
-#: src/blocks/abstracts/class-base-block.php:107
-#, php-format
-msgid "Missing template for block called: %1$s | Expecting a template in path: %2$s"
-msgstr ""
-
-#: src/class-main.php:104
+#: ../src/class-main.php:104
 msgid "manifest.json is missing. Bundle the theme before using it."
 msgstr ""
 
-#: src/class-main.php:195
+#: ../src/class-main.php:195
 msgid "All Gutenberg Blocks requires WordPress 5.0 or Gutenberg plugin to be activated"
 msgstr ""
 
-#: src/helpers/trait-error-logger.php:34
+#: ../src/admin/class-menu-page.php:60, ../src/admin/class-menu-page.php:61, ../src/admin/class-menu-page.php:92, ../src/admin/class-quiz.php:63, ../src/blocks/class-blocks.php:91, ../views/admin/user-meta-options.php:21
+#:../skin/assets/blocks/question-block/index.js:33
+#:../skin/assets/blocks/questions-category-block/index.js:33
+#:../skin/assets/blocks/section-block/index.js:33
+#:../skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/index.js:31
+#:../skin/assets/blocks/template-blocks/cpt-quizess-options-block/index.js:31
+#:../skin/assets/components/modal/top-bar/index.js:6
+msgid "Quizess"
+msgstr ""
+
+#: ../src/admin/class-menu-page.php:82, ../src/admin/class-menu-page.php:83
+#:../skin/assets/apps/dashboard/sections/index.js:62
+msgid "Dashboard"
+msgstr ""
+
+#: ../src/admin/class-menu-page.php:93
+msgid "All Quizess"
+msgstr ""
+
+#: ../src/admin/class-menu-page.php:102
+msgid "New Quiz"
+msgstr ""
+
+#: ../src/admin/class-menu-page.php:103, ../src/admin/class-quiz.php:68
+msgid "Add New Quiz"
+msgstr ""
+
+#: ../src/admin/class-menu-page.php:112, ../src/admin/class-menu-page.php:113, ../src/admin/class-quiz.php:96
+msgid "Quiz Topics"
+msgstr ""
+
+#: ../src/admin/class-menu-page.php:122, ../src/admin/class-questions.php:43
+msgid "Questions"
+msgstr ""
+
+#: ../src/admin/class-menu-page.php:123
+msgid "All Questions"
+msgstr ""
+
+#: ../src/admin/class-menu-page.php:132
+msgid "New Question"
+msgstr ""
+
+#: ../src/admin/class-menu-page.php:133, ../src/admin/class-questions.php:48
+msgid "Add New Question"
+msgstr ""
+
+#: ../src/admin/class-menu-page.php:142, ../src/admin/class-menu-page.php:143, ../src/admin/class-questions.php:83
+msgid "Question Topics"
+msgstr ""
+
+#: ../src/admin/class-menu.php:50
+msgid "Quiz menu"
+msgstr ""
+
+#: ../src/admin/class-questions.php:44
+#:../skin/assets/apps/dashboard/sections/Details.js:115
+#:../skin/assets/apps/dashboard/sections/Scores.js:31
+#:../skin/assets/apps/quiz-app/parts/QuestionHeader.js:35
+#:../skin/assets/components/modal/overview/index.js:92
+msgid "Question"
+msgstr ""
+
+#: ../src/admin/class-questions.php:45
+msgid "View Questions"
+msgstr ""
+
+#: ../src/admin/class-questions.php:46
+msgid "Edit Question"
+msgstr ""
+
+#: ../src/admin/class-questions.php:47
+msgid "Update Question"
+msgstr ""
+
+#: ../src/admin/class-questions.php:84
+msgid "Question Topic"
+msgstr ""
+
+#: ../src/admin/class-questions.php:85
+msgid "Search Question Topics"
+msgstr ""
+
+#: ../src/admin/class-questions.php:86
+msgid "All Question Topics"
+msgstr ""
+
+#: ../src/admin/class-questions.php:87, ../src/admin/class-questions.php:88
+msgid "Parent Question Topic"
+msgstr ""
+
+#: ../src/admin/class-questions.php:89
+msgid "Edit Question Topic"
+msgstr ""
+
+#: ../src/admin/class-questions.php:90
+msgid "Update Question Topic"
+msgstr ""
+
+#: ../src/admin/class-questions.php:91
+msgid "Add New Question Topic"
+msgstr ""
+
+#: ../src/admin/class-questions.php:92
+msgid "New Question Topic Name"
+msgstr ""
+
+#: ../src/admin/class-quiz.php:64
+msgid "Quiz"
+msgstr ""
+
+#: ../src/admin/class-quiz.php:65
+msgid "View Quizzes"
+msgstr ""
+
+#: ../src/admin/class-quiz.php:66
+msgid "Edit Quiz"
+msgstr ""
+
+#: ../src/admin/class-quiz.php:67
+msgid "Update Quiz"
+msgstr ""
+
+#: ../src/admin/class-quiz.php:97
+msgid "Quiz Topic"
+msgstr ""
+
+#: ../src/admin/class-quiz.php:98
+msgid "Search Quiz Topics"
+msgstr ""
+
+#: ../src/admin/class-quiz.php:99
+msgid "All Quiz Topics"
+msgstr ""
+
+#: ../src/admin/class-quiz.php:100, ../src/admin/class-quiz.php:101
+msgid "Parent Quiz Topic"
+msgstr ""
+
+#: ../src/admin/class-quiz.php:102
+msgid "Edit Quiz Topic"
+msgstr ""
+
+#: ../src/admin/class-quiz.php:103
+msgid "Update Quiz Topic"
+msgstr ""
+
+#: ../src/admin/class-quiz.php:104
+msgid "Add New Quiz Topic"
+msgstr ""
+
+#: ../src/admin/class-quiz.php:105
+msgid "New Topic Quiz Name"
+msgstr ""
+
+#: ../src/admin/class-quiz.php:146
+#:../skin/assets/blocks/template-blocks/cpt-quizess-options-block/index.js:20
+msgid "Quiz Options"
+msgstr ""
+
+#: ../src/helpers/trait-error-logger.php:34
 msgid "The request body is empty."
 msgstr ""
 
-#: src/helpers/trait-error-logger.php:39
+#: ../src/helpers/trait-error-logger.php:39
 msgid "The request header is empty."
 msgstr ""
 
-#: src/helpers/trait-error-logger.php:44
+#: ../src/helpers/trait-error-logger.php:44
 msgid "Scores not submitted."
 msgstr ""
 
-#: src/helpers/trait-error-logger.php:49
+#: ../src/helpers/trait-error-logger.php:49
 msgid "User is not authenticated."
 msgstr ""
 
-#: src/helpers/trait-error-logger.php:54
+#: ../src/helpers/trait-error-logger.php:54
 msgid "User is not registered player."
 msgstr ""
 
-#: src/helpers/trait-error-logger.php:59
+#: ../src/helpers/trait-error-logger.php:59
 msgid "Uer submit limit reached."
 msgstr ""
 
-#: src/helpers/trait-error-logger.php:64
+#: ../src/helpers/trait-error-logger.php:64
 msgid "Custom styles not enabled"
 msgstr ""
 
-#: src/helpers/trait-error-logger.php:69
+#: ../src/helpers/trait-error-logger.php:69
 msgid "Menu is not selected"
 msgstr ""
 
-#: src/helpers/trait-error-logger.php:74
+#: ../src/helpers/trait-error-logger.php:74
 msgid "Menu has no items"
 msgstr ""
 
-#: src/helpers/trait-error-logger.php:79
+#: ../src/helpers/trait-error-logger.php:79
 msgid "No quiz found"
 msgstr ""
 
-#: src/helpers/trait-error-logger.php:84
+#: ../src/helpers/trait-error-logger.php:84
 msgid "No blocks found"
 msgstr ""
 
-#: src/helpers/trait-error-logger.php:89
+#: ../src/helpers/trait-error-logger.php:89
 msgid "Not all quiz values present"
 msgstr ""
 
-#: src/rest/rest-callbacks/class-patch-general-options.php:81
+#: ../src/blocks/abstracts/class-base-block.php:61, ../src/blocks/abstracts/class-base-block.php:100
+msgid "Trying to add_default_attributes() for block that hasnt defined NAME"
+msgstr ""
+
+#: ../src/blocks/abstracts/class-base-block.php:107
+msgid "Missing template for block called: %1$s | Expecting a template in path: %2$s"
+msgstr ""
+
+#: ../src/rest/rest-callbacks/class-patch-general-options.php:81
 msgid "Options posted with success"
 msgstr ""
 
-#: src/rest/rest-callbacks/class-patch-scores.php:44
+#: ../src/rest/rest-callbacks/class-patch-scores.php:44
 msgid "Player last score removed"
 msgstr ""
 
-#: src/rest/rest-callbacks/class-patch-scores.php:44
+#: ../src/rest/rest-callbacks/class-patch-scores.php:44
 msgid "Player scores removed"
 msgstr ""
 
-#: src/rest/rest-callbacks/class-post-scores.php:119
+#: ../src/rest/rest-callbacks/class-post-scores.php:119
 msgid "Scores successfully submitted"
 msgstr ""
 
-#: views/admin/quiz-meta-options.php:19
+#: ../views/admin/quiz-meta-options.php:19
 msgid "Track records"
 msgstr ""
 
-#: views/admin/quiz-meta-options.php:21
+#: ../views/admin/quiz-meta-options.php:21
 msgid "Will keep records of scores for logged in players"
 msgstr ""
 
-#: views/admin/quiz-meta-options.php:32
+#: ../views/admin/quiz-meta-options.php:32
 msgid "Lock quiz"
 msgstr ""
 
-#: views/admin/quiz-meta-options.php:34
+#: ../views/admin/quiz-meta-options.php:34
 msgid "Will lock this quiz for all non players"
 msgstr ""
 
-#: views/admin/user-meta-options.php:10
+#: ../views/admin/user-meta-options.php:10
 msgid "Yes"
 msgstr ""
 
-#: views/admin/user-meta-options.php:11
+#: ../views/admin/user-meta-options.php:11
 msgid "No"
 msgstr ""
 
-#: views/admin/user-meta-options.php:25
+#: ../views/admin/user-meta-options.php:25
 msgid "Register player"
 msgstr ""
 
-#: views/admin/user-meta-options.php:27
+#: ../views/admin/user-meta-options.php:27
 msgid "Will register user as quiz player and keep records of quiz stats"
 msgstr ""
 
-#: views/admin/user-meta-options.php:40
+#: ../views/admin/user-meta-options.php:40
 msgid "Single submit"
 msgstr ""
 
-#: views/admin/user-meta-options.php:42
+#: ../views/admin/user-meta-options.php:42
 msgid "Will allow user to have only 1 attempt recorded per quiz, to reset remove last attempt record under dashboard"
 msgstr ""
 
-#: views/footer/footer-content.php:38
+#: ../views/footer/footer-content.php:38
+#:../skin/assets/apps/dashboard/sections/GeneralOptions.js:164
 msgid "Facebook"
 msgstr ""
 
-#: views/footer/footer-content.php:45
+#: ../views/footer/footer-content.php:45
+#:../skin/assets/apps/dashboard/sections/GeneralOptions.js:193
 msgid "Twitter"
 msgstr ""
 
-#: views/footer/footer-content.php:52
+#: ../views/footer/footer-content.php:52
+#:../skin/assets/apps/dashboard/sections/GeneralOptions.js:222
 msgid "LinkedIn"
 msgstr ""
 
-#: views/footer/footer-content.php:59
+#: ../views/footer/footer-content.php:59
+#:../skin/assets/apps/dashboard/sections/GeneralOptions.js:251
 msgid "Instagram"
 msgstr ""
 
-#: views/footer/footer-content.php:66
+#: ../views/footer/footer-content.php:66
 msgid "Github"
 msgstr ""
 
-#: views/modal/modal-about.php:15 views/sections/bottom-section.php:21
+#: ../views/modal/modal-about.php:15, ../views/sections/bottom-section.php:21
 msgid "About"
 msgstr ""
 
-#: views/modal/modal-scores.php:25 views/sections/bottom-section.php:29
+#: ../views/modal/modal-scores.php:25, ../views/sections/bottom-section.php:29
 msgid "High scores"
 msgstr ""
 
-#: views/modal/modal-scores.php:36
+#: ../views/modal/modal-scores.php:36
+#:../skin/assets/components/modal/overview/index.js:57
 msgid "Stats"
 msgstr ""
 
-#: views/modal/modal-scores.php:38
+#: ../views/modal/modal-scores.php:38
 msgid "Last take on quiz"
 msgstr ""
 
-#: views/modal/modal-scores.php:66
+#: ../views/modal/modal-scores.php:66
 msgid "Hall of fame"
 msgstr ""
 
-#: views/modal/parts/accomplishment-titles.php:10
-#: views/modal/parts/score-titles.php:12
-msgid "Correct"
-msgstr ""
-
-#: views/modal/parts/accomplishment-titles.php:11
-#: views/modal/parts/score-titles.php:13
-msgid "Total"
-msgstr ""
-
-#: views/modal/parts/accomplishment-titles.php:12
-#: views/modal/parts/score-titles.php:14
-msgid "Success"
-msgstr ""
-
-#: views/modal/parts/score-titles.php:10
-msgid "Name"
-msgstr ""
-
-#: views/modal/parts/score-titles.php:11
-msgid "Attempts"
-msgstr ""
-
-#: views/parts/quiz-admin-submit-message.php:13
+#: ../views/parts/quiz-admin-submit-message.php:13
 msgid "Player logged in."
 msgstr ""
 
-#: views/parts/quiz-locked.php:12
+#: ../views/parts/quiz-locked.php:12
 msgid "Sorry only for registered users only"
 msgstr ""
 
-#: views/parts/user-locked.php:12
+#: ../views/parts/user-locked.php:12
+#:../skin/assets/apps/quiz-app/sections/Modal.js:49
+#:../skin/assets/apps/quiz-app/sections/index.js:21
+#:../skin/assets/components/modal/overview/index.js:39
 msgid "Your scores have been submitted, thank you for playing."
 msgstr ""
 
-#: views/sections/title-section.php:18
+#: ../views/sections/title-section.php:18
 msgid "Welcome to our quiz"
+msgstr ""
+
+#: ../views/modal/parts/accomplishment-titles.php:10, ../views/modal/parts/score-titles.php:12
+#:../skin/assets/apps/dashboard/sections/Details.js:128
+#:../skin/assets/apps/dashboard/sections/Scores.js:32
+#:../skin/assets/blocks/question-block/components/answer-input/index.js:57
+#:../skin/assets/components/modal/overview/index.js:62
+msgid "Correct"
+msgstr ""
+
+#: ../views/modal/parts/accomplishment-titles.php:11, ../views/modal/parts/score-titles.php:13
+#:../skin/assets/apps/dashboard/sections/Details.js:57
+#:../skin/assets/apps/dashboard/sections/Scores.js:25
+#:../skin/assets/components/modal/overview/index.js:65
+msgid "Total"
+msgstr ""
+
+#: ../views/modal/parts/accomplishment-titles.php:12, ../views/modal/parts/score-titles.php:14
+#:../skin/assets/apps/dashboard/sections/Details.js:58
+#:../skin/assets/apps/dashboard/sections/Scores.js:26
+#:../skin/assets/components/modal/overview/index.js:68
+msgid "Success"
+msgstr ""
+
+#: ../views/modal/parts/score-titles.php:10
+#:../skin/assets/apps/dashboard/sections/Scores.js:22
+msgid "Name"
+msgstr ""
+
+#: ../views/modal/parts/score-titles.php:11
+#:../skin/assets/apps/dashboard/sections/Scores.js:23
+msgid "Attempts"
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/Details.js:116
+#:../skin/assets/components/modal/overview/index.js:95
+msgid "Answer"
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/Details.js:128
+#:../skin/assets/components/modal/overview/index.js:31
+msgid "Incorrect"
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/Details.js:163
+msgid "Back"
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/Details.js:33
+msgid "It will delete all records from player"
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/Details.js:42
+msgid "Unrecorded"
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/Details.js:59
+msgid "Last attempt"
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/Details.js:60
+msgid "Player records"
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/Details.js:64
+msgid ""
+"Stats from the last attempt, last attempt can be removed without affecting "
+"player overall records, it can be used with single submit options under "
+"users to ensure player single submision as it will check last attempt "
+"before submiting. With delete button you will remove all records for this "
+"player on this quiz"
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/Details.js:67
+msgid "Stats from the last submit per quiestion"
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/Details.js:77
+msgid "Remove"
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/Details.js:86
+msgid "Delete"
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/GeneralOptions.js:107
+msgid "Logo"
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/GeneralOptions.js:109
+msgid "Logo shown in the footer and menu"
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/GeneralOptions.js:135
+msgid "Copyright"
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/GeneralOptions.js:137
+msgid "Message show in the footer"
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/GeneralOptions.js:253
+msgid "Social footer item"
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/GeneralOptions.js:52
+msgid "Use custom styles"
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/GeneralOptions.js:55
+msgid "Replace theme styles on quiz posts."
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/GeneralOptions.js:66
+msgid "Remove admin bar"
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/GeneralOptions.js:69
+msgid "Remove default admin bar and add optional quiz submit message "
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/GeneralOptions.js:81
+msgid "Show github"
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/GeneralOptions.js:84
+msgid "Add github social icon to the footer linked to the quizess resository"
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/GeneralOptions.js:95
+msgid "Save"
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/QuizOptions.js:28
+#:../skin/assets/blocks/components/toolbars/style-options.js:36
+#:../skin/assets/blocks/question-block/sections/BlockOptions.js:67
+#:../skin/assets/blocks/questions-category-block/sections/BlockOptions.js:83
+#:../skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:49
+msgid "Select"
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/Scores.js:36
+msgid "Question success rate"
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/Scores.js:37
+msgid "Number of successful attempts"
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/Scores.js:66
+msgid "View Details"
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/index.js:17
+msgid "Settings"
+msgstr ""
+
+#:../skin/assets/apps/dashboard/sections/index.js:18
+msgid "Quizes"
+msgstr ""
+
+#:../skin/assets/apps/quiz-app/sections/Questions.js:32
+msgid "Nothing to see here, this quiz has no questions !!!"
+msgstr ""
+
+#:../skin/assets/apps/quiz-app/sections/Router.js:31
+msgid "This question is incomplete"
+msgstr ""
+
+#:../skin/assets/apps/quiz-app/sections/Router.js:45
+msgid "Show Expplanation"
+msgstr ""
+
+#:../skin/assets/apps/quiz-app/sections/Router.js:45
+msgid "Hide Expplanation"
+msgstr ""
+
+#:../skin/assets/apps/quiz-app/sections/Router.js:49
+msgid "Submit"
+msgstr ""
+
+#:../skin/assets/apps/quiz-app/sections/Router.js:49
+msgid "Next Question"
+msgstr ""
+
+#:../skin/assets/apps/quiz-app/sections/index.js:37
+msgid "Start"
+msgstr ""
+
+#:../skin/assets/blocks/components/toolbars/style-options.js:43
+msgid "Style Options"
+msgstr ""
+
+#:../skin/assets/blocks/components/toolbars/style-options.js:47
+#:../skin/assets/blocks/question-block/sections/BlockOptions.js:131
+msgid "Type"
+msgstr ""
+
+#:../skin/assets/blocks/components/toolbars/style-options.js:51
+msgid "Choose weather place answers in row or 2 columns."
+msgstr ""
+
+#:../skin/assets/blocks/components/toolbars/style-options.js:56
+msgid "Theme"
+msgstr ""
+
+#:../skin/assets/blocks/components/toolbars/style-options.js:60
+msgid "Theme color for answers"
+msgstr ""
+
+#:../skin/assets/blocks/question-block/index.js:22
+msgid "Question Block"
+msgstr ""
+
+#:../skin/assets/blocks/question-block/index.js:23
+#:../skin/assets/blocks/questions-category-block/index.js:23
+msgid "This is question block"
+msgstr ""
+
+#:../skin/assets/blocks/question-block/index.js:31
+#:../skin/assets/blocks/question-block/sections/BlockOptions.js:96
+#:../skin/assets/blocks/questions-category-block/components/question-header/index.js:14
+#:../skin/assets/blocks/questions-category-block/index.js:31
+#:../skin/assets/blocks/section-block/index.js:31
+#:../skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/index.js:29
+#:../skin/assets/blocks/template-blocks/cpt-quizess-options-block/index.js:29
+msgid "Title"
+msgstr ""
+
+#:../skin/assets/blocks/question-block/index.js:32
+#:../skin/assets/blocks/questions-category-block/index.js:32
+#:../skin/assets/blocks/section-block/index.js:32
+#:../skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/index.js:30
+#:../skin/assets/blocks/template-blocks/cpt-quizess-options-block/index.js:30
+msgid "Body"
+msgstr ""
+
+#:../skin/assets/blocks/question-block/sections/AnswersElement.js:47
+msgid "Answers"
+msgstr ""
+
+#:../skin/assets/blocks/question-block/sections/AnswersElement.js:49
+msgid "Add a possible answer"
+msgstr ""
+
+#:../skin/assets/blocks/question-block/sections/AnswersElement.js:63
+msgid "Add answer"
+msgstr ""
+
+#:../skin/assets/blocks/question-block/sections/BlockElements.js:69
+#:../skin/assets/blocks/questions-category-block/sections/ExplanationHeader.js:11
+msgid "Explanation"
+msgstr ""
+
+#:../skin/assets/blocks/question-block/sections/BlockOptions.js:100
+msgid "Enter optional question title."
+msgstr ""
+
+#:../skin/assets/blocks/question-block/sections/BlockOptions.js:117
+msgid "Block options"
+msgstr ""
+
+#:../skin/assets/blocks/question-block/sections/BlockOptions.js:122
+msgid "Explanation Options"
+msgstr ""
+
+#:../skin/assets/blocks/question-block/sections/BlockOptions.js:126
+msgid "Choose weather to show explanation slide after question"
+msgstr ""
+
+#:../skin/assets/blocks/question-block/sections/BlockOptions.js:135
+msgid "Choose explanation media type."
+msgstr ""
+
+#:../skin/assets/blocks/question-block/sections/BlockOptions.js:144
+#:../skin/assets/blocks/questions-category-block/sections/BlockOptions.js:119
+msgid "Font Settings"
+msgstr ""
+
+#:../skin/assets/blocks/question-block/sections/BlockOptions.js:150
+#:../skin/assets/blocks/questions-category-block/sections/BlockOptions.js:125
+msgid "Font Color"
+msgstr ""
+
+#:../skin/assets/blocks/question-block/sections/BlockOptions.js:155
+#:../skin/assets/blocks/questions-category-block/sections/BlockOptions.js:130
+msgid "Background Settings"
+msgstr ""
+
+#:../skin/assets/blocks/question-block/sections/BlockOptions.js:161
+#:../skin/assets/blocks/questions-category-block/sections/BlockOptions.js:136
+#:../skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/sections/BlockOptions.js:30
+msgid "Background Color"
+msgstr ""
+
+#:../skin/assets/blocks/question-block/sections/BlockOptions.js:45
+msgid "Show Explanation"
+msgstr ""
+
+#:../skin/assets/blocks/question-block/sections/BlockOptions.js:61
+msgid "None"
+msgstr ""
+
+#:../skin/assets/blocks/question-block/sections/BlockOptions.js:62
+msgid "Image"
+msgstr ""
+
+#:../skin/assets/blocks/question-block/sections/BlockOptions.js:63
+msgid "Video"
+msgstr ""
+
+#:../skin/assets/blocks/question-block/sections/BlockOptions.js:64
+msgid "Youtube"
+msgstr ""
+
+#:../skin/assets/blocks/question-block/sections/BlockOptions.js:65
+msgid "Lottie"
+msgstr ""
+
+#:../skin/assets/blocks/questions-category-block/components/question-header/index.js:17
+#:../skin/assets/blocks/questions-category-block/sections/BlockOptions.js:95
+msgid "Category"
+msgstr ""
+
+#:../skin/assets/blocks/questions-category-block/index.js:22
+msgid "Questions Category Block"
+msgstr ""
+
+#:../skin/assets/blocks/questions-category-block/sections/BlockElements.js:28
+msgid "Please select category"
+msgstr ""
+
+#:../skin/assets/blocks/questions-category-block/sections/BlockElements.js:32
+msgid "Please select posts"
+msgstr ""
+
+#:../skin/assets/blocks/questions-category-block/sections/BlockElements.js:43
+msgid "Loading"
+msgstr ""
+
+#:../skin/assets/blocks/questions-category-block/sections/BlockOptions.js:104
+msgid "Posts"
+msgstr ""
+
+#:../skin/assets/blocks/questions-category-block/sections/BlockOptions.js:108
+msgid "Select Question posts from the category."
+msgstr ""
+
+#:../skin/assets/blocks/questions-category-block/sections/BlockOptions.js:99
+msgid "Select Category for question posts."
+msgstr ""
+
+#:../skin/assets/blocks/section-block/index.js:22
+msgid "Section"
+msgstr ""
+
+#:../skin/assets/blocks/section-block/index.js:23
+msgid "This is section block"
+msgstr ""
+
+#:../skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/index.js:20
+#:../skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/sections/BlockElements.js:40
+msgid "Background Options"
+msgstr ""
+
+#:../skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/index.js:21
+msgid "Choose background image and color, default background color is blue"
+msgstr ""
+
+#:../skin/assets/blocks/template-blocks/cpt-quizess-background-options-block/sections/BlockElements.js:43
+msgid "Choose main background color & background image for this quiz"
+msgstr ""
+
+#:../skin/assets/blocks/template-blocks/cpt-quizess-options-block/index.js:21
+msgid "These are quiz options"
+msgstr ""
+
+#:../skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:104
+msgid "Choose success message for question"
+msgstr ""
+
+#:../skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:111
+msgid "Failure message"
+msgstr ""
+
+#:../skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:129
+msgid "Choose failure message for question"
+msgstr ""
+
+#:../skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:136
+msgid "About section"
+msgstr ""
+
+#:../skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:150
+msgid "Write something about this quiz"
+msgstr ""
+
+#:../skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:159
+msgid "Use timer"
+msgstr ""
+
+#:../skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:178
+msgid "Options"
+msgstr ""
+
+#:../skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:181
+msgid "Some of the global options for this quiz"
+msgstr ""
+
+#:../skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:38
+msgid "Default theme"
+msgstr ""
+
+#:../skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:52
+msgid ""
+"Default theme will affect buttons ( eg. submit, start ) and text, light "
+"theme for light background color & dark theme for dark background color"
+msgstr ""
+
+#:../skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:61
+msgid "Welcome message"
+msgstr ""
+
+#:../skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:79
+msgid "Choose welcome message for quiz"
+msgstr ""
+
+#:../skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:86
+msgid "Success message"
+msgstr ""
+
+#:../skin/assets/components/buttons/toggle-switch/index.js:7
+msgid "Use toggle"
+msgstr ""
+
+#:../skin/assets/components/dialog/index.js:20
+msgid "Confirm"
+msgstr ""
+
+#:../skin/assets/components/dialog/index.js:30
+#:../skin/assets/components/modal/popup-elemenet/index.js:45
+msgid "Cancel"
+msgstr ""
+
+#:../skin/assets/components/dialog/index.js:7
+msgid "Are you sure"
+msgstr ""
+
+#:../skin/assets/components/explanation/preview/index.js:26
+#:../skin/assets/elements/VideoElement/index.js:45
+msgid "Your browser does not support the video tag."
+msgstr ""
+
+#:../skin/assets/components/modal/overview/index.js:46
+msgid "Kudos !"
+msgstr ""
+
+#:../skin/assets/components/modal/overview/index.js:52
+msgid "Try again"
+msgstr ""
+
+#:../skin/assets/components/modal/overview/index.js:87
+msgid "Overview"
+msgstr ""
+
+#:../skin/assets/components/modal/overview/index.js:98
+msgid "Status"
+msgstr ""
+
+#:../skin/assets/components/modal/popup-elemenet/index.js:14
+msgid "Get outta here and go back to your boring programs."
+msgstr ""
+
+#:../skin/assets/components/modal/popup-elemenet/index.js:15
+msgid "Just leave. When you come back, I'll be waiting with a bat."
+msgstr ""
+
+#:../skin/assets/components/modal/popup-elemenet/index.js:16
+msgid "Are you sure you want to quit this great quiz ?"
+msgstr ""
+
+#:../skin/assets/components/modal/popup-elemenet/index.js:17
+msgid "I wouldn't leave if I were you. Internet is much worse."
+msgstr ""
+
+#:../skin/assets/components/modal/popup-elemenet/index.js:18
+msgid "Go ahead and leave. See if I care."
+msgstr ""
+
+#:../skin/assets/components/modal/popup-elemenet/index.js:19
+msgid "Choose Cancel if you are brave, choose Exit to cover in shame. "
+msgstr ""
+
+#:../skin/assets/components/modal/popup-elemenet/index.js:20
+msgid "Chickening out... already ?"
+msgstr ""
+
+#:../skin/assets/components/modal/popup-elemenet/index.js:21
+msgid "Heroes choose Cancel, Wimps choose Exit."
+msgstr ""
+
+#:../skin/assets/components/modal/popup-elemenet/index.js:22
+msgid "So you think you can quit this easily, huh ?"
+msgstr ""
+
+#:../skin/assets/components/modal/popup-elemenet/index.js:23
+msgid "Dost thou wish to leave with such hasty abandon ?"
+msgstr ""
+
+#:../skin/assets/components/modal/popup-elemenet/index.js:30
+msgid "If you cancel your scores will be submitted."
+msgstr ""
+
+#:../skin/assets/components/modal/popup-elemenet/index.js:51
+msgid "Exit"
+msgstr ""
+
+#:../skin/assets/components/pagination/index.js:68
+msgid "Next"
+msgstr ""
+
+#:../skin/assets/components/pagination/index.js:68
+msgid "Prev"
+msgstr ""
+
+#:../skin/assets/editor/editor-fields/post-title.js:21
+msgid "Maximum title characters is "
+msgstr ""
+
+#:../skin/assets/elements/FileElement/index.js:11
+msgid "Download"
+msgstr ""
+
+#:../skin/assets/elements/FileElement/index.js:32
+#:../skin/assets/elements/LottieElement/index.js:32
+#:../skin/assets/elements/MediaElement/index.js:33
+#:../skin/assets/elements/VideoElement/index.js:27
+#:../skin/assets/elements/YoutubeElement/index.js:31
+msgid "Edit Media"
+msgstr ""
+
+#:../skin/assets/elements/FileElement/index.js:63
+#:../skin/assets/elements/MediaElement/index.js:9
+#:../skin/assets/elements/VideoElement/index.js:57
+msgid "Media area"
+msgstr ""
+
+#:../skin/assets/elements/Helper/Helper.js:20
+msgid "This field is required"
+msgstr ""
+
+#:../skin/assets/elements/Helper/Helper.js:29
+msgid "Limit reached:"
+msgstr ""
+
+#:../skin/assets/elements/Helper/Helper.js:32
+msgid "characters"
+msgstr ""
+
+#:../skin/assets/elements/Helper/Helper.js:38
+msgid "rows"
+msgstr ""
+
+#:../skin/assets/elements/LottieElement/index.js:9
+msgid "Lottie area"
+msgstr ""
+
+#:../skin/assets/elements/PlaceholderElement/index.js:9
+msgid "Placeholder text"
+msgstr ""
+
+#:../skin/assets/elements/YoutubeElement/index.js:76
+msgid "Enter URL to embed here…"
+msgstr ""
+
+#:../skin/assets/elements/YoutubeElement/index.js:82
+msgid "Embed"
+msgstr ""
+
+#:../skin/assets/elements/YoutubeElement/index.js:85
+msgid "Sorry, we could not embed that content."
 msgstr ""
