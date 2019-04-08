@@ -2,7 +2,7 @@
 /**
  * Plugin main file starting point
  *
- * @since             1.0.0
+ * @since             1.0.2
  * @package           Quizess
  *
  * @wordpress-plugin
