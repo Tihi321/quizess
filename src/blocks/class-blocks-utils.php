@@ -83,7 +83,7 @@ final class Blocks_Utils implements Service {
 
           $output['options'] = array(
             'timer'          => ( $use_timer ) ? $quiz_item['attrs']['timer'] ?? '' : null,
-            'theme'          => ( $quiz_item['attrs']['theme'] ) ? json_decode( $quiz_item['attrs']['theme'] )->value : 'light',
+            'theme'          => ( isset( $quiz_item['attrs']['theme'] ) ) ? json_decode( $quiz_item['attrs']['theme'] )->value : 'light',
             'welcomeMessage' => $quiz_item['attrs']['welcomeMessage'] ?? '',
             'successMessage' => $quiz_item['attrs']['successMessage'] ?? '',
             'failureMessage' => $quiz_item['attrs']['failureMessage'] ?? '',
@@ -273,7 +273,7 @@ final class Blocks_Utils implements Service {
 
     return array(
       'direction'  => ( $block_data['rows'] ) ? json_decode( $block_data['rows'] )->value : 'row',
-      'theme'  => ( $block_data['theme'] ) ? json_decode( $block_data['theme'] )->value : 'light',
+      'theme'  => ( isset( $block_data['theme'] ) ) ? json_decode( $block_data['theme'] )->value : 'light',
     );
   }
 

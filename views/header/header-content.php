@@ -6,7 +6,7 @@
  * @since 1.0.0
  */
 
-$base_path = Gapply_filters( 'qz_get_base_url', 'path' );
+$base_path = apply_filters( 'qz_get_base_url', 'path' );
 
 ?>
 <header class="quizess-header quizess-header--<?php echo esc_attr( $theme ); ?> js-header">
