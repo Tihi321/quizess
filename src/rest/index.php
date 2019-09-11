@@ -2,7 +2,7 @@
 /**
  * Index file for security
  *
- * @package Quizess\Rest
+ * @package Quizess\Routes
  */
 
 ?>

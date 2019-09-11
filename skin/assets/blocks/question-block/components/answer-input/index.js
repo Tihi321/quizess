@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import {Fragment} from '@wordpress/element';
 import {__} from '@wordpress/i18n';
-import TextElement from '../../../../elements/TextElement';
+import {GutenbergTextElement} from '../../../../elements';
 
 const AnswerInput = (props) => {
   const {
@@ -27,7 +27,7 @@ const AnswerInput = (props) => {
   /* eslint-disable */
   const answerInputElement = (
     <Fragment>
-      <TextElement
+      <GutenbergTextElement
           styleReset={true}
           outputType='text'
           className="qz-input-mce-class"

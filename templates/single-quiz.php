@@ -5,21 +5,16 @@
  * @package Quizess
  */
 
-use Quizess\Helpers\Blocks_Helper;
-use Quizess\Helpers\General_Helper;
 use Quizess\Core\Config;
-use Quizess\Admin\Menu;
 
-
-$blocks_helper = new Blocks_Helper();
-$custom_style  = get_option( Config::CUSTOM_STYLE_TOGGLE );
-$quiz_options  = $blocks_helper->get_quiz_options( $post->post_content );
-$theme         = General_Helper::get_array_value( 'theme', $quiz_options['options'] );
+$custom_style = get_option( Config::CUSTOM_STYLE_TOGGLE );
+$quiz_options = apply_filters( 'qz_get_quiz_options', $post->post_content );
+$theme        = $quiz_options['options']['theme'] ?? '';
 
 // use custom header instead theme default.
 if ( $custom_style ) {
 
-  $header = General_Helper::get_base_path() . 'views/header/header.php';
+  $header = apply_filters( 'qz_get_base_url', 'path' ) . 'views/header/header.php';
 
   if ( ! empty( $header ) ) {
     include $header;
@@ -33,18 +28,17 @@ if ( have_posts() ) {
     the_post();
 
     if ( $custom_style ) {
-      $custom_menu = new Menu();
-      $menu_items  = $custom_menu->get_menu_by_position( Config::MENU_NAME );
+      $menu_items = apply_filters( 'qz_get_menu_by_position', Config::MENU_NAME );
 
       if ( ! empty( $menu_items ) ) {
-        $header_content = General_Helper::get_base_path() . 'views/header/header-content.php';
+        $header_content = apply_filters( 'qz_get_base_url', 'path' ) . 'views/header/header-content.php';
 
         if ( ! empty( $header_content ) ) {
           include $header_content;
         }
       }
     }
-    $single_path = General_Helper::get_base_path() . 'views/single/quiz.php';
+    $single_path = apply_filters( 'qz_get_base_url', 'path' ) . 'views/single/quiz.php';
 
     if ( ! empty( $single_path ) ) {
       include $single_path;
@@ -52,7 +46,7 @@ if ( have_posts() ) {
 
     if ( $custom_style ) {
 
-      $footer_content = General_Helper::get_base_path() . 'views/footer/footer-content.php';
+      $footer_content = apply_filters( 'qz_get_base_url', 'path' ) . 'views/footer/footer-content.php';
 
       if ( ! empty( $footer_content ) ) {
         include $footer_content;
@@ -64,7 +58,7 @@ if ( have_posts() ) {
 // use custom footer instead theme default.
 if ( $custom_style ) {
 
-  $footer = General_Helper::get_base_path() . 'views/footer/footer.php';
+  $footer = apply_filters( 'qz_get_base_url', 'path' ) . 'views/footer/footer.php';
 
   if ( ! empty( $footer ) ) {
     include $footer;

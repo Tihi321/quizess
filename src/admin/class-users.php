@@ -8,21 +8,14 @@
 
 namespace Quizess\Admin;
 
-use Quizess\Core\Service;
+use Eightshift_Libs\Core\Service;
+
 use Quizess\Core\Config;
-use Quizess\Helpers\Loader;
-use Quizess\Helpers\General_Helper;
 
 /**
  * Class Users
  */
-class Users extends Config implements Service {
-
-
-  /**
-   * Use trait inside class.
-   */
-  use Loader;
+class Users implements Service {
 
   /**
    * Register all the hooks
@@ -30,10 +23,10 @@ class Users extends Config implements Service {
    * @since 1.0.0
    */
   public function register() : void {
-    $this->add_action( 'show_user_profile', $this, 'show_extra_user_meta_fields', 10, 1 );
-    $this->add_action( 'edit_user_profile', $this, 'show_extra_user_meta_fields', 10, 1 );
-    $this->add_action( 'personal_options_update', $this, 'save_extra_user_meta_fields' );
-    $this->add_action( 'edit_user_profile_update', $this, 'save_extra_user_meta_fields' );
+    add_action( 'show_user_profile', [ $this, 'show_extra_user_meta_fields' ], 10, 1 );
+    add_action( 'edit_user_profile', [ $this, 'show_extra_user_meta_fields' ], 10, 1 );
+    add_action( 'personal_options_update', [ $this, 'save_extra_user_meta_fields' ] );
+    add_action( 'edit_user_profile_update', [ $this, 'save_extra_user_meta_fields' ] );
   }
 
   /**
@@ -45,7 +38,7 @@ class Users extends Config implements Service {
    */
   public function show_extra_user_meta_fields( $user ) {
 
-    $user_options_template = General_Helper::get_base_path() . 'views/admin/user-meta-options.php';
+    $user_options_template = apply_filters( 'qz_get_base_url', 'path' ) . 'views/admin/user-meta-options.php';
     if ( ! empty( $user_options_template ) ) {
       include $user_options_template;
     }
@@ -70,14 +63,14 @@ class Users extends Config implements Service {
       return false;
     }
 
-    $user_player = ! empty( $_POST[ self::USER_PLAYER_TOGGLE ] ) ? \sanitize_text_field( \wp_unslash( $_POST[ self::USER_PLAYER_TOGGLE ] ) ) : '';
-    $user_single = ! empty( $_POST[ self::USER_SINGLE_TOGGLE ] ) ? \sanitize_text_field( \wp_unslash( $_POST[ self::USER_SINGLE_TOGGLE ] ) ) : '';
+    $user_player = ! empty( $_POST[ Config::USER_PLAYER_TOGGLE ] ) ? \sanitize_text_field( \wp_unslash( $_POST[ Config::USER_PLAYER_TOGGLE ] ) ) : '';
+    $user_single = ! empty( $_POST[ Config::USER_SINGLE_TOGGLE ] ) ? \sanitize_text_field( \wp_unslash( $_POST[ Config::USER_SINGLE_TOGGLE ] ) ) : '';
 
     $user_output   = ( $user_player === 'on' ) ? 'yes' : 'no';
     $single_output = ( $user_single === 'on' ) ? 'yes' : 'no';
 
-    \update_user_meta( $user_id, self::USER_PLAYER_TOGGLE, $user_output );
-    \update_user_meta( $user_id, self::USER_SINGLE_TOGGLE, $single_output );
+    \update_user_meta( $user_id, Config::USER_PLAYER_TOGGLE, $user_output );
+    \update_user_meta( $user_id, Config::USER_SINGLE_TOGGLE, $single_output );
   }
 
 }

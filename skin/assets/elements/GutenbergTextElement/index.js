@@ -3,17 +3,16 @@ import {select} from '@wordpress/data';
 import {Editor} from '@tinymce/tinymce-react';
 import classnames from 'classnames';
 import helpers from './../Helper/Helper';
+import resetGlobalTinyMCE from './reset-global';
 import styles from './styles';
 
-require('./tinyMce');
-
-class TextElement extends Component {
+class GutenbergTextElement extends Component {
   constructor(props) {
     super(props);
 
     const {
       value = '',
-      theme = 'silver',
+      theme = 'inlite',
       inline = true,
       className = '',
       tagName = 'p',
@@ -26,6 +25,9 @@ class TextElement extends Component {
       onSetup = false,
       init = {},
     } = props;
+
+    // temporary fix for global tinyMce version clash
+    resetGlobalTinyMCE();
 
     this.theme = theme;
     this.inline = inline;
@@ -107,14 +109,12 @@ class TextElement extends Component {
     const initObject = {
       theme: this.theme,
       inline: this.inline,
-      toolbar: !this.inline,
-      menubar: !this.inline,
       forced_root_block: this.tagName,
       plugins:
-        'quickbars charmap hr link media paste tabfocus image lists',
-      quickbars_insert_toolbar: false,
-      quickbars_selection_toolbar:
-        'bold italic underline uppercase | removeformat | forecolor | alignleft aligncenter alignright | bullist numlist | link unlink',
+        'charmap colorpicker hr link media paste tabfocus image textcolor lists',
+      insert_toolbar: 'undo redo | pastetext charmap | image hr',
+      selection_toolbar:
+        'bold italic underline | removeformat | forecolor | alignleft aligncenter alignright | bullist numlist | link unlink',
       image_advtab: true,
       paste_as_text: true,
       onSetup: this.onSetup,
@@ -167,10 +167,10 @@ class TextElement extends Component {
           }
         });
 
-        editor.ui.registry.addButton('uppercase', {
+        editor.addButton('uppercase', {
           icon: 'change-case',
           tooltip: "Uppercase",
-          onAction: (_) => {
+          onclick: function() {
             editor.execCommand('mceToggleFormat', false, 'uppercase');
           },
         });
@@ -217,4 +217,4 @@ class TextElement extends Component {
   }
 }
 
-export default TextElement;
+export default GutenbergTextElement;

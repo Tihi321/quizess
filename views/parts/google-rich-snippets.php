@@ -5,7 +5,6 @@
  * @package Quizess\Views\Parts
  */
 
-use Quizess\Helpers\General_Helper;
 ?>
 
 <!-- Google Rich Snippets -->
@@ -29,7 +28,7 @@ use Quizess\Helpers\General_Helper;
     "name": "<?php echo esc_html( get_bloginfo( 'name' ) ); ?>",
     "logo": {
     "@type": "ImageObject",
-    "url": "<?php echo esc_url( General_Helper::get_base_path() . '/skin/public/images/meta-google.png' ); ?>",
+    "url": "<?php echo esc_url( apply_filters( 'qz_get_base_url', 'path' ) . '/skin/public/images/meta-google.png' ); ?>",
     "width": 220,
     "height": 60
     }

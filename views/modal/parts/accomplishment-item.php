@@ -6,14 +6,12 @@
  * @since 1.0.0
  */
 
-use Quizess\Helpers\General_Helper;
-
-$success = General_Helper::get_gercentage( $correct, $total );
+$success = apply_filters( 'qz_get_gercentage', $correct, $total );
 
 $last_score_info = [
-    $correct,
-    $total,
-    "{$success}%",
+  $correct,
+  $total,
+  "{$success}%",
 ];
 
 ?>

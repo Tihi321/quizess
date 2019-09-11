@@ -8,21 +8,36 @@
 
 namespace Quizess\Front;
 
-use Quizess\Core\Service;
+use Eightshift_Libs\Core\Service;
+use Eightshift_Libs\Assets\Manifest_Data;
+
 use Quizess\Core\Config;
-use Quizess\Helpers\Loader;
-use Quizess\Helpers\General_Helper;
-use Quizess\Rest\Rest_Routes;
+use Quizess\Routes\Route;
 
 /**
  * Class Front
  */
-class Front extends Config implements Service {
+class Front implements Service {
 
   /**
-   * Use trait inside class.
+   * Instance variable of manifest data.
+   *
+   * @var object
+   *
+   * @since 1.0.0
    */
-  use Loader;
+  protected $manifest;
+
+  /**
+   * Create a new admin instance that injects manifest data for use in assets registration.
+   *
+   * @param Manifest_Data $manifest Inject manifest which holds data about assets from manifest.json.
+   *
+   * @since 1.0.0
+   */
+  public function __construct( Manifest_Data $manifest ) {
+    $this->manifest = $manifest;
+  }
 
   /**
    * Register all the hooks
@@ -30,9 +45,9 @@ class Front extends Config implements Service {
    * @since 1.0.0
    */
   public function register() : void {
-    $this->add_action( 'wp_enqueue_scripts', $this, 'enqueue_frontend_scripts', 50 );
-    $this->add_action( 'wp_enqueue_scripts', $this, 'enqueue_localized_frontend_scripts', 50 );
-    $this->add_action( 'wp_enqueue_scripts', $this, 'enqueue_frontend_styles', 50 );
+    add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_frontend_scripts' ], 50 );
+    add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_localized_frontend_scripts' ], 50 );
+    add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_frontend_styles' ], 50 );
   }
 
   /**
@@ -43,11 +58,11 @@ class Front extends Config implements Service {
   public function enqueue_frontend_styles() {
 
     // load only on quizess post types.
-    if ( static::QUIZESS_POST_SLUG === get_post_type() ) {
+    if ( Config::QUIZESS_POST_SLUG === get_post_type() ) {
 
-      $main_admin_style = General_Helper::get_manifest_assets_data( 'applicationQuizess.css' );
-      wp_register_style( static::PLUGIN_NAME . '-frontend-style', $main_admin_style, '', static::PLUGIN_VERSION, false );
-      wp_enqueue_style( static::PLUGIN_NAME . '-frontend-style' );
+      $main_admin_style = $this->manifest->get_assets_manifest_item( 'applicationQuizess.css' );
+      wp_register_style( Config::PLUGIN_NAME . '-frontend-style', $main_admin_style, '', Config::PLUGIN_VERSION, false );
+      wp_enqueue_style( Config::PLUGIN_NAME . '-frontend-style' );
 
     }
 
@@ -62,17 +77,7 @@ class Front extends Config implements Service {
   public function enqueue_frontend_scripts() {
 
         // load only on quizess post types.
-    if ( static::QUIZESS_POST_SLUG === get_post_type() ) {
-
-      // If in development add development not minified react libraries.
-      if ( QIZ_ENV === 'develop' ) {
-        wp_deregister_script( 'react' );
-        wp_deregister_script( 'react-dom' );
-
-        wp_register_script( 'react', General_Helper::get_base_url() . 'skin/public/scripts/vendors/react.development.js', array(), '16.6.3', false );
-
-        wp_register_script( 'react-dom', General_Helper::get_base_url() . 'skin/public/scripts/vendors/react-dom.development.js', array(), '16.6.3', false );
-      }
+    if ( Config::QUIZESS_POST_SLUG === get_post_type() ) {
 
       wp_enqueue_script( 'wp-element' );
       wp_enqueue_script( 'wp-components' );
@@ -80,15 +85,15 @@ class Front extends Config implements Service {
       wp_enqueue_script( 'react' );
       wp_enqueue_script( 'react-dom' );
 
-      $main_admin_script = General_Helper::get_manifest_assets_data( 'applicationQuizess.js' );
-      wp_register_script( static::PLUGIN_NAME . '-frontend-scripts', $main_admin_script, array(), static::PLUGIN_VERSION, true );
-      wp_enqueue_script( static::PLUGIN_NAME . '-frontend-scripts' );
+      $main_admin_script = $this->manifest->get_assets_manifest_item( 'applicationQuizess.js' );
+      wp_register_script( Config::PLUGIN_NAME . '-frontend-scripts', $main_admin_script, array(), Config::PLUGIN_VERSION, true );
+      wp_enqueue_script( Config::PLUGIN_NAME . '-frontend-scripts' );
 
       // add localization to javascript.
       if ( function_exists( 'gutenberg_get_jed_locale_data' ) ) {
         $locale  = gutenberg_get_jed_locale_data( 'quizess' );
         $content = 'wp.i18n.setLocaleData( ' . wp_json_encode( $locale ) . ', "quizess" );';
-        wp_script_add_data( static::PLUGIN_NAME . '-frontend-scripts', 'data', $content );
+        wp_script_add_data( Config::PLUGIN_NAME . '-frontend-scripts', 'data', $content );
       }
     }
 
@@ -102,40 +107,40 @@ class Front extends Config implements Service {
   public function enqueue_localized_frontend_scripts() {
 
     // load only on quizess post types.
-    if ( static::QUIZESS_POST_SLUG === get_post_type() ) {
+    if ( Config::QUIZESS_POST_SLUG === get_post_type() ) {
 
       // Global variables for ajax and translations.
       wp_localize_script(
-        static::PLUGIN_NAME . '-frontend-scripts',
+        Config::PLUGIN_NAME . '-frontend-scripts',
         'quizessOptions',
         array(
-            'root' => esc_url_raw( rest_url() ),
-            'quizApi' => Rest_Routes::QUIZESS_SLUG . '/',
-            'menusApi' => Rest_Routes::QUIZESS_MENUS_SLUG,
+          'root' => esc_url_raw( rest_url() ),
+          'quizApi' => Route\Get_Quizess::OPTIONS_SLUG . '/',
+          'menusApi' => Route\Get_Menus::OPTIONS_SLUG,
         )
       );
 
       if ( is_user_logged_in() ) {
 
-        $single_submit = get_user_meta( get_current_user_id(), static::USER_SINGLE_TOGGLE, true );
+        $single_submit = get_user_meta( get_current_user_id(), Config::USER_SINGLE_TOGGLE, true );
         $single_value  = ( $single_submit === 'yes' ) ? '1' : '0';
 
         wp_localize_script(
-          static::PLUGIN_NAME . '-frontend-scripts',
+          Config::PLUGIN_NAME . '-frontend-scripts',
           'userLogged',
           array(
-              'userPlayer' => 'yes',
-              'singleSubmit' => $single_value,
-              'scoresApi' => Rest_Routes::QUIZESS_SCORES_SLUG,
-              'nonce' => wp_create_nonce( 'wp_rest' ),
+            'userPlayer' => 'yes',
+            'singleSubmit' => $single_value,
+            'scoresApi' => Route\Patch_Scores::OPTIONS_SLUG,
+            'nonce' => wp_create_nonce( 'wp_rest' ),
           )
         );
       } else {
         wp_localize_script(
-          static::PLUGIN_NAME . '-frontend-scripts',
+          Config::PLUGIN_NAME . '-frontend-scripts',
           'userLogged',
           array(
-              'userPlayer' => 'no',
+            'userPlayer' => 'no',
           )
         );
       }

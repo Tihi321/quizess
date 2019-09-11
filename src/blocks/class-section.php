@@ -3,7 +3,7 @@
  * All info regarding the section block
  *
  * @since 1.0.0
- * @package Quizess\Includes
+ * @package Quizess\Blocks
  */
 
 namespace Quizess\Blocks;
@@ -27,31 +27,31 @@ class Section extends Base_Block {
    */
   public function __construct() {
     $this->attributes = array(
-        'allowedBlocks' => array(
-            'type' => 'array',
-            'items' => array(
-                'type' => 'string',
-            ),
+      'allowedBlocks' => array(
+        'type' => 'array',
+        'items' => array(
+          'type' => 'string',
         ),
-        'blockClass' => array(
-            'type' => 'string',
-            'default' => 'quizess-section',
-        ),
-        'wrapClass' => array(
-            'type' => 'string',
-        ),
-        'template' => array(
-            'type' => 'string',
-            'default' => '',
-        ),
-        'disableBlocks' => array(
-            'type' => 'boolean',
-            'default' => false,
-        ),
-        'templateLock' => array(
-            'type' => 'boolean',
-            'default' => false,
-        ),
+      ),
+      'blockClass' => array(
+        'type' => 'string',
+        'default' => 'quizess-section',
+      ),
+      'wrapClass' => array(
+        'type' => 'string',
+      ),
+      'template' => array(
+        'type' => 'string',
+        'default' => '',
+      ),
+      'disableBlocks' => array(
+        'type' => 'boolean',
+        'default' => false,
+      ),
+      'templateLock' => array(
+        'type' => 'boolean',
+        'default' => false,
+      ),
     );
   }
 }

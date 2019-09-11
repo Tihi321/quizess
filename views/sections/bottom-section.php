@@ -6,7 +6,7 @@
  * @since 1.0.0
  */
 
-$quiz_scores = $blocks_helper->get_quiz_scores( $post->ID );
+$quiz_scores = apply_filters( 'qz_get_quiz_scores', $post->ID );
 
 ?>
 

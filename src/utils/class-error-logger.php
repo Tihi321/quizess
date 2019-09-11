@@ -1,19 +1,48 @@
 <?php
 /**
- * A trait used to add the error logging functionality
- *
- * Trait is used so that call to a static method is avoided.
+ * Error Utility class.
  *
  * @since   1.0.0
- * @package Quizess\Helpers
+ * @package Quizess\Admin
  */
 
-namespace Quizess\Helpers;
+namespace Quizess\Utils;
+
+use Eightshift_Libs\Core\Service;
 
 /**
- * Error logger trait.
+ * Class Error_Logger
+ *
+ * This class handles srtings.
+ *
+ * @since 1.0.0
  */
-trait Error_Logger {
+class Error_Logger implements Service {
+
+  /**
+   * Register all the hooks
+   *
+   * @return void
+   *
+   * @since 1.0.0
+   */
+  public function register() {
+    add_filter( 'qz_rest_error_handler', [ $this, 'rest_error_handler' ], 10, 2 );
+  }
+
+  /**
+   * Ensure correct error response for rest using error handler function.
+   *
+   * @param string $status  Status description.
+   * @param string $message Optional error message.
+   *
+   * @return \WP_Error \WP_Error instance with error message and status.
+   *
+   * @since 1.0.0
+   */
+  public function rest_error_handler( string $status = '', string $message = null ) {
+    return \rest_ensure_response( $this->error_handler( $status, $message ) );
+  }
 
   /**
    * Error handler helper
@@ -27,7 +56,7 @@ trait Error_Logger {
    *
    * @since  1.0.0
    */
-  public function error_handler( string $status, string $message = null ) {
+  private function error_handler( string $status, string $message = null ) {
 
     switch ( $status ) {
       case 'empty_body':
@@ -94,20 +123,5 @@ trait Error_Logger {
     $output_message = ( $message ) ? $message : $error_message;
 
     return new \WP_Error( esc_html( $status ), $output_message, [ 'status' => (int) $code ] );
-  }
-
-
-  /**
-   * Ensure correct error response for rest using error handler function.
-   *
-   * @param string $status  Status description.
-   * @param string $message Optional error message.
-   *
-   * @return \WP_Error \WP_Error instance with error message and status.
-   *
-   * @since 1.0.0
-   */
-  public function rest_error_handler( string $status = '', string $message = null ) {
-    return \rest_ensure_response( $this->error_handler( $status, $message ) );
   }
 }

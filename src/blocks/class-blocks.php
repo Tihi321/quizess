@@ -8,19 +8,15 @@
 
 namespace Quizess\Blocks;
 
-use Quizess\Core\Service;
-use Quizess\Helpers\Loader;
-use Quizess\Blocks\Interfaces\Block as Block;
+use Eightshift_Libs\Core\Service;
+
+use Quizess\Blocks\Interfaces\Block;
+use Quizess\Blocks\Section;
 
 /**
  * Class Blocks
  */
 class Blocks implements Service {
-
-  /**
-   * Use trait inside class.
-   */
-  use Loader;
 
   /**
    * Register all the hooks
@@ -30,10 +26,10 @@ class Blocks implements Service {
   public function register() : void {
 
     // Whitelist blocks.
-    $this->add_action( 'allowed_block_types', $this, 'quizess_allowed_block_types', 10, 2 );
+    add_action( 'allowed_block_types', [ $this, 'quizess_allowed_block_types' ], 10, 2 );
 
     // Add custom block category.
-    $this->add_filter( 'block_categories', $this, 'quizess_category', 10, 2 );
+    add_filter( 'block_categories', [ $this, 'quizess_category' ], 10, 2 );
 
     // Add dynamic blocks to list.
     $this->register_dynamic_blocks();
@@ -52,14 +48,14 @@ class Blocks implements Service {
    */
   public function quizess_allowed_block_types( $allowed_block_types, $post ) {
     $quiz_allowed_blocks     = [
-        'quizess/question-block',
-        'quizess/questions-category-block',
-        'quizess/section',
-        'quizess/cpt-quizess-background-options-block',
-        'quizess/cpt-quizess-options-block',
+      'quizess/question-block',
+      'quizess/questions-category-block',
+      'quizess/section',
+      'quizess/cpt-quizess-background-options-block',
+      'quizess/cpt-quizess-options-block',
     ];
     $question_allowed_blocks = [
-        'quizess/question-block',
+      'quizess/question-block',
     ];
 
     $type = get_post_type( $post );
@@ -86,10 +82,10 @@ class Blocks implements Service {
     return array_merge(
       $categories,
       array(
-          array(
-              'slug' => 'quizess-blocks',
-              'title' => __( 'Quizess', 'quizess' ),
-          ),
+        array(
+          'slug' => 'quizess-blocks',
+          'title' => __( 'Quizess', 'quizess' ),
+        ),
       )
     );
   }
@@ -104,9 +100,9 @@ class Blocks implements Service {
    * @since 1.3.0
    */
   public function register_dynamic_blocks() : void {
-    $this->list = array(
-        'section'   => new Section(),
-    );
+    $this->list = [
+      'section'   => new Section(),
+    ];
   }
 
   /**
@@ -142,8 +138,8 @@ class Blocks implements Service {
     register_block_type(
       $block::BLOCK_NAMESPACE . '/' . $block::NAME,
       array(
-          'render_callback' => array( $block, 'render' ),
-          'attributes' => $block->attributes,
+        'render_callback' => array( $block, 'render' ),
+        'attributes' => $block->attributes,
       )
     );
 

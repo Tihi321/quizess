@@ -60,7 +60,7 @@
     "webpack-manifest-plugin": "^2.0.3"
   },
   "dependencies": {
-    "@tinymce/tinymce-react": "^2.3.0",
+    "@tinymce/tinymce-react": "^3.2.0",
     "autoprefixer": "^9.0.1",
     "babel-polyfill": "^6.26.0",
     "classnames": "^2.2.6",
@@ -73,12 +73,13 @@
     "media-blender": "^2.1.0",
     "postcss-font-magician": "^2.2.1",
     "prompt-sync": "^4.1.6",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-lottie": "^1.2.3",
     "react-responsive-embed": "^2.1.0",
     "react-select": "^2.1.2",
     "react-transition-group": "^2.6.0",
+    "tinymce": "^5.0.8",
     "wp-pot": "^1.7.0"
   },
   "browserslist": [

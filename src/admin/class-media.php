@@ -8,11 +8,7 @@
 
 namespace Quizess\Admin;
 
-use Quizess\Core\Service;
-use Quizess\Helpers\Object_Helper;
-use Quizess\Helpers\Loader;
-use Quizess\Helpers\Error_Logger;
-
+use Eightshift_Libs\Core\Service;
 
 /**
  * Class Media
@@ -20,29 +16,17 @@ use Quizess\Helpers\Error_Logger;
 class Media implements Service {
 
   /**
-   * Use trait inside class.
-   */
-  use Object_Helper;
-  use Error_Logger;
-
-  /**
-   * Use trait inside class.
-   */
-  use Loader;
-
-  /**
    * Register all the hooks
    *
    * @since 1.0.0
    */
   public function register() : void {
-    $this->add_filter( 'upload_mimes', $this, 'enable_mime_types' );
-    $this->add_filter( 'wp_prepare_attachment_for_js', $this, 'enable_svg_library_preview', 10, 3 );
-    $this->add_filter( 'wp_handle_upload_prefilter', $this, 'check_svg_on_media_upload' );
-    $this->add_filter( 'after_setup_theme', $this, 'enable_full_width' );
-    $this->add_filter( 'wp_check_filetype_and_ext', $this, 'disable_mime_check', 10, 4 );
+    add_filter( 'upload_mimes', [ $this, 'enable_mime_types' ] );
+    add_filter( 'wp_prepare_attachment_for_js', [ $this, 'enable_svg_library_preview' ], 10, 2 );
+    add_filter( 'wp_handle_upload_prefilter', [ $this, 'check_svg_on_media_upload' ] );
+    add_filter( 'after_setup_theme', [ $this, 'enable_full_width' ] );
+    add_filter( 'wp_check_filetype_and_ext', [ $this, 'disable_mime_check' ], 11, 4 );
   }
-
 
   /**
    * Enable SVG upload in media
@@ -110,7 +94,7 @@ class Media implements Service {
           $svg_content = implode( ' ', $svg_content );
 
           if ( ! $this->is_valid_xml( $svg_content ) ) {
-            new \WP_Error( sprintf( esc_html__( 'Error: File invalid: %s', 'inf_theme' ), $path ) );
+            new \WP_Error( sprintf( esc_html__( 'Error: File invalid: %s', 'quizess' ), $path ) );
             return false;
           }
 
@@ -125,14 +109,14 @@ class Media implements Service {
 
           // media single.
           $response['sizes']['full'] = array(
-              'height'      => $height,
-              'width'       => $width,
-              'url'         => $src,
-              'orientation' => $height > $width ? 'portrait' : 'landscape',
+            'height'      => $height,
+            'width'       => $width,
+            'url'         => $src,
+            'orientation' => $height > $width ? 'portrait' : 'landscape',
           );
         }
       } catch ( \Exception $e ) {
-        new \WP_Error( sprintf( esc_html__( 'Error: %s', 'inf_theme' ), $e ) );
+        new \WP_Error( sprintf( esc_html__( 'Error: %s', 'quizess' ), $e ) );
       }
     }
 
@@ -157,12 +141,28 @@ class Media implements Service {
       if ( file_exists( $path ) ) {
         if ( ! $this->is_valid_xml( $svg_content ) ) {
           return array(
-              'size' => $response,
-              'name' => $response['name'],
+            'size' => $response,
+            'name' => $response['name'],
           );
         }
       }
     }
     return $response;
+  }
+
+  /**
+   * Check if XML is valid file used for svg.
+   *
+   * @param xml $xml Full xml document.
+   * @return boolean
+   *
+   * @since 1.0.0
+   */
+  public function is_valid_xml( $xml ) {
+    libxml_use_internal_errors( true );
+    $doc = new \DOMDocument( '1.0', 'utf-8' );
+    $doc->loadXML( $xml );
+    $errors = libxml_get_errors();
+    return empty( $errors );
   }
 }

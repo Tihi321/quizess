@@ -8,25 +8,14 @@
 
 namespace Quizess\Admin;
 
+use Eightshift_Libs\Core\Service;
+
 use Quizess\Core\Config;
-use Quizess\Core\Service;
-use Quizess\Helpers\Loader;
-use Quizess\Helpers\Object_Helper;
 
 /**
  * Class Menu
  */
-class Menu extends Config implements Service {
-
-  /**
-   * Use trait Object_Helper inside class.
-   */
-  use Object_Helper;
-
-  /**
-   * Use trait inside class.
-   */
-  use Loader;
+class Menu implements Service {
 
   /**
    * Register all the hooks
@@ -34,7 +23,9 @@ class Menu extends Config implements Service {
    * @since 1.0.0
    */
   public function register() : void {
-    $this->add_action( 'after_setup_theme', $this, 'register_menu_positions', 99 );
+    add_action( 'after_setup_theme', [ $this, 'register_menu_positions' ], 11 );
+    add_filter( 'qz_get_menu_by_position', [ $this, 'get_menu_by_position' ] );
+    add_filter( 'qz_get_menus', [ $this, 'get_menus' ] );
   }
 
 
@@ -47,7 +38,7 @@ class Menu extends Config implements Service {
    */
   private function get_menu_positions() : array {
     return array(
-        self::MENU_NAME => esc_html__( 'Quiz menu', 'quizess' ),
+      Config::MENU_NAME => esc_html__( 'Quiz menu', 'quizess' ),
     );
   }
 
@@ -65,21 +56,22 @@ class Menu extends Config implements Service {
   /**
    * Return array with all menus and their items.
    *
+   * @param string $position    Single or all menu positions.
    * @return array Menu array styled for json-api.
    *
    * @since 1.0.0
    */
-  public function get_menus() : array {
+  public function get_menus( $position = 'all' ) : array {
     $menu_positions = $this->get_menu_positions();
 
     $menu_output = array();
     foreach ( $menu_positions as $menu_position_key => $menu_position_value ) {
 
       $menu_output[] = array(
-          'name'          => $this->get_assigned_menu_items( $menu_position_key, true ),
-          'position_name' => $menu_position_value,
-          'position'      => $menu_position_key,
-          'items'         => $this->get_assigned_menu_items( $menu_position_key ),
+        'name'          => $this->get_assigned_menu_items( $menu_position_key, true ),
+        'position_name' => $menu_position_value,
+        'position'      => $menu_position_key,
+        'items'         => $this->get_assigned_menu_items( $menu_position_key ),
       );
     }
 
@@ -169,7 +161,7 @@ class Menu extends Config implements Service {
         if ( $menu_item->url === home_url( '/' ) || $menu_item->url === home_url() ) {
           $url = '/';
         } else {
-          $url = $this->trim_url( $menu_item->url );
+          $url = apply_filters( 'qz_trim_url', $menu_item->url );
         }
       }
 
@@ -179,10 +171,10 @@ class Menu extends Config implements Service {
       }
 
       $output[] = array(
-          'title'       => $menu_item->title,
-          'id'          => $menu_item->ID,
-          'url'         => $url,
-          'parent'      => (int) $menu_item->menu_item_parent,
+        'title'       => $menu_item->title,
+        'id'          => $menu_item->ID,
+        'url'         => $url,
+        'parent'      => (int) $menu_item->menu_item_parent,
       );
 
     }
@@ -190,5 +182,32 @@ class Menu extends Config implements Service {
     $temp_items = $this->build_tree_menu( $output );
 
     return $temp_items['children'];
+  }
+
+  /**
+   * Return tree menu with children from flat menu that is returned by default.
+   *
+   * @param array $items menu items.
+   * @param array $tree object tree.
+   */
+  private function build_tree_menu( array $items, array $tree = null ) : array {
+
+    if ( ! isset( $tree ) ) {
+      $tree = [ 'children' => [] ];
+    } elseif ( ! isset( $tree['children'] ) ) {
+      $tree['children'] = [];
+    }
+
+    foreach ( $items as $index => $item ) {
+      if ( isset( $tree['id'] ) === false && $item['parent'] === 0 || isset( $tree['id'] ) && $item['parent'] === $tree['id'] ) {
+
+        array_splice( $items, $index, 1 );
+        $output = $this->build_tree_menu( $items, $item );
+        array_push( $tree['children'], $output );
+      }
+    }
+
+    return $tree;
+
   }
 }

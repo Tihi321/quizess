@@ -149,8 +149,8 @@ const GeneralOptionsConsumer = (props) => {
               warning={false}
               single={true}
               init={{
-                selection_toolbar:false,
-                insert_toolbar: false,
+                quickbars_selection_toolbar:false,
+                quickbars_insert_toolbar: false,
               }}
             />
         </div>
@@ -178,8 +178,8 @@ const GeneralOptionsConsumer = (props) => {
               warning={false}
               single={true}
               init={{
-                selection_toolbar:false,
-                insert_toolbar: false,
+                quickbars_selection_toolbar:false,
+                quickbars_insert_toolbar: false,
               }}
             />
         </div>
@@ -207,8 +207,8 @@ const GeneralOptionsConsumer = (props) => {
               warning={false}
               single={true}
               init={{
-                selection_toolbar:false,
-                insert_toolbar: false,
+                quickbars_selection_toolbar:false,
+                quickbars_insert_toolbar: false,
               }}
             />
         </div>
@@ -236,8 +236,8 @@ const GeneralOptionsConsumer = (props) => {
               warning={false}
               single={true}
               init={{
-                selection_toolbar:false,
-                insert_toolbar: false,
+                quickbars_selection_toolbar:false,
+                quickbars_insert_toolbar: false,
               }}
             />
         </div>
@@ -265,8 +265,8 @@ const GeneralOptionsConsumer = (props) => {
               warning={false}
               single={true}
               init={{
-                selection_toolbar:false,
-                insert_toolbar: false,
+                quickbars_selection_toolbar:false,
+                quickbars_insert_toolbar: false,
               }}
             />
         </div>
