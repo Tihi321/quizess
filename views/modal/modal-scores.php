@@ -6,15 +6,13 @@
  * @since 1.0.2
  */
 
-use Quizess\Helpers\General_Helper;
-
 $user_id       = get_current_user_id();
 $user_id_check = ( $user_id !== 0 ) ? $user_id : false;
 
-$player_scores = $blocks_helper->get_quiz_scores( $post->ID, $user_id_check );
+$player_scores = apply_filters( 'qz_get_quiz_scores', $post->ID, $user_id_check );
 
-$correct = ( ! empty( $player_scores['last'] ) ) ? General_Helper::get_array_value( 'correct', $player_scores['last'] ) : 0;
-$total   = ( ! empty( $player_scores['last'] ) ) ? General_Helper::get_array_value( 'total', $player_scores['last'] ) : 0;
+$correct = ( ! empty( $player_scores['last'] ) ) ? $player_scores['last']['correct'] ?? 0 : 0;
+$total   = ( ! empty( $player_scores['last'] ) ) ? $player_scores['last']['total'] ?? 0 : 0;
 
 ?>
 

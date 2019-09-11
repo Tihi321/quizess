@@ -8,8 +8,7 @@
 
 namespace Quizess\Blocks\Abstracts;
 
-use Quizess\Blocks\Interfaces\Block as Block;
-use Quizess\Helpers\General_Helper;
+use Quizess\Blocks\Interfaces\Block;
 
 /**
  * Class Block
@@ -62,14 +61,14 @@ abstract class Base_Block implements Block {
     }
 
     $default_attributes = array(
-        'blockName' => array(
-            'type' => 'string',
-            'default' => self::BLOCK_NAMESPACE . '/' . static::NAME,
-        ),
-        'rootClass' => array(
-            'type' => 'string',
-            'default' => 'block-' . static::NAME,
-        ),
+      'blockName' => array(
+        'type' => 'string',
+        'default' => self::BLOCK_NAMESPACE . '/' . static::NAME,
+      ),
+      'rootClass' => array(
+        'type' => 'string',
+        'default' => 'block-' . static::NAME,
+      ),
     );
 
     $this->attributes = array_merge( $this->attributes, $default_attributes );
@@ -101,7 +100,7 @@ abstract class Base_Block implements Block {
     }
 
     $template_path = 'src/blocks/templates/' . static::NAME . '.php';
-    $template      = General_Helper::get_base_path() . $template_path;
+    $template      = apply_filters( 'qz_get_base_url', 'path' ) . $template_path;
 
     if ( empty( $template ) ) {
       throw new \Exception( sprintf( esc_html__( 'Missing template for block called: %1$s | Expecting a template in path: %2$s', 'quizess' ), static::NAME, $template_path ) );

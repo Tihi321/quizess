@@ -19,7 +19,7 @@
 
 namespace Quizess;
 
-use Quizess\Includes as Includes;
+use Quizess\Core;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -27,25 +27,11 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * Global assets public path
- *
- * @since 1.0.0
- */
-define( 'QZ_ASSETS_PUBLIC_PATH', __DIR__ . '/skin/public/' );
-
-/**
  * Include the autoloader so we can dynamically include the rest of the classes.
  *
  * @since 1.0.0
  */
 require __DIR__ . '/vendor/autoload.php';
-
-/**
- * Define enviroment production or develop.
- *
- * @since 1.0.0
- */
-define( 'QIZ_ENV', 'production' );
 
 /**
  * Begins execution of the plugin.

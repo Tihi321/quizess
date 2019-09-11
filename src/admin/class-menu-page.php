@@ -8,20 +8,14 @@
 
 namespace Quizess\Admin;
 
-use Quizess\Core\Service;
+use Eightshift_Libs\Core\Service;
+
 use Quizess\Core\Config;
-use Quizess\Helpers\General_Helper;
-use Quizess\Helpers\Loader;
 
 /**
  * Class Menu_Page
  */
-class Menu_Page extends Config implements Service {
-
-  /**
-   * Use trait inside class.
-   */
-  use Loader;
+class Menu_Page implements Service {
 
   /**
    * Parent menu page slug.
@@ -44,9 +38,9 @@ class Menu_Page extends Config implements Service {
    * @since 1.0.0
    */
   public function register() : void {
-    $this->add_action( 'admin_menu', $this, 'register_menu_page' );
-    $this->add_action( 'admin_menu', $this, 'register_submenu_pages' );
-    $this->add_filter( 'parent_file', $this, 'parent_menu_focus' );
+    add_action( 'admin_menu', [ $this, 'register_menu_page' ] );
+    add_action( 'admin_menu', [ $this, 'register_submenu_pages' ] );
+    add_filter( 'parent_file', [ $this, 'parent_menu_focus' ] );
   }
 
 
@@ -61,7 +55,7 @@ class Menu_Page extends Config implements Service {
     $menu_string = esc_html__( 'Quizess', 'quizess' );
     $callback    = [ $this, 'dashboard_callback' ];
 
-    add_menu_page( $page_title, $menu_string, self::USER_CAPABILITY, self::PARENT_MENU_SLUG, $callback, 'dashicons-welcome-learn-more', 50 );
+    add_menu_page( $page_title, $menu_string, static::USER_CAPABILITY, static::PARENT_MENU_SLUG, $callback, 'dashicons-welcome-learn-more', 50 );
 
   }
 
@@ -77,74 +71,74 @@ class Menu_Page extends Config implements Service {
     $submenu_pages = array(
 
         // Dashboard.
-        array(
-            'parent_slug' => self::PARENT_MENU_SLUG,
-            'page_title'  => esc_html__( 'Dashboard', 'quizess' ),
-            'menu_title'  => esc_html__( 'Dashboard', 'quizess' ),
-            'capability'  => self::USER_CAPABILITY,
-            'menu_slug'   => self::PARENT_MENU_SLUG,
-            'function'    => $parent_callback,
-        ),
+      array(
+        'parent_slug' => static::PARENT_MENU_SLUG,
+        'page_title'  => esc_html__( 'Dashboard', 'quizess' ),
+        'menu_title'  => esc_html__( 'Dashboard', 'quizess' ),
+        'capability'  => static::USER_CAPABILITY,
+        'menu_slug'   => static::PARENT_MENU_SLUG,
+        'function'    => $parent_callback,
+      ),
 
         // Quiz :: All Quizess.
-        array(
-            'parent_slug' => self::PARENT_MENU_SLUG,
-            'page_title'  => esc_html__( 'Quizess', 'quizess' ),
-            'menu_title'  => esc_html__( 'All Quizess', 'quizess' ),
-            'capability'  => self::USER_CAPABILITY,
-            'menu_slug'   => 'edit.php?post_type=' . self::QUIZESS_POST_SLUG,
-            'function'    => null,
-        ),
+      array(
+        'parent_slug' => static::PARENT_MENU_SLUG,
+        'page_title'  => esc_html__( 'Quizess', 'quizess' ),
+        'menu_title'  => esc_html__( 'All Quizess', 'quizess' ),
+        'capability'  => static::USER_CAPABILITY,
+        'menu_slug'   => 'edit.php?post_type=' . Config::QUIZESS_POST_SLUG,
+        'function'    => null,
+      ),
 
         // Quiz :: Add New Quiz.
-        array(
-            'parent_slug' => self::PARENT_MENU_SLUG,
-            'page_title'  => esc_html__( 'New Quiz', 'quizess' ),
-            'menu_title'  => esc_html__( 'Add New Quiz', 'quizess' ),
-            'capability'  => self::USER_CAPABILITY,
-            'menu_slug'   => 'post-new.php?post_type=' . self::QUIZESS_POST_SLUG,
-            'function'    => null,
-        ),
+      array(
+        'parent_slug' => static::PARENT_MENU_SLUG,
+        'page_title'  => esc_html__( 'New Quiz', 'quizess' ),
+        'menu_title'  => esc_html__( 'Add New Quiz', 'quizess' ),
+        'capability'  => static::USER_CAPABILITY,
+        'menu_slug'   => 'post-new.php?post_type=' . Config::QUIZESS_POST_SLUG,
+        'function'    => null,
+      ),
 
         // Quiz :: Quiz Topics.
-        array(
-            'parent_slug' => self::PARENT_MENU_SLUG,
-            'page_title'  => esc_html__( 'Quiz Topics', 'quizess' ),
-            'menu_title'  => esc_html__( 'Quiz Topics', 'quizess' ),
-            'capability'  => self::USER_CAPABILITY,
-            'menu_slug'   => 'edit-tags.php?taxonomy=' . self::QUIZESS_CATEGORY_SLUG . '&post_type=' . self::QUIZESS_POST_SLUG,
-            'function'    => null,
-        ),
+      array(
+        'parent_slug' => static::PARENT_MENU_SLUG,
+        'page_title'  => esc_html__( 'Quiz Topics', 'quizess' ),
+        'menu_title'  => esc_html__( 'Quiz Topics', 'quizess' ),
+        'capability'  => static::USER_CAPABILITY,
+        'menu_slug'   => 'edit-tags.php?taxonomy=' . Config::QUIZESS_CATEGORY_SLUG . '&post_type=' . Config::QUIZESS_POST_SLUG,
+        'function'    => null,
+      ),
 
         // Question :: All Questions.
-        array(
-            'parent_slug' => self::PARENT_MENU_SLUG,
-            'page_title'  => esc_html__( 'Questions', 'quizess' ),
-            'menu_title'  => esc_html__( 'All Questions', 'quizess' ),
-            'capability'  => self::USER_CAPABILITY,
-            'menu_slug'   => 'edit.php?post_type=' . self::QUESTION_POST_SLUG,
-            'function'    => null,
-        ),
+      array(
+        'parent_slug' => static::PARENT_MENU_SLUG,
+        'page_title'  => esc_html__( 'Questions', 'quizess' ),
+        'menu_title'  => esc_html__( 'All Questions', 'quizess' ),
+        'capability'  => static::USER_CAPABILITY,
+        'menu_slug'   => 'edit.php?post_type=' . Config::QUESTION_POST_SLUG,
+        'function'    => null,
+      ),
 
         // Question :: Add New Question.
-        array(
-            'parent_slug' => self::PARENT_MENU_SLUG,
-            'page_title'  => esc_html__( 'New Question', 'quizess' ),
-            'menu_title'  => esc_html__( 'Add New Question', 'quizess' ),
-            'capability'  => self::USER_CAPABILITY,
-            'menu_slug'   => 'post-new.php?post_type=' . self::QUESTION_POST_SLUG,
-            'function'    => null,
-        ),
+      array(
+        'parent_slug' => static::PARENT_MENU_SLUG,
+        'page_title'  => esc_html__( 'New Question', 'quizess' ),
+        'menu_title'  => esc_html__( 'Add New Question', 'quizess' ),
+        'capability'  => static::USER_CAPABILITY,
+        'menu_slug'   => 'post-new.php?post_type=' . Config::QUESTION_POST_SLUG,
+        'function'    => null,
+      ),
 
         // Question :: Question Topics.
-        array(
-            'parent_slug' => self::PARENT_MENU_SLUG,
-            'page_title'  => esc_html__( 'Question Topics', 'quizess' ),
-            'menu_title'  => esc_html__( 'Question Topics', 'quizess' ),
-            'capability'  => self::USER_CAPABILITY,
-            'menu_slug'   => 'edit-tags.php?taxonomy=' . self::QUESTION_CATEGORY_SLUG . '&post_type=' . self::QUESTION_POST_SLUG,
-            'function'    => null,
-        ),
+      array(
+        'parent_slug' => static::PARENT_MENU_SLUG,
+        'page_title'  => esc_html__( 'Question Topics', 'quizess' ),
+        'menu_title'  => esc_html__( 'Question Topics', 'quizess' ),
+        'capability'  => static::USER_CAPABILITY,
+        'menu_slug'   => 'edit-tags.php?taxonomy=' . Config::QUESTION_CATEGORY_SLUG . '&post_type=' . Config::QUESTION_POST_SLUG,
+        'function'    => null,
+      ),
 
     );
 
@@ -175,20 +169,20 @@ class Menu_Page extends Config implements Service {
     global $submenu_file, $current_screen, $pagenow;
 
     // Set the submenu as active/current while anywhere in your Custom Post Type.
-    if ( $current_screen->post_type === self::QUIZESS_POST_SLUG || $current_screen->post_type === self::QUESTION_POST_SLUG ) {
+    if ( $current_screen->post_type === Config::QUIZESS_POST_SLUG || $current_screen->post_type === Config::QUESTION_POST_SLUG ) {
 
       $post_type     = '';
       $taxonomy_type = '';
 
       // switches between quiz and question post type and their custom taxonomies.
       switch ( $current_screen->post_type ) {
-        case self::QUIZESS_POST_SLUG:
-          $post_type     = self::QUIZESS_POST_SLUG;
-          $taxonomy_type = self::QUIZESS_CATEGORY_SLUG;
+        case Config::QUIZESS_POST_SLUG:
+          $post_type     = Config::QUIZESS_POST_SLUG;
+          $taxonomy_type = Config::QUIZESS_CATEGORY_SLUG;
               break;
         default:
-          $post_type     = self::QUESTION_POST_SLUG;
-          $taxonomy_type = self::QUESTION_CATEGORY_SLUG;
+          $post_type     = Config::QUESTION_POST_SLUG;
+          $taxonomy_type = Config::QUESTION_CATEGORY_SLUG;
               break;
       }
 
@@ -202,7 +196,7 @@ class Menu_Page extends Config implements Service {
           $submenu_file = "edit-tags.php?taxonomy={$taxonomy_type}&post_type={$post_type}";
       }
 
-        $parent_file = self::PARENT_MENU_SLUG;
+        $parent_file = static::PARENT_MENU_SLUG;
 
     }
 
@@ -217,7 +211,7 @@ class Menu_Page extends Config implements Service {
    */
   public function dashboard_callback() {
 
-    $dashboard_template = General_Helper::get_base_path() . 'views/admin/dashboard.php';
+    $dashboard_template = apply_filters( 'qz_get_base_url', 'path' ) . 'views/admin/dashboard.php';
     if ( ! empty( $dashboard_template ) ) {
       include $dashboard_template;
     }

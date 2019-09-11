@@ -8,11 +8,9 @@
 
 namespace Quizess\Blocks\Templates;
 
-use Quizess\Helpers\General_Helper;
-
 // $attributes are block's attributes.
-$class_name = General_Helper::get_array_value( 'className', $attributes );
-$base_class = General_Helper::get_array_value( 'rootClass', $attributes );
+$class_name = $attributes['className'] && '';
+$base_class = $attributes['rootClass'] && '';
 
 $container_class = ( ! empty( $base_class ) ? "{$base_class}__container" : '' );
 $content_class   = ( ! empty( $base_class ) ? "{$base_class}__content" : '' );
