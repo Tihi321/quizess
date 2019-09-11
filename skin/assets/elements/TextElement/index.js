@@ -5,14 +5,15 @@ import classnames from 'classnames';
 import helpers from './../Helper/Helper';
 import styles from './styles';
 
+require('./tinyMce');
+
 class TextElement extends Component {
   constructor(props) {
     super(props);
 
     const {
       value = '',
-      outputType = '',
-      theme = 'inlite',
+      theme = 'silver',
       inline = true,
       className = '',
       tagName = 'p',
@@ -27,7 +28,6 @@ class TextElement extends Component {
     } = props;
 
     this.theme = theme;
-    this.outputType = outputType;
     this.inline = inline;
     this.wrapperClass = className;
     this.tagName = single ? false : tagName;
@@ -54,9 +54,7 @@ class TextElement extends Component {
       showRequired: postDisable,
     };
 
-    this.splitChar =
-      single || helpers.isTagSingle(tagName) ? '\n' : '\n\n';
-    this.content = value ? helpers.setContent(value, this.outputType) : '';
+    this.splitChar = single || helpers.isTagSingle(tagName) ? '\n' : '\n\n';
 
     this.getInit = this.getInit.bind(this);
     this.setWarningLabel = this.setWarningLabel.bind(this);
@@ -76,7 +74,7 @@ class TextElement extends Component {
     } else {
       helpers.enablePostSave(this.blockId);
     }
-    const output = helpers.getContent(content, this.outputType);
+    const output = helpers.getContent(content, this.props.outputType);
     this.props.onChange(output);
   }
 
@@ -109,12 +107,14 @@ class TextElement extends Component {
     const initObject = {
       theme: this.theme,
       inline: this.inline,
+      toolbar: !this.inline,
+      menubar: !this.inline,
       forced_root_block: this.tagName,
       plugins:
-        'charmap colorpicker hr link media paste tabfocus image textcolor lists',
-      insert_toolbar: 'undo redo | pastetext charmap | image hr',
-      selection_toolbar:
-        'bold italic underline | removeformat | forecolor | alignleft aligncenter alignright | bullist numlist | link unlink',
+        'quickbars charmap hr link media paste tabfocus image lists',
+      quickbars_insert_toolbar: false,
+      quickbars_selection_toolbar:
+        'bold italic underline uppercase | removeformat | forecolor | alignleft aligncenter alignright | bullist numlist | link unlink',
       image_advtab: true,
       paste_as_text: true,
       onSetup: this.onSetup,
@@ -167,10 +167,10 @@ class TextElement extends Component {
           }
         });
 
-        editor.addButton('uppercase', {
-          icon: 'uppercase-class',
+        editor.ui.registry.addButton('uppercase', {
+          icon: 'change-case',
           tooltip: "Uppercase",
-          onclick: function() {
+          onAction: (_) => {
             editor.execCommand('mceToggleFormat', false, 'uppercase');
           },
         });
@@ -193,10 +193,11 @@ class TextElement extends Component {
       this.state.activeBlockClass,
     );
     const init = this.getInit();
+    const content = this.props.value ? helpers.setContent(this.props.value, this.props.outputType) : '';
     return (
       <div style={styles.wrapperStyle} className={wrapperClasses}>
         <Editor
-          value={this.content}
+          value={content}
           onEditorChange={this.onEditorChange}
           onKeyPress={this.onKeyPress}
           onBlur={this.onBlur}
