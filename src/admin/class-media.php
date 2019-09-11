@@ -22,10 +22,10 @@ class Media implements Service {
    */
   public function register() : void {
     add_filter( 'upload_mimes', [ $this, 'enable_mime_types' ] );
-    add_filter( 'wp_prepare_attachment_for_js', [ $this, 'enable_svg_library_preview' ], 10, 3 );
+    add_filter( 'wp_prepare_attachment_for_js', [ $this, 'enable_svg_library_preview' ], 10, 2 );
     add_filter( 'wp_handle_upload_prefilter', [ $this, 'check_svg_on_media_upload' ] );
     add_filter( 'after_setup_theme', [ $this, 'enable_full_width' ] );
-    add_filter( 'wp_check_filetype_and_ext', [ $this, 'disable_mime_check' ], 10, 4 );
+    add_filter( 'wp_check_filetype_and_ext', [ $this, 'disable_mime_check' ], 11, 4 );
   }
 
   /**
@@ -94,7 +94,7 @@ class Media implements Service {
           $svg_content = implode( ' ', $svg_content );
 
           if ( ! $this->is_valid_xml( $svg_content ) ) {
-            new \WP_Error( sprintf( esc_html__( 'Error: File invalid: %s', 'inf_theme' ), $path ) );
+            new \WP_Error( sprintf( esc_html__( 'Error: File invalid: %s', 'quizess' ), $path ) );
             return false;
           }
 
@@ -116,7 +116,7 @@ class Media implements Service {
           );
         }
       } catch ( \Exception $e ) {
-        new \WP_Error( sprintf( esc_html__( 'Error: %s', 'inf_theme' ), $e ) );
+        new \WP_Error( sprintf( esc_html__( 'Error: %s', 'quizess' ), $e ) );
       }
     }
 

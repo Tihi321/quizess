@@ -9,8 +9,8 @@
 namespace Quizess\Blocks\Templates;
 
 // $attributes are block's attributes.
-$class_name = $attributes['className'] && '';
-$base_class = $attributes['rootClass'] && '';
+$class_name = $attributes['className'] ?? '';
+$base_class = $attributes['rootClass'] ?? '';
 
 $container_class = ( ! empty( $base_class ) ? "{$base_class}__container" : '' );
 $content_class   = ( ! empty( $base_class ) ? "{$base_class}__content" : '' );
