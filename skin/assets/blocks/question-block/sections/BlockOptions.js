@@ -11,7 +11,7 @@ import {
 import {__} from '@wordpress/i18n';
 import Select from 'react-select';
 import {
-  TextElement,
+  GutenbergTextElement,
 } from '../../../elements';
 import {BlockConsumer} from '../containers/BlockContext';
 import StyleOptions from '../../components/toolbars/style-options';
@@ -70,7 +70,7 @@ function BlockOptionsConsumer(props) {
 
 /* eslint-disable */
   const titleElement = (
-    <TextElement
+    <GutenbergTextElement
         styleReset={true}
         outputType='text'
         className="qz-input-mce-class"

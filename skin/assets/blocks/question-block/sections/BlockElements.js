@@ -1,6 +1,5 @@
 import {Fragment} from '@wordpress/element';
 import {__} from '@wordpress/i18n';
-import TextElement from '../../../elements/TextElement';
 import AnswersElement from './AnswersElement';
 import {
   MediaElement,
@@ -8,6 +7,7 @@ import {
   YoutubeElement,
   LottieElement,
   helpers,
+  GutenbergTextElement,
 } from '../../../elements';
 import {BlockConsumer} from '../containers/BlockContext';
 
@@ -49,7 +49,7 @@ function BlockElementsConsumer(props) {
 
   /* eslint-disable */
   const questionElement = (
-    <TextElement
+    <GutenbergTextElement
       className="body-bottom-element"
       value={question}
       outputType="text"
@@ -67,7 +67,7 @@ function BlockElementsConsumer(props) {
   const explanationElement = (
     <div className="explanation__header">
       <div className="explanation__title">{__('Explanation', 'quizess')}</div>
-      <TextElement
+      <GutenbergTextElement
         value={explanation}
         outputType="text"
         onChange={(explanation) => handleExplanationChange(explanation)}

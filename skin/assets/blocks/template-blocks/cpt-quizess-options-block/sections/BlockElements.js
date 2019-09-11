@@ -7,7 +7,7 @@ import {
 } from '@wordpress/components';
 import {__} from '@wordpress/i18n';
 import {
-  TextElement,
+  GutenbergTextElement,
 } from '../../../../elements';
 
 function BlockElements(props) {
@@ -60,7 +60,7 @@ function BlockElements(props) {
         <div className="qz-label-mce-class">
           {__('Welcome message', 'quizess')}
         </div>
-        <TextElement
+        <GutenbergTextElement
             styleReset={true}
             outputType='text'
             className="qz-input-mce-class"
@@ -85,7 +85,7 @@ function BlockElements(props) {
         <div className="qz-label-mce-class">
           {__('Success message', 'quizess')}
         </div>
-        <TextElement
+        <GutenbergTextElement
             styleReset={true}
             outputType='text'
             className="qz-input-mce-class"
@@ -110,7 +110,7 @@ function BlockElements(props) {
         <div className="qz-label-mce-class">
           {__('Failure message', 'quizess')}
         </div>
-        <TextElement
+        <GutenbergTextElement
             styleReset={true}
             outputType='text'
             className="qz-input-mce-class"
@@ -135,7 +135,7 @@ function BlockElements(props) {
         <div className="qz-label-mce-class">
           {__('About section', 'quizess')}
         </div>
-        <TextElement
+        <GutenbergTextElement
             styleReset={true}
             outputType='text'
             className="qz-input-mce-class"

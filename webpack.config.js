@@ -166,29 +166,17 @@ if (!DEV) {
   allPlugins.push(new CleanWebpackPlugin([pluginOutput]));
 }
 
-const developmentPlugins = [];
+const copyTinyMCE = [
 
-// Use only for development build
-if (DEV) {
+  // Find tinyMCE themes and copy them
+  {
+    from: `${appPath}/node_modules/tinymce/skins`,
+    to: `${pluginOutput}/scripts/skins`,
+  },
 
-  developmentPlugins.copyDevelopmentReact = [
+];
 
-    // Find react in node_modules and copy it to public folder
-    {
-      from: `${appPath}/node_modules/react/umd/react.development.js`,
-      to: `${pluginOutput}/scripts/vendors`,
-    },
-
-    // Find reactDom in node_modules and copy it to public folder
-    {
-      from: `${appPath}/node_modules/react-dom/umd/react-dom.development.js`,
-      to: `${pluginOutput}/scripts/vendors`,
-    },
-
-  ];
-
-  allPlugins.push(new CopyWebpackPlugin(developmentPlugins.copyDevelopmentReact));
-}
+allPlugins.push(new CopyWebpackPlugin(copyTinyMCE));
 
 module.exports = [
 

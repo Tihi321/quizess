@@ -60,13 +60,16 @@ class Admin implements Service {
   /**
    * Register the Stylesheets for the admin area.
    *
+   * @param string $hook page top slug.
    * @since 1.0.0
    */
-  public function enqueue_admin_styles() {
+  public function enqueue_admin_styles( $hook ) {
 
-    $main_admin_style = $this->manifest->get_assets_manifest_item( 'adminQuizess.css' );
-    wp_register_style( Config::PLUGIN_NAME . '-admin-style', $main_admin_style, '', Config::PLUGIN_VERSION, false );
-    wp_enqueue_style( Config::PLUGIN_NAME . '-admin-style' );
+    if ( $hook === 'toplevel_page_quizess_dashboard' ) {
+      $main_admin_style = $this->manifest->get_assets_manifest_item( 'adminQuizess.css' );
+      wp_register_style( Config::PLUGIN_NAME . '-admin-style', $main_admin_style, '', Config::PLUGIN_VERSION, false );
+      wp_enqueue_style( Config::PLUGIN_NAME . '-admin-style' );
+    }
 
   }
 
@@ -77,10 +80,13 @@ class Admin implements Service {
    * @since 1.0.0
    */
   public function enqueue_block_styles() {
+    global $post;
 
-    $main_block_style = $this->manifest->get_assets_manifest_item( 'blocksQuizess.css' );
-    wp_register_style( Config::PLUGIN_NAME . '-editor--style', $main_block_style, '', Config::PLUGIN_VERSION, false );
-    wp_enqueue_style( Config::PLUGIN_NAME . '-editor--style' );
+    if ( $post->post_type === 'quiz' || $post->post_type === 'question' ) {
+      $main_block_style = $this->manifest->get_assets_manifest_item( 'blocksQuizess.css' );
+      wp_register_style( Config::PLUGIN_NAME . '-editor--style', $main_block_style, '', Config::PLUGIN_VERSION, false );
+      wp_enqueue_style( Config::PLUGIN_NAME . '-editor--style' );
+    }
 
   }
 
@@ -148,34 +154,38 @@ class Admin implements Service {
    * @since 1.0.0
    */
   public function enqueue_block_scripts() {
+    global $post;
 
-    $main_block_script = $this->manifest->get_assets_manifest_item( 'blocksQuizess.js' );
-    wp_register_script(
-      Config::PLUGIN_NAME . '-editor-scripts',
-      $main_block_script,
-      array(
-        'jquery',
-        'wp-components',
-        'wp-blocks',
-        'wp-plugins',
-        'wp-edit-post',
-        'wp-element',
-        'wp-editor',
-        'wp-date',
-        'wp-data',
-        'wp-i18n',
-      ),
-      Config::PLUGIN_VERSION,
-      true
-    );
+    if ( $post->post_type === 'quiz' || $post->post_type === 'question' ) {
 
-    wp_enqueue_script( Config::PLUGIN_NAME . '-editor-scripts' );
+      $main_block_script = $this->manifest->get_assets_manifest_item( 'blocksQuizess.js' );
+      wp_register_script(
+        Config::PLUGIN_NAME . '-editor-scripts',
+        $main_block_script,
+        array(
+          'jquery',
+          'wp-components',
+          'wp-blocks',
+          'wp-plugins',
+          'wp-edit-post',
+          'wp-element',
+          'wp-editor',
+          'wp-date',
+          'wp-data',
+          'wp-i18n',
+        ),
+        Config::PLUGIN_VERSION,
+        true
+      );
 
-    // add localization to javascript.
-    if ( function_exists( 'gutenberg_get_jed_locale_data' ) ) {
-      $locale  = gutenberg_get_jed_locale_data( 'quizess' );
-      $content = 'wp.i18n.setLocaleData( ' . wp_json_encode( $locale ) . ', "quizess" );';
-      wp_script_add_data( Config::PLUGIN_NAME . '-editor-scripts', 'data', $content );
+      wp_enqueue_script( Config::PLUGIN_NAME . '-editor-scripts' );
+
+      // add localization to javascript.
+      if ( function_exists( 'gutenberg_get_jed_locale_data' ) ) {
+        $locale  = gutenberg_get_jed_locale_data( 'quizess' );
+        $content = 'wp.i18n.setLocaleData( ' . wp_json_encode( $locale ) . ', "quizess" );';
+        wp_script_add_data( Config::PLUGIN_NAME . '-editor-scripts', 'data', $content );
+      }
     }
 
   }

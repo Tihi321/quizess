@@ -10,6 +10,8 @@ namespace Quizess\Utils;
 
 use Eightshift_Libs\Core\Service;
 
+use Quizess\Core\Config;
+
 /**
  * Class Url_Utils
  *

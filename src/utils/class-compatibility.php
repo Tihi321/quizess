@@ -45,6 +45,20 @@ class Compatibility implements Service {
 
   }
 
+  /**
+   * Cmpatibility notice
+   *
+   * @return void
+   */
+  public function compatibility_notice() {
+    ?>
+    <div class="error notice is-dismissible">
+        <p><?php esc_html_e( 'All Gutenberg Blocks requires WordPress 5.0 or Gutenberg plugin to be activated', 'quizess' ); ?></p>
+    </div>
+    <?php
+
+  }
+
 
   /**
    * Quizess needs WP 5.0+ or Gutenberg Plugin to work
@@ -56,19 +70,5 @@ class Compatibility implements Service {
     }
 
     return true;
-  }
-
-  /**
-   * Cmpatibility notice
-   *
-   * @return void
-   */
-  private function compatibility_notice() {
-    ?>
-    <div class="error notice is-dismissible">
-        <p><?php esc_html_e( 'All Gutenberg Blocks requires WordPress 5.0 or Gutenberg plugin to be activated', 'quizess' ); ?></p>
-    </div>
-    <?php
-
   }
 }
