@@ -3,9 +3,9 @@ Contributors: Tihi321
 Tags: quizess, quiz, questions
 Donate link: PayPal.Me/tihi321
 Requires at least: 5.0
-Tested up to: 5.1.1
+Tested up to: 5.2.3
 Requires PHP: 7.0
-Stable tag: 1.0.2
+Stable tag: 2.0.0
 License: GPL-2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -59,8 +59,16 @@ A: You need to reset last record from player, under Quizess->dashboard->quizes c
 5. Quiz backend options
 6. Question category blocks
 7. Question templates
+8. Archive page
 
 == Changelog ==
+
+2.0.0
+* New archive and topics pages added.
+* Dynamic imports and custom filters.
+* New version of tinyMce for admin dashboard.
+* Added Eightshift Libs package.
+* Major refactor of code, added new interfaces and dependecy injection lib.
 
 1.0.2
 * Submit if user refreshes in middle of quiz.
