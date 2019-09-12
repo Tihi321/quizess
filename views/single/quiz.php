@@ -7,18 +7,14 @@
 
 use Quizess\Core\Config;
 
-
 $remove_admin_bar = get_option( Config::REMOVE_ADMIN_TOGGLE );
+$bg_image_url     = apply_filters( 'qz_get_quiz_options', $post->post_content, 'background_url' );
+$bg_color         = apply_filters( 'qz_get_quiz_options', $post->post_content, 'background_color' );
 $user_submit      = '0';
 $user_locked      = false;
-$welcome_message  = $quiz_options['options']['welcomeMessage'] ?? '';
-$about_field      = $quiz_options['options']['aboutField'] ?? '';
-$bg_color         = $quiz_options['bgOptions']['bgColor'] ?? '';
-$bg_image_url     = $quiz_options['bgOptions']['bgUrl'] ?? '';
-$about_modal_id   = 'modal--about-' . $post->ID;
-$scores_modal_id  = 'modal--scores-' . $post->ID;
 $quiz_locked      = \get_post_meta( $post->ID, Config::QUIZ_LOCKED_META_KEY, true );
 $base_path        = apply_filters( 'qz_get_base_url', 'path' );
+$theme            = apply_filters( 'qz_get_current_theme', true );
 
 if ( is_user_logged_in() ) {
 

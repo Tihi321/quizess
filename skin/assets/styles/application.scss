@@ -42,6 +42,10 @@
 @import '../components/modal/placeholder/style';
 @import '../components/modal/submit-message/style';
 
+// Single
+@import 'components/single/quiz';
+@import 'components/single/archive';
+
 // Template parts
 @import 'components/parts/modal';
 @import 'components/parts/quiz-accomplishment';
@@ -52,13 +56,11 @@
 @import 'components/header/header';
 @import 'components/footer/footer';
 
+
 // Sections
 @import 'components/sections/question';
 @import 'components/sections/overview';
 @import 'components/sections/stats';
-@import 'components/sections/custom';
-
-// Single
-@import 'components/single/quiz';
+@import 'components/sections/post';
 
 

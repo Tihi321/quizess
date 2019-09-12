@@ -8,12 +8,11 @@
 use Quizess\Core\Config;
 
 $custom_style = get_option( Config::CUSTOM_STYLE_TOGGLE );
-$theme        = get_option( Config::LIGHT_THEME_TOGGLE ) ? 'light' : 'dark';
 
 // use custom header instead theme default.
 if ( $custom_style ) {
 
-  $header = apply_filters( 'qz_get_base_url', 'path' ) . 'views/header/header.php';
+  $header = apply_filters( 'qz_get_base_url', 'path' ) . 'views/header/archive-header.php';
 
   if ( ! empty( $header ) ) {
     include $header;
@@ -27,6 +26,11 @@ if ( $custom_style ) {
     if ( ! empty( $header_content ) ) {
       include $header_content;
     }
+
+    ?>
+    <div class="quizess__content">
+      <div class="quizess__container">
+    <?php
 
     $category_menu = apply_filters( 'qz_get_base_url', 'path' ) . 'views/category/menu.php';
 
@@ -52,13 +56,25 @@ if ( have_posts() ) {
       'screen_reader_text' => esc_html__( 'Pagination', 'ts-blog' ),
     )
   );
+  ?>
+    </div>
+  </div>
+  <?php
 } else {
+  ?>
+  <div class="quizess__container">
+  <?php
   $empty_template = apply_filters( 'qz_get_base_url', 'path' ) . 'views/listing/articles/empty.php';
 
   if ( ! empty( $empty_template ) ) {
     include $empty_template;
   }
+  ?>
+  </div>
+  <?php
 }
+
+wp_reset_postdata();
 
 // use custom footer instead theme default.
 if ( $custom_style ) {

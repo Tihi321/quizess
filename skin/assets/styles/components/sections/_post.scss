@@ -1,0 +1,32 @@
+.admin-bar {
+  .quizess__post {
+    margin-top: -$wp-admin-bar-mobile;
+    padding-top: $wp-admin-bar-mobile;
+
+    @include media(tablet up) {
+      margin-top: -$wp-admin-bar-desktop;
+      padding-top: $wp-admin-bar-desktop;
+    }
+  }
+}
+
+.quizess {
+  &__post {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    z-index: map-get($zindex, 'quiz-custom');
+  }
+
+  .quiz {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    &__content {
+      height: 100%;
+      flex: 1;
+    }
+  }
+}

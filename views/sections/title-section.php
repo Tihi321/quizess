@@ -6,6 +6,8 @@
  * @since 1.0.0
  */
 
+$welcome_message = apply_filters( 'qz_get_quiz_options', $post->post_content, 'welcome' );
+
 ?>
 
 <div class="quiz__welcome--outer">

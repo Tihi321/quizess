@@ -8,7 +8,6 @@
 use Quizess\Core\Config;
 
 $custom_style = get_option( Config::CUSTOM_STYLE_TOGGLE );
-$theme        = get_option( Config::LIGHT_THEME_TOGGLE ) ? 'light' : 'dark';
 
 // Pagination.
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
@@ -36,7 +35,7 @@ $query = new WP_Query( $args );
 // use custom header instead theme default.
 if ( $custom_style ) {
 
-  $header = apply_filters( 'qz_get_base_url', 'path' ) . 'views/header/header.php';
+  $header = apply_filters( 'qz_get_base_url', 'path' ) . 'views/header/archive-header.php';
 
   if ( ! empty( $header ) ) {
     include $header;
@@ -50,6 +49,10 @@ if ( $custom_style ) {
     if ( ! empty( $header_content ) ) {
       include $header_content;
     }
+
+    ?>
+    <div class="quizess__container">
+    <?php
 
     $category_menu = apply_filters( 'qz_get_base_url', 'path' ) . 'views/category/menu.php';
 
@@ -76,12 +79,21 @@ if ( $query->have_posts() ) {
   if ( ! empty( $paginstion_template ) ) {
     include $paginstion_template;
   }
+  ?>
+  </div>
+  <?php
 } else {
+  ?>
+  <div class="quizess__container">
+  <?php
   $empty_template = apply_filters( 'qz_get_base_url', 'path' ) . 'views/listing/articles/empty.php';
 
   if ( ! empty( $empty_template ) ) {
     include $empty_template;
   }
+  ?>
+  </div>
+  <?php
 }
 
 wp_reset_postdata();

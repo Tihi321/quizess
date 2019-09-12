@@ -1,0 +1,34 @@
+$category-vars: (
+  color: $base-white-color,
+  text-size: (
+    mobile: (
+      font-size: 16px,
+      line-height: 1.5,
+    ),
+    tablet: (
+      font-size: 22px,
+    ),
+  ),
+);
+
+.category-menu-single {
+  display: flex;
+
+  &__items {
+    margin: 0 -10px;
+  }
+
+  &__item {
+    @include responsive-deep($category-vars, 'text-size');
+    color: map-get-strict($category-vars, 'color');
+    display: inline-block;
+    margin: 0 10px;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}

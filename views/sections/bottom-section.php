@@ -6,7 +6,11 @@
  * @since 1.0.0
  */
 
-$quiz_scores = apply_filters( 'qz_get_quiz_scores', $post->ID );
+$quiz_scores     = apply_filters( 'qz_get_quiz_scores', $post->ID );
+$theme           = apply_filters( 'qz_get_current_theme', true );
+$about_field     = apply_filters( 'qz_get_quiz_options', $post->post_content, 'about' );
+$about_modal_id  = 'modal--about-' . $post->ID;
+$scores_modal_id = 'modal--scores-' . $post->ID;
 
 ?>
 

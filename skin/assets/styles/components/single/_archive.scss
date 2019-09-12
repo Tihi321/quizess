@@ -1,5 +1,12 @@
+$quiz-archive-vars: (
+  bg-color: $base-primary-blue,
+  success-message: $base-persian-color,
+  fail-message: $base-punch-color,
+  submit-color: $base-punch-color,
+);
+
 .admin-bar {
-  .quizess-custom {
+  .quizess__archive {
     margin-top: -$wp-admin-bar-mobile;
     padding-top: $wp-admin-bar-mobile;
 
@@ -10,22 +17,22 @@
   }
 }
 
-.quizess-custom {
-  overflow: hidden;
-
-  &__post {
+.quizess {
+  &__archive {
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
     z-index: map-get($zindex, 'quiz-custom');
   }
 
-  .quiz {
+  &__content {
     flex: 1;
+  }
 
-    &__content {
-      height: 100%;
-    }
+  &__container {
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
   }
 }

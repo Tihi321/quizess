@@ -26,7 +26,7 @@ final class Blocks_Utils implements Service {
    * @since 1.0.0
    */
   public function register() : void {
-    add_filter( 'qz_get_quiz_options', [ $this, 'get_quiz_options' ] );
+    add_filter( 'qz_get_quiz_options', [ $this, 'get_quiz_options' ], 10, 2 );
     add_filter( 'qz_get_quiz_scores', [ $this, 'get_quiz_scores' ], 10, 2 );
   }
 
@@ -142,15 +142,28 @@ final class Blocks_Utils implements Service {
    * Return blocks options data
    *
    * @param string $content Post content.
+   * @param string $key key value of content.
    * @since 1.0.0
    */
-  public function get_quiz_options( $content ) : array {
+  public function get_quiz_options( $content, $key = '' ) {
     $parsed_blocks = $this->parse_gutenberg_blocks( $content );
     $blocks_data   = $this->get_decoded_quiz_values( $parsed_blocks );
-    return array(
-      'options' => $blocks_data['options'],
-      'bgOptions' => $blocks_data['bgOptions'],
-    );
+
+    switch ( $key ) {
+      case 'welcome':
+            return $blocks_data['options']['welcomeMessage'] ?? '';
+      case 'about':
+            return $blocks_data['options']['aboutField'] ?? '';
+      case 'background_color':
+            return $blocks_data['bgOptions']['bgColor'] ?? '';
+      case 'background_url':
+            return $blocks_data['bgOptions']['bgUrl'] ?? '';
+      default:
+            return array(
+              'options' => $blocks_data['options'],
+              'bgOptions' => $blocks_data['bgOptions'],
+            );
+    }
   }
 
   /**

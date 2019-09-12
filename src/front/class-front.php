@@ -48,6 +48,27 @@ class Front implements Service {
     add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_frontend_scripts' ], 50 );
     add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_localized_frontend_scripts' ], 50 );
     add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_frontend_styles' ], 50 );
+    add_filter( 'qz_get_current_theme', [ $this, 'get_current_theme' ] );
+  }
+
+  /**
+   * Returns current color theme.
+   *
+   * @return string returns current theme.
+   * @since 1.0.0
+   */
+  public function get_current_theme() : string {
+
+    $theme = get_option( Config::LIGHT_THEME_TOGGLE ) ? 'light' : 'dark';
+
+    if ( Config::QUIZESS_POST_SLUG === get_post_type() ) {
+      global $post;
+
+      $quiz_options = apply_filters( 'qz_get_quiz_options', $post->post_content );
+      $theme        = $quiz_options['options']['theme'] ?? $theme;
+    }
+
+    return $theme;
   }
 
   /**
