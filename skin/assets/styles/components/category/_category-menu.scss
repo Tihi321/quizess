@@ -9,108 +9,47 @@ $category-vars: (
       font-size: 22px,
     ),
   ),
-  search-text-size: (
-    mobile: (
-      font-size: 16px,
-      line-height: 1.5,
-    ),
-    tablet: (
-      font-size: 18px,
-    ),
-  ),
 );
 
 .category-menu {
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
+  justify-content: center;
 
   @include media(tablet up) {
     flex-direction: row;
   }
 
-  &__items {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 0 -10px;
-    padding-top: 20px;
-    order: 2;
-
-    @include media(tablet up) {
-      order: 0;
-      padding-top: 0;
-    }
-  }
-
-  &__item {
+  a.category-menu__item {
     @include responsive-deep($category-vars, 'text-size');
     color: map-get-strict($category-vars, 'color');
+    font-weight: bold;
     padding: 5px 10px;
     margin: 0 10px;
     cursor: pointer;
-    opacity: 1;
-    transition: opacity 0.3s ease;
-
-    &:hover {
-      opacity: 0.6;
-    }
 
     &.is-active {
-      color: var(--accent-color);
       background-color: map-get-strict($category-vars, 'color');
     }
   }
+}
 
-  .hero-search {
-    &__form {
-      @include responsive-deep($category-vars, 'search-text-size');
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      width: 100%;
+.quizess__category {
+  &--dark {
+    background-color: map-get-deep($theme-colors, 'dark', 'secondary-color');
 
-      @include media(mobile up) {
-        flex-direction: row;
-        width: auto;
-      }
+    .category-menu__item.is-active {
+      color: map-get-deep($theme-colors, 'dark', 'secondary-color');
     }
+  }
 
-    &__input {
-      color: var(--accent-color);
-      padding: 5px 8px;
-      font-size: 18px;
-      order: 2;
-      margin-top: 10px;
-      width: 100%;
+  &--light {
+    background-color: map-get-deep($theme-colors, 'light', 'secondary-color');
 
-      @include media(mobile up) {
-        margin-top: 0;
-        order: 0;
-      }
-    }
-
-    &__submit {
-      @extend %button-reset;
-      cursor: pointer;
-      color: var(--accent-color);
-      background: map-get-strict($category-vars, 'color');
-      padding: 7px 10px;
-      font-weight: bold;
-      opacity: 1;
-      transition: opacity 0.3s ease;
-      width: 100%;
-
-      @include media(mobile up) {
-        margin-left: 5px;
-      }
-
-      &:hover {
-        opacity: 0.6;
-      }
+    .category-menu__item.is-active {
+      color: map-get-deep($theme-colors, 'light', 'secondary-color');
     }
   }
 }

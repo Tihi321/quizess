@@ -54,14 +54,19 @@ class Front implements Service {
   /**
    * Returns current color theme.
    *
+   * @param bool $default for returning only default color.
    * @return string returns current theme.
    * @since 1.0.0
    */
-  public function get_current_theme() : string {
+  public function get_current_theme( $default = false ) : string {
 
     $theme = get_option( Config::LIGHT_THEME_TOGGLE ) ? 'light' : 'dark';
 
-    if ( Config::QUIZESS_POST_SLUG === get_post_type() ) {
+    if ( $default ) {
+      return $theme;
+    }
+
+    if ( Config::QUIZESS_POST_SLUG === get_post_type() && ! is_archive() ) {
       global $post;
 
       $quiz_options = apply_filters( 'qz_get_quiz_options', $post->post_content );

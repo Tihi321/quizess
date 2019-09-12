@@ -1,5 +1,6 @@
 $pagination-vars: (
   color: $base-white-color,
+  background: $base-white-color,
   text-size: (
     mobile: (
       font-size: 18px,
@@ -12,35 +13,47 @@ $pagination-vars: (
 );
 
 .pagination {
-  padding-top: 20px;
-  padding-bottom: 20px;
-
-  @include media(mobile up) {
-    padding-top: 50px;
-    padding-bottom: 50px;
-  }
-
   .screen-reader-text {
     position: fixed;
-    top: 999999999px;
-    left: 999999999px;
+    pointer-events: none;
     opacity: 0;
     height: 1px;
   }
 
   .nav-links {
     @include responsive($pagination-vars, 'text-size');
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin: 0;
   }
 
   .page-numbers {
     display: inline-block;
     padding: 5px 8px;
+    color: map-get-strict($pagination-vars, 'color');
 
     &.current {
-      color: map-get-strict($pagination-vars, 'color');
-      background-color: var(--accent-color);
+      cursor: default;
       font-weight: bold;
+      background-color: map-get-strict($pagination-vars, 'background');
+    }
+  }
+}
+
+.quizess__pagination {
+  &--dark {
+    background-color: map-get-deep($theme-colors, 'dark', 'primary-color');
+
+    .pagination .page-numbers.current {
+      color: map-get-deep($theme-colors, 'dark', 'primary-color');
+    }
+  }
+
+  &--light {
+    background-color: map-get-deep($theme-colors, 'light', 'primary-color');
+
+    .pagination .page-numbers.current {
+      color: map-get-deep($theme-colors, 'light', 'primary-color');
     }
   }
 }

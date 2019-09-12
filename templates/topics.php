@@ -8,6 +8,7 @@
 use Quizess\Core\Config;
 
 $custom_style = get_option( Config::CUSTOM_STYLE_TOGGLE );
+$theme        = apply_filters( 'qz_get_current_theme', true );
 
 // Pagination.
 $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
@@ -51,7 +52,9 @@ if ( $custom_style ) {
     }
 
     ?>
-    <div class="quizess__container">
+    <div class="quizess__category quizess__category--<?php echo esc_attr( $theme ); ?>">
+      <div class="quizess__container">
+        <h1 class="quizess__topics"><?php echo esc_html__( 'Topics', 'quizess' ); ?></h1>
     <?php
 
     $category_menu = apply_filters( 'qz_get_base_url', 'path' ) . 'views/category/menu.php';
@@ -59,6 +62,13 @@ if ( $custom_style ) {
     if ( ! empty( $category_menu ) ) {
       include $category_menu;
     }
+    ?>
+    </div>
+  </div>
+  <div class="quizess__content">
+    <div class="quizess__container">
+      <div class="article-list">
+    <?php
   }
 } else {
   get_header();
@@ -73,6 +83,13 @@ if ( $query->have_posts() ) {
       include $list_template;
     }
   }
+  ?>
+  </div>
+</div>
+</div>
+<div class="quizess__pagination quizess__pagination--<?php echo esc_attr( $theme ); ?>">
+<div class="quizess__container">
+  <?php
   $pagination_query    = $query;
   $paginstion_template = apply_filters( 'qz_get_base_url', 'path' ) . 'views/parts/query-pagination.php';
 
@@ -81,10 +98,11 @@ if ( $query->have_posts() ) {
   }
   ?>
   </div>
+</div>
   <?php
 } else {
   ?>
-  <div class="quizess__container">
+  <div class="quizess__empty">
   <?php
   $empty_template = apply_filters( 'qz_get_base_url', 'path' ) . 'views/listing/articles/empty.php';
 

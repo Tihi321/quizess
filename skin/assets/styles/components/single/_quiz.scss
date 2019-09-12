@@ -11,13 +11,14 @@ $quiz-colors: (
   &__content {
     background-color: map-get($quiz-colors, 'bg-color');
     position: relative;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
+    height: 100%;
+    flex: 1;
 
     &::after {
       @extend %blur-bg;

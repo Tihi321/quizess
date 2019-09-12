@@ -15,7 +15,7 @@
  $linked_in = get_option( Config::LINKEDIN_URL, null );
  $instagram = get_option( Config::INSTAGRAM_URL, null );
  $github    = get_option( Config::SHOW_GITHUB_TOGGLE, null );
- $theme     = apply_filters( 'qz_get_current_theme', true );
+ $theme     = apply_filters( 'qz_get_current_theme', false );
 
  $logo_decoded = ( ! empty( $logo ) ) ? json_decode( $logo, true ) : null;
 

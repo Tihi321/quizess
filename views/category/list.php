@@ -7,7 +7,7 @@
 
 use Quizess\Core\Config;
 
-$class_category_list = 'category-list';
+$class_category_list = 'category';
 $categories          = get_the_terms( get_the_ID(), Config::QUIZESS_CATEGORY_SLUG );
 
 ?>

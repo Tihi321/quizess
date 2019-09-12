@@ -9,9 +9,10 @@ $class_name = 'article-list';
 
 $post_date = get_the_date();
 $base_path = apply_filters( 'qz_get_base_url', 'path' );
+$theme     = apply_filters( 'qz_get_current_theme', true );
 
 ?>
-<article class="<?php echo esc_attr( "{$class_name}__item" ); ?>">
+<article class="<?php echo esc_attr( "{$class_name}__item {$class_name}__item--{$theme}" ); ?>">
   <h2 class="<?php echo esc_attr( "{$class_name}__heading" ); ?>">
     <a class="<?php echo esc_attr( "{$class_name}__heading-link" ); ?>" href="<?php the_permalink(); ?>">
     <?php esc_html( the_title() ); ?>

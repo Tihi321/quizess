@@ -11,6 +11,10 @@ $input-box-shadow-hover: 0 4px 8px -8px $base-black-color;
 
 $cubic-ease: cubic-bezier(0.4, 0, 0.2, 1);
 
+// Container
+$base-container-size: 1024px;
+$base-gutter-size: 24px;
+
 //Typography
 $typography-map: (
   mobile: (

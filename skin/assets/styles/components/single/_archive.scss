@@ -1,8 +1,14 @@
-$quiz-archive-vars: (
-  bg-color: $base-primary-blue,
-  success-message: $base-persian-color,
-  fail-message: $base-punch-color,
-  submit-color: $base-punch-color,
+$archive-vars: (
+  color: $base-white-color,
+  heading: (
+    mobile: (
+      font-size: 24px,
+      line-height: 1.25,
+    ),
+    tablet: (
+      font-size: 32px,
+    ),
+  ),
 );
 
 .admin-bar {
@@ -18,20 +24,28 @@ $quiz-archive-vars: (
 }
 
 .quizess {
+  $this: &;
+
   &__archive {
-    position: relative;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    z-index: map-get($zindex, 'quiz-custom');
+
+    #{$this}__content {
+      flex: 1;
+    }
   }
 
-  &__content {
-    flex: 1;
+  &__topics {
+    @include responsive($archive-vars, 'heading');
+    color: map-get-strict($archive-vars, 'color');
+    text-align: center;
   }
 
   &__container {
-    max-width: 1024px;
+    max-width: $base-container-size;
+    padding-left: $base-gutter-size;
+    padding-right: $base-gutter-size;
     width: 100%;
     margin: 0 auto;
   }

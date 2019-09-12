@@ -14,7 +14,7 @@ $user_submit      = '0';
 $user_locked      = false;
 $quiz_locked      = \get_post_meta( $post->ID, Config::QUIZ_LOCKED_META_KEY, true );
 $base_path        = apply_filters( 'qz_get_base_url', 'path' );
-$theme            = apply_filters( 'qz_get_current_theme', true );
+$theme            = apply_filters( 'qz_get_current_theme', false );
 
 if ( is_user_logged_in() ) {
 

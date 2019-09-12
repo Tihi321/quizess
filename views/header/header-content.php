@@ -7,7 +7,7 @@
  */
 
 $base_path = apply_filters( 'qz_get_base_url', 'path' );
-$theme     = apply_filters( 'qz_get_current_theme', true );
+$theme     = apply_filters( 'qz_get_current_theme', false );
 
 ?>
 <header class="quizess-header quizess-header--<?php echo esc_attr( $theme ); ?> js-header">

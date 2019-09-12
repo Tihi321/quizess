@@ -6,7 +6,7 @@
  * @since 1.0.0
  */
 
-$theme          = apply_filters( 'qz_get_current_theme', true );
+$theme          = apply_filters( 'qz_get_current_theme', false );
 $bg_color       = apply_filters( 'qz_get_quiz_options', $post->post_content, 'background_color' );
 $bg_image_url   = apply_filters( 'qz_get_quiz_options', $post->post_content, 'background_url' );
 $about_modal_id = 'modal--about-' . $post->ID;

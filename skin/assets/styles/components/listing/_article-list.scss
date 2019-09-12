@@ -1,44 +1,88 @@
 $article-list-vars: (
-  sizes: (
-    mobile: (
-      font-size: 18px,
-      line-height: 1.25,
+  font-size: (
+    heading: (
+      mobile: (
+        font-size: 24px,
+        line-height: 1.25,
+      ),
+      tablet: (
+        font-size: 32px,
+      ),
     ),
-    tablet: (
-      font-size: 24px,
+    category: (
+      mobile: (
+        font-size: 14px,
+        line-height: 1.25,
+      ),
+      tablet: (
+        font-size: 18px,
+      ),
+    ),
+    date: (
+      mobile: (
+        font-size: 12px,
+        line-height: 1,
+      ),
     ),
   )
 );
 
 
 .article-list {
+  $this: &;
   padding-top: 20px;
+  padding-bottom: 20px;
 
   @include media(mobile up) {
     padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  &__item--dark {
+    #{$this}__heading-link,
+    .category__item {
+      color: map-get-deep($theme-colors, 'dark', 'bg-color');
+    }
+  }
+
+  &__item--light {
+    #{$this}__heading-link,
+    .category__item {
+      color: map-get-deep($theme-colors, 'light', 'bg-color');
+    }
   }
 
   &__header {
     padding-bottom: 10px;
   }
 
-  &__heading {
-    @include responsive($article-list-vars, 'sizes');
+  #{$this}__heading {
+    @include responsive-deep($article-list-vars, 'font-size', 'heading');
+
+    @extend %heading-reset;
     margin: 0 0 10px;
+    padding: 0;
   }
 
   &__item {
     margin: 30px 0;
   }
 
-  &__title {
-    font-weight: bold;
-    margin: 0;
-    padding: 10px 0;
+  &__date {
+    @include responsive-deep($article-list-vars, 'font-size', 'date');
+  }
+
+  &__meta {
+    line-height: 1;
   }
 
   .category {
+    &__items {
+      line-height: 1;
+    }
+
     &__item {
+      @include responsive-deep($article-list-vars, 'font-size', 'category');
       display: inline-block;
 
       &::before {
