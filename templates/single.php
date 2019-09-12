@@ -7,9 +7,10 @@
 
 use Quizess\Core\Config;
 
-$custom_style = get_option( Config::CUSTOM_STYLE_TOGGLE );
-$quiz_options = apply_filters( 'qz_get_quiz_options', $post->post_content );
-$theme        = $quiz_options['options']['theme'] ?? '';
+$custom_style  = get_option( Config::CUSTOM_STYLE_TOGGLE );
+$default_theme = get_option( Config::LIGHT_THEME_TOGGLE ) ? 'light' : 'dark';
+$quiz_options  = apply_filters( 'qz_get_quiz_options', $post->post_content );
+$theme         = $quiz_options['options']['theme'] ?? $default_theme;
 
 $header = apply_filters( 'qz_get_base_url', 'path' ) . 'views/header/header.php';
 

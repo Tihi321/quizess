@@ -85,6 +85,7 @@ class Patch_General_Options extends Base_Route implements Callable_Route, Route_
     $body = \json_decode( $request->get_body(), true );
 
     $custom_style     = $body['customStyle'] ?? '';
+    $light_theme      = $body['lightTheme'] ?? '';
     $remove_admin_bar = $body['removeAdminBar'] ?? '';
     $show_github      = $body['showGithub'] ?? '';
     $copyright        = $body['copyright'] ?? '';
@@ -112,6 +113,7 @@ class Patch_General_Options extends Base_Route implements Callable_Route, Route_
 
     apply_filters( 'qz_save_options', $custom_style, Config::CUSTOM_STYLE_TOGGLE );
     apply_filters( 'qz_save_options', $remove_admin_bar, Config::REMOVE_ADMIN_TOGGLE );
+    apply_filters( 'qz_save_options', $light_theme, Config::LIGHT_THEME_TOGGLE );
     apply_filters( 'qz_save_options', $show_github, Config::SHOW_GITHUB_TOGGLE );
     apply_filters( 'qz_save_options', $sanitized_logo_string, Config::CUSTOM_LOGO );
     apply_filters( 'qz_save_options', $copyright, Config::COPYRIGHT_TEXT );

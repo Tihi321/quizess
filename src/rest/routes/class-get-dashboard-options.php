@@ -67,6 +67,8 @@ class Get_Dashboard_Options extends Base_Route implements Callable_Route {
     $instagram               = get_option( Config::INSTAGRAM_URL );
     $custom_style_option     = get_option( Config::CUSTOM_STYLE_TOGGLE );
     $custom_style            = $custom_style_option ?: '0';
+    $light_theme_option      = get_option( Config::LIGHT_THEME_TOGGLE );
+    $light_theme             = $light_theme_option ?: '0';
     $remove_admin_bar_option = get_option( Config::REMOVE_ADMIN_TOGGLE );
     $remove_admin_bar        = $remove_admin_bar_option ?: '0';
     $show_github_option      = get_option( Config::SHOW_GITHUB_TOGGLE );
@@ -98,6 +100,7 @@ class Get_Dashboard_Options extends Base_Route implements Callable_Route {
     [
       'generalOptions' => [
         'customStyle'    => $custom_style,
+        'lightTheme'     => $light_theme,
         'removeAdminBar' => $remove_admin_bar,
         'showGithub'     => $show_github,
         'logo'           => $logo,

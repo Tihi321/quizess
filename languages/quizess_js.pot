@@ -80,68 +80,77 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:107
-msgid "Logo"
-msgstr ""
-
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:109
-msgid "Logo shown in the footer and menu"
-msgstr ""
-
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:135
-msgid "Copyright"
-msgstr ""
-
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:137
-msgid "Message show in the footer"
-msgstr ""
-
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:164
-msgid "Facebook"
-msgstr ""
-
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:193
-msgid "Twitter"
-msgstr ""
-
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:222
-msgid "LinkedIn"
-msgstr ""
-
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:251
-msgid "Instagram"
-msgstr ""
-
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:253
-msgid "Social footer item"
-msgstr ""
-
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:52
-msgid "Use custom styles"
-msgstr ""
-
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:55
-msgid "Replace theme styles on quiz posts."
-msgstr ""
-
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:66
-msgid "Remove admin bar"
-msgstr ""
-
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:69
-msgid "Remove default admin bar and add optional quiz submit message "
-msgstr ""
-
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:81
-msgid "Show github"
-msgstr ""
-
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:84
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:100
 msgid "Add github social icon to the footer linked to the quizess resository"
 msgstr ""
 
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:95
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:111
 msgid "Save"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:123
+msgid "Logo"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:125
+msgid "Logo shown in the footer and menu"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:151
+msgid "Copyright"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:153
+msgid "Message show in the footer"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:180
+msgid "Facebook"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:209
+msgid "Twitter"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:238
+msgid "LinkedIn"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:267
+msgid "Instagram"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:269
+msgid "Social footer item"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:54
+msgid "Use custom styles"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:57
+msgid "Replace theme styles on quiz posts."
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:68
+#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:38
+msgid "Default theme"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:71
+msgid "Set light instead of dark as default theme to all quizess"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:82
+msgid "Remove admin bar"
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:85
+msgid "Remove default admin bar and add optional quiz submit message "
+msgstr ""
+
+#: skin/assets/apps/dashboard/sections/GeneralOptions.js:97
+msgid "Show github"
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/QuizOptions.js:28
@@ -449,10 +458,6 @@ msgstr ""
 
 #: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:181
 msgid "Some of the global options for this quiz"
-msgstr ""
-
-#: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:38
-msgid "Default theme"
 msgstr ""
 
 #: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:52

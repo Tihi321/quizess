@@ -8,8 +8,7 @@
 use Quizess\Core\Config;
 
 $custom_style = get_option( Config::CUSTOM_STYLE_TOGGLE );
-$quiz_options = apply_filters( 'qz_get_quiz_options', $post->post_content );
-$theme        = $quiz_options['options']['theme'] ?? '';
+$theme        = get_option( Config::LIGHT_THEME_TOGGLE ) ? 'light' : 'dark';
 
 // use custom header instead theme default.
 if ( $custom_style ) {
@@ -28,6 +27,12 @@ if ( $custom_style ) {
     if ( ! empty( $header_content ) ) {
       include $header_content;
     }
+
+    $category_menu = apply_filters( 'qz_get_base_url', 'path' ) . 'views/category/menu.php';
+
+    if ( ! empty( $category_menu ) ) {
+      include $category_menu;
+    }
   }
 } else {
   get_header();
@@ -36,8 +41,17 @@ if ( $custom_style ) {
 if ( have_posts() ) {
   while ( have_posts() ) {
     the_post();
-    the_title();
+    $list_template = apply_filters( 'qz_get_base_url', 'path' ) . 'views/listing/articles/list.php';
 
+    if ( ! empty( $list_template ) ) {
+      include $list_template;
+    }
+  }
+} else {
+  $empty_template = apply_filters( 'qz_get_base_url', 'path' ) . 'views/listing/articles/empty.php';
+
+  if ( ! empty( $empty_template ) ) {
+    include $empty_template;
   }
 }
 

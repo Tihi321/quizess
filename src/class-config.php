@@ -148,6 +148,15 @@ abstract class Config {
   const REMOVE_ADMIN_TOGGLE = 'quizess_remove_admin_bar';
 
   /**
+   * Toggle to check which theme to use as default
+   *
+   * @var string
+   *
+   * @since 1.0.0
+   */
+  const LIGHT_THEME_TOGGLE = 'quizess_light_theme_default';
+
+  /**
    * Toggle to check if user wants display github of quizess in footer
    *
    * @var string
