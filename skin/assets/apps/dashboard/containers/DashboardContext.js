@@ -1,10 +1,14 @@
-/* global quizessDashboard */
 import React, {PureComponent} from 'react';
 import {
   setMessageCallback,
   IS_SUCCESS_CLASS,
   IS_ERROR_CLASS,
 } from '../../../utils/modifiers';
+import {
+  getDashboardData,
+  patchScoresData,
+  savaOptionsData,
+} from '../../../services/dashboard';
 
 // Set Up The Initial Context
 const DashboardContext = React.createContext();
@@ -135,15 +139,7 @@ class DashboardProvider extends PureComponent {
   // fetch dashboard data from dashoard endpoint.
   fetchData = () => {
 
-    const {
-      root,
-      dashboardApi,
-    } = quizessDashboard;
-
-    fetch(root + dashboardApi)
-      .then((response) => {
-        return response.json();
-      })
+    getDashboardData()
       .then((myJson) => {
         const data = this.getDashboardOptions(myJson);
 
@@ -226,35 +222,13 @@ class DashboardProvider extends PureComponent {
 
     removeScoreData = (playerId, quizId, playerIndex, last = true) => {
 
-      const {
-        root,
-        scoresApi,
-        dashboardNonce,
-        nonce,
-      } = quizessDashboard;
-
-      const bodyData = JSON.stringify({
+      const bodyData = {
         playerId,
         quizId,
         last: (last) ? 1 : 0,
-      });
+      };
 
-      fetch(`${root}${scoresApi}`, {
-        method: 'PATCH',
-        mode: 'same-origin',
-        credentials: 'same-origin',
-        headers: {
-          Accept: 'application/json',
-          'X-WP-Nonce': nonce,
-          'dashboard-nonce': dashboardNonce,
-        },
-        redirect: 'follow',
-        referrer: 'no-referrer',
-        body: bodyData,
-      })
-        .then((res) => {
-          return res.json();
-        })
+      patchScoresData(bodyData)
         .then((response) => {
           const {
             messageElement,
@@ -282,12 +256,6 @@ class DashboardProvider extends PureComponent {
     }
 
     saveOptions = () => {
-      const {
-        root,
-        optionsApi,
-        dashboardNonce,
-        nonce,
-      } = quizessDashboard;
 
       const {
         useCustomStyle,
@@ -302,7 +270,7 @@ class DashboardProvider extends PureComponent {
         instagram,
       } = this.state;
 
-      const bodyData = JSON.stringify({
+      const bodyData = {
         customStyle: useCustomStyle,
         lightTheme,
         removeAdminBar,
@@ -313,25 +281,10 @@ class DashboardProvider extends PureComponent {
         twitter,
         linkedIn,
         instagram,
-      });
+      };
 
 
-      fetch(`${root}${optionsApi}`, {
-        method: 'PATCH',
-        mode: 'same-origin',
-        credentials: 'same-origin',
-        headers: {
-          Accept: 'application/json',
-          'X-WP-Nonce': nonce,
-          'dashboard-nonce': dashboardNonce,
-        },
-        redirect: 'follow',
-        referrer: 'no-referrer',
-        body: bodyData,
-      })
-        .then((res) => {
-          return res.json();
-        })
+      savaOptionsData(bodyData)
         .then((response) => {
           const {
             messageElement,

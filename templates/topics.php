@@ -10,6 +10,19 @@ use Quizess\Core\Config;
 $custom_style = get_option( Config::CUSTOM_STYLE_TOGGLE );
 $theme        = get_option( Config::LIGHT_THEME_TOGGLE ) ? 'light' : 'dark';
 
+$args = [
+  'post_type' => Config::QUIZESS_POST_SLUG,
+  'tax_query' => [
+    [
+      'taxonomy' => Config::QUIZESS_CATEGORY_SLUG,
+      'field' => 'term_id',
+      'terms' => get_queried_object()->term_id,
+    ],
+  ],
+];
+
+$query = new WP_Query( $args );
+
 // use custom header instead theme default.
 if ( $custom_style ) {
 
@@ -38,9 +51,9 @@ if ( $custom_style ) {
   get_header();
 }
 
-if ( have_posts() ) {
-  while ( have_posts() ) {
-    the_post();
+if ( $query->have_posts() ) {
+  while ( $query->have_posts() ) {
+    $query->the_post();
     $list_template = apply_filters( 'qz_get_base_url', 'path' ) . 'views/listing/articles/list.php';
 
     if ( ! empty( $list_template ) ) {
@@ -54,6 +67,8 @@ if ( have_posts() ) {
     include $empty_template;
   }
 }
+
+wp_reset_postdata();
 
 // use custom footer instead theme default.
 if ( $custom_style ) {

@@ -1,5 +1,5 @@
-/* global quizessOptions */
 import React, {PureComponent} from 'react';
+import {getMenuData} from '../../../services/menu';
 
 // Set Up The Initial Context
 const MenuContext = React.createContext();
@@ -38,12 +38,7 @@ class MenuProvider extends PureComponent {
 
   // fetch menu items from endpoint
   fetchData = () => {
-    const {root} = quizessOptions;
-    const {menusApi} = quizessOptions;
-    fetch(root + menusApi)
-      .then((response) => {
-        return response.json();
-      })
+    getMenuData()
       .then((myJson) => {
         const data = this.parseMenuData(myJson);
         this.setState(() => {
