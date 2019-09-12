@@ -1,10 +1,10 @@
-import generalHelper from '../helpers/general-helper';
+import {domReady} from '../utils/dom';
 import App from '../apps/quiz-app';
 import Menu from '../apps/menu-app';
 import Modal from './components/modal';
 import MenuToggle from './components/menu-toggle';
 
-generalHelper.domReady(() => {
+domReady(() => {
   const modal = new Modal();
   const app = new App();
   const menu = new Menu();

@@ -1,6 +1,7 @@
 import {__} from '@wordpress/i18n';
 import {WideButton} from '../../index';
-import generalHelper from '../../../helpers/general-helper';
+import {getPercentage} from '../../../utils/math';
+
 
 const Overview = (props) => {
   const {
@@ -12,7 +13,7 @@ const Overview = (props) => {
     questionStats,
   } = props;
 
-  const percentSuccess = generalHelper.getPercentage(correctAnswers, questionsTotal);
+  const percentSuccess = getPercentage(correctAnswers, questionsTotal);
 
   const statsElements = questionStats.map((item, index) => {
     const {

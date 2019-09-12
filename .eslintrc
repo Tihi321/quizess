@@ -71,6 +71,7 @@
           "exceptRange": true
         }
         ],
+				"import/prefer-default-export": 0,
 				"no-duplicate-imports": 2,
 				"no-mixed-operators": 1,
 				"no-unsafe-negation": 1,

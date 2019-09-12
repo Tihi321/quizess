@@ -1,8 +1,7 @@
-/* global pluginOptions */
-import generalHelper from '../helpers/general-helper';
+import {domReady} from '../utils/dom';
 import Dashboard from '../apps/dashboard';
 
-generalHelper.domReady(function() {
+domReady(function() {
   const dashboard = new Dashboard();
 
   // -------------------------------------------------------------

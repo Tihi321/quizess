@@ -1,6 +1,8 @@
-import devices from '../../helpers/devices';
-import generalHelper from '../../helpers/general-helper';
-import selectors from '../../helpers/selectors';
+import {isIPhone} from '../../utils/devices';
+import {
+  getBody,
+  getBodyActiveClass,
+} from '../../utils/selectors';
 
 export default class Modal {
   constructor(
@@ -14,12 +16,12 @@ export default class Modal {
     this.OPEN_CLASS = OPEN_CLASS;
     this.CLOSED_CLASS = CLOSED_CLASS;
 
-    this.isIphone = devices.iPhone();
+    this.isIphone = isIPhone();
 
     this.$openTriggers = document.querySelectorAll(this.openTriggerElement);
     this.$closeTriggers = document.querySelectorAll(this.closeTriggerElement);
 
-    this.$body = selectors.getBody();
+    this.$body = getBody();
 
   }
 
@@ -41,7 +43,7 @@ export default class Modal {
     classList.remove(this.CLOSED_CLASS);
 
     setTimeout(() => {
-      this.$body.classList.add(generalHelper.getBodyActiveClass(this.isIphone));
+      this.$body.classList.add(getBodyActiveClass(this.isIphone));
     }, 300);
   }
 
@@ -54,7 +56,7 @@ export default class Modal {
 
     classList.add(this.CLOSED_CLASS);
     classList.remove(this.OPEN_CLASS);
-    this.$body.classList.remove(generalHelper.getBodyActiveClass(this.isIphone));
+    this.$body.classList.remove(getBodyActiveClass(this.isIphone));
   }
 
   getId(element) {

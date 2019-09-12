@@ -1,6 +1,10 @@
 /* global quizessDashboard */
 import React, {PureComponent} from 'react';
-import generalHelpers from '../../../helpers/general-helper';
+import {
+  setMessageCallback,
+  IS_SUCCESS_CLASS,
+  IS_ERROR_CLASS,
+} from '../../../utils/modifiers';
 
 // Set Up The Initial Context
 const DashboardContext = React.createContext();
@@ -251,7 +255,7 @@ class DashboardProvider extends PureComponent {
             messageTextElement,
           } = this;
 
-          generalHelpers.setMessageCallback(messageElement, messageTextElement, response, generalHelpers.IS_SUCCESS_CLASS);
+          setMessageCallback(messageElement, messageTextElement, response, IS_SUCCESS_CLASS);
 
           if (last) {
             this.removeLastScore(quizId, playerIndex);
@@ -266,7 +270,7 @@ class DashboardProvider extends PureComponent {
             messageTextElement,
           } = this;
 
-          generalHelpers.setMessageCallback(messageElement, messageTextElement, error, generalHelpers.IS_ERROR_CLASS);
+          setMessageCallback(messageElement, messageTextElement, error, IS_ERROR_CLASS);
         });
 
     }
@@ -326,7 +330,7 @@ class DashboardProvider extends PureComponent {
             messageTextElement,
           } = this;
 
-          generalHelpers.setMessageCallback(messageElement, messageTextElement, response, generalHelpers.IS_SUCCESS_CLASS);
+          setMessageCallback(messageElement, messageTextElement, response, IS_SUCCESS_CLASS);
 
         })
         .catch((error) => {
@@ -335,7 +339,7 @@ class DashboardProvider extends PureComponent {
             messageTextElement,
           } = this;
 
-          generalHelpers.setMessageCallback(messageElement, messageTextElement, error, generalHelpers.IS_ERROR_CLASS);
+          setMessageCallback(messageElement, messageTextElement, error, IS_ERROR_CLASS);
         });
     };
 

@@ -1,4 +1,4 @@
-import generalHelper from '../../helpers/general-helper';
+import {classList} from '../../utils/dom';
 
 export default class MenuToggle {
   constructor(openToggleSelector = '.js-menu-toggle') {
@@ -11,9 +11,9 @@ export default class MenuToggle {
   }
   init() {
     if (this.headerElement.classList.contains(this.OPEN_CLASS)) {
-      generalHelper.classList(this.headerElement).remove(this.OPEN_CLASS).add(this.CLOSED_CLASS);
+      classList(this.headerElement).remove(this.OPEN_CLASS).add(this.CLOSED_CLASS);
     } else {
-      generalHelper.classList(this.headerElement).remove(this.CLOSED_CLASS).add(this.OPEN_CLASS);
+      classList(this.headerElement).remove(this.CLOSED_CLASS).add(this.OPEN_CLASS);
     }
   }
 }

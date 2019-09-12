@@ -6,24 +6,24 @@ msgstr ""
 #: skin/assets/apps/dashboard/sections/Details.js:115
 #: skin/assets/apps/dashboard/sections/Scores.js:31
 #: skin/assets/apps/quiz-app/parts/QuestionHeader.js:35
-#: skin/assets/components/modal/overview/index.js:92
+#: skin/assets/components/modal/overview/index.js:93
 msgid "Question"
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Details.js:116
-#: skin/assets/components/modal/overview/index.js:95
+#: skin/assets/components/modal/overview/index.js:96
 msgid "Answer"
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Details.js:128
 #: skin/assets/apps/dashboard/sections/Scores.js:32
 #: skin/assets/blocks/question-block/components/answer-input/index.js:57
-#: skin/assets/components/modal/overview/index.js:62
+#: skin/assets/components/modal/overview/index.js:63
 msgid "Correct"
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Details.js:128
-#: skin/assets/components/modal/overview/index.js:31
+#: skin/assets/components/modal/overview/index.js:32
 msgid "Incorrect"
 msgstr ""
 
@@ -41,13 +41,13 @@ msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Details.js:57
 #: skin/assets/apps/dashboard/sections/Scores.js:25
-#: skin/assets/components/modal/overview/index.js:65
+#: skin/assets/components/modal/overview/index.js:66
 msgid "Total"
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Details.js:58
 #: skin/assets/apps/dashboard/sections/Scores.js:26
-#: skin/assets/components/modal/overview/index.js:68
+#: skin/assets/components/modal/overview/index.js:69
 msgid "Success"
 msgstr ""
 
@@ -186,7 +186,7 @@ msgstr ""
 
 #: skin/assets/apps/quiz-app/sections/Modal.js:49
 #: skin/assets/apps/quiz-app/sections/index.js:21
-#: skin/assets/components/modal/overview/index.js:39
+#: skin/assets/components/modal/overview/index.js:40
 msgid "Your scores have been submitted, thank you for playing."
 msgstr ""
 
@@ -495,23 +495,23 @@ msgstr ""
 msgid "Your browser does not support the video tag."
 msgstr ""
 
-#: skin/assets/components/modal/overview/index.js:46
+#: skin/assets/components/modal/overview/index.js:47
 msgid "Kudos !"
 msgstr ""
 
-#: skin/assets/components/modal/overview/index.js:52
+#: skin/assets/components/modal/overview/index.js:53
 msgid "Try again"
 msgstr ""
 
-#: skin/assets/components/modal/overview/index.js:57
+#: skin/assets/components/modal/overview/index.js:58
 msgid "Stats"
 msgstr ""
 
-#: skin/assets/components/modal/overview/index.js:87
+#: skin/assets/components/modal/overview/index.js:88
 msgid "Overview"
 msgstr ""
 
-#: skin/assets/components/modal/overview/index.js:98
+#: skin/assets/components/modal/overview/index.js:99
 msgid "Status"
 msgstr ""
 

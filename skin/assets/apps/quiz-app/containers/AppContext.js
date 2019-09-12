@@ -1,9 +1,11 @@
 /* global quizessOptions, userLogged */
 import React, {PureComponent} from 'react';
-import devices from '../../../helpers/devices';
-import generalHelper from '../../../helpers/general-helper';
-import quizHelper from '../../../helpers/quiz-helper';
-import selectors from '../../../helpers/selectors';
+import {isIPhone} from '../../../utils/devices';
+import {parseQuizData} from '../../../utils/quiz-data';
+import {
+  getBody,
+  getBodyActiveClass,
+} from '../../../utils/selectors';
 
 // Set Up The Initial Context
 const AppContext = React.createContext();
@@ -15,8 +17,8 @@ class AppProvider extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.$body = selectors.getBody();
-    this.isIphone = devices.iPhone();
+    this.$body = getBody();
+    this.isIphone = isIPhone();
 
     this.headerElement = props.headerElement;
 
@@ -89,7 +91,7 @@ class AppProvider extends PureComponent {
       this.scrollPosition = window.pageYOffset;
     }
     setTimeout(() => {
-      this.$body.classList.add(generalHelper.getBodyActiveClass(this.isIphone));
+      this.$body.classList.add(getBodyActiveClass(this.isIphone));
     }, 300);
   }
 
@@ -98,7 +100,7 @@ class AppProvider extends PureComponent {
       this.scrollPosition = window.pageYOffset;
     }
     setTimeout(() => {
-      this.$body.classList.remove(generalHelper.getBodyActiveClass(this.isIphone));
+      this.$body.classList.remove(getBodyActiveClass(this.isIphone));
       this.headerElement.classList.remove('is-hidden');
     }, 300);
   }
@@ -203,7 +205,7 @@ class AppProvider extends PureComponent {
         return response.json();
       })
       .then((myJson) => {
-        const data = quizHelper.parseQuizData(myJson);
+        const data = parseQuizData(myJson);
         const {questions} = data;
         this.setState(() => {
           return {

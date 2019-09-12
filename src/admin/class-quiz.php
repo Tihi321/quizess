@@ -73,7 +73,7 @@ class Quiz implements Service {
       'show_ui'             => true,
       'show_in_menu'        => false,
       'can_export'          => true,
-      'has_archive'         => false,
+      'has_archive'         => true,
       'template'            => $template,
       'template_lock'       => array( 'all' ),
       'taxonomies'          => array( Config::QUIZESS_CATEGORY_SLUG ),
@@ -123,8 +123,11 @@ class Quiz implements Service {
   public function quiz_single_template( $template_path ) {
     if ( get_post_type() === Config::QUIZESS_POST_SLUG ) {
       if ( is_single() ) {
-
         $template_path = apply_filters( 'qz_get_base_url', 'path' ) . 'templates/single-quiz.php';
+      }
+
+      if ( is_archive() ) {
+        $template_path = apply_filters( 'qz_get_base_url', 'path' ) . 'templates/archive-quiz.php';
       }
     }
     return $template_path;
