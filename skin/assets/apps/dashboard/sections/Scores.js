@@ -5,7 +5,7 @@ import {
   TableItems,
   DashboardButton,
 } from '../components';
-import generalHelper from '../../../helpers/general-helper';
+import {getPercentage} from '../../../utils/math';
 
 const ScoresConsumer = (props) => {
   const {
@@ -47,7 +47,7 @@ const ScoresConsumer = (props) => {
       id,
     } = values;
 
-    const success = generalHelper.getPercentage(correct, total);
+    const success = getPercentage(correct, total);
 
     const items = [
       name,

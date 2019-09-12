@@ -73,7 +73,7 @@ class Main extends LibMain {
 
       // Routes.
       Route\Get_Dashboard_Options::class,
-      Route\Get_Menus::class => [ Routes\Routes_Security::class ],
+      Route\Get_Menus::class,
       Route\Get_Quizess::class => [ Blocks\Blocks_Utils::class ],
       Route\Patch_General_Options::class => [ Routes\Routes_Security::class ],
       Route\Patch_Scores::class => [ Routes\Routes_Security::class ],

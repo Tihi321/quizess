@@ -60,6 +60,7 @@
     "webpack-manifest-plugin": "^2.0.3"
   },
   "dependencies": {
+    "eightshift-frontend-libs": "^1.0.18",
     "@tinymce/tinymce-react": "^3.2.0",
     "autoprefixer": "^9.0.1",
     "babel-polyfill": "^6.26.0",

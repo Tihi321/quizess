@@ -11,8 +11,12 @@ $user_id_check = ( $user_id !== 0 ) ? $user_id : false;
 
 $player_scores = apply_filters( 'qz_get_quiz_scores', $post->ID, $user_id_check );
 
-$correct = ( ! empty( $player_scores['last'] ) ) ? $player_scores['last']['correct'] ?? 0 : 0;
-$total   = ( ! empty( $player_scores['last'] ) ) ? $player_scores['last']['total'] ?? 0 : 0;
+$correct         = ( ! empty( $player_scores['last'] ) ) ? $player_scores['last']['correct'] ?? 0 : 0;
+$total           = ( ! empty( $player_scores['last'] ) ) ? $player_scores['last']['total'] ?? 0 : 0;
+$theme           = apply_filters( 'qz_get_current_theme', false );
+$bg_color        = apply_filters( 'qz_get_quiz_options', $post->post_content, 'background_color' );
+$bg_image_url    = apply_filters( 'qz_get_quiz_options', $post->post_content, 'background_url' );
+$scores_modal_id = 'modal--scores-' . $post->ID;
 
 ?>
 

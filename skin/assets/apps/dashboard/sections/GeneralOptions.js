@@ -19,6 +19,7 @@ const GeneralOptionsConsumer = (props) => {
     useCustomStyle,
     handleUseCustomChange,
     removeAdminBar,
+    lightTheme,
     handleOnSave,
     logo: {
       id,
@@ -38,6 +39,7 @@ const GeneralOptionsConsumer = (props) => {
     handleLinkedInChange,
     handleInstagramChange,
     handleShowGithubChange,
+    handleLightThemeChange,
     handleURemoveAdminBarChange,
     handleOnRemoveMedia,
   } = props;
@@ -53,6 +55,20 @@ const GeneralOptionsConsumer = (props) => {
         checked={useCustomStyle}
         onChange={handleUseCustomChange}
         helperMessage={__('Replace theme styles on quiz posts.', 'quizess')}
+      />
+    </InputRow>
+  );
+  const lightThemeElement = (
+    <InputRow
+      className="options__row options__row--toggle"
+    >
+      <ToggleSwitch
+        labelClass="options__label"
+        idName="remove-admin-bar"
+        label={__('Default theme', 'quizess')}
+        checked={lightTheme}
+        onChange={handleLightThemeChange}
+        helperMessage={__('Set light instead of dark as default theme to all quizess', 'quizess')}
       />
     </InputRow>
   );
@@ -280,6 +296,7 @@ const GeneralOptionsConsumer = (props) => {
         className="options__general--top"
       >
         {logoElement}
+        {lightThemeElement}
         {removeAdminBarElement}
         {useCustomElement}
         {showGithubElement}
@@ -321,6 +338,7 @@ const GeneralOptions = () => (
           linkedIn,
           instagram,
           removeAdminBar,
+          lightTheme,
         },
         dataStore: {
           handleUseCustomChange,
@@ -332,6 +350,7 @@ const GeneralOptions = () => (
           handleLinkedInChange,
           handleInstagramChange,
           handleShowGithubChange,
+          handleLightThemeChange,
           handleURemoveAdminBarChange,
           handleOnRemoveMedia,
         },
@@ -346,9 +365,11 @@ const GeneralOptions = () => (
           instagram={instagram}
           copyright={copyright}
           useCustomStyle={useCustomStyle}
+          lightTheme={lightTheme}
           removeAdminBar={removeAdminBar}
           showGithub={showGithub}
           handleUseCustomChange={handleUseCustomChange}
+          handleLightThemeChange={handleLightThemeChange}
           handleURemoveAdminBarChange={handleURemoveAdminBarChange}
           handleOnSave={handleOnSave}
           handleOnSelectMedia={handleOnSelectMedia}

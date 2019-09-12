@@ -1,9 +1,15 @@
-/* global quizessOptions, userLogged */
+/* global userLogged */
 import React, {PureComponent} from 'react';
-import devices from '../../../helpers/devices';
-import generalHelper from '../../../helpers/general-helper';
-import quizHelper from '../../../helpers/quiz-helper';
-import selectors from '../../../helpers/selectors';
+import {isIPhone} from '../../../utils/devices';
+import {parseQuizData} from '../../../utils/quiz-data';
+import {
+  getBody,
+  getBodyActiveClass,
+} from '../../../utils/selectors';
+import {
+  saveScoresData,
+  getQuizessData,
+} from '../../../services/quizess';
 
 // Set Up The Initial Context
 const AppContext = React.createContext();
@@ -15,8 +21,8 @@ class AppProvider extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.$body = selectors.getBody();
-    this.isIphone = devices.iPhone();
+    this.$body = getBody();
+    this.isIphone = isIPhone();
 
     this.headerElement = props.headerElement;
 
@@ -89,7 +95,7 @@ class AppProvider extends PureComponent {
       this.scrollPosition = window.pageYOffset;
     }
     setTimeout(() => {
-      this.$body.classList.add(generalHelper.getBodyActiveClass(this.isIphone));
+      this.$body.classList.add(getBodyActiveClass(this.isIphone));
     }, 300);
   }
 
@@ -98,16 +104,13 @@ class AppProvider extends PureComponent {
       this.scrollPosition = window.pageYOffset;
     }
     setTimeout(() => {
-      this.$body.classList.remove(generalHelper.getBodyActiveClass(this.isIphone));
+      this.$body.classList.remove(getBodyActiveClass(this.isIphone));
       this.headerElement.classList.remove('is-hidden');
     }, 300);
   }
 
   // sends quiz record of player score to endpoint, even if quiz is canceled it ads negative answers to skipped questions.
   sendQuizData = (canceled = false) => {
-
-    const {root} = quizessOptions;
-    const {nonce, scoresApi} = userLogged;
     const {questionStats, questionsTotal, correctAnswers} = this.state;
     const {quizId} = this.props;
 
@@ -123,28 +126,14 @@ class AppProvider extends PureComponent {
       }
     }
 
-    const bodyData = JSON.stringify({
+    const bodyData = {
       id: quizId,
       stats: questionStats,
       total: questionsTotal,
       correct: correctAnswers,
-    });
+    };
 
-    fetch(`${root}${scoresApi}`, {
-      method: 'POST',
-      mode: 'same-origin',
-      credentials: 'same-origin',
-      headers: {
-        Accept: 'application/json',
-        'X-WP-Nonce': nonce,
-      },
-      redirect: 'follow',
-      referrer: 'no-referrer',
-      body: bodyData,
-    })
-      .then((res) => {
-        return res.json();
-      })
+    saveScoresData(bodyData)
       .then((response) => {
 
         this.setState(() => {
@@ -171,39 +160,17 @@ class AppProvider extends PureComponent {
 
   // gets data for quiz with param of quiz id.
   fetchApi = () => {
-    const {nonce} = userLogged;
-    const {root} = quizessOptions;
-    const {quizApi} = quizessOptions;
     const {quizId} = this.props;
-
-    const body = {
-      method: 'GET',
-      mode: 'same-origin',
-      credentials: 'same-origin',
-      headers: {
-        Accept: 'application/json',
-      },
-      redirect: 'follow',
-      referrer: 'no-referrer',
-    };
-
-    if (nonce) {
-      body.headers['X-WP-Nonce'] = nonce;
-    }
-
-
 
     this.setState(() => {
       return {
         inProgress: true,
       };
     });
-    fetch(`${root}${quizApi}${quizId}`, body)
-      .then((response) => {
-        return response.json();
-      })
+
+    getQuizessData(quizId)
       .then((myJson) => {
-        const data = quizHelper.parseQuizData(myJson);
+        const data = parseQuizData(myJson);
         const {questions} = data;
         this.setState(() => {
           return {

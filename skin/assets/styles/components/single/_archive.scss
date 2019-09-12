@@ -1,0 +1,52 @@
+$archive-vars: (
+  color: $base-white-color,
+  heading: (
+    mobile: (
+      font-size: 24px,
+      line-height: 1.25,
+    ),
+    tablet: (
+      font-size: 32px,
+    ),
+  ),
+);
+
+.admin-bar {
+  .quizess__archive {
+    margin-top: -$wp-admin-bar-mobile;
+    padding-top: $wp-admin-bar-mobile;
+
+    @include media(tablet up) {
+      margin-top: -$wp-admin-bar-desktop;
+      padding-top: $wp-admin-bar-desktop;
+    }
+  }
+}
+
+.quizess {
+  $this: &;
+
+  &__archive {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    #{$this}__content {
+      flex: 1;
+    }
+  }
+
+  &__topics {
+    @include responsive($archive-vars, 'heading');
+    color: map-get-strict($archive-vars, 'color');
+    text-align: center;
+  }
+
+  &__container {
+    max-width: $base-container-size;
+    padding-left: $base-gutter-size;
+    padding-right: $base-gutter-size;
+    width: 100%;
+    margin: 0 auto;
+  }
+}

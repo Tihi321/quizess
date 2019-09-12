@@ -1,7 +1,7 @@
 import {render} from 'react-dom';
 import MenuStore from './containers/MenuStore';
 
-export default class Menu {
+export class Menu {
   constructor(menuElement = '.js-header-menu') {
 
     this.$menuElement = document.querySelector(menuElement);
@@ -12,11 +12,9 @@ export default class Menu {
   }
 
   init() {
-    if (this.$menuElement) {
-      render(
-        <MenuStore theme={this.theme} />,
-        this.$menuElement
-      );
-    }
+    render(
+      <MenuStore theme={this.theme} />,
+      this.$menuElement
+    );
   }
 }

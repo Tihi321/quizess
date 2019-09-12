@@ -27,7 +27,7 @@ class Quiz implements Service {
     add_action( 'init', [ $this, 'register_categories' ] );
     add_action( 'add_meta_boxes', [ $this, 'quiz_options_metaboxes' ] );
     add_action( 'save_post', [ $this, 'quiz_options_metabox_save' ], 10, 3 );
-    add_filter( 'template_include', [ $this, 'quiz_single_template' ], 10, 4 );
+    add_filter( 'template_include', [ $this, 'quiz_single_template' ] );
   }
 
   /**
@@ -73,7 +73,7 @@ class Quiz implements Service {
       'show_ui'             => true,
       'show_in_menu'        => false,
       'can_export'          => true,
-      'has_archive'         => false,
+      'has_archive'         => true,
       'template'            => $template,
       'template_lock'       => array( 'all' ),
       'taxonomies'          => array( Config::QUIZESS_CATEGORY_SLUG ),
@@ -104,9 +104,10 @@ class Quiz implements Service {
       'labels'              => $labels,
       'hierarchical'        => true,
       'show_ui'             => true,
-      'show_in_menu'        => false,
+      'show_in_menu'        => true,
       'query_vars'          => true,
       'show_in_rest'        => true,
+      'has_archive'         => true,
     );
 
     register_taxonomy( Config::QUIZESS_CATEGORY_SLUG, Config::QUIZESS_POST_SLUG, $args );
@@ -121,11 +122,20 @@ class Quiz implements Service {
    * @since 1.0.0
    */
   public function quiz_single_template( $template_path ) {
+
     if ( get_post_type() === Config::QUIZESS_POST_SLUG ) {
       if ( is_single() ) {
-
-        $template_path = apply_filters( 'qz_get_base_url', 'path' ) . 'templates/single-quiz.php';
+        $template_path = apply_filters( 'qz_get_base_url', 'path' ) . 'templates/single.php';
       }
+
+      if ( is_archive() ) {
+        $template_path = apply_filters( 'qz_get_base_url', 'path' ) . 'templates/archive.php';
+      }
+    }
+
+    // check if taxonomy is present.
+    if ( get_query_var( Config::QUIZESS_CATEGORY_SLUG ) ) {
+      $template_path = apply_filters( 'qz_get_base_url', 'path' ) . 'templates/topics.php';
     }
     return $template_path;
   }

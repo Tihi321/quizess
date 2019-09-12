@@ -1,6 +1,14 @@
-/* global quizessDashboard */
 import React, {PureComponent} from 'react';
-import generalHelpers from '../../../helpers/general-helper';
+import {
+  setMessageCallback,
+  IS_SUCCESS_CLASS,
+  IS_ERROR_CLASS,
+} from '../../../utils/modifiers';
+import {
+  getDashboardData,
+  patchScoresData,
+  savaOptionsData,
+} from '../../../services/dashboard';
 
 // Set Up The Initial Context
 const DashboardContext = React.createContext();
@@ -46,6 +54,7 @@ class DashboardProvider extends PureComponent {
       linkedIn: '',
       instagram: '',
       showDetails: false,
+      lightTheme: false,
       removeAdminBar: false,
       showRemove: false,
       useCustomStyle: false,
@@ -88,6 +97,7 @@ class DashboardProvider extends PureComponent {
       generalOptions: {
         customStyle,
         removeAdminBar,
+        lightTheme,
         showGithub,
         logo,
         copyright,
@@ -103,6 +113,7 @@ class DashboardProvider extends PureComponent {
 
     const customStyleValue = (customStyle === '1') || false;
     const showGithubValue = (showGithub === '1') || false;
+    const lightThemeValue = (lightTheme === '1') || false;
     const removeAdminBarValue = (removeAdminBar === '1') || false;
     const scoresArr = this.parseScoresData(scores);
 
@@ -110,6 +121,7 @@ class DashboardProvider extends PureComponent {
       generalOptions: {
         customStyle: customStyleValue,
         showGithub: showGithubValue,
+        lightTheme: lightThemeValue,
         removeAdminBar: removeAdminBarValue,
         copyright,
         facebook,
@@ -127,15 +139,7 @@ class DashboardProvider extends PureComponent {
   // fetch dashboard data from dashoard endpoint.
   fetchData = () => {
 
-    const {
-      root,
-      dashboardApi,
-    } = quizessDashboard;
-
-    fetch(root + dashboardApi)
-      .then((response) => {
-        return response.json();
-      })
+    getDashboardData()
       .then((myJson) => {
         const data = this.getDashboardOptions(myJson);
 
@@ -143,6 +147,7 @@ class DashboardProvider extends PureComponent {
           generalOptions: {
             customStyle,
             removeAdminBar,
+            lightTheme,
             showGithub,
             copyright,
             facebook,
@@ -162,6 +167,7 @@ class DashboardProvider extends PureComponent {
             scoresData: scores,
             useCustomStyle: customStyle,
             removeAdminBar,
+            lightTheme,
             showGithub,
             copyright,
             facebook,
@@ -216,42 +222,20 @@ class DashboardProvider extends PureComponent {
 
     removeScoreData = (playerId, quizId, playerIndex, last = true) => {
 
-      const {
-        root,
-        scoresApi,
-        dashboardNonce,
-        nonce,
-      } = quizessDashboard;
-
-      const bodyData = JSON.stringify({
+      const bodyData = {
         playerId,
         quizId,
         last: (last) ? 1 : 0,
-      });
+      };
 
-      fetch(`${root}${scoresApi}`, {
-        method: 'PATCH',
-        mode: 'same-origin',
-        credentials: 'same-origin',
-        headers: {
-          Accept: 'application/json',
-          'X-WP-Nonce': nonce,
-          'dashboard-nonce': dashboardNonce,
-        },
-        redirect: 'follow',
-        referrer: 'no-referrer',
-        body: bodyData,
-      })
-        .then((res) => {
-          return res.json();
-        })
+      patchScoresData(bodyData)
         .then((response) => {
           const {
             messageElement,
             messageTextElement,
           } = this;
 
-          generalHelpers.setMessageCallback(messageElement, messageTextElement, response, generalHelpers.IS_SUCCESS_CLASS);
+          setMessageCallback(messageElement, messageTextElement, response, IS_SUCCESS_CLASS);
 
           if (last) {
             this.removeLastScore(quizId, playerIndex);
@@ -266,22 +250,17 @@ class DashboardProvider extends PureComponent {
             messageTextElement,
           } = this;
 
-          generalHelpers.setMessageCallback(messageElement, messageTextElement, error, generalHelpers.IS_ERROR_CLASS);
+          setMessageCallback(messageElement, messageTextElement, error, IS_ERROR_CLASS);
         });
 
     }
 
     saveOptions = () => {
-      const {
-        root,
-        optionsApi,
-        dashboardNonce,
-        nonce,
-      } = quizessDashboard;
 
       const {
         useCustomStyle,
         removeAdminBar,
+        lightTheme,
         showGithub,
         logo,
         copyright,
@@ -291,8 +270,9 @@ class DashboardProvider extends PureComponent {
         instagram,
       } = this.state;
 
-      const bodyData = JSON.stringify({
+      const bodyData = {
         customStyle: useCustomStyle,
+        lightTheme,
         removeAdminBar,
         showGithub,
         copyright,
@@ -301,32 +281,17 @@ class DashboardProvider extends PureComponent {
         twitter,
         linkedIn,
         instagram,
-      });
+      };
 
 
-      fetch(`${root}${optionsApi}`, {
-        method: 'PATCH',
-        mode: 'same-origin',
-        credentials: 'same-origin',
-        headers: {
-          Accept: 'application/json',
-          'X-WP-Nonce': nonce,
-          'dashboard-nonce': dashboardNonce,
-        },
-        redirect: 'follow',
-        referrer: 'no-referrer',
-        body: bodyData,
-      })
-        .then((res) => {
-          return res.json();
-        })
+      savaOptionsData(bodyData)
         .then((response) => {
           const {
             messageElement,
             messageTextElement,
           } = this;
 
-          generalHelpers.setMessageCallback(messageElement, messageTextElement, response, generalHelpers.IS_SUCCESS_CLASS);
+          setMessageCallback(messageElement, messageTextElement, response, IS_SUCCESS_CLASS);
 
         })
         .catch((error) => {
@@ -335,7 +300,7 @@ class DashboardProvider extends PureComponent {
             messageTextElement,
           } = this;
 
-          generalHelpers.setMessageCallback(messageElement, messageTextElement, error, generalHelpers.IS_ERROR_CLASS);
+          setMessageCallback(messageElement, messageTextElement, error, IS_ERROR_CLASS);
         });
     };
 
@@ -437,6 +402,13 @@ class DashboardProvider extends PureComponent {
       this.setState(() => {
         return {
           useCustomStyle: value,
+        };
+      });
+    },
+    handleLightThemeChange: (value) => {
+      this.setState(() => {
+        return {
+          lightTheme: value,
         };
       });
     },
@@ -542,6 +514,7 @@ class DashboardProvider extends PureComponent {
       linkedIn,
       instagram,
       removeAdminBar,
+      lightTheme,
     } = this.state;
 
     return (
@@ -567,6 +540,7 @@ class DashboardProvider extends PureComponent {
             instagram,
             showGithub,
             removeAdminBar,
+            lightTheme,
           },
           dataStore: this.dataStore,
         }}>

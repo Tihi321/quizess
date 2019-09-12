@@ -1,0 +1,55 @@
+$category-vars: (
+  color: $base-white-color,
+  text-size: (
+    mobile: (
+      font-size: 16px,
+      line-height: 1.5,
+    ),
+    tablet: (
+      font-size: 22px,
+    ),
+  ),
+);
+
+.category-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @include media(tablet up) {
+    flex-direction: row;
+  }
+
+  a.category-menu__item {
+    @include responsive-deep($category-vars, 'text-size');
+    color: map-get-strict($category-vars, 'color');
+    font-weight: bold;
+    padding: 5px 10px;
+    margin: 0 10px;
+    cursor: pointer;
+
+    &.is-active {
+      background-color: map-get-strict($category-vars, 'color');
+    }
+  }
+}
+
+.quizess__category {
+  &--dark {
+    background-color: map-get-deep($theme-colors, 'dark', 'secondary-color');
+
+    .category-menu__item.is-active {
+      color: map-get-deep($theme-colors, 'dark', 'secondary-color');
+    }
+  }
+
+  &--light {
+    background-color: map-get-deep($theme-colors, 'light', 'secondary-color');
+
+    .category-menu__item.is-active {
+      color: map-get-deep($theme-colors, 'light', 'secondary-color');
+    }
+  }
+}

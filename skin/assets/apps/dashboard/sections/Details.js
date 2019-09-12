@@ -7,7 +7,7 @@ import {
   Dialog,
   DashboardButton,
 } from '../components';
-import generalHelper from '../../../helpers/general-helper';
+import {getPercentage} from '../../../utils/math';
 
 const DetailsConsumer = (props) => {
   const {
@@ -44,7 +44,7 @@ const DetailsConsumer = (props) => {
   const answers = (lastScoreStats) ? lastScoreStats.answers : [];
   const correct = (lastScoreStats) ? lastScoreStats.correct : unrecorded;
   const total = (lastScoreStats) ? lastScoreStats.total : unrecorded;
-  const success = (lastScoreStats) ? `${generalHelper.getPercentage(correct, total)}%` : unrecorded;
+  const success = (lastScoreStats) ? `${getPercentage(correct, total)}%` : unrecorded;
 
   const lastScoreItems = [
     correct,

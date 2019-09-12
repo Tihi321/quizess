@@ -1,5 +1,5 @@
 .admin-bar {
-  .quizess-custom {
+  .quizess__post {
     margin-top: -$wp-admin-bar-mobile;
     padding-top: $wp-admin-bar-mobile;
 
@@ -10,22 +10,18 @@
   }
 }
 
-.quizess-custom {
-  overflow: hidden;
-
+.quizess {
   &__post {
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
     z-index: map-get($zindex, 'quiz-custom');
-  }
 
-  .quiz {
-    flex: 1;
-
-    &__content {
-      height: 100%;
+    .quiz {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
   }
 }
