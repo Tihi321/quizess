@@ -57,10 +57,8 @@ class Front implements Service {
    */
   public function enqueue_frontend_styles() {
 
-    $current_term = get_queried_object();
-
-    // load only on quizess post types.
-    if ( Config::QUIZESS_POST_SLUG === get_post_type() || $current_term->taxonomy === Config::QUIZESS_CATEGORY_SLUG ) {
+    // // load only on quizess post types.
+    if ( Config::QUIZESS_POST_SLUG === get_post_type() || get_query_var( Config::QUIZESS_CATEGORY_SLUG ) ) {
 
       $main_admin_style = $this->manifest->get_assets_manifest_item( 'applicationQuizess.css' );
       wp_register_style( Config::PLUGIN_NAME . '-frontend-style', $main_admin_style, '', Config::PLUGIN_VERSION, false );
@@ -78,10 +76,8 @@ class Front implements Service {
    */
   public function enqueue_frontend_scripts() {
 
-    $current_term = get_queried_object();
-
     // load only on quizess post types.
-    if ( Config::QUIZESS_POST_SLUG === get_post_type() || $current_term->taxonomy === Config::QUIZESS_CATEGORY_SLUG ) {
+    if ( Config::QUIZESS_POST_SLUG === get_post_type() || get_query_var( Config::QUIZESS_CATEGORY_SLUG ) ) {
 
       wp_enqueue_script( 'wp-element' );
       wp_enqueue_script( 'wp-components' );
@@ -110,10 +106,8 @@ class Front implements Service {
    */
   public function enqueue_localized_frontend_scripts() {
 
-    $current_term = get_queried_object();
-
-    // load only on quizess post types.
-    if ( Config::QUIZESS_POST_SLUG === get_post_type() || $current_term->taxonomy === Config::QUIZESS_CATEGORY_SLUG ) {
+    // // load only on quizess post types.
+    if ( Config::QUIZESS_POST_SLUG === get_post_type() || get_query_var( Config::QUIZESS_CATEGORY_SLUG ) ) {
 
       // Global variables for ajax and translations.
       wp_localize_script(

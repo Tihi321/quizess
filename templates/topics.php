@@ -10,13 +10,23 @@ use Quizess\Core\Config;
 $custom_style = get_option( Config::CUSTOM_STYLE_TOGGLE );
 $theme        = get_option( Config::LIGHT_THEME_TOGGLE ) ? 'light' : 'dark';
 
+// Pagination.
+$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+
+// Get post per page from wp options.
+$posts_per_page = get_option( 'posts_per_page' );
+
 $args = [
   'post_type' => Config::QUIZESS_POST_SLUG,
+  'posts_per_page' => $posts_per_page,
+  'paged' => $paged,
+  'update_post_meta_cache' => false,
+  'update_post_term_cache' => false,
   'tax_query' => [
     [
       'taxonomy' => Config::QUIZESS_CATEGORY_SLUG,
-      'field' => 'term_id',
-      'terms' => get_queried_object()->term_id,
+      'field' => 'slug',
+      'terms' => get_query_var( Config::QUIZESS_CATEGORY_SLUG ),
     ],
   ],
 ];
@@ -59,6 +69,12 @@ if ( $query->have_posts() ) {
     if ( ! empty( $list_template ) ) {
       include $list_template;
     }
+  }
+  $pagination_query    = $query;
+  $paginstion_template = apply_filters( 'qz_get_base_url', 'path' ) . 'views/parts/query-pagination.php';
+
+  if ( ! empty( $paginstion_template ) ) {
+    include $paginstion_template;
   }
 } else {
   $empty_template = apply_filters( 'qz_get_base_url', 'path' ) . 'views/listing/articles/empty.php';

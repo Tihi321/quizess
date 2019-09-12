@@ -1,0 +1,46 @@
+$pagination-vars: (
+  color: $base-white-color,
+  text-size: (
+    mobile: (
+      font-size: 18px,
+      line-height: 1.25,
+    ),
+    tablet: (
+      font-size: 24px,
+    ),
+  ),
+);
+
+.pagination {
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  @include media(mobile up) {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .screen-reader-text {
+    position: fixed;
+    top: 999999999px;
+    left: 999999999px;
+    opacity: 0;
+    height: 1px;
+  }
+
+  .nav-links {
+    @include responsive($pagination-vars, 'text-size');
+    text-align: center;
+  }
+
+  .page-numbers {
+    display: inline-block;
+    padding: 5px 8px;
+
+    &.current {
+      color: map-get-strict($pagination-vars, 'color');
+      background-color: var(--accent-color);
+      font-weight: bold;
+    }
+  }
+}

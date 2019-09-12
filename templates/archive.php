@@ -47,6 +47,11 @@ if ( have_posts() ) {
       include $list_template;
     }
   }
+  the_posts_pagination(
+    array(
+      'screen_reader_text' => esc_html__( 'Pagination', 'ts-blog' ),
+    )
+  );
 } else {
   $empty_template = apply_filters( 'qz_get_base_url', 'path' ) . 'views/listing/articles/empty.php';
 

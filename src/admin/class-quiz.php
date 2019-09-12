@@ -28,7 +28,6 @@ class Quiz implements Service {
     add_action( 'add_meta_boxes', [ $this, 'quiz_options_metaboxes' ] );
     add_action( 'save_post', [ $this, 'quiz_options_metabox_save' ], 10, 3 );
     add_filter( 'template_include', [ $this, 'quiz_single_template' ] );
-    add_filter( 'taxonomy_template', [ $this, 'quiz_topics_template' ] );
   }
 
   /**
@@ -105,7 +104,7 @@ class Quiz implements Service {
       'labels'              => $labels,
       'hierarchical'        => true,
       'show_ui'             => true,
-      'show_in_menu'        => false,
+      'show_in_menu'        => true,
       'query_vars'          => true,
       'show_in_rest'        => true,
       'has_archive'         => true,
@@ -123,6 +122,7 @@ class Quiz implements Service {
    * @since 1.0.0
    */
   public function quiz_single_template( $template_path ) {
+
     if ( get_post_type() === Config::QUIZESS_POST_SLUG ) {
       if ( is_single() ) {
         $template_path = apply_filters( 'qz_get_base_url', 'path' ) . 'templates/single.php';
@@ -132,23 +132,11 @@ class Quiz implements Service {
         $template_path = apply_filters( 'qz_get_base_url', 'path' ) . 'templates/archive.php';
       }
     }
-    return $template_path;
-  }
 
-  /**
-   * Register custom template for quiz post type
-   *
-   * @param string $template_path     Template path variable.
-   * @return string Return new or old template path variable
-   * @since 1.0.0
-   */
-  public function quiz_topics_template( $template_path ) {
-    $current_term = get_queried_object();
-
-    if ( $current_term->taxonomy === Config::QUIZESS_CATEGORY_SLUG ) {
+    // check if taxonomy is present.
+    if ( get_query_var( Config::QUIZESS_CATEGORY_SLUG ) ) {
       $template_path = apply_filters( 'qz_get_base_url', 'path' ) . 'templates/topics.php';
     }
-
     return $template_path;
   }
 
