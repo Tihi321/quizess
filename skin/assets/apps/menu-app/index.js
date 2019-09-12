@@ -12,6 +12,7 @@ export default class Menu {
   }
 
   init() {
+    console.log('menu');
     if (this.$menuElement) {
       render(
         <MenuStore theme={this.theme} />,

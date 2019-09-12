@@ -9,17 +9,15 @@
 namespace Quizess\Routes\Route;
 
 use Eightshift_Libs\Routes\Callable_Route;
-use Quizess\Routes\Route_Security;
 
 use Quizess\Routes\Base_Route;
 
-use Quizess\Routes\Routes_Security;
 use Quizess\Core\Config;
 
 /**
  * Class Get_Menus
  */
-class Get_Menus extends Base_Route implements Callable_Route, Route_Security {
+class Get_Menus extends Base_Route implements Callable_Route {
 
   const ROUTE_NAME = '/menus';
 
@@ -31,26 +29,6 @@ class Get_Menus extends Base_Route implements Callable_Route, Route_Security {
   const OPTIONS_SLUG = self::NAMESPACE_NAME . self::VERSION . self::ROUTE_NAME;
 
   /**
-   * Instance variable of rest security.
-   *
-   * @var object
-   *
-   * @since 1.0.0
-   */
-  protected $routes_security;
-
-  /**
-   * Initialize the class
-   *
-   * @param Routes_Security $routes_security Security callbacs.
-   * @since 1.0.0
-   */
-  public function __construct( Routes_Security $routes_security ) {
-    // Security.
-    $this->routes_security = $routes_security;
-  }
-
-  /**
    * Get callback arguments array
    *
    * @return array Either an array of options for the endpoint,
@@ -59,7 +37,6 @@ class Get_Menus extends Base_Route implements Callable_Route, Route_Security {
     return [
       'methods'             => static::READABLE,
       'callback'            => [ $this, 'route_callback' ],
-      'permission_callback' => [ $this, 'authentification_check' ],
     ];
   }
 
@@ -104,20 +81,6 @@ class Get_Menus extends Base_Route implements Callable_Route, Route_Security {
     ];
 
     return \rest_ensure_response( $output );
-  }
-
-  /**
-   * Security callback
-   *
-   * @api
-   *
-   * @param \WP_REST_Request $request Full data about the request.
-   * @return bool|error               True if user authentication passes, error otherwise.
-   *
-   * @since 1.0.0
-   */
-  public function authentification_check( \WP_REST_Request $request ) {
-    return $this->routes_security->menu_authentification_check( $request );
   }
 
 }
