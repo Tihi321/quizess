@@ -14,8 +14,8 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 // Delete projects.
 $projects = get_posts(
   array(
-      'numberposts' => 1000,
-      'post_type'   => 'Quizess',
+    'numberposts' => 1000,
+    'post_type'   => 'Quizess',
   )
 );
 
