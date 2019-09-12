@@ -1,51 +1,41 @@
 import {domReady} from '../utils/dom';
-import App from '../apps/quiz-app';
-import Menu from '../apps/menu-app';
-import Modal from './components/modal';
-import MenuToggle from './components/menu-toggle';
 
 domReady(() => {
-  const modal = new Modal();
-  const app = new App();
-  const menu = new Menu();
-  const menuToggle = new MenuToggle();
 
   // -------------------------------------------------------------
-  // modal
-  modal.$openTriggers.forEach((element) => {
-    element.addEventListener('click', function() {
-      const id = modal.getId(this);
-
-      modal.open(id);
+  // Modal
+  if (document.querySelector('.js-modal-trigger-open')) {
+    import('./components/modal').then(({Modal}) => {
+      const modal = new Modal();
+      modal.init();
     });
-  });
-  modal.$closeTriggers.forEach((element) => {
-    element.addEventListener('click', function() {
-      const id = modal.getId(this);
-
-      modal.close(id);
-    });
-  });
-
-  // -------------------------------------------------------------
-  // menu
-  menu.init();
-
-  // -------------------------------------------------------------
-  // menu toggle
-  // if menu exists add event listener
-  if (menuToggle.openToggleElement) {
-
-    const toggleMenuCallback = () => {
-      menuToggle.init();
-    };
-
-    menuToggle.openToggleElement.addEventListener('click', toggleMenuCallback);
-    menuToggle.headerOverlayElement.addEventListener('click', toggleMenuCallback);
   }
 
   // -------------------------------------------------------------
-  // app
-  app.init();
+  // Menu
+  if (document.querySelector('.js-header-menu')) {
+    import('../apps/menu-app').then(({Menu}) => {
+      const menu = new Menu();
+      menu.init();
+    });
+  }
+
+  // -------------------------------------------------------------
+  // Menu toggle
+  if (document.querySelector('.js-menu-toggle')) {
+    import('./components/menu-toggle').then(({MenuToggle}) => {
+      const menuToggle = new MenuToggle();
+      menuToggle.init();
+    });
+  }
+
+  // -------------------------------------------------------------
+  // App
+  if (document.querySelector('.js-quiz-start')) {
+    import('../apps/quiz-app').then(({App}) => {
+      const app = new App();
+      app.init();
+    });
+  }
 
 });

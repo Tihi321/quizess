@@ -4,7 +4,7 @@ import {
   getBodyActiveClass,
 } from '../../utils/selectors';
 
-export default class Modal {
+export class Modal {
   constructor(
     openTriggerElement = '.js-modal-trigger-open',
     closeTriggerElement = '.js-modal-trigger-close',
@@ -61,5 +61,22 @@ export default class Modal {
 
   getId(element) {
     return element.dataset.modal;
+  }
+
+  init = () => {
+    this.$openTriggers.forEach((element) => {
+      element.addEventListener('click', (e) => {
+        const id = this.getId(e.currentTarget);
+  
+        this.open(id);
+      });
+    });
+    this.$closeTriggers.forEach((element) => {
+      element.addEventListener('click', (e) => {
+        const id = this.getId(e.currentTarget);
+  
+        this.close(id);
+      });
+    });
   }
 }

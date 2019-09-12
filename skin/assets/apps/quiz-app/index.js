@@ -1,7 +1,7 @@
 import {render} from 'react-dom';
 import AppStore from './containers/AppStore';
 
-export default class App {
+export class App {
   constructor(appElement = '.js-quiz-start') {
     this.quizId = -1;
     this.userSubmit = false;
@@ -16,22 +16,18 @@ export default class App {
      * theme - quiz theme for button colors
      * headerElemeent - element of sidemenu, we change z index of sidemenu to fix overlap
      */
-    if (this.$appElement) {
-      this.quizId = this.$appElement.dataset.quizId;
-      this.userSubmit = this.$appElement.dataset.userSubmit;
-      this.theme = this.$appElement.dataset.theme;
-      this.headerElement = document.querySelector('.js-header');
-    }
+    this.quizId = this.$appElement.dataset.quizId;
+    this.userSubmit = this.$appElement.dataset.userSubmit;
+    this.theme = this.$appElement.dataset.theme;
+    this.headerElement = document.querySelector('.js-header');
 
   }
 
   init() {
-    if (this.$appElement) {
-      render(
-        <AppStore theme={this.theme} quizId={this.quizId} userSubmit={this.userSubmit} headerElement={this.headerElement} />,
-        this.$appElement
-      );
-    }
+    render(
+      <AppStore theme={this.theme} quizId={this.quizId} userSubmit={this.userSubmit} headerElement={this.headerElement} />,
+      this.$appElement
+    );
   }
 
 
