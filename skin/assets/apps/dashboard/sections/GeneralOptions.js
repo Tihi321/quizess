@@ -1,7 +1,7 @@
 import {__} from '@wordpress/i18n';
-import {Fragment} from 'react';
+import {Fragment, useContext} from 'react';
 import {Spinner} from '@wordpress/components';
-import {DashboardConsumer} from '../containers/DashboardContext';
+import {DashboardContext} from '../containers/DashboardContext';
 import {
   ToggleSwitch,
   InputRow,
@@ -13,36 +13,41 @@ import {
   TextElement,
 } from '../../../elements';
 
-const GeneralOptionsConsumer = (props) => {
+const GeneralOptions = () => {
+
   const {
-    dataLoaded,
-    useCustomStyle,
-    handleUseCustomChange,
-    removeAdminBar,
-    lightTheme,
-    handleOnSave,
-    logo: {
-      id,
-      title,
-      url,
+    values: {
+      dataLoaded,
+      useCustomStyle,
+      showGithub,
+      logo: {
+        id,
+        title,
+        url,
+      },
+      copyright,
+      facebook,
+      twitter,
+      linkedIn,
+      instagram,
+      removeAdminBar,
+      lightTheme,
     },
-    handleOnSelectMedia,
-    copyright,
-    facebook,
-    twitter,
-    linkedIn,
-    instagram,
-    showGithub,
-    handleCopyrightChange,
-    handleFacebookChange,
-    handleTwitterChange,
-    handleLinkedInChange,
-    handleInstagramChange,
-    handleShowGithubChange,
-    handleLightThemeChange,
-    handleURemoveAdminBarChange,
-    handleOnRemoveMedia,
-  } = props;
+    dataStore: {
+      handleUseCustomChange,
+      handleOnSave,
+      handleOnSelectMedia,
+      handleCopyrightChange,
+      handleFacebookChange,
+      handleTwitterChange,
+      handleLinkedInChange,
+      handleInstagramChange,
+      handleShowGithubChange,
+      handleLightThemeChange,
+      handleURemoveAdminBarChange,
+      handleOnRemoveMedia,
+    },
+  } = useContext(DashboardContext);
 
   const useCustomElement = (
     <InputRow
@@ -322,68 +327,5 @@ const GeneralOptionsConsumer = (props) => {
     </div>
   );
 };
-
-const GeneralOptions = () => (
-  <DashboardConsumer>
-    {(value) => {
-      const {
-        values: {
-          dataLoaded,
-          useCustomStyle,
-          showGithub,
-          logo,
-          copyright,
-          facebook,
-          twitter,
-          linkedIn,
-          instagram,
-          removeAdminBar,
-          lightTheme,
-        },
-        dataStore: {
-          handleUseCustomChange,
-          handleOnSave,
-          handleOnSelectMedia,
-          handleCopyrightChange,
-          handleFacebookChange,
-          handleTwitterChange,
-          handleLinkedInChange,
-          handleInstagramChange,
-          handleShowGithubChange,
-          handleLightThemeChange,
-          handleURemoveAdminBarChange,
-          handleOnRemoveMedia,
-        },
-      } = value;
-      return (
-        <GeneralOptionsConsumer
-          dataLoaded={dataLoaded}
-          logo={logo}
-          facebook={facebook}
-          twitter={twitter}
-          linkedIn={linkedIn}
-          instagram={instagram}
-          copyright={copyright}
-          useCustomStyle={useCustomStyle}
-          lightTheme={lightTheme}
-          removeAdminBar={removeAdminBar}
-          showGithub={showGithub}
-          handleUseCustomChange={handleUseCustomChange}
-          handleLightThemeChange={handleLightThemeChange}
-          handleURemoveAdminBarChange={handleURemoveAdminBarChange}
-          handleOnSave={handleOnSave}
-          handleOnSelectMedia={handleOnSelectMedia}
-          handleCopyrightChange={handleCopyrightChange}
-          handleFacebookChange={handleFacebookChange}
-          handleTwitterChange={handleTwitterChange}
-          handleLinkedInChange={handleLinkedInChange}
-          handleInstagramChange={handleInstagramChange}
-          handleShowGithubChange={handleShowGithubChange}
-          handleOnRemoveMedia={handleOnRemoveMedia}
-        />
-      );
-    }}
-  </DashboardConsumer>
-);
 
 export default GeneralOptions;

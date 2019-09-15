@@ -1,15 +1,19 @@
-import {Fragment} from 'react';
+import {Fragment, useContext} from 'react';
 import classnames from 'classnames';
 import {__} from '@wordpress/i18n';
-import {DashboardConsumer} from '../containers/DashboardContext';
+import {DashboardContext} from '../containers/DashboardContext';
 import GeneralOptions from './GeneralOptions';
 import QuizOptions from './QuizOptions';
 
-const MainConsumer = (props) => {
+const Dashboard = () => {
   const {
-    optionsPage,
-    handleOptionsMenu,
-  } = props;
+    values: {
+      optionsPage,
+    },
+    dataStore: {
+      handleOptionsMenu,
+    },
+  } = useContext(DashboardContext);
 
   const {id: menuId, title: optionsTitle} = optionsPage;
 
@@ -72,26 +76,5 @@ const MainConsumer = (props) => {
     </Fragment>
   );
 };
-
-const Dashboard = () => (
-  <DashboardConsumer>
-    {(value) => {
-      const {
-        values: {
-          optionsPage,
-        },
-        dataStore: {
-          handleOptionsMenu,
-        },
-      } = value;
-      return (
-        <MainConsumer
-          optionsPage={optionsPage}
-          handleOptionsMenu={handleOptionsMenu}
-        />
-      );
-    }}
-  </DashboardConsumer>
-);
 
 export default Dashboard;

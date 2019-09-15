@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import {
   setMessageCallback,
   IS_SUCCESS_CLASS,
@@ -13,61 +13,57 @@ import {
 // Set Up The Initial Context
 const DashboardContext = React.createContext();
 
-// Create an exportable consumer that can be injected into components
-export const DashboardConsumer = DashboardContext.Consumer;
+function getDomElement(selector) {
+  return document.querySelector(selector);
+}
 
-class DashboardProvider extends PureComponent {
-  constructor(props) {
-    super(props);
+const DashboardProvider = (props) => {
 
-    // Elements for the submit message. Outside of react, out in the light DOM.
-    this.messageElement = document.querySelector(props.messageElementSelector);
-    this.messageTextElement = document.querySelector(props.messageTextSelector);
+  const [dataLoaded, setDataLoaded] = useState(false);
+  const [scoresData, setScoresData] = useState([]);
+  const [optionsPage, setOptionsPage] = useState({
+    id: 0,
+    title: 'Settings',
+  });
+  const [selectedQuiz, setSelectedQuiz] = useState({
+    value: 0,
+    label: '',
+    data: [],
+    index: -1,
+  });
+  const [selectedPlayerDetails, setSelectedPlayerDetails] = useState({
+    playerId: -1,
+    playerIndex: -1,
+    quizId: -1,
+    lastScoreStats: {},
+  });
+  const [logo, setLogo] = useState({
+    id: -1,
+    url: '',
+    title: '',
+  });
+  const [copyright, setCopyright] = useState('');
+  const [facebook, setFacebook] = useState('');
+  const [twitter, setTwitter] = useState('');
+  const [linkedIn, setLinkedIn] = useState('');
+  const [instagram, setInstagram] = useState('');
+  const [showDetails, setShowDetails] = useState(false);
+  const [showRemove, setShowRemove] = useState(false);
+  const [lightTheme, setLightTheme] = useState(false);
+  const [removeAdminBar, setRemoveAdminBar] = useState(false);
+  const [useCustomStyle, setUseCustomStyle] = useState(false);
+  const [showGithub, setShowGithub] = useState(false);
+  const [statsPage, setStatsPage] = useState(0);
+  const [answerStatsPage, setAnswerStatsPage] = useState(0);
+  const [scorePage, setScorePage] = useState(0);
 
-    this.state = {
-      dataLoaded: false,
-      scoresData: [],
-      optionsPage: {
-        id: 0,
-        title: 'Settings',
-      },
-      selectedQuiz: {
-        value: 0,
-        label: '',
-        data: [],
-        index: -1,
-      },
-      selectedPlayerDetails: {
-        playerId: -1,
-        playerIndex: -1,
-        quizId: -1,
-        lastScoreStats: {},
-      },
-      logo: {
-        id: -1,
-        url: '',
-        title: '',
-      },
-      copyright: '',
-      facebook: '',
-      twitter: '',
-      linkedIn: '',
-      instagram: '',
-      showDetails: false,
-      lightTheme: false,
-      removeAdminBar: false,
-      showRemove: false,
-      useCustomStyle: false,
-      showGithub: false,
-      statsPage: 0,
-      answerStatsPage: 0,
-      scorePage: 0,
-    };
+  // Elements for the submit message. Outside of react, out in the light DOM.
+  const messageElement = useMemo(() => getDomElement(props.messageElementSelector), [props.messageElementSelector]);
 
-  }
+  const messageTextElement = useMemo(() => getDomElement(props.messageTextSelector), [props.messageElementSelector]);
 
   // Parse scores data for quizess page in dashboard. Returns array appended with players id.
-  parseScoresData = (data) => {
+  const parseScoresData = (data) => {
 
     const quizArray = Object.keys(data).map((key, index) => {
 
@@ -88,34 +84,26 @@ class DashboardProvider extends PureComponent {
     });
 
     return quizArray;
-  }
+  };
 
   // Parse dashboard data.
-  getDashboardOptions = (data) => {
+  const getDashboardOptions = (data) => {
 
     const {
       generalOptions: {
         customStyle,
-        removeAdminBar,
-        lightTheme,
-        showGithub,
-        logo,
-        copyright,
-        facebook,
-        twitter,
-        linkedIn,
-        instagram,
       },
+      generalOptions,
       quizOptions: {
         scores,
       },
     } = data;
 
     const customStyleValue = (customStyle === '1') || false;
-    const showGithubValue = (showGithub === '1') || false;
-    const lightThemeValue = (lightTheme === '1') || false;
-    const removeAdminBarValue = (removeAdminBar === '1') || false;
-    const scoresArr = this.parseScoresData(scores);
+    const showGithubValue = (generalOptions.showGithub === '1') || false;
+    const lightThemeValue = (generalOptions.lightTheme === '1') || false;
+    const removeAdminBarValue = (generalOptions.removeAdminBar === '1') || false;
+    const scoresArr = parseScoresData(scores);
 
     return {
       generalOptions: {
@@ -123,431 +111,290 @@ class DashboardProvider extends PureComponent {
         showGithub: showGithubValue,
         lightTheme: lightThemeValue,
         removeAdminBar: removeAdminBarValue,
-        copyright,
-        facebook,
-        twitter,
-        linkedIn,
-        instagram,
-        logo: JSON.parse(logo),
+        copyright: generalOptions.copyright,
+        facebook: generalOptions.facebook,
+        twitter: generalOptions.twitter,
+        linkedIn: generalOptions.linkedIn,
+        instagram: generalOptions.instagram,
+        logo: JSON.parse(generalOptions.logo),
       },
       quizOptions: {
         scores: scoresArr,
       },
     };
-  }
+  };
 
   // fetch dashboard data from dashoard endpoint.
-  fetchData = () => {
+  const fetchData = () => {
 
     getDashboardData()
       .then((myJson) => {
-        const data = this.getDashboardOptions(myJson);
+        const data = getDashboardOptions(myJson);
 
         const {
           generalOptions: {
             customStyle,
-            removeAdminBar,
-            lightTheme,
-            showGithub,
-            copyright,
-            facebook,
-            twitter,
-            linkedIn,
-            instagram,
-            logo,
           },
+          generalOptions,
           quizOptions: {
             scores,
           },
         } = data;
 
-        this.setState(() => {
-          return {
-            dataLoaded: true,
-            scoresData: scores,
-            useCustomStyle: customStyle,
-            removeAdminBar,
-            lightTheme,
-            showGithub,
-            copyright,
-            facebook,
-            twitter,
-            linkedIn,
-            instagram,
-            logo,
-          };
-        });
+        setScoresData(() => scores);
+        setUseCustomStyle(() => customStyle);
+        setRemoveAdminBar(() => generalOptions.removeAdminBar);
+        setLightTheme(() => generalOptions.lightTheme);
+        setCopyright(() => generalOptions.copyright);
+        setShowGithub(() => generalOptions.showGithub);
+        setFacebook(() => generalOptions.facebook);
+        setTwitter(() => generalOptions.twitter);
+        setLinkedIn(() => generalOptions.linkedIn);
+        setInstagram(() => generalOptions.instagram);
+        setLogo(() => generalOptions.logo);
+        setDataLoaded(() => true);
       });
-  }
+  };
 
-    removeQuizScore = (quizId, playerIndex) => {
-      const {scoresData} = this.state;
+  const removeQuizScore = (quizId, playerIndex) => {
 
-      const newScoresData = scoresData.map((quiz) => {
-        if (quiz.value === quizId) {
-          quiz.stats.splice(playerIndex, 1);
-        }
-        return quiz;
-      });
+    const newScoresData = scoresData.map((quiz) => {
+      if (quiz.value === quizId) {
+        quiz.stats.splice(playerIndex, 1);
+      }
+      return quiz;
+    });
 
-      this.setState(() => {
-        return {
-          scoresData: newScoresData,
-          showRemove: false,
-          showDetails: false,
-        };
-      });
+    setScoresData(() => newScoresData);
+    setShowRemove(() => false);
+    setShowDetails(() => false);
 
-    }
-
-    removeLastScore = (quizId, playerIndex) => {
-      const {scoresData} = this.state;
-
-      const newScoresData = scoresData.map((quiz) => {
-        if (quiz.value === quizId) {
-          quiz.stats[playerIndex].last = null;
-        }
-        return quiz;
-      });
-
-      this.setState(() => {
-        return {
-          scoresData: newScoresData,
-          showRemove: false,
-          showDetails: false,
-        };
-      });
-
-    }
-
-    removeScoreData = (playerId, quizId, playerIndex, last = true) => {
-
-      const bodyData = {
-        playerId,
-        quizId,
-        last: (last) ? 1 : 0,
-      };
-
-      patchScoresData(bodyData)
-        .then((response) => {
-          const {
-            messageElement,
-            messageTextElement,
-          } = this;
-
-          setMessageCallback(messageElement, messageTextElement, response, IS_SUCCESS_CLASS);
-
-          if (last) {
-            this.removeLastScore(quizId, playerIndex);
-          } else {
-            this.removeQuizScore(quizId, playerIndex);
-          }
-
-        })
-        .catch((error) => {
-          const {
-            messageElement,
-            messageTextElement,
-          } = this;
-
-          setMessageCallback(messageElement, messageTextElement, error, IS_ERROR_CLASS);
-        });
-
-    }
-
-    saveOptions = () => {
-
-      const {
-        useCustomStyle,
-        removeAdminBar,
-        lightTheme,
-        showGithub,
-        logo,
-        copyright,
-        facebook,
-        twitter,
-        linkedIn,
-        instagram,
-      } = this.state;
-
-      const bodyData = {
-        customStyle: useCustomStyle,
-        lightTheme,
-        removeAdminBar,
-        showGithub,
-        copyright,
-        logo,
-        facebook,
-        twitter,
-        linkedIn,
-        instagram,
-      };
-
-
-      savaOptionsData(bodyData)
-        .then((response) => {
-          const {
-            messageElement,
-            messageTextElement,
-          } = this;
-
-          setMessageCallback(messageElement, messageTextElement, response, IS_SUCCESS_CLASS);
-
-        })
-        .catch((error) => {
-          const {
-            messageElement,
-            messageTextElement,
-          } = this;
-
-          setMessageCallback(messageElement, messageTextElement, error, IS_ERROR_CLASS);
-        });
-    };
-
-
-  // data Store
-  dataStore = {
-    handleOptionsMenu: (index, title) => {
-      this.setState(() => {
-        return {
-          optionsPage: {
-            id: index,
-            title,
-          },
-          showDetails: false,
-          showRemove: false,
-        };
-      });
-    },
-    handleScoresSelect: (quizScore) => {
-      this.setState(() => {
-        return {
-          selectedQuiz: {
-            value: quizScore.value,
-            label: quizScore.label,
-            data: quizScore.stats,
-            index: quizScore.quizIndex,
-          },
-        };
-      });
-    },
-    handleOnRemove: (playerId, quizId, index) => {
-      this.removeScoreData(playerId, quizId, index, false);
-    },
-    handleOnRemoveLastScore: (playerId, quizId, index) => {
-      this.removeScoreData(playerId, quizId, index, true);
-    },
-    handleOnShowRemove: () => {
-      this.setState(() => {
-        return {
-          showRemove: true,
-        };
-      });
-    },
-    handleOnCancelRemove: () => {
-      this.setState(() => {
-        return {
-          showRemove: false,
-        };
-      });
-    },
-    handleOnStatsPageChange: (pageNumber) => {
-      this.setState(() => {
-        return {
-          statsPage: pageNumber,
-        };
-      });
-    },
-    handleOnAnswerPageChange: (pageNumber) => {
-      this.setState(() => {
-        return {
-          answerStatsPage: pageNumber,
-        };
-      });
-    },
-    handleOnScorePageChange: (pageNumber) => {
-      this.setState(() => {
-        return {
-          scorePage: pageNumber,
-        };
-      });
-    },
-    handleOnShowDetails: (playerId, playerIndex, quizId, lastScore) => {
-      this.setState(() => {
-        return {
-          selectedPlayerDetails: {
-            playerId,
-            playerIndex,
-            quizId,
-            lastScoreStats: lastScore,
-          },
-          showDetails: true,
-        };
-      });
-    },
-    handleOnCloseDetails: () => {
-      this.setState(() => {
-        return {
-          selectedPlayerDetails: {
-            playerId: -1,
-            playerIndex: -1,
-            quizId: -1,
-            lastScoreStats: {},
-          },
-          showDetails: false,
-        };
-      });
-    },
-    handleUseCustomChange: (value) => {
-      this.setState(() => {
-        return {
-          useCustomStyle: value,
-        };
-      });
-    },
-    handleLightThemeChange: (value) => {
-      this.setState(() => {
-        return {
-          lightTheme: value,
-        };
-      });
-    },
-    handleURemoveAdminBarChange: (value) => {
-      this.setState(() => {
-        return {
-          removeAdminBar: value,
-        };
-      });
-    },
-    handleShowGithubChange: (value) => {
-      this.setState(() => {
-        return {
-          showGithub: value,
-        };
-      });
-    },
-    handleOnSave: () => {
-      this.saveOptions();
-    },
-    handleOnSelectMedia: (image) => {
-      this.setState(() => {
-        return {
-          logo: {
-            id: image.id,
-            url: image.url,
-            title: image.title,
-          },
-        };
-      });
-    },
-    handleOnRemoveMedia: () => {
-      this.setState(() => {
-        return {
-          logo: {
-            id: -1,
-            url: '',
-            title: '',
-          },
-        };
-      });
-    },
-    handleCopyrightChange: (text) => {
-      this.setState(() => {
-        return {
-          copyright: text,
-        };
-      });
-    },
-    handleFacebookChange: (text) => {
-      this.setState(() => {
-        return {
-          facebook: text,
-        };
-      });
-    },
-    handleTwitterChange: (text) => {
-      this.setState(() => {
-        return {
-          twitter: text,
-        };
-      });
-    },
-    handleLinkedInChange: (text) => {
-      this.setState(() => {
-        return {
-          linkedIn: text,
-        };
-      });
-    },
-    handleInstagramChange: (text) => {
-      this.setState(() => {
-        return {
-          instagram: text,
-        };
-      });
-    },
 
   };
 
-  componentDidMount() {
-    this.fetchData();
-  }
+  const removeLastScore = (quizId, playerIndex) => {
 
-  render() {
-    const {
-      scoresData,
-      dataLoaded,
-      selectedQuiz,
-      statsPage,
-      answerStatsPage,
-      scorePage,
-      showDetails,
-      showRemove,
-      selectedPlayerDetails,
-      optionsPage,
-      useCustomStyle,
+    const newScoresData = scoresData.map((quiz) => {
+      if (quiz.value === quizId) {
+        quiz.stats[playerIndex].last = null;
+      }
+      return quiz;
+    });
+
+    setScoresData(() => newScoresData);
+    setShowRemove(() => false);
+    setShowDetails(() => false);
+
+  };
+
+  const removeScoreData = (playerId, quizId, playerIndex, last = true) => {
+
+    const bodyData = {
+      playerId,
+      quizId,
+      last: (last) ? 1 : 0,
+    };
+
+    patchScoresData(bodyData)
+      .then((response) => {
+
+        setMessageCallback(messageElement, messageTextElement, response, IS_SUCCESS_CLASS);
+
+        if (last) {
+          removeLastScore(quizId, playerIndex);
+        } else {
+          removeQuizScore(quizId, playerIndex);
+        }
+
+      })
+      .catch((error) => {
+
+        setMessageCallback(messageElement, messageTextElement, error, IS_ERROR_CLASS);
+      });
+
+  };
+
+  const saveOptions = () => {
+
+    const bodyData = {
+      customStyle: useCustomStyle,
+      lightTheme,
+      removeAdminBar,
       showGithub,
-      logo,
       copyright,
+      logo,
       facebook,
       twitter,
       linkedIn,
       instagram,
-      removeAdminBar,
-      lightTheme,
-    } = this.state;
+    };
 
-    return (
-      <DashboardContext.Provider
-        value={{
-          values: {
-            scoresData,
-            dataLoaded,
-            selectedQuiz,
-            statsPage,
-            answerStatsPage,
-            scorePage,
-            showDetails,
-            showRemove,
-            selectedPlayerDetails,
-            optionsPage,
-            useCustomStyle,
-            logo,
-            copyright,
-            facebook,
-            twitter,
-            linkedIn,
-            instagram,
-            showGithub,
-            removeAdminBar,
-            lightTheme,
-          },
-          dataStore: this.dataStore,
-        }}>
-        {this.props.children}
-      </DashboardContext.Provider>
-    );
-  }
-}
 
-export default DashboardProvider;
+    savaOptionsData(bodyData)
+      .then((response) => {
+
+        setMessageCallback(messageElement, messageTextElement, response, IS_SUCCESS_CLASS);
+
+      })
+      .catch((error) => {
+
+        setMessageCallback(messageElement, messageTextElement, error, IS_ERROR_CLASS);
+      });
+  };
+
+
+  // data Store
+  const dataStore = {
+    handleOptionsMenu: (index, title) => {
+
+      setOptionsPage(() => {
+        return {
+          id: index,
+          title,
+        };
+      });
+      setShowRemove(() => false);
+      setShowDetails(() => false);
+
+    },
+    handleScoresSelect: (quizScore) => {
+      setSelectedQuiz(() => {
+        return {
+          value: quizScore.value,
+          label: quizScore.label,
+          data: quizScore.stats,
+          index: quizScore.quizIndex,
+        };
+      });
+    },
+    handleOnRemove: (playerId, quizId, index) => {
+      removeScoreData(playerId, quizId, index, false);
+    },
+    handleOnRemoveLastScore: (playerId, quizId, index) => {
+      removeScoreData(playerId, quizId, index, true);
+    },
+    handleOnShowRemove: () => {
+      setShowRemove(() => true);
+    },
+    handleOnCancelRemove: () => {
+      setShowRemove(() => false);
+    },
+    handleOnStatsPageChange: (pageNumber) => {
+      setStatsPage(() => pageNumber);
+    },
+    handleOnAnswerPageChange: (pageNumber) => {
+      setAnswerStatsPage(() => pageNumber);
+    },
+    handleOnScorePageChange: (pageNumber) => {
+      setScorePage(() => pageNumber);
+    },
+    handleOnShowDetails: (playerId, playerIndex, quizId, lastScore) => {
+      setSelectedPlayerDetails(() => {
+        return {
+          playerId,
+          playerIndex,
+          quizId,
+          lastScoreStats: lastScore,
+        };
+      });
+      setShowDetails(() => true);
+    },
+    handleOnCloseDetails: () => {
+      setSelectedPlayerDetails(() => {
+        return {
+          playerId: -1,
+          playerIndex: -1,
+          quizId: -1,
+          lastScoreStats: {},
+        };
+      });
+      setShowDetails(() => false);
+    },
+    handleUseCustomChange: (value) => {
+      setUseCustomStyle(() => value);
+    },
+    handleLightThemeChange: (value) => {
+      setLightTheme(() => value);
+    },
+    handleURemoveAdminBarChange: (value) => {
+      setRemoveAdminBar(() => value);
+    },
+    handleShowGithubChange: (value) => {
+      setShowGithub(() => value);
+    },
+    handleOnSave: () => {
+      saveOptions();
+    },
+    handleOnSelectMedia: (image) => {
+      setLogo(() => {
+        return {
+          id: image.id,
+          url: image.url,
+          title: image.title,
+        };
+      });
+    },
+    handleOnRemoveMedia: () => {
+      setLogo(() => {
+        return {
+          id: -1,
+          url: '',
+          title: '',
+        };
+      });
+    },
+    handleCopyrightChange: (text) => {
+      setCopyright(() => text);
+    },
+    handleFacebookChange: (text) => {
+      setFacebook(() => text);
+    },
+    handleTwitterChange: (text) => {
+      setTwitter(() => text);
+    },
+    handleLinkedInChange: (text) => {
+      setLinkedIn(() => text);
+    },
+    handleInstagramChange: (text) => {
+      setInstagram(() => text);
+    },
+
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return (
+    <DashboardContext.Provider
+      value={{
+        values: {
+          scoresData,
+          dataLoaded,
+          selectedQuiz,
+          statsPage,
+          answerStatsPage,
+          scorePage,
+          showDetails,
+          showRemove,
+          selectedPlayerDetails,
+          optionsPage,
+          useCustomStyle,
+          logo,
+          copyright,
+          facebook,
+          twitter,
+          linkedIn,
+          instagram,
+          showGithub,
+          removeAdminBar,
+          lightTheme,
+        },
+        dataStore,
+      }}>
+      {props.children}
+    </DashboardContext.Provider>
+  );
+};
+
+export {DashboardContext, DashboardProvider};
