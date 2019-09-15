@@ -4,13 +4,13 @@
 
   &--light {
     #{$this}__path {
-      fill: #000000;
+      color: map-deep-get($theme-colors, light, 'color');
     }
   }
 
   &--dark {
     #{$this}__path {
-      fill: #FFFFFF;
+      color: map-deep-get($theme-colors, dark, 'color');
     }
   }
 
