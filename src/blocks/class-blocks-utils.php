@@ -285,7 +285,7 @@ final class Blocks_Utils implements Service {
   private function get_style_data( $block_data ) : array {
 
     return array(
-      'direction'  => ( $block_data['rows'] ) ? json_decode( $block_data['rows'] )->value : 'row',
+      'direction'  => ( isset( $block_data['rows'] ) ) ? json_decode( $block_data['rows'] )->value : 'row',
       'theme'  => ( isset( $block_data['theme'] ) ) ? json_decode( $block_data['theme'] )->value : 'light',
     );
   }
