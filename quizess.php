@@ -9,7 +9,7 @@
  * Plugin Name:       Quizess
  * Plugin URI:
  * Description:       Quizess plugin provides all functionality for making quizes.
- * Version:           2.0.1
+ * Version:           2.0.2
  * Author:            Tihomir Selak <tknox.dr@gmail.com>
  * Author URI:        https://tihomir-selak.from.hr/
  * License:           GPL-2.0+
