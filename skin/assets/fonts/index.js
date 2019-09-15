@@ -1,14 +1,14 @@
 // Graphik Bold
-import './Graphik-Bold-Web.woff';
-import './Graphik-Bold-Web.woff2';
+import './graphik-bold-web.woff';
+import './graphik-bold-web.woff2';
 
 // Graphik Semibold
-import './Graphik-Regular-Web.woff';
-import './Graphik-Regular-Web.woff2';
+import './graphik-regular-web.woff';
+import './graphik-regular-web.woff2';
 
 // Graphik Normal
-import './Graphik-Semibold-Web.woff';
-import './Graphik-Semibold-Web.woff2';
+import './graphik-semibold-web.woff';
+import './graphik-semibold-web.woff2';
 
 // Quizess
 import './quizess.ttf';
