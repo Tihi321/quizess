@@ -60,13 +60,13 @@
     "webpack-manifest-plugin": "^2.0.3"
   },
   "dependencies": {
-    "eightshift-frontend-libs": "^1.0.18",
     "@tinymce/tinymce-react": "^3.2.0",
     "autoprefixer": "^9.0.1",
     "babel-polyfill": "^6.26.0",
     "classnames": "^2.2.6",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^4.0.4",
+    "eightshift-frontend-libs": "^1.0.18",
     "emotion": "^9.2.6",
     "filesize": "^3.5.11",
     "himalaya": "^1.1.0",
@@ -80,6 +80,7 @@
     "react-responsive-embed": "^2.1.0",
     "react-select": "^2.1.2",
     "react-transition-group": "^2.6.0",
+    "react-use": "^12.2.0",
     "tinymce": "^5.0.8",
     "wp-pot": "^1.7.0"
   },

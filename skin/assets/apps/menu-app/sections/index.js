@@ -1,15 +1,16 @@
-import {Fragment} from 'react';
-import {__} from '@wordpress/i18n';
-import {MenuConsumer} from '../containers/MenuContext';
+import {Fragment, useContext} from 'react';
+import {MenuContext} from '../containers/MenuContext';
 import Menu from './MenuApp';
 
-const MainConsumer = (props) => {
+const App = (props) => {
   const {
-    inProgress,
-    items,
-    logo,
-    theme,
-  } = props;
+    values: {
+      items,
+      logo,
+      inProgress,
+      theme,
+    },
+  } = useContext(MenuContext);
 
   const menuItems = items.map((value) => {
     return {
@@ -27,28 +28,5 @@ const MainConsumer = (props) => {
     </Fragment>
   );
 };
-
-const App = () => (
-  <MenuConsumer>
-    {(value) => {
-      const {
-        values: {
-          items,
-          logo,
-          inProgress,
-          theme,
-        },
-      } = value;
-      return (
-        <MainConsumer
-          items={items}
-          logo={logo}
-          theme={theme}
-          inProgress={inProgress}
-        />
-      );
-    }}
-  </MenuConsumer>
-);
 
 export default App;

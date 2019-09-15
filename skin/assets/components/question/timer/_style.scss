@@ -1,5 +1,18 @@
 .timer {
+  $this: &;
   cursor: default;
+
+  &--light {
+    #{$this}__path {
+      color: map-deep-get($theme-colors, light, 'color');
+    }
+  }
+
+  &--dark {
+    #{$this}__path {
+      color: map-deep-get($theme-colors, dark, 'color');
+    }
+  }
 
   &__clock {
     @include text-size(medium);

@@ -1,85 +1,59 @@
-import React, {PureComponent} from 'react';
+import React, {useState, useEffect} from 'react';
 import {getMenuData} from '../../../services/menu';
 
 // Set Up The Initial Context
-const MenuContext = React.createContext();
+const MenuContext = React.createContext([{}, () => {}]);
 
-// Create an exportable consumer that can be injected into components
-export const MenuConsumer = MenuContext.Consumer;
+const MenuProvider = (props) => {
 
-class MenuProvider extends PureComponent {
-  constructor(props) {
-    super(props);
+  const {theme} = props;
 
-    const {theme} = props;
+  const [inProgress, setInProgress] = useState(true);
+  const [items, setItems] = useState([]);
+  const [logo, setLogo] = useState(null);
 
-    this.state = {
-      theme,
-      inProgress: true,
-      items: [],
-      logo: null,
-    };
-  }
-
-  parseMenuData = (data) => {
-    const {
-      logo,
-      menu: {
-        items,
-      },
-    } = data;
+  const parseMenuData = (data) => {
 
     const outout = {
-      logo: JSON.parse(logo),
-      items,
+      logo: JSON.parse(data.logo),
+      items: data.menu.items,
     };
     return outout;
-  }
+  };
 
   // fetch menu items from endpoint
-  fetchData = () => {
+  const fetchData = () => {
     getMenuData()
       .then((myJson) => {
-        const data = this.parseMenuData(myJson);
-        this.setState(() => {
-          return {
-            logo: data.logo,
-            items: data.items,
-            inProgress: false,
-          };
-        });
+        const data = parseMenuData(myJson);
+
+        setItems(() => data.items);
+        setLogo(() => data.logo);
+        setInProgress(() => false);
       });
-  }
+  };
 
-  dataStore = {};
+  const dataStore = {};
 
-  componentDidMount() {
-    this.fetchData();
-  }
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-  render() {
-    const {
-      inProgress,
-      items,
-      theme,
-      logo,
-    } = this.state;
 
-    return (
-      <MenuContext.Provider
-        value={{
-          values: {
-            inProgress,
-            items,
-            theme,
-            logo,
-          },
-          dataStore: this.dataStore,
-        }}>
-        {this.props.children}
-      </MenuContext.Provider>
-    );
-  }
-}
+  return (
+    <MenuContext.Provider
+      value={{
+        values: {
+          inProgress,
+          items,
+          theme,
+          logo,
+        },
+        dataStore,
+      }}>
+      {props.children}
+    </MenuContext.Provider>
+  );
+};
 
-export default MenuProvider;
+export {MenuContext, MenuProvider};

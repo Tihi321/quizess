@@ -1,29 +1,38 @@
-import {Fragment} from 'react';
+import {Fragment, useContext} from 'react';
 import {__} from '@wordpress/i18n';
 import Question from './Question';
 import Explanation from './Explanation';
-import {AppConsumer} from '../containers/AppContext';
+import {AppContext} from '../containers/AppContext';
 import {WideButton, Placeholder} from '../../../components';
 
-const RouterConsumer = (props) => {
+const Router = ({
+  questionData: {
+    answers,
+    question,
+    explanationMedia,
+    explanationText,
+    explanationType,
+  },
+  questionData,
+}) => {
   const {
-    theme,
-    showExplanation,
-    questionData: {
-      answers,
-      question,
-      explanationMedia,
-      explanationText,
-      explanationType,
+    values: {
+      data: {
+        options: {
+          theme,
+        },
+      },
+      showExplanation,
+      selectedAnswer: {
+        id,
+      },
+      submitedAnswer,
     },
-    questionData,
-    handleSubmitChange,
-    handleExplanationChange,
-    submitedAnswer,
-    selectedAnswer: {
-      id,
+    dataStore: {
+      handleSubmitChange,
+      handleExplanationChange,
     },
-  } = props;
+  } = useContext(AppContext);
 
   if (!answers || !question) {
     return (
@@ -81,39 +90,5 @@ const RouterConsumer = (props) => {
     </Fragment>
   );
 };
-
-const Router = ({questionData}) => (
-  <AppConsumer>
-    {(value) => {
-      const {
-        values: {
-          data: {
-            options: {
-              theme,
-            },
-          },
-          showExplanation,
-          selectedAnswer,
-          submitedAnswer,
-        },
-        dataStore: {
-          handleSubmitChange,
-          handleExplanationChange,
-        },
-      } = value;
-      return (
-        <RouterConsumer
-          theme={theme}
-          questionData={questionData}
-          showExplanation={showExplanation}
-          selectedAnswer={selectedAnswer}
-          handleSubmitChange={handleSubmitChange}
-          submitedAnswer={submitedAnswer}
-          handleExplanationChange={handleExplanationChange}
-        />
-      );
-    }}
-  </AppConsumer>
-);
 
 export default Router;

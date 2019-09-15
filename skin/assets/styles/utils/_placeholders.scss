@@ -180,10 +180,12 @@
   z-index: $zindex-trait-messagge;
   display: flex;
   justify-content: center;
-  transform: translateY(100%);
-  transition: ease 300ms transform 200ms;
+  transform: translateY(200%);
+  opacity: 0;
+  transition: ease 300ms transform 200ms, ease 300ms opacity 200ms;
 
   &.is-shown {
+    opacity: 1;
     transform: translateY(0);
   }
 

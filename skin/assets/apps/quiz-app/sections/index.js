@@ -1,6 +1,6 @@
-import {Fragment} from 'react';
+import {Fragment, useContext} from 'react';
 import {__} from '@wordpress/i18n';
-import {AppConsumer} from '../containers/AppContext';
+import {AppContext} from '../containers/AppContext';
 import Modal from './Modal';
 import Questions from './Questions';
 import {
@@ -8,13 +8,17 @@ import {
   Placeholder,
 } from '../../../components';
 
-const MainConsumer = (props) => {
+const App = () => {
   const {
-    theme,
-    data,
-    handleStart,
-    shoudNotPlay,
-  } = props;
+    values: {
+      data,
+      theme,
+      shoudNotPlay,
+    },
+    dataStore: {
+      handleStart,
+    },
+  } = useContext(AppContext);
 
   const shouldNotPlayElement = (
     <Placeholder type="info">
@@ -40,30 +44,5 @@ const MainConsumer = (props) => {
     </Fragment>
   );
 };
-
-const App = () => (
-  <AppConsumer>
-    {(value) => {
-      const {
-        values: {
-          data,
-          theme,
-          shoudNotPlay,
-        },
-        dataStore: {
-          handleStart,
-        },
-      } = value;
-      return (
-        <MainConsumer
-          data={data}
-          handleStart={handleStart}
-          theme={theme}
-          shoudNotPlay={shoudNotPlay}
-        />
-      );
-    }}
-  </AppConsumer>
-);
 
 export default App;

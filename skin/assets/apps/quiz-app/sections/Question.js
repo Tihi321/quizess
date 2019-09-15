@@ -1,5 +1,5 @@
-import {Fragment} from 'react';
-import {AppConsumer} from '../containers/AppContext';
+import {Fragment, useContext} from 'react';
+import {AppContext} from '../containers/AppContext';
 import QuestionHeader from '../parts/QuestionHeader';
 import {
   MainQuestion,
@@ -7,19 +7,24 @@ import {
   Answer,
 } from '../../../components';
 
-const QuestionConsumer = (props) => {
+const Question = ({
+  questionData: {
+    answers,
+    direction,
+    question,
+    theme: questionTheme,
+    title,
+  },
+}) => {
   const {
-    questionData: {
-      answers,
-      direction,
-      question,
-      theme: questionTheme,
-      title,
+    values: {
+      selectedAnswer,
+      submitedAnswer,
     },
-    handleAnswerChange,
-    selectedAnswer,
-    submitedAnswer,
-  } = props;
+    dataStore: {
+      handleAnswerChange,
+    },
+  } = useContext(AppContext);
 
   const answersElements = answers.map((value, index) => {
     const {correct, text} = value;
@@ -60,29 +65,5 @@ const QuestionConsumer = (props) => {
     </Fragment>
   );
 };
-
-const Question = ({questionData}) => (
-  <AppConsumer>
-    {(value) => {
-      const {
-        values: {
-          selectedAnswer,
-          submitedAnswer,
-        },
-        dataStore: {
-          handleAnswerChange,
-        },
-      } = value;
-      return (
-        <QuestionConsumer
-          questionData={questionData}
-          handleAnswerChange={handleAnswerChange}
-          selectedAnswer={selectedAnswer}
-          submitedAnswer={submitedAnswer}
-        />
-      );
-    }}
-  </AppConsumer>
-);
 
 export default Question;

@@ -1,6 +1,6 @@
-import {Fragment} from 'react';
+import {Fragment, useContext} from 'react';
 import {__} from '@wordpress/i18n';
-import {DashboardConsumer} from '../containers/DashboardContext';
+import {DashboardContext} from '../containers/DashboardContext';
 import {
   TableParent,
   TableItems,
@@ -9,23 +9,28 @@ import {
 } from '../components';
 import {getPercentage} from '../../../utils/math';
 
-const DetailsConsumer = (props) => {
+const Details = () => {
+
   const {
-    selectedPlayerDetails: {
-      playerId,
-      playerIndex,
-      quizId,
-      lastScoreStats,
+    values: {
+      selectedPlayerDetails: {
+        playerId,
+        playerIndex,
+        quizId,
+        lastScoreStats,
+      },
+      answerStatsPage,
+      showRemove,
     },
-    answerStatsPage,
-    showRemove,
-    handleOnCloseDetails,
-    handleOnShowRemove,
-    handleOnRemoveLastScore,
-    handleOnAnswerPageChange,
-    handleOnRemove,
-    handleOnCancelRemove,
-  } = props;
+    dataStore: {
+      handleOnCloseDetails,
+      handleOnShowRemove,
+      handleOnRemoveLastScore,
+      handleOnAnswerPageChange,
+      handleOnRemove,
+      handleOnCancelRemove,
+    },
+  } = useContext(DashboardContext);
 
   if (showRemove) {
     return <div className="details__dialog">
@@ -175,40 +180,5 @@ const DetailsConsumer = (props) => {
     </Fragment>
   );
 };
-
-const Details = () => (
-  <DashboardConsumer>
-    {(value) => {
-      const {
-        values: {
-          selectedPlayerDetails,
-          answerStatsPage,
-          showRemove,
-        },
-        dataStore: {
-          handleOnCloseDetails,
-          handleOnShowRemove,
-          handleOnRemoveLastScore,
-          handleOnAnswerPageChange,
-          handleOnRemove,
-          handleOnCancelRemove,
-        },
-      } = value;
-      return (
-        <DetailsConsumer
-          showRemove={showRemove}
-          selectedPlayerDetails={selectedPlayerDetails}
-          answerStatsPage={answerStatsPage}
-          handleOnAnswerPageChange={handleOnAnswerPageChange}
-          handleOnCloseDetails={handleOnCloseDetails}
-          handleOnShowRemove={handleOnShowRemove}
-          handleOnRemoveLastScore={handleOnRemoveLastScore}
-          handleOnRemove={handleOnRemove}
-          handleOnCancelRemove={handleOnCancelRemove}
-        />
-      );
-    }}
-  </DashboardConsumer>
-);
 
 export default Details;

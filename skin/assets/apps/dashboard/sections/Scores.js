@@ -1,5 +1,6 @@
+import {useContext} from 'react';
 import {__} from '@wordpress/i18n';
-import {DashboardConsumer} from '../containers/DashboardContext';
+import {DashboardContext} from '../containers/DashboardContext';
 import {
   TableParent,
   TableItems,
@@ -7,16 +8,22 @@ import {
 } from '../components';
 import {getPercentage} from '../../../utils/math';
 
-const ScoresConsumer = (props) => {
+const Scores = () => {
   const {
-    selectedQuiz,
-    stats,
-    statsPage,
-    scorePage,
-    handleOnStatsPageChange,
-    handleOnScorePageChange,
-    handleOnShowDetails,
-  } = props;
+    values: {
+      selectedQuiz,
+      scoresData,
+      scorePage,
+      statsPage,
+    },
+    dataStore: {
+      handleOnShowDetails,
+      handleOnStatsPageChange,
+      handleOnScorePageChange,
+    },
+  } = useContext(DashboardContext);
+
+  const stats = (selectedQuiz.index > -1) ? scoresData[selectedQuiz.index].questionStats : [];
 
   const scoreTitles = [
     __('Name', 'quizess'),
@@ -126,42 +133,5 @@ const ScoresConsumer = (props) => {
     </div>
   );
 };
-
-const Scores = () => (
-  <DashboardConsumer>
-    {(value) => {
-      const {
-        values: {
-          selectedQuiz,
-          scoresData,
-          scorePage,
-          statsPage,
-          modal,
-        },
-        dataStore: {
-          handleOnShowDetails,
-          handleOnStatsPageChange,
-          handleOnScorePageChange,
-        },
-      } = value;
-
-      // question stats
-      const stats = (selectedQuiz.index > -1) ? scoresData[selectedQuiz.index].questionStats : [];
-
-      return (
-        <ScoresConsumer
-          scorePage={scorePage}
-          statsPage={statsPage}
-          selectedQuiz={selectedQuiz}
-          stats={stats}
-          modal={modal}
-          handleOnShowDetails={handleOnShowDetails}
-          handleOnScorePageChange={handleOnScorePageChange}
-          handleOnStatsPageChange={handleOnStatsPageChange}
-        />
-      );
-    }}
-  </DashboardConsumer>
-);
 
 export default Scores;

@@ -1,5 +1,7 @@
 $modal: (
+  title-color: $base-white-color,
   bg-color: $base-primary-blue,
+  popup-bg: $base-modal-bg,
   inner-bg-color: $base-modal-bg,
   cubic-ease: $cubic-ease,
 );
@@ -82,13 +84,18 @@ body.admin-bar {
 
     &--light {
       color: map-deep-get($theme-colors, light, 'color');
-      #{$t_modal}__table-title {
+
+      #{$t_modal}__table-title,
+      #{$t_modal}__exit-title {
         background-color: map-deep-get($theme-colors, light, 'primary-color');
       }
     }
+
     &--dark {
       color: map-deep-get($theme-colors, dark, 'color');
-      #{$t_modal}__table-title {
+
+      #{$t_modal}__table-title,
+      #{$t_modal}__exit-title {
         background-color: map-deep-get($theme-colors, dark, 'primary-color');
       }
     }
@@ -121,15 +128,20 @@ body.admin-bar {
 
   &__exit {
     &-outer {
+      background-color: map-get-strict($modal, 'popup-bg');
       max-width: 400px;
       margin: 0 auto;
-      padding: 10px 20px;
       border: 1px solid;
     }
+
     &-title {
+      color: map-get-strict($modal, 'title-color');
+      padding: 15px 20px;
+      font-weight: bold;
       text-align: center;
       margin-bottom: 20px;
     }
+
     &-btns {
       display: flex;
       justify-content: space-evenly;

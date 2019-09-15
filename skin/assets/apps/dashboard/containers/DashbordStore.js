@@ -1,4 +1,4 @@
-import DashboardProvider from './DashboardContext';
+import {DashboardProvider} from './DashboardContext';
 import Dashboard from '../sections';
 
 const DashbordStore = (props) => {

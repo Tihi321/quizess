@@ -1,5 +1,5 @@
 import App from '../sections';
-import MenuProvider from './MenuContext';
+import {MenuProvider} from './MenuContext';
 
 const MenuStore = (props) => {
   const {

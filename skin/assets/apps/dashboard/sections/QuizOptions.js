@@ -1,17 +1,22 @@
+import {useContext} from 'react';
 import Select from 'react-select';
 import {__} from '@wordpress/i18n';
-import {DashboardConsumer} from '../containers/DashboardContext';
+import {DashboardContext} from '../containers/DashboardContext';
 import Scores from './Scores';
 import Details from './Details';
 
-const QuizOptionsConsumer = (props) => {
+const QuizOptions = () => {
   const {
-    dataLoaded,
-    scoresData,
-    handleScoresSelect,
-    selectedQuiz,
-    showDetails,
-  } = props;
+    values: {
+      scoresData,
+      dataLoaded,
+      selectedQuiz,
+      showDetails,
+    },
+    dataStore: {
+      handleScoresSelect,
+    },
+  } = useContext(DashboardContext);
 
   if (showDetails) {
     return <Details />;
@@ -38,32 +43,5 @@ const QuizOptionsConsumer = (props) => {
     </div>
   );
 };
-
-const QuizOptions = () => (
-  <DashboardConsumer>
-    {(value) => {
-      const {
-        values: {
-          scoresData,
-          dataLoaded,
-          selectedQuiz,
-          showDetails,
-        },
-        dataStore: {
-          handleScoresSelect,
-        },
-      } = value;
-      return (
-        <QuizOptionsConsumer
-          dataLoaded={dataLoaded}
-          showDetails={showDetails}
-          scoresData={scoresData}
-          handleScoresSelect={handleScoresSelect}
-          selectedQuiz={selectedQuiz}
-        />
-      );
-    }}
-  </DashboardConsumer>
-);
 
 export default QuizOptions;
