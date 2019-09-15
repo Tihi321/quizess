@@ -1,17 +1,26 @@
+import {useContext} from 'react';
 import {__} from '@wordpress/i18n';
 import {Timer} from '../../../components';
-import {AppConsumer} from '../containers/AppContext';
+import {AppContext} from '../containers/AppContext';
 
-const QuestionHeaderConsumer = (props) => {
+const QuestionHeader = ({title}) => {
   const {
-    title,
-    currentQuestion,
-    questionsTotal,
-    timer,
-    handleOnStop,
-    stopTimer,
-    playTimer,
-  } = props;
+    values: {
+      questionsTotal,
+      currentQuestion,
+      stopTimer,
+      playTimer,
+      theme,
+      data: {
+        options: {
+          timer,
+        },
+      },
+    },
+    dataStore: {
+      handleOnStop,
+    },
+  } = useContext(AppContext);
 
   const titleElement = (
     <div className="question__title">
@@ -28,6 +37,7 @@ const QuestionHeaderConsumer = (props) => {
           onEnd={handleOnStop}
           stop={stopTimer}
           play={playTimer}
+          theme={theme}
         />
       </div>
       {(title) && titleElement}
@@ -37,39 +47,5 @@ const QuestionHeaderConsumer = (props) => {
     </div>
   );
 };
-
-const QuestionHeader = ({title}) => (
-  <AppConsumer>
-    {(value) => {
-      const {
-        values: {
-          questionsTotal,
-          currentQuestion,
-          stopTimer,
-          playTimer,
-          data: {
-            options: {
-              timer,
-            },
-          },
-        },
-        dataStore: {
-          handleOnStop,
-        },
-      } = value;
-      return (
-        <QuestionHeaderConsumer
-          title={title}
-          currentQuestion={currentQuestion}
-          questionsTotal={questionsTotal}
-          timer={timer}
-          handleOnStop={handleOnStop}
-          stopTimer={stopTimer}
-          playTimer={playTimer}
-        />
-      );
-    }}
-  </AppConsumer>
-);
 
 export default QuestionHeader;

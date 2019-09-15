@@ -1,17 +1,24 @@
-import {Fragment} from 'react';
+import {Fragment, useContext} from 'react';
 import {RawHTML} from '@wordpress/element';
-import {AppConsumer} from '../containers/AppContext';
+import {AppContext} from '../containers/AppContext';
 import {ExplanationPreview} from '../../../components';
 
-const ExplanationConsumer = (props) => {
+const Explanation = ({
+  type,
+  text,
+  media,
+}) => {
   const {
-    selectedAnswer,
-    failureMessage,
-    successMessage,
-    type,
-    text,
-    media,
-  } = props;
+    values: {
+      selectedAnswer,
+      data: {
+        options: {
+          failureMessage,
+          successMessage,
+        },
+      },
+    },
+  } = useContext(AppContext);
 
   const {correct} = selectedAnswer;
   const messageText = (correct) ? successMessage : failureMessage;
@@ -40,37 +47,5 @@ const ExplanationConsumer = (props) => {
     </Fragment>
   );
 };
-
-const Explanation = ({
-  type,
-  text,
-  media,
-}) => (
-  <AppConsumer>
-    {(value) => {
-      const {
-        values: {
-          selectedAnswer,
-          data: {
-            options: {
-              failureMessage,
-              successMessage,
-            },
-          },
-        },
-      } = value;
-      return (
-        <ExplanationConsumer
-          selectedAnswer={selectedAnswer}
-          failureMessage={failureMessage}
-          successMessage={successMessage}
-          type={type}
-          text={text}
-          media={media}
-        />
-      );
-    }}
-  </AppConsumer>
-);
 
 export default Explanation;

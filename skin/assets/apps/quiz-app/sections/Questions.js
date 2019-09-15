@@ -1,6 +1,6 @@
-import {Fragment} from 'react';
+import {Fragment, useContext} from 'react';
 import {__} from '@wordpress/i18n';
-import {AppConsumer} from '../containers/AppContext';
+import {AppContext} from '../containers/AppContext';
 import Router from './Router';
 import {
   Overview,
@@ -8,23 +8,31 @@ import {
   SubmitMessage,
 } from './../../../components';
 
-const QuestionsConsumer = (props) => {
+const Questions = () => {
   const {
-    questionsTotal,
-    currentQuestion,
-    correctAnswers,
-    questionStats,
-    questions,
-    theme,
-    showMessage,
-    message,
-    successMessage,
-    scoresSubmited,
-    singleSubmit,
-    handleTryAgain,
-    handleSubmitScore,
-    handleResetMessage,
-  } = props;
+    values: {
+      currentQuestion,
+      questionsTotal,
+      questionStats,
+      correctAnswers,
+      scoresSubmited,
+      singleSubmit,
+      showMessage,
+      message,
+      successMessage,
+      data: {
+        questions,
+        options: {
+          theme,
+        },
+      },
+    },
+    dataStore: {
+      handleTryAgain,
+      handleSubmitScore,
+      handleResetMessage,
+    },
+  } = useContext(AppContext);
 
   if (!Array.isArray(questions) || !questions.length) {
     return (
@@ -66,54 +74,5 @@ const QuestionsConsumer = (props) => {
     />
   );
 };
-
-const Questions = () => (
-  <AppConsumer>
-    {(value) => {
-      const {
-        values: {
-          currentQuestion,
-          questionsTotal,
-          questionStats,
-          correctAnswers,
-          scoresSubmited,
-          singleSubmit,
-          showMessage,
-          message,
-          successMessage,
-          data: {
-            questions,
-            options: {
-              theme,
-            },
-          },
-        },
-        dataStore: {
-          handleTryAgain,
-          handleSubmitScore,
-          handleResetMessage,
-        },
-      } = value;
-      return (
-        <QuestionsConsumer
-          questionsTotal={questionsTotal}
-          currentQuestion={currentQuestion}
-          questions={questions}
-          theme={theme}
-          showMessage={showMessage}
-          successMessage={successMessage}
-          message={message}
-          scoresSubmited={scoresSubmited}
-          singleSubmit={singleSubmit}
-          questionStats={questionStats}
-          correctAnswers={correctAnswers}
-          handleTryAgain={handleTryAgain}
-          handleSubmitScore={handleSubmitScore}
-          handleResetMessage={handleResetMessage}
-        />
-      );
-    }}
-  </AppConsumer>
-);
 
 export default Questions;

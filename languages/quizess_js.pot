@@ -5,30 +5,24 @@ msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Details.js:120
 #: skin/assets/apps/dashboard/sections/Scores.js:38
-#: skin/assets/apps/dashboard/sections/Details.js:115
-#: skin/assets/apps/dashboard/sections/Scores.js:31
-#: skin/assets/apps/quiz-app/parts/QuestionHeader.js:35
+#: skin/assets/apps/quiz-app/parts/QuestionHeader.js:45
 #: skin/assets/components/modal/overview/index.js:93
 msgid "Question"
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Details.js:121
-#: skin/assets/apps/dashboard/sections/Details.js:116
 #: skin/assets/components/modal/overview/index.js:96
 msgid "Answer"
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Details.js:133
 #: skin/assets/apps/dashboard/sections/Scores.js:39
-#: skin/assets/apps/dashboard/sections/Details.js:128
-#: skin/assets/apps/dashboard/sections/Scores.js:32
 #: skin/assets/blocks/question-block/components/answer-input/index.js:57
 #: skin/assets/components/modal/overview/index.js:63
 msgid "Correct"
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Details.js:133
-#: skin/assets/apps/dashboard/sections/Details.js:128
 #: skin/assets/components/modal/overview/index.js:32
 msgid "Incorrect"
 msgstr ""
@@ -47,16 +41,12 @@ msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Details.js:62
 #: skin/assets/apps/dashboard/sections/Scores.js:32
-#: skin/assets/apps/dashboard/sections/Details.js:57
-#: skin/assets/apps/dashboard/sections/Scores.js:25
 #: skin/assets/components/modal/overview/index.js:66
 msgid "Total"
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/Details.js:63
 #: skin/assets/apps/dashboard/sections/Scores.js:33
-#: skin/assets/apps/dashboard/sections/Details.js:58
-#: skin/assets/apps/dashboard/sections/Scores.js:26
 #: skin/assets/components/modal/overview/index.js:69
 msgid "Success"
 msgstr ""
@@ -147,7 +137,6 @@ msgid "Replace theme styles on quiz posts."
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/GeneralOptions.js:73
-#: skin/assets/apps/dashboard/sections/GeneralOptions.js:68
 #: skin/assets/blocks/template-blocks/cpt-quizess-options-block/sections/BlockElements.js:38
 msgid "Default theme"
 msgstr ""
@@ -165,7 +154,6 @@ msgid "Remove default admin bar and add optional quiz submit message "
 msgstr ""
 
 #: skin/assets/apps/dashboard/sections/QuizOptions.js:33
-#: skin/assets/apps/dashboard/sections/QuizOptions.js:28
 #: skin/assets/blocks/components/toolbars/style-options.js:36
 #: skin/assets/blocks/question-block/sections/BlockOptions.js:67
 #: skin/assets/blocks/questions-category-block/sections/BlockOptions.js:83
@@ -205,37 +193,37 @@ msgstr ""
 msgid "Dashboard"
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/Modal.js:49
-#: skin/assets/apps/quiz-app/sections/index.js:21
+#: skin/assets/apps/quiz-app/sections/Modal.js:59
+#: skin/assets/apps/quiz-app/sections/index.js:25
 #: skin/assets/components/modal/overview/index.js:40
 msgid "Your scores have been submitted, thank you for playing."
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/Questions.js:32
+#: skin/assets/apps/quiz-app/sections/Questions.js:40
 msgid "Nothing to see here, this quiz has no questions !!!"
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/Router.js:31
+#: skin/assets/apps/quiz-app/sections/Router.js:40
 msgid "This question is incomplete"
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/Router.js:45
+#: skin/assets/apps/quiz-app/sections/Router.js:54
 msgid "Show Expplanation"
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/Router.js:45
+#: skin/assets/apps/quiz-app/sections/Router.js:54
 msgid "Hide Expplanation"
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/Router.js:49
+#: skin/assets/apps/quiz-app/sections/Router.js:58
 msgid "Submit"
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/Router.js:49
+#: skin/assets/apps/quiz-app/sections/Router.js:58
 msgid "Next Question"
 msgstr ""
 
-#: skin/assets/apps/quiz-app/sections/index.js:37
+#: skin/assets/apps/quiz-app/sections/index.js:41
 msgid "Start"
 msgstr ""
 

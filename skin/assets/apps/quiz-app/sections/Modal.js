@@ -1,27 +1,37 @@
+import {useContext} from 'react';
 import classnames from 'classnames';
 import {__} from '@wordpress/i18n';
-import {AppConsumer} from '../containers/AppContext';
+import {AppContext} from '../containers/AppContext';
 import {
   TopBar,
   PopUpElememnt,
   Placeholder,
 } from '../../../components';
 
-const ModalConsumer = (props) => {
+const Modal = ({children}) => {
   const {
-    theme,
-    bgColor,
-    bgUrl,
-    modal,
-    shouldSubmit,
-    shoudNotPlay,
-    scoresSubmited,
-    showExit,
-    handleShowExit,
-    handleCancelClose,
-    handleClose,
-    children,
-  } = props;
+    values: {
+      showExit,
+      modal,
+      shouldSubmit,
+      shoudNotPlay,
+      scoresSubmited,
+      data: {
+        options: {
+          theme,
+        },
+        bgOptions: {
+          bgColor,
+          bgUrl,
+        },
+      },
+    },
+    dataStore: {
+      handleShowExit,
+      handleCancelClose,
+      handleClose,
+    },
+  } = useContext(AppContext);
 
   const modalStyle = {
     backgroundColor: bgColor || false,
@@ -89,51 +99,5 @@ const ModalConsumer = (props) => {
     </div>
   );
 };
-
-const Modal = ({children}) => (
-  <AppConsumer>
-    {(value) => {
-      const {
-        values: {
-          showExit,
-          modal,
-          shouldSubmit,
-          shoudNotPlay,
-          scoresSubmited,
-          data: {
-            options: {
-              theme,
-            },
-            bgOptions: {
-              bgColor,
-              bgUrl,
-            },
-          },
-        },
-        dataStore: {
-          handleShowExit,
-          handleCancelClose,
-          handleClose,
-        },
-      } = value;
-      return (
-        <ModalConsumer
-          theme={theme}
-          showExit={showExit}
-          bgColor={bgColor}
-          bgUrl={bgUrl}
-          modal={modal}
-          shouldSubmit={shouldSubmit}
-          shoudNotPlay={shoudNotPlay}
-          scoresSubmited={scoresSubmited}
-          handleShowExit={handleShowExit}
-          handleCancelClose={handleCancelClose}
-          handleClose={handleClose}
-          children={children}
-        />
-      );
-    }}
-  </AppConsumer>
-);
 
 export default Modal;

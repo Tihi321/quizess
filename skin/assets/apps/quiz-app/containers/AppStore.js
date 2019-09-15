@@ -1,5 +1,5 @@
 import App from '../sections';
-import AppProvider from './AppContext';
+import {AppProvider} from './AppContext';
 
 const AppStore = (props) => {
   const {

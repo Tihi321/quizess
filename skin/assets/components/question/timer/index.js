@@ -1,88 +1,70 @@
-import {PureComponent} from 'react';
+import {
+  useUpdateEffect,
+  useInterval,
+  useEffectOnce,
+  useCounter,
+  useToggle,
+} from 'react-use';
 import icons from './icons';
 
-class Timer extends PureComponent {
-  constructor(props) {
-    super(props);
+const Timer = (props) => {
+  const {
+    endTime = 30,
+    onEnd = null,
+    disabled,
+    play,
+    stop,
+  } = props;
 
-    const {
-      endTime = 30,
-      onEnd = null,
-    } = props;
+  const dontStart = (disabled || endTime === 0) || false;
 
-    this.endTime = endTime;
-    this.onEnd = onEnd;
+  const [time, {
+    dec,
+    reset: resetTime,
+  }] = useCounter(endTime);
 
-    const {disabled} = props;
 
-    this.dontStart = (disabled || endTime === 0) || false;
+  const [onTimer, setUseTimer] = useToggle(false);
 
-    this.state = {
-      time: this.endTime,
-    };
+  // start interval without delay
+  useInterval(() => dec(), (onTimer) ? 1000 : null);
 
-  }
-
-  startTimer = () => {
-    this.timer = setInterval(() => this.setState({
-      time: this.state.time - 1,
-    }), 1000);
-  }
-
-  stopTimer = () => {
-    clearInterval(this.timer);
-  }
-
-  resetTimer = () => {
-    this.setState({time: this.endTime});
-  }
-
-  componentDidMount() {
-    if (!this.dontStart) {
-      this.startTimer();
+  useEffectOnce(() => {
+    if (!dontStart) {
+      setUseTimer(true);
     }
-  }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
+    return () => {
+      if (!dontStart) {
+        resetTime();
+        setUseTimer(false);
+      }
+    };
+  }, []);
 
-    const {stop, play} = this.props;
-    if (this.state.time === 0 || stop) {
-      this.stopTimer();
-      this.resetTimer();
-      this.onEnd();
+  useUpdateEffect(() => {
+    if (time === 0 || stop) {
+      resetTime();
+      setUseTimer(false);
+      onEnd();
     }
 
     if (play) {
-      this.startTimer();
+      resetTime();
+      setUseTimer(true);
     }
-
-  }
-
-  componentWillUnmount() {
-    this.stopTimer();
-  }
-
-  getTimerElement = () => {
-    const {disabled} = this.props;
-    if (disabled) {
-      return (
-        <div className="timer__infinity">{icons.infinity}</div>
-      );
-    }
-    return (
-      <div className="timer__clock">{this.state.time}</div>
-    );
-  }
+  });
 
 
-  render() {
-    const renderElement = this.getTimerElement();
-    return (
-      <div className="timer">
-        {renderElement}
-      </div>
-    );
-  }
-}
+  return (
+    <div className={`timer timer--${props.theme}`}>
+      {
+        props.disabled ?
+          <div className="timer__infinity">{icons.infinity}</div> :
+          <div className="timer__clock">{time}</div>
+      }
+    </div>
+  );
+};
 
 export default Timer;

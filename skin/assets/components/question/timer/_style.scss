@@ -1,5 +1,18 @@
 .timer {
+  $this: &;
   cursor: default;
+
+  &--light {
+    #{$this}__path {
+      fill: #000000;
+    }
+  }
+
+  &--dark {
+    #{$this}__path {
+      fill: #FFFFFF;
+    }
+  }
 
   &__clock {
     @include text-size(medium);
