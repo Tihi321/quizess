@@ -13,7 +13,7 @@ domReady(() => {
 
   // -------------------------------------------------------------
   // Menu
-  if (document.querySelector('.js-header-menu')) {
+  if (document.querySelector('.js-quizess-header-menu')) {
     import('../apps/menu-app').then(({Menu}) => {
       const menu = new Menu();
       menu.init();
@@ -22,7 +22,7 @@ domReady(() => {
 
   // -------------------------------------------------------------
   // Menu toggle
-  if (document.querySelector('.js-menu-toggle')) {
+  if (document.querySelector('.js-quizess-menu-toggle')) {
     import('./components/menu-toggle').then(({MenuToggle}) => {
       const menuToggle = new MenuToggle();
       menuToggle.init();

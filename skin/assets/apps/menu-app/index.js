@@ -2,7 +2,7 @@ import {render} from 'react-dom';
 import MenuStore from './containers/MenuStore';
 
 export class Menu {
-  constructor(menuElement = '.js-header-menu') {
+  constructor(menuElement = '.js-quizess-header-menu') {
 
     this.$menuElement = document.querySelector(menuElement);
 

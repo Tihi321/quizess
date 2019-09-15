@@ -63,6 +63,10 @@ A: You need to reset last record from player, under Quizess->dashboard->quizes c
 
 == Changelog ==
 
+2.0.1
+* Added more distinctive selectors to prevent clashes with other plugins and themes.
+* Small bugfixes for menu.
+
 2.0.0
 * New archive and topics pages added.
 * Dynamic imports and custom filters.

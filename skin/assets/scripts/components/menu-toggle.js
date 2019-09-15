@@ -1,10 +1,10 @@
 import {classList} from '../../utils/dom';
 
 export class MenuToggle {
-  constructor(openToggleSelector = '.js-menu-toggle') {
+  constructor(openToggleSelector = '.js-quizess-menu-toggle') {
     this.openToggleElement = document.querySelector(openToggleSelector);
-    this.headerOverlayElement = document.querySelector('.js-header-overlay');
-    this.headerElement = document.querySelector('.js-header');
+    this.headerOverlayElement = document.querySelector('.js-quizess-header-overlay');
+    this.headerElement = document.querySelector('.js-quizess-header');
     this.OPEN_CLASS = 'is-opened';
     this.CLOSED_CLASS = 'is-closed';
 

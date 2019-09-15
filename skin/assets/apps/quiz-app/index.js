@@ -19,7 +19,7 @@ export class App {
     this.quizId = this.$appElement.dataset.quizId;
     this.userSubmit = this.$appElement.dataset.userSubmit;
     this.theme = this.$appElement.dataset.theme;
-    this.headerElement = document.querySelector('.js-header');
+    this.headerElement = document.querySelector('.js-quizess-header');
 
   }
 
