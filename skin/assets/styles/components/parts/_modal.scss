@@ -1,5 +1,7 @@
 $modal: (
+  title-color: $base-white-color,
   bg-color: $base-primary-blue,
+  popup-bg: $base-modal-bg,
   inner-bg-color: $base-modal-bg,
   cubic-ease: $cubic-ease,
 );
@@ -126,12 +128,14 @@ body.admin-bar {
 
   &__exit {
     &-outer {
+      background-color: map-get-strict($modal, 'popup-bg');
       max-width: 400px;
       margin: 0 auto;
       border: 1px solid;
     }
 
     &-title {
+      color: map-get-strict($modal, 'title-color');
       padding: 15px 20px;
       font-weight: bold;
       text-align: center;
