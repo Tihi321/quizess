@@ -20,9 +20,11 @@ $close-button-colors: (
     @include media(tablet up) {
       padding: 10px;
     }
+
     &--light {
       background-color: map-deep-get($theme-colors, light, 'primary-color');
     }
+
     &--dark {
       background-color: map-deep-get($theme-colors, dark, 'primary-color');
     }
@@ -51,6 +53,7 @@ $close-button-colors: (
         width: 24px;
         height: 24px;
       }
+
       &:hover {
         background: transparent;
         opacity: 0.8;
